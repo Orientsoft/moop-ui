@@ -12,7 +12,7 @@ export default class BlankLayout extends Component {
 
   render() {
     return (
-      <Layout style={{ minHeight: '100vh' }} className="ice-blank-layout">
+      <Layout className="ice-blank-layout">
         <Switch>
           {routerData.map((item, index) => {
             return item.component ? (

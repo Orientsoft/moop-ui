@@ -1,0 +1,27 @@
+.pro-container{margin: 0px auto 20px; width: 1200px; overflow: hidden;}
+.pro-right{ float: right; width: 25%;overflow: hidden;
+  a{  position: relative;
+      display: block;
+      padding: 14px 20px;
+      background-color: #fff;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(0,0,0,.125);
+      color: #495057;
+      font-size: 16px
+    }
+}
+.pro-left{ 
+  float: left; width: 68%;overflow: hidden;
+  .subtit{font-weight: 600;line-height: 1.5; font-size: 24px;}
+  .text-info{ padding-bottom: 20px;}
+  .text-info p{    
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;color: #6c757d
+  }
+}
+.title{font-weight: 600;line-height: 1.5; font-size: 32px;}
+.pd60{ padding: 60px 0;}
+.QAcontent{padding-top: 20px}
+.QAcontent p{ font-size: 16px;line-height: 1.5;color: #6c757d}
+

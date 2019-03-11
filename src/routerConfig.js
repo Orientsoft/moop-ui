@@ -22,7 +22,7 @@ const routerConfig = [
     component: ClassroomPublication,
   },
   {
-    path: '/',
+    path: '/home',
     layout: BlankLayout,
     component: Home,
   },

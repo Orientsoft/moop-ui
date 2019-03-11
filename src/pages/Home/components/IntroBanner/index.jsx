@@ -17,7 +17,7 @@ export default class IntroBanner extends Component {
       <div className="intro-banner-wrap" style={style.introBannerWrapStyles}>
         <img
           className="intro-banner-img"
-          src={require('./images/TB1R9Ius1uSBuNjy1XcXXcYjFXa-3840-900.jpg')}
+          src={require('./images/helloworld.jpg')}
           style={style.introBannerImgStyles}
           alt=""
         />
@@ -30,13 +30,15 @@ export default class IntroBanner extends Component {
             className="intro-banner-title"
             style={style.introBannerTitleStyles}
           >
-            智慧社区，未来生活
+           培养您需要的
           </h2>
           <p
             className="intro-banner-subtitle"
             style={style.introBannerSubtitleStyles}
-          >
-            输出支付，账户体系，信用金融，电商，采购，文化公益和大数据等能力和资源，助力社区物业通过提升信息化、智能化水平，改善物业管理水平和服务品质，推动建设便利舒适、安全和谐的智慧社区
+          ><br />
+            转变您的组织提供您的将来需要的技能<br /><br />
+            减少时间和成本通过利用edX审查的熟练用户群填充您<br /><br />
+            产生影响创建增长文化，并通过提供按需学习平台帮助<br />
           </p>
         </div>
       </div>
@@ -47,7 +49,7 @@ export default class IntroBanner extends Component {
 const style = {
   introBannerWrapStyles: {
     width: '100%',
-    height: '450px',
+    height: '550px',
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
@@ -59,8 +61,8 @@ const style = {
     top: '0',
     left: '50%',
     display: 'block',
-    width: '1920px',
-    height: '100%',
+    width: '100%',
+    // height: '100%',
     transform: 'translateX(-50%)',
     zIndex: '10',
   },
@@ -81,15 +83,20 @@ const style = {
     color: '#fff',
   },
   introBannerTitleStyles: {
-    fontWeight: '400',
-    fontSize: '50px',
+    fontWeight: '500',
+    fontSize: '64px',
     lineHeight: '70px',
+    paddingTop: '64px',
+    // textShadow: '2px 2px 1px rgba(0,0,0,0.57);',
+    textShadowOffset: { width: '2px', height: '5px' },
+    textShadowColor: 'rgba(0,0,0,0.57)',
   },
   introBannerSubtitleStyles: {
     marginTop: '8px',
     marginBottom: '48px',
     maxWidth: '768px',
-    fontSize: '16px',
+    fontSize: '18px',
+    color: 'rgba(255,255,255,.6)',
     lineHeight: '25px',
   },
 };

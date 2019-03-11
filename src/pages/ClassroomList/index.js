@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import ClassroomCard from '../../components/ClassroomCard';
 
 export default class ClassroomList extends Component {
   constructor(props) {
@@ -7,6 +10,19 @@ export default class ClassroomList extends Component {
   }
 
   render() {
-    return <div className="classroom-list-page" />;
+    return (
+      <div >
+        <Header />
+        <div style={styles.paddingtop}>
+          <ClassroomCard />
+        </div>
+        <Footer />
+      </div>
+    );
   }
 }
+const styles = {
+  paddingtop: {
+    paddingTop: '60px',
+  },
+};

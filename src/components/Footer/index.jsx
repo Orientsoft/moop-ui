@@ -21,22 +21,22 @@ export default class FooterLinks extends Component {
             <ul style={styles.footerBoxContentUl}>
               <li style={styles.footerBoxContentLi}>
                 <div style={styles.footerBoxContentItem}>
-                  <div style={styles.footerBoxContentName}>新手入门</div>
+                  <div style={styles.footerBoxContentName}>关于</div>
                   <div>
                     <ul>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          新手指南
+                          关于我们
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          热门FAQ
+                          常见问题
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          合作攻略
+                          服务协议
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
@@ -50,22 +50,22 @@ export default class FooterLinks extends Component {
               </li>
               <li style={styles.footerBoxContentLi}>
                 <div style={styles.footerBoxContentItem}>
-                  <div style={styles.footerBoxContentName}>服务支持</div>
+                  <div style={styles.footerBoxContentName}>联系</div>
                   <div>
                     <ul>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          开发文档
+                          广告合作
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          业务文档
+                          友情链接
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          物料模板下载
+                          帮助
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
@@ -122,7 +122,7 @@ export default class FooterLinks extends Component {
                 ...styles.footerBoxRightItemOpacity,
               }}
             >
-              加入钉钉群
+              加入微信群
             </div>
             <div style={styles.footerBoxRightItem}>
               <img
@@ -137,7 +137,7 @@ export default class FooterLinks extends Component {
                 ...styles.footerBoxRightItemOpacity,
               }}
             >
-              打开钉钉扫一扫
+              打开微信扫一扫
             </div>
           </div>
           <div style={styles.footerClearfix} />
@@ -149,7 +149,7 @@ export default class FooterLinks extends Component {
 
 const styles = {
   footerBox: {
-    backgroundColor: '#232940',
+    backgroundColor: '#0E1A2E',
     WebkitFontSmoothing: 'antialiased',
     fontFamily: 'Tahoma,arial,Hiragino Sans GB,Microsoft Yahei',
     lineHeight: '1.6',
