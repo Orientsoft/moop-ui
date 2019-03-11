@@ -2,13 +2,6 @@
 .signup-form {
   display: flex;
   justify-content: center;
-  background: url(./images/helloworld.jpg),#2b3137;
-  background-position: center 10%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: hsla(0,0%,100%,.6);
-  height: 100%;
-  padding-bottom: 200px;
   .next-input.next-input-single {
     width: 240px;
     border-top: 0;
@@ -22,7 +15,7 @@
     }
   }
   .next-checkbox-label {
-    color: #999;
+    color: #999 !important;
     font-size: 13px;
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Login from '../../../../components/Login';
 
 export default class IntroBanner extends Component {
   static displayName = 'IntroBanner';
@@ -26,20 +27,25 @@ export default class IntroBanner extends Component {
           style={style.introBannerImgMaskStyles}
         />
         <div className="intro-banner-text" style={style.introBannerTextStyles}>
-          <h2
-            className="intro-banner-title"
-            style={style.introBannerTitleStyles}
-          >
-           培养您需要的
-          </h2>
-          <p
-            className="intro-banner-subtitle"
-            style={style.introBannerSubtitleStyles}
-          ><br />
-            转变您的组织提供您的将来需要的技能<br /><br />
-            减少时间和成本通过利用edX审查的熟练用户群填充您<br /><br />
-            产生影响创建增长文化，并通过提供按需学习平台帮助<br />
-          </p>
+          <div style={style.introBannerLeft}>
+            <h2
+              className="intro-banner-title"
+              style={style.introBannerTitleStyles}
+            >
+            培养您需要的
+            </h2>
+            <p
+              className="intro-banner-subtitle"
+              style={style.introBannerSubtitleStyles}
+            ><br />
+              转变您的组织提供您的将来需要的技能<br /><br />
+              减少时间和成本通过利用edX审查的熟练用户群填充您<br /><br />
+              产生影响创建增长文化，并通过提供按需学习平台帮助<br />
+            </p>
+          </div>
+          <div style={style.introBannerRight}>
+            <Login />
+          </div>
         </div>
       </div>
     );
@@ -49,7 +55,7 @@ export default class IntroBanner extends Component {
 const style = {
   introBannerWrapStyles: {
     width: '100%',
-    height: '550px',
+    height: '590px',
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
@@ -81,12 +87,13 @@ const style = {
     zIndex: '99',
     width: '1200px',
     color: '#fff',
+    paddingBottom: '50px',
   },
   introBannerTitleStyles: {
     fontWeight: '500',
     fontSize: '64px',
     lineHeight: '70px',
-    paddingTop: '64px',
+    paddingTop: '94px',
     // textShadow: '2px 2px 1px rgba(0,0,0,0.57);',
     textShadowOffset: { width: '2px', height: '5px' },
     textShadowColor: 'rgba(0,0,0,0.57)',
@@ -98,5 +105,14 @@ const style = {
     fontSize: '18px',
     color: 'rgba(255,255,255,.6)',
     lineHeight: '25px',
+  },
+  introBannerLeft: {
+    width: '45%',
+    float: 'left',
+  },
+  introBannerRight: {
+    width: '360px', 
+    marginBottom: '40px',
+    float: 'right',
   },
 };
