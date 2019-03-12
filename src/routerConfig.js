@@ -9,6 +9,7 @@ import ClassroomDetail from './pages/ClassroomDetail';
 import ClassroomCreation from './pages/ClassroomCreation';
 import ClassroomPublication from './pages/ClassroomPublication';
 import ClassroomPresentation from './pages/ClassroomPresentation';
+import ClassroomPresentationEdit from './pages/ClassroomPresentationEdit';
 import UserRegister from './pages/UserRegister';
 import UserLogin from './pages/UserLogin';
 import UserProfile from './pages/UserProfile';
@@ -50,6 +51,11 @@ const routerConfig = [
     path: '/classroom/presentation',
     layout: BlankLayout,
     component: ClassroomPresentation,
+  },
+  {
+    path: '/classroom/presentationedit',
+    layout: BlankLayout,
+    component: ClassroomPresentationEdit,
   },
   {
     path: '/user/register',

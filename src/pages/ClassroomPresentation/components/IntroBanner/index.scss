@@ -1,0 +1,56 @@
+.intro-bannerslider-wrap{
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  text-align: center
+}
+  .intro-banner-slider{
+       overflow: hidden;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    height: 300px;
+    .intro-banner-text{
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 98px;
+        padding-bottom: 48px;
+      }
+      .intro-banner-title{
+        font-weight: 500;
+        font-size: 32px;
+        // background: rgba(0,0,0,.6);
+        padding: 15px 20px;
+      }
+      .text-warning{
+        color: #ffc107;
+        margin-left: 5px;
+      }
+      .startbtn{
+        height: 50px;
+        padding: 0px 58px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        background: rgb(0, 206, 114); 
+        border-radius: 3px;
+        display: inline-block;
+        line-height: 50px; color: #fff;
+      }
+      .whitebtn{
+        height: 50px;
+        padding: 0px 58px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        background: #fff; 
+        border-radius: 3px;
+        display: inline-block;
+        line-height: 50px; color: #333;  
+      }
+  }
+ 

@@ -25,7 +25,7 @@ export default class IntroBanner extends Component {
             </p>
             <p>
               <a href="#" className="startbtn">开始学习</a>
-              <a href="#" className="startbtn">项目申报</a>
+              <a href="#/classroom/presentation" className="startbtn">项目申报</a>
               <a href="#/classroom/publication" className="whitebtn">编辑专题</a>
             </p>
           </div>

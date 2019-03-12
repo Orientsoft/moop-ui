@@ -9,11 +9,12 @@ export default class BasicTab extends Component {
       <div className="basic-tab">
         <IceContainer style={styles.tabCardStyle}>
           <ul>
-            
-            <li><a href="#" className="active">详情</a></li>
-            <li><a href="#">讨论</a></li>
-            <li><a href="#">排行榜</a></li>
-            <li><a href="#">学生(老师看)</a></li>
+            <li><a href="#" className="active">项目团队</a></li>
+            <li><a href="#">项目描述</a></li>
+            <li><a href="#">网络要求</a></li>
+            <li><a href="#">技术架构</a></li>
+            <li><a href="#">项目特色</a></li>
+            <li><a href="#">服务计划</a></li>
           </ul>
         </IceContainer>
       </div>

@@ -16,4 +16,30 @@
     font-weight: 500;
     font-size: 32px;
   }
+  .text-warning{
+     color: #ffc107;
+     margin-left: 5px;
+  }
+  .startbtn{
+    height: 50px;
+    padding: 0px 58px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background: rgb(0, 206, 114); 
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 50px; color: #fff;
+  }
+  .whitebtn{
+    height: 50px;
+    padding: 0px 58px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background: #fff; 
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 50px; color: #333;  
+  }
 }

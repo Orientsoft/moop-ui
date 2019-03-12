@@ -46,11 +46,11 @@ export default class SignupForm extends Component {
             </FormItem>
 
             <Row className="tips" style={styles.tips}>
-              <a href="/" style={styles.link}>
+            <a href="#/user/register" style={styles.link}>
                 立即注册
               </a>
               <span style={styles.line}>|</span>
-              <a href="/" style={styles.link}>
+            <a href="#" style={styles.link}>
                 忘记密码
               </a>
             </Row>
@@ -67,7 +67,7 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'column',
     padding: '40px 60px',
-    background: '#fff',
+    background: '#f8f8f8',
     // borderRadius: '6px',
     // boxShadow: '1px 1px 2px #eee',
   },
