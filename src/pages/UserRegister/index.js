@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import { Input, Grid, Form } from '@alifd/next';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { Input, Checkbox, Grid, Form } from '@alifd/next';
+import { user } from '../../utils/api';
+import roles from '../../utils/roles';
 import './index.scss';
 
 const { Row, Col } = Grid;
 const FormItem = Form.Item;
 
 export default class SignupForm extends Component {
+  onSubmit = (value) => {
+    user.create({
+      data: { ...value, role: roles.user.STUDENT },
+    }).then(() => this.props.history.push('/user/login'));
+  }
+
   render() {
     return (
       <div>
@@ -17,22 +25,18 @@ export default class SignupForm extends Component {
             <h4 style={styles.formTitle}>注册</h4>
             <Form>
               <FormItem required requiredMessage="必填" style={styles.formItem}>
-                <Input style={styles.formItemInput} name="account" hasBorder={false} maxLength={20} placeholder="会员名/邮箱/手机号" />
+                <Input style={styles.formItemInput} name="name" hasBorder={false} maxLength={20} placeholder="会员名/邮箱/手机号" />
               </FormItem>
 
               <FormItem style={styles.formItem} required requiredMessage="必填" >
-                <Input style={styles.formItemInput} name="password" hasBorder={false} htmlType="password" placeholder="密码" />
-              </FormItem>
-
-              <FormItem style={styles.formItem}>
-                <Checkbox name="checkbox" style={styles.submitCheckbox} >记住账号</Checkbox>
+                <Input style={styles.formItemInput} name="key" hasBorder={false} htmlType="password" placeholder="密码" />
               </FormItem>
 
               <FormItem style={styles.formItem}>
                 <Form.Submit
                   type="primary"
+                  onClick={this.onSubmit}
                   validate
-                  onClick={this.handleSubmit}
                   style={styles.submitBtn}
                 >
                   注 册
