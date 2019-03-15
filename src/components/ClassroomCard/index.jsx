@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class CardItems extends Component {
-  static displayName = 'CardItems';
-  static propTypes = {};
-  static defaultProps = {};
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
+    const { data = [] } = this.props;
+
     return (
       <div style={styles.hyThirdPartyWrapper}>
         <div style={styles.hyThirdParty}>
@@ -17,79 +13,35 @@ export default class CardItems extends Component {
           </h3>
           <p style={styles.hyThirdPartySubTitle}>Please select your intresting course , and start !</p>
           <div style={styles.thirdPartyDetails}>
-            <div
-              style={{
-                ...styles.thirdPartyDetailItem,
-                ...styles.thirdPartyDetailItemFirst,
-              }}
-            >
-              <img
-                style={styles.thirdPartyDetailImg}
-                src={require('./images/index1.jpg')}
-                alt=""
-              />
-              <h5 style={styles.thirdPartyName}>机器学习</h5>
-              <p style={styles.thirdPartySold}>
-                学时安排：
-                <span style={styles.thirdPartySoldNumber}>74</span>
-                小时
-              </p>
-              <p style={styles.thirdPartyDesc}>
-                机器学习是让计算机在没有明确编程的情况下采取行动的科学。在过去的十年中，机器学习为我们提供了自动驾驶汽车，实用的语音识别，有效的网络搜索以及对人类基因组的大大改进的理解。
-              </p>
-              <a style={styles.thirdPartyLink} href="#/classroom/detail">
-                进入学习 <span style={styles.linkAdd}>➪</span>
-              </a>
-            </div>
-
-            <div style={styles.thirdPartyDetailItem}>
-              <img
-                style={styles.thirdPartyDetailImg}
-                src={require('./images/index2.jpg')}
-                alt=""
-              />
-              <h5 style={styles.thirdPartyName}>神经网络与深度学习</h5>
-              <p style={styles.thirdPartySold}>
-                学时安排：
-                <span style={styles.thirdPartySoldNumber}>206</span>
-                小时
-              </p>
-              <p style={styles.thirdPartyDesc}>
-                训练和应用深度神经网络的方法。通过医疗保健，自动驾驶，音乐生成和自然语言处理等案例研究，学习者不仅可以掌握深度学习理论，还可以了解它如何应用于工业。
-              </p>
-              <a style={styles.thirdPartyLink} href="#/classroom/detail">
-                进入学习 <span style={styles.linkAdd}>➪</span>
-              </a>
-            </div>
-
-            <div style={styles.thirdPartyDetailItem}>
-              <img
-                style={styles.thirdPartyDetailImg}
-                src={require('./images/index3.jpg')}
-                alt=""
-              />
-              <h5 style={styles.thirdPartyName}>云筑社区综合管理平台</h5>
-              <p style={styles.thirdPartySold}>
-                学时安排：
-                <span style={styles.thirdPartySoldNumber}>287</span>
-                小时
-              </p>
-              <p style={styles.thirdPartyDesc}>
-                通过将权力平衡从公司转移到消费者，帮助您的团队了解数字工具如何改变营销。专题中最受欢迎的专题之一，数字世界营销被Class Central评为有史以来最好的50个MOOC之一。
-              </p>
-              <a style={styles.thirdPartyLink} href="#/classroom/detail">
-                进入学习 <span style={styles.linkAdd}>➪</span>
-              </a>
-            </div>
-            <a style={styles.thirdPartyMore} href="#/classroom/list">
+            {data.map(({ id, title, description, timeConsume }) => (
+              <div key={id} style={styles.thirdPartyDetailItem}>
+                <img
+                  style={styles.thirdPartyDetailImg}
+                  src={require('./images/index1.jpg')}
+                  alt=""
+                />
+                <h5 style={styles.thirdPartyName}>{title}</h5>
+                <p style={styles.thirdPartySold}>
+                  学时安排：
+                  <span style={styles.thirdPartySoldNumber}>{timeConsume}</span>
+                  小时
+                </p>
+                <p style={styles.thirdPartyDesc}>{description}</p>
+                <Link style={styles.thirdPartyLink} to="/classroom/detail">
+                  进入学习 <span style={styles.linkAdd}>➪</span>
+                </Link>
+              </div>
+            ))}
+            <Link style={styles.thirdPartyMore} to="/classroom/list">
               查看更多学习 ➪
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     );
   }
 }
+
 const styles = {
   hyThirdPartyWrapper: {
     background: '#fff',

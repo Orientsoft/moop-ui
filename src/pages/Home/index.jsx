@@ -8,20 +8,29 @@ import AblityItems from './components/AblityItems';
 import IntroTab from './components/IntroTab';
 // import CardItems from './components/CardItems';
 import SlideBanner from './components/SlideBanner';
+import { classroom } from '../../utils/api';
 
 export default class Home extends Component {
   static displayName = 'Home';
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      courses: [],
+    };
+  }
+
+  componentDidMount() {
+    classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
   }
 
   render() {
+    const { courses } = this.state;
+
     return (
       <div style={styles.container}>
         <Header />
         <IntroBanner {...this.props} />
-        <ClassroomCard />
+        <ClassroomCard data={courses} />
         <AblityItems />
         <IntroTab />
         <SlideBanner />
