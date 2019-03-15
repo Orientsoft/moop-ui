@@ -1,29 +1,12 @@
 import axios from 'axios';
-import merge from 'lodash-es/merge';
+import { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
 axios.defaults.timeout = 30000;
 axios.defaults.baseURL = 'http://192.168.0.48:7777/api/v1';
 axios.defaults.withCredentials = true;
 
-const api = (defaultConfig = {}) => {
-  const parts = defaultConfig.url.match(/(?<=:)\w+/g);
-
-  if (parts && parts.length) {
-    return (args = {}, config) => axios(merge(defaultConfig, config, {
-      url: parts.reduce((value, part) => value.replace(`:${part}`, args[part]), defaultConfig.url),
-    }));
-  }
-
-  return config => axios(merge(defaultConfig, config));
-};
-
-export const GET = url => api({ url, method: 'GET' });
-export const POST = url => api({ url, method: 'POST' });
-export const PUT = url => api({ url, method: 'PUT' });
-export const PATCH = url => api({ url, method: 'PATCH' });
-export const DELETE = url => api({ url, method: 'DELETE' });
-
 export const user = {
+  login: POST('/login'),
   select: GET('/users/:userId'),
   create: POST('/users'),
   update: PATCH('/users/:userId'),
