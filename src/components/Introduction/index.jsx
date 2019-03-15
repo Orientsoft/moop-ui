@@ -16,7 +16,7 @@ export default class SimpleTestimonial extends Component {
   render() {
     return (
       <div className="simple-testimonial" style={styles.simpleTestimonial}>
-        <IceContainer>
+        {/* <IceContainer> */}
           <div style={styles.infoBox}>
             <img
               style={styles.avatar}
@@ -24,7 +24,7 @@ export default class SimpleTestimonial extends Component {
               alt="图像"
             />
             <div style={styles.item}>
-              <h5 style={styles.name}>人物名</h5>
+              <h5 style={styles.name}><a href="#/userteacher">人物名</a></h5>
               <p style={styles.company}>就职公司/职务</p>
               <p style={styles.description}>
                 “
@@ -36,7 +36,7 @@ export default class SimpleTestimonial extends Component {
               </p>
             </div>
           </div>
-        </IceContainer>
+        {/* </IceContainer> */}
       </div>
     );
   }
@@ -49,27 +49,29 @@ const styles = {
     // margin: '0 auto',
     // textAlign: 'left',
   },
-  description: {
-    lineHeight: '28px',
-    color: '#999',
-    fontSize: '14px',
-  },
+  // description: {
+  //   lineHeight: '28px',
+  //   color: '#999',
+  //   fontSize: '14px',
+  // },
   infoBox: {
-    // display: 'flex',
-    // textAlign: '',
-    // justifyContent: 'left',
-    // alignItems: 'left',
-    // marginTop: '40px',
+    display: 'flex',
+    textAlign: '',
+    justifyContent: 'left',
+    alignItems: 'left',
+    marginTop: '40px',
   },
   avatar: {
     width: '128px',
     height: '128px',
     float: 'left',
+    display: 'inline-block',
     marginRight: '20px',
+    borderRadius: '50%',
   },
   name: {
-    margin: '0 15px',
-    fontSize: '15px',
+    margin: '0 0 10px',
+    fontSize: '25px',
     fontWeight: 'bold',
   },
   company: {

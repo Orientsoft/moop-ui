@@ -30,6 +30,10 @@ export default class Home extends Component {
       <div style={styles.container}>
         <Header />
         <IntroBanner {...this.props} />
+        <h3 style={styles.hyThirdPartyTitle}>
+          内容由世界领先的机构开发
+        </h3>
+        <p style={styles.hyThirdPartySubTitle}>Please select your intresting course , and start !</p>
         <ClassroomCard data={courses} />
         <AblityItems />
         <IntroTab />
@@ -44,5 +48,25 @@ const styles = {
   container: {
     width: '100%',
     minWidth: '1280px',
+  },
+  hyThirdPartyTitle: {
+    textAlign: 'center',
+    fontFamily: 'Microsoft YaHei',
+    fontSize: '32px',
+    lineHeight: '40px',
+    color: '#000',
+    fontWeight: '600',
+    paddingTop: '30px',
+    verticalAlign: 'middle',
+    marginBottom: '0',
+  },
+  hyThirdPartySubTitle: {
+    fontFamily: 'Microsoft YaHei',
+    fontSize: '22px',
+    color: '#000',
+    fontWeight: '500',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    marginBottom: '40px',
   },
 };

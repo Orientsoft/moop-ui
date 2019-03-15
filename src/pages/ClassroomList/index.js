@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ClassroomCard from '../../components/ClassroomCard';
 import { classroom } from '../../utils/api';
+import CompositeFilter from './components/CompositeFilter';
 
 export default class ClassroomList extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class ClassroomList extends Component {
       <div >
         <Header />
         <div style={styles.paddingtop}>
+          <CompositeFilter />
           <ClassroomCard data={courses} />
         </div>
         <Footer />
@@ -30,6 +32,6 @@ export default class ClassroomList extends Component {
 }
 const styles = {
   paddingtop: {
-    paddingTop: '60px',
+    paddingTop: '80px',
   },
 };

@@ -64,12 +64,17 @@
         a{
           text-decoration: none;
           font-size: 16px;
-          color: #495057;
+          color: #5584FF;
         }
         span.time {
           position: absolute;
           right: 20px;
+          padding-top: 5px;
           font-size: 12px;
+          color: #666;
+         }
+         span.exend{
+          color: #ec7300;
          }
          span.start{
           color: rgb(46, 188, 79);

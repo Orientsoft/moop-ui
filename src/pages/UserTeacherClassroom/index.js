@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import CreateActivityForm from './components/CreateActivityForm';
+import ProjectList from './components/ProjectList';
 import BasicTab from './components/BasicTab';
 
 export default class ClassroomList extends Component {
+  static displayName = 'ReviewOverview';
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,22 +14,29 @@ export default class ClassroomList extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Header />
         <div className="intro-banner-wrap">
           <div className="intro-banner-img-mask">
             <div className="intro-banner-text" >
-              <h2 className="intro-banner-title"> 我的档案</h2>
+              <h2 className="intro-banner-title"> 老师的专题</h2>
             </div>
           </div>
         </div>
         <BasicTab />
-        <div className="pro-container">
-          <CreateActivityForm />
+        <div className="pro-container"> 
+          <ProjectList />
+          <ProjectList />
         </div>
         <Footer />
       </div>
     );
   }
 }
-
+const styles = {
+  paddingtop: {
+    paddingTop: '20px',
+    paddingBottom: '60px',
+    
+  },
+};

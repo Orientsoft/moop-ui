@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import CreateActivityForm from './components/CreateActivityForm';
-import BasicTab from './components/BasicTab';
+import ClassroomCard from '../../components/ClassroomCard';
+import Introduction from '../../components/Introduction';
 
 export default class ClassroomList extends Component {
   constructor(props) {
@@ -12,22 +12,24 @@ export default class ClassroomList extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Header />
         <div className="intro-banner-wrap">
           <div className="intro-banner-img-mask">
-            <div className="intro-banner-text" >
-              <h2 className="intro-banner-title"> 我的档案</h2>
-            </div>
+            <Introduction />
           </div>
         </div>
-        <BasicTab />
-        <div className="pro-container">
-          <CreateActivityForm />
+      
+        <div style={styles.paddingtop}>
+          <ClassroomCard />
         </div>
         <Footer />
       </div>
     );
   }
 }
-
+const styles = {
+  paddingtop: {
+    paddingTop: '60px',
+  },
+};
