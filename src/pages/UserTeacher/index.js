@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ClassroomCard from '../../components/ClassroomCard';
-import CompositeFilter from './components/CompositeFilter';
+import Introduction from '../../components/Introduction';
 
 export default class ClassroomList extends Component {
   constructor(props) {
@@ -14,8 +14,13 @@ export default class ClassroomList extends Component {
     return (
       <div >
         <Header />
+        <div className="intro-banner-wrap">
+          <div className="intro-banner-img-mask">
+            <Introduction />
+          </div>
+        </div>
+      
         <div style={styles.paddingtop}>
-          <CompositeFilter />
           <ClassroomCard />
         </div>
         <Footer />
@@ -25,6 +30,6 @@ export default class ClassroomList extends Component {
 }
 const styles = {
   paddingtop: {
-    paddingTop: '80px',
+    paddingTop: '60px',
   },
 };

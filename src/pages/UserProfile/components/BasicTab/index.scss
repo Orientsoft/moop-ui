@@ -1,0 +1,15 @@
+.basic-tab ul{ width: 1200px; margin: 0 auto;
+li {
+    padding: 20px 40px;
+    float: left;
+    a {
+    color: #666;
+    font-size: 16px;
+    }
+     a.active {
+    font-weight: bold;
+    color: #1277eb;
+    }
+   }
+
+}

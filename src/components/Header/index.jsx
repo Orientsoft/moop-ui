@@ -17,6 +17,9 @@ export default class Header extends Component {
             </ul>
           </div>
           <a href="#/user/login" className="reg">登录</a>
+          <a href="#/user/myclassroom" className="reg">我的专题</a>
+          <a href="#/userteacherclassroom" className="reg">老师专题</a>
+          <a href="#/user/profile" className="reg">档案</a>
         </div>
       </div>
     );

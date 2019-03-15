@@ -26,7 +26,7 @@ export default class BasicTab extends Component {
 const styles = {
   tabCardStyle: {
     padding: '0',
-    margin: '20px auto 20px',
+    margin: '0 auto',
     width: '1200px',
   },
 };

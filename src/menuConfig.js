@@ -36,6 +36,11 @@ const asideMenuConfig = [
     icon: 'home',
   },
   {
+    name: 'ClassroomPresentationEdit',
+    path: '/classroom/presentationedit',
+    icon: 'home',
+  },
+  {
     name: 'UserRegister',
     path: '/user/register',
     icon: 'home',
@@ -51,8 +56,18 @@ const asideMenuConfig = [
     icon: 'home',
   },
   {
-    name: 'MyClassroom',
-    path: '/user/myclassroom',
+    name: 'UserTeacher',
+    path: '/userteacher',
+    icon: 'home',
+  },
+  {
+    name: 'UserTeacher',
+    path: '/userteacher',
+    icon: 'home',
+  },
+  {
+    name: 'UserTeacherClassroom',
+    path: '/userteacherclassroom',
     icon: 'home',
   },
 ];

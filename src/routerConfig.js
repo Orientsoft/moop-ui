@@ -14,6 +14,9 @@ import UserRegister from './pages/UserRegister';
 import UserLogin from './pages/UserLogin';
 import UserProfile from './pages/UserProfile';
 import UserMyclassroom from './pages/UserMyclassroom';
+import UserTeacher from './pages/UserTeacher';
+import UserTeacherClassroom from './pages/UserTeacherClassroom';
+
 import Home from './pages/Home';
 
 const routerConfig = [
@@ -58,6 +61,11 @@ const routerConfig = [
     component: ClassroomPresentationEdit,
   },
   {
+    path: '/userteacher',
+    layout: BlankLayout,
+    component: UserTeacher,
+  },
+  {
     path: '/user/register',
     layout: BlankLayout,
     component: UserRegister,
@@ -76,6 +84,11 @@ const routerConfig = [
     path: '/user/myclassroom',
     layout: BlankLayout,
     component: UserMyclassroom,
+  },
+  {
+    path: '/userteacherclassroom',
+    layout: BlankLayout,
+    component: UserTeacherClassroom,
   },
 ];
 

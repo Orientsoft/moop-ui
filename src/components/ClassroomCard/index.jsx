@@ -12,10 +12,6 @@ export default class CardItems extends Component {
     return (
       <div style={styles.hyThirdPartyWrapper}>
         <div style={styles.hyThirdParty}>
-          <h3 style={styles.hyThirdPartyTitle}>
-            内容由世界领先的机构开发
-          </h3>
-          <p style={styles.hyThirdPartySubTitle}>Please select your intresting course , and start !</p>
           <div style={styles.thirdPartyDetails}>
             <div
               style={{
@@ -96,30 +92,13 @@ const styles = {
     minWidth: '1280px',
   },
   hyThirdParty: {
-    paddingTop: '47px',
-    paddingBottom: '100px',
+    // paddingTop: '40px',
+    paddingBottom: '80px',
     textAlign: 'left',
     width: '1200px',
     margin: '0 auto',
   },
-  hyThirdPartyTitle: {
-    position: 'relative',
-    fontFamily: 'Microsoft YaHei',
-    fontSize: '32px',
-    lineHeight: '40px',
-    color: '#000',
-    fontWeight: '600',
-    verticalAlign: 'middle',
-    marginBottom: '0',
-  },
-  hyThirdPartySubTitle: {
-    fontFamily: 'Microsoft YaHei',
-    fontSize: '22px',
-    color: '#000',
-    fontWeight: '500',
-    verticalAlign: 'middle',
-    marginBottom: '40px',
-  },
+
   thirdPartyMore: {
     position: 'absolute',
     left: '44%',
@@ -156,7 +135,6 @@ const styles = {
     display: 'inline-block',
     verticalAlign: 'top',
     width: '30.333%',
-    
     // height: '400px',
     paddingBottom: '40px',
     borderRadius: '2px 2px 0 0',

@@ -5,11 +5,6 @@ import IntroBanner from './components/IntroBanner';
 import BasicTab from './components/BasicTab';
 import CreateActivityForm from './components/CreateActivityForm';
 
-// import ProjectList from '../../components/ProjectList';
-// import Introduction from '../../components/Introduction';
-
-import './index.scss';
-
 export default class ClassroomList extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +15,13 @@ export default class ClassroomList extends Component {
     return (
       <div>
         <Header />
-        <IntroBanner />
+        <div className="intro-banner-wrap">
+          <div className="intro-banner-img-mask">
+            <div className="intro-banner-text" >
+              <h2 className="intro-banner-title"> 老师创建专题</h2>
+            </div>
+          </div>
+        </div>
         <BasicTab />
         <div className="pro-container">
           <CreateActivityForm />

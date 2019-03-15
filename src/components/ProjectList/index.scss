@@ -1,78 +1,94 @@
- .pro-card{
-    margin-top: 4px;
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-     .card-header{
-      padding: 10px 20px;
-      margin-bottom: 0;
-      margin: 0;
-      background-color: rgba(0,0,0,.03);
-      border-bottom: 1px solid rgba(0,0,0,.125);
-      }
-      h5{
-      text-align: left;
-      width: 100%;
-      font-weight: bold;
-      color: #333;
-      background-color: transparent; 
-      margin: 0;
-      }
-      .card-collapse{
-      position: relative;
-      flex-direction: column;
-      padding-left: 0;
-      margin-bottom: 0;
-      display: flex;
-       .list-group{
-        border: none;
-        border-radius: 0;
-        border-top: solid 1px #ddd;
-        border-bottom: solid 1px #fff;
-        display: block;
-        padding: .75rem 1.25rem;
-        // margin-bottom: -1px;
-        background-color: #fff;
-        .learnLesson {
-          height: 6px;
-          display: inline-block;
-          width: 20px;
-          border: 1px solid #ccc;
-          margin-right: 10px;
-        }
-        .learnLesson.half i {
-        background: #2ebc4f;
-        width: 50%;
-        display: block;
-        height: 4px;
-        }
-        .learnLesson.all {
-        background: #2ebc4f;
-        border: 1px solid #15b73a;
-        }
-        a{
-          text-decoration: none;
-          font-size: 14px;
-          color: #495057;
-
-        }
-        span.time {
-          position: absolute;
-          right: 20px;
-          padding-top: 5px;
-          font-size: 12px;
-          color: #666;
-         }
-        }
-      }
-}
+//  .pro-card{
+//     margin-top: 4px;
+//     position: relative;
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-box-orient: vertical;
+//     -webkit-box-direction: normal;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     min-width: 0;
+//     word-wrap: break-word;
+//     background-color: #fff;
+//     background-clip: border-box;
+//     border: 1px solid rgba(0,0,0,.125);
+//      .card-header{
+//       padding: 10px 20px;
+//       margin-bottom: 0;
+//       margin: 0;
+//       background-color: rgba(0,0,0,.03);
+//       border-bottom: 1px solid rgba(0,0,0,.125);
+//       }
+//       h5{
+//       text-align: left;
+//       width: 100%;
+//       font-size: 16px;
+//       font-weight: bold;
+//       color: #333;
+//       background-color: transparent; 
+//       margin: 0;
+//       }
+//       .card-collapse{
+//       position: relative;
+//       flex-direction: column;
+//       padding-left: 0;
+//       margin-bottom: 0;
+//       display: flex;
+//        .list-group{
+//         border: none;
+//         border-radius: 0;
+//         // border-top: solid 1px #ddd;
+//         border-bottom: solid 1px #ddd;
+//         display: block;
+//         padding: .95rem 1.25rem;
+//         // margin-bottom: -1px;
+//         background-color: #fff;
+//         .learnLesson {
+//           height: 6px;
+//           display: inline-block;
+//           width: 20px;
+//           border: 1px solid #ccc;
+//           margin-right: 10px;
+//         }
+//         .learnLesson.half i {
+//         background: #2ebc4f;
+//         width: 50%;
+//         display: block;
+//         height: 4px;
+//         }
+//         .learnLesson.all {
+//         background: #2ebc4f;
+//         border: 1px solid #15b73a;
+//         }
+//         a{
+//           text-decoration: none;
+//           font-size: 16px;
+//           color: #495057;
+//         }
+//         span.time {
+//           position: absolute;
+//           right: 20px;
+//           font-size: 12px;
+//          }
+//          span.start{
+//           color: rgb(46, 188, 79);
+//          }
+//         }
+//         .card-body{
+//           flex: 1 1 auto;
+//           padding: 1.25rem;
+//         }
+//         .card-title {
+//           // padding-bottom: .75rem;
+//           // border-top: solid 1px #ccc;
+//          }
+//          .card-text {
+//           max-height: 80px;
+//           font-size: 14px;
+//           line-height: 1.8;
+//           color: #666;
+//           overflow: hidden;
+//          }
+//       }
+// }
