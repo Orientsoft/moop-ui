@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Input, Checkbox, Grid, Form } from '@alifd/next';
+import { Input, Grid, Form } from '@alifd/next';
+import { user } from '../../utils/api';
 import './index.scss';
 
-const { Row, Col } = Grid;
+const { Row } = Grid;
 const FormItem = Form.Item;
 
 export default class SignupForm extends Component {
   static displayName = 'SignupForm';
 
   handleSubmit = (values, errors) => {
-    console.log('error', errors, 'value', values);
     if (!errors) {
       // 提交当前填写的数据
+      user.login({ data: values }).then(() => this.props.history.replace('/home'));
     } else {
       // 处理表单报错
     }
@@ -19,42 +20,38 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-        <div style={styles.formContainer}>
-          <h4 style={styles.formTitle}>登录</h4>
-          <Form>
-            <FormItem required requiredMessage="必填" style={styles.formItem}>
-              <Input style={styles.formItemInput} name="account" hasBorder={false} maxLength={20} placeholder="会员名/邮箱/手机号" />
-            </FormItem>
+      <div style={styles.formContainer}>
+        <h4 style={styles.formTitle}>登录</h4>
+        <Form>
+          <FormItem required requiredMessage="必填" style={styles.formItem}>
+            <Input style={styles.formItemInput} name="name" hasBorder={false} maxLength={20} placeholder="会员名/邮箱/手机号" />
+          </FormItem>
 
-            <FormItem style={styles.formItem} required requiredMessage="必填" >
-              <Input style={styles.formItemInput} name="password" hasBorder={false} htmlType="password" placeholder="密码" />
-            </FormItem>
+          <FormItem style={styles.formItem} required requiredMessage="必填" >
+            <Input style={styles.formItemInput} name="key" hasBorder={false} htmlType="password" placeholder="密码" />
+          </FormItem>
 
-            <FormItem style={styles.formItem}>
-            <Checkbox name="checkbox" style={styles.submitCheckbox} >记住账号</Checkbox>
-            </FormItem>
+          <FormItem style={styles.formItem}>
+            <Form.Submit
+              type="primary"
+              validate
+              onClick={this.handleSubmit}
+              style={styles.submitBtn}
+            >
+              登 录
+            </Form.Submit >
+          </FormItem>
 
-            <FormItem style={styles.formItem}>
-              <Form.Submit
-                type="primary"
-                validate
-                onClick={this.handleSubmit}
-                style={styles.submitBtn}
-              >
-                登 录
-              </Form.Submit >
-            </FormItem>
-
-            <Row className="tips" style={styles.tips}>
+          <Row className="tips" style={styles.tips}>
             <a href="#/user/register" style={styles.link}>
-                立即注册
-              </a>
-              <span style={styles.line}>|</span>
+              立即注册
+            </a>
+            <span style={styles.line}>|</span>
             <a href="#" style={styles.link}>
-                忘记密码
-              </a>
-            </Row>
-          </Form>
+              忘记密码
+            </a>
+          </Row>
+        </Form>
       </div>
     );
   }

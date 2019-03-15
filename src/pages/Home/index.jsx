@@ -20,7 +20,7 @@ export default class Home extends Component {
     return (
       <div style={styles.container}>
         <Header />
-        <IntroBanner />
+        <IntroBanner {...this.props} />
         <ClassroomCard />
         <AblityItems />
         <IntroTab />

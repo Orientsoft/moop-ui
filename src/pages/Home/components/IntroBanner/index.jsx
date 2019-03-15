@@ -44,7 +44,7 @@ export default class IntroBanner extends Component {
             </p>
           </div>
           <div style={style.introBannerRight}>
-            <Login />
+            <Login {...this.props} />
           </div>
         </div>
       </div>

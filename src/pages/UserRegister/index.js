@@ -6,7 +6,7 @@ import { user } from '../../utils/api';
 import roles from '../../utils/roles';
 import './index.scss';
 
-const { Row, Col } = Grid;
+const { Row } = Grid;
 const FormItem = Form.Item;
 
 export default class SignupForm extends Component {

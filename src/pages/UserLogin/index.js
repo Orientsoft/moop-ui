@@ -10,7 +10,7 @@ export default class SignupForm extends Component {
       <div>
         <Header />
         <div className="signup-form" >
-          <Login />
+          <Login {...this.props} />
         </div>
         <Footer />
       </div>
