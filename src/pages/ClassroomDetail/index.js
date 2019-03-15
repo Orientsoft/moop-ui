@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
+import get from 'lodash-es/get';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import IntroBanner from './components/IntroBanner';
 import BasicTab from './components/BasicTab';
 import ProjectList from '../../components/ProjectList';
 import Introduction from '../../components/Introduction';
+import { classroom } from '../../utils/api';
 import './index.scss';
 
 export default class ClassroomList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      detail: {},
+    };
+  }
+
+  componentDidMount() {
+    const { search } = this.props.location;
+
+    if (search) {
+      const parsed = queryString.parse(search);
+
+      if (parsed.id) {
+        classroom.select({}, { classroomId: parsed.id }).then(({ data }) => {
+          this.setState({ detail: data });
+        });
+      }
+    }
   }
 
   render() {
+    const { detail } = this.state;
+
     return (
       <div>
         <Header />
@@ -22,9 +43,7 @@ export default class ClassroomList extends Component {
         <div className="pro-container">
           <div className="pro-left">
             <h3 className="subtit">实验项目</h3>
-            <ProjectList />
-            <ProjectList />
-            <ProjectList />
+            {get(detail, 'projects', []).map(project => <ProjectList data={project} />)}
             <h3 className="subtit">实验项目描述</h3>
             <div className="text-info">
               <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>

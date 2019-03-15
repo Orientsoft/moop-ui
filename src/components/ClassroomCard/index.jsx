@@ -27,7 +27,7 @@ export default class CardItems extends Component {
                   小时
                 </p>
                 <p style={styles.thirdPartyDesc}>{description}</p>
-                <Link style={styles.thirdPartyLink} to="/classroom/detail">
+                <Link style={styles.thirdPartyLink} to={`/classroom/detail?id=${id}`}>
                   进入学习 <span style={styles.linkAdd}>➪</span>
                 </Link>
               </div>
