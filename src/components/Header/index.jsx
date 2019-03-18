@@ -1,13 +1,16 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../Logo';
+import { user } from '../../utils/api';
 import './index.scss';
 
 export default class Header extends Component {
   state = { isLogin: false };
 
   componentDidMount() {
-    // get user status
+    user.select({}, { userId: 'mine' }).then(() => {
+      this.setState({ isLogin: true });
+    });
   }
 
   render() {
