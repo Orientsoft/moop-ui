@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-import Login from '../../../../components/Login';
 
 export default class IntroBanner extends Component {
-  static displayName = 'IntroBanner';
-
-  static propTypes = {};
-
-  static defaultProps = {};
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="intro-banner-wrap" style={style.introBannerWrapStyles}>
@@ -42,9 +30,6 @@ export default class IntroBanner extends Component {
               减少时间和成本通过利用edX审查的熟练用户群填充您<br /><br />
               产生影响创建增长文化，并通过提供按需学习平台帮助<br />
             </p>
-          </div>
-          <div style={style.introBannerRight}>
-            <Login {...this.props} />
           </div>
         </div>
       </div>

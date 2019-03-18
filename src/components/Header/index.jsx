@@ -1,25 +1,35 @@
-import React, { Component } from 'react';
-
+import React, { Fragment, Component } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../Logo';
-// import { headerMenuConfig } from '../../menuConfig';
 import './index.scss';
 
 export default class Header extends Component {
+  state = { isLogin: false };
+
+  componentDidMount() {
+    // get user status
+  }
+
   render() {
+    const { isLogin } = this.state;
+
     return (
       <div className="header-container">
         <div className="header-content">
           <Logo />
           <div className="header-navbar">
             <ul className="next-menu">
-              <li className="next-menu-item">  <a href="#/home" className="active">首页</a></li>
-              <li className="next-menu-item">  <a href="#/classroom/list">专题</a></li>
+              <li className="next-menu-item"><Link to="/home" className="active">首页</Link></li>
+              <li className="next-menu-item"><Link to="/classroom/list">专题</Link></li>
             </ul>
           </div>
-          <a href="#/user/login" className="reg">登录</a>
-          <a href="#/user/myclassroom" className="reg">我的专题</a>
-          <a href="#/userteacherclassroom" className="reg">老师专题</a>
-          <a href="#/user/profile" className="reg">档案</a>
+          {isLogin ? (
+            <Fragment>
+              <Link to="/user/myclassroom" className="reg">我的专题</Link>
+              <Link to="/userteacherclassroom" className="reg">老师专题</Link>
+              <Link to="/user/profile" className="reg">档案</Link>
+            </Fragment>
+          ) : <Link to="/user/login" className="reg">登录</Link>}
         </div>
       </div>
     );
