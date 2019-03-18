@@ -4,12 +4,12 @@ export default class IntroBanner extends Component {
   render() {
     return (
       <div className="intro-banner-wrap" style={style.introBannerWrapStyles}>
-        <img
+        {/* <img
           className="intro-banner-img"
-          src={require('./images/helloworld.jpg')}
+          src={require('./images/observatory-bg.jpg')}
           style={style.introBannerImgStyles}
           alt=""
-        />
+        /> */}
         <div
           className="intro-banner-img-mask"
           style={style.introBannerImgMaskStyles}
@@ -63,8 +63,7 @@ const style = {
     height: '100%',
     top: '0',
     left: '0',
-    background: '#000',
-    opacity: '.45',
+    maxWidth: '100%',
     zIndex: '15',
   },
   introBannerTextStyles: {

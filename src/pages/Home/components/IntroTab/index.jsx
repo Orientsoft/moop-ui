@@ -29,8 +29,8 @@ export default class IntroTab extends Component {
     const { index } = this.state;
     return (
       <div className="scenario-column">
-        <div className="scenario-detail-img"></div>
-        <div className={`scenario-detail-item ${this.isSelected(index, 0)}`}>
+        {/* <div className="scenario-detail-img"></div> */}
+        {/* <div className={`scenario-detail-item ${this.isSelected(index, 0)}`}>
           <div className="scenario-detail-left">
             <div className="scenario-detail-cont">
               <h2 className="">我们的服务</h2>
@@ -51,7 +51,7 @@ export default class IntroTab extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="hy-ability">
           <h3 className="teachtit">是时候改变你的才能了。</h3>
           <p className="teachtitsub">立即通过Coursera for Business为学习者提供支持。</p>
