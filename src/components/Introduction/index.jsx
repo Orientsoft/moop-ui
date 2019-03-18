@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
-import IceContainer from '@icedesign/container';
+import { user } from '../../utils/api';
 
 export default class SimpleTestimonial extends Component {
-  static displayName = 'SimpleTestimonial';
+  state = {};
 
-  static propTypes = {};
-
-  static defaultProps = {};
-
-  constructor(props) {
-    super(props);
-    this.state = {};
+  componentDidMount() {
+    user.select({}, { userId: this.props.teacherId }).then(({ data }) => {
+      this.setState({ teacher: data });
+    });
   }
 
   render() {
+    const { teacher = {} } = this.state;
+
     return (
       <div className="simple-testimonial" style={styles.simpleTestimonial}>
-        {/* <IceContainer> */}
-          <div style={styles.infoBox}>
-            <img
-              style={styles.avatar}
-              src={require('./images/teacher1.png')}
-              alt="图像"
-            />
-            <div style={styles.item}>
-              <h5 style={styles.name}><a href="#/userteacher">人物名</a></h5>
-              <p style={styles.company}>就职公司/职务</p>
-              <p style={styles.description}>
-                “
-                随着个人用户对于互联网内容获取的要求和口味越来越特别，怎样提供更加精准个性化的资
-                讯订阅服务是提升用户体验的关键。虽然我们发现目前市面上有非常多的资讯类
-                app 都标榜自己能
-                够提供个人定制化的新闻阅读功能，但是本质上来说一般都是通过新闻源+兴趣点+智能推荐这样的组合实现的
-                ”
-              </p>
-            </div>
-          </div>
-        {/* </IceContainer> */}
+        <img
+          style={styles.avatar}
+          src={require('./images/teacher1.png')}
+          alt={teacher.name}
+        />
+        <div style={styles.item}>
+          <h5 style={styles.name}><a href="#/userteacher">{teacher.name}</a></h5>
+          <p style={styles.company}>就职公司/职务</p>
+          <p style={styles.description}>{teacher.remark}</p>
+        </div>
       </div>
     );
   }

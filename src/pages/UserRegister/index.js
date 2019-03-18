@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Input, Grid, Form } from '@alifd/next';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -44,13 +45,13 @@ export default class SignupForm extends Component {
               </FormItem>
 
               <Row className="tips" style={styles.tips}>
-                <a href="/" style={styles.link}>
+                <Link to="/user/login" style={styles.link}>
                   登录
-                </a>
+                </Link>
                 <span style={styles.line}>|</span>
-                <a href="#/user/register" style={styles.link}>
-                      忘记密码
-                </a>
+                <Link to="/user/register" style={styles.link}>
+                  忘记密码
+                </Link>
               </Row>
             </Form>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
+import get from 'lodash-es/get';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import IntroBanner from './components/IntroBanner';
@@ -70,13 +71,12 @@ export default class ClassroomList extends Component {
             <a href="#" className="list-group-item">参考资料</a>
           </div>
         </div>
-        <hr></hr>
+        <hr />
         <div className="pro-container pd60">
           <h2 className="title">讲师</h2>
-          <Introduction />
-          <Introduction />
+          {get(detail, 'assistants', []).map(id => <Introduction key={id} teacherId={id} />)}
         </div>
-        <hr></hr>
+        <hr />
         <div className="pro-container pd60">
           <h2 className="title">常见问题</h2>
           <div className="QAcontent">
