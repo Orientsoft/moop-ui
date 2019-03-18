@@ -19,7 +19,7 @@ export default class FooterLinks extends Component {
           <div style={styles.footerClearfix} />
           <div style={styles.footerBoxLeft}>
             <ul style={styles.footerBoxContentUl}>
-              <li style={styles.footerBoxContentLi}>
+              <li style={styles.footerBoxContentLi} >
                 <div style={styles.footerBoxContentItem}>
                   <div style={styles.footerBoxContentName}>关于</div>
                   <div>
@@ -30,7 +30,7 @@ export default class FooterLinks extends Component {
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
+                        <a href="#/help" style={styles.footerBoxContentItemLink}>
                           常见问题
                         </a>
                       </li>
@@ -40,8 +40,8 @@ export default class FooterLinks extends Component {
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
-                          平台规则
+                        <a href="#/help" style={styles.footerBoxContentItemLink}>
+                          帮助
                         </a>
                       </li>
                     </ul>
@@ -50,14 +50,9 @@ export default class FooterLinks extends Component {
               </li>
               <li style={styles.footerBoxContentLi}>
                 <div style={styles.footerBoxContentItem}>
-                  <div style={styles.footerBoxContentName}>联系</div>
+                  <div style={styles.footerBoxContentName}>友情链接</div>
                   <div>
                     <ul>
-                      <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
-                          广告合作
-                        </a>
-                      </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
                           友情链接
@@ -65,7 +60,7 @@ export default class FooterLinks extends Component {
                       </li>
                       <li style={styles.footerBoxContentSubli}>
                         <a href="#" style={styles.footerBoxContentItemLink}>
-                          帮助
+                          广告合作
                         </a>
                       </li>
                       <li style={styles.footerBoxContentSubli}>
@@ -78,35 +73,16 @@ export default class FooterLinks extends Component {
                 </div>
               </li>
 
-              <li style={styles.footerBoxContentLi}>
+              <li style={styles.footerBoxContentLi_liwidth}>
                 <div style={styles.footerBoxContentItem}>
-                  <div style={styles.footerBoxContentName}>客服帮助</div>
+                  <div style={styles.footerBoxContentName}>联系我们</div>
                   <div>
                     <ul>
-                      <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
-                          技术支持中心
-                        </a>
-                      </li>
-                      <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
-                          在线问答
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li style={styles.footerBoxContentLi}>
-                <div style={styles.footerBoxContentItem}>
-                  <div style={styles.footerBoxContentName}>合作洽谈</div>
-                  <div>
-                    <ul>
-                      <li style={styles.footerBoxContentSubli}>
-                        <a href="#" style={styles.footerBoxContentItemLink}>
-                          点此与我联系
-                        </a>
-                      </li>
+                      <li style={styles.footerBoxContentSubli}>地址：成都市成华区建设北路一段76号1706</li>
+                      <li style={styles.footerBoxContentSubli}>传真：028-84118086/84118096-888</li>
+                      <li style={styles.footerBoxContentSubli}>电话：028-84118076/86/96</li>
+                      <li style={styles.footerBoxContentSubli}> 邮件：wangzheng@orientsoft.cn</li>
+                   
                     </ul>
                   </div>
                 </div>
@@ -191,11 +167,19 @@ const styles = {
     marginLeft: '0',
     boxSizing: 'border-box',
     float: 'left',
-    width: '25%',
+    width: '20%',
+    paddingRight: '10px',
+  },
+  footerBoxContentLi_liwidth:{
+    width: '45%',
+    listStyle: 'none',
+    marginLeft: '0',
+    boxSizing: 'border-box',
+    float: 'left',
     paddingRight: '10px',
   },
   footerBoxContentItem: {
-    width: '208px',
+    // width: '208px',
     boxSizing: 'border-box',
   },
   footerBoxContentName: {
@@ -211,11 +195,14 @@ const styles = {
     overflow: 'hidden',
     boxSizing: 'border-box',
     listStyle: 'none',
-  },
-  footerBoxContentItemLink: {
-    fontSize: '16px',
+    fontSize: '14px',
     color: '#FFFFFF',
     opacity: '0.6',
+  },
+  footerBoxContentItemLink: {
+    fontSize: '14px',
+    color: '#FFFFFF',
+    // opacity: '0.6',
     textDecoration: 'none',
   },
   footerBoxRightTitle: {

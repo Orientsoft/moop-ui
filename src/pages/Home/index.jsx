@@ -36,8 +36,8 @@ export default class Home extends Component {
         <p style={styles.hyThirdPartySubTitle}>Please select your intresting course , and start !</p>
         <ClassroomCard data={courses} />
         <AblityItems />
-        <IntroTab />
-        <SlideBanner />
+        {/* <IntroTab /> */}
+        {/* <SlideBanner /> */}
         <Footer />
       </div>
     );
