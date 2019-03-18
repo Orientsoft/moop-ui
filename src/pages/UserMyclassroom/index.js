@@ -22,12 +22,12 @@ export default class ClassroomList extends Component {
         </div>
         <div className="pro-container" style={styles.paddingtop} >
           <div className="pro-left">
-            <h3 className="subtit">实验项目</h3>
+            <h3 className="subtit">神经网络与深度学习</h3>
             <ProjectList />
             <ProjectList />
           </div>
           <div className="pro-right" >
-            <h3 className="subtit">热门专题</h3>
+            <h3 className="subtit">我的专题</h3>
             <div style={styles.thirdPartyDetailItem}>
               <img
                 style={styles.thirdPartyDetailImg}

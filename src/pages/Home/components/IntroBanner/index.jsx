@@ -43,9 +43,9 @@ export default class IntroBanner extends Component {
               产生影响创建增长文化，并通过提供按需学习平台帮助<br />
             </p>
           </div>
-          <div style={style.introBannerRight}>
+          {/* <div style={style.introBannerRight}>
             <Login {...this.props} />
-          </div>
+          </div> */}
         </div>
       </div>
     );
