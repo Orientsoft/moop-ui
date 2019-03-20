@@ -1,20 +1,30 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
+import { MenuButton } from '@alifd/next';
 import Logo from '../Logo';
 import { user } from '../../utils/api';
+import { getCurrentUser, removeCurrentUser } from '../../utils/helper';
 import './index.scss';
 
-export default class Header extends Component {
-  state = { isLogin: false };
+const { Item } = MenuButton;
 
-  componentDidMount() {
-    user.select({}, { userId: 'mine' }).then(() => {
-      this.setState({ isLogin: true });
-    });
-  }
+export default class Header extends Component {
+  state = {
+    current: getCurrentUser(),
+  };
+
+  onItemClick = (key) => {
+    if (key === 'logout') {
+      user.logout().then(() => {
+        this.setState({ current: null });
+        removeCurrentUser();
+        this.props.history.replace('/home');
+      });
+    }
+  };
 
   render() {
-    const { isLogin } = this.state;
+    const { current } = this.state;
 
     return (
       <div className="header-container">
@@ -26,8 +36,11 @@ export default class Header extends Component {
               <li className="next-menu-item"><Link to="/classroom/list">专题</Link></li>
             </ul>
           </div>
-          {isLogin ? (
+          {current ? (
             <Fragment>
+              <MenuButton className="reg" label={current.name} onItemClick={this.onItemClick}>
+                <Item key="logout">退出登录</Item>
+              </MenuButton>
               <Link to="/user/myclassroom" className="reg">我的专题</Link>
               <Link to="/userteacherclassroom" className="reg">老师专题</Link>
               <Link to="/user/profile" className="reg">档案</Link>

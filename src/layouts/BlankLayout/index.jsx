@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Layout from '@icedesign/layout';
-import Footer from '../../components/Footer';
 import routerData from '../../routerConfig';
 import NotFound from '../../components/NotFound';
 

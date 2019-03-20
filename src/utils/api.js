@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
+import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
-axios.defaults.timeout = 30000;
-axios.defaults.baseURL = 'http://192.168.0.48:7777/api/v1';
-axios.defaults.withCredentials = true;
+API.request.defaults.timeout = 30000;
+API.request.defaults.baseURL = 'http://192.168.0.48:7777/api/v1';
+API.request.defaults.withCredentials = true;
 
 export const user = {
   login: POST('/login'),
+  logout: GET('/logout'),
   select: GET('/users/:userId'),
   create: POST('/users'),
   update: PATCH('/users/:userId'),
@@ -15,7 +15,7 @@ export const user = {
 };
 
 export const tenant = {
-  select: GET('/tenants/:tenantId'),
+  select: GET('/tenants/:tenantId.asc'),
   create: POST('/tenants'),
   update: PATCH('/tenants/:tenantId'),
   delete: DELETE('/tenants/:tenantId'),

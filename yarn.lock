@@ -1159,12 +1159,13 @@
   dependencies:
     "@alifd/next" "1.11.11"
 
-"@pixcai/make-api@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@pixcai/make-api/-/make-api-0.0.1.tgz#394ac934e0838271df3d4829f8faa1ff09a40380"
-  integrity sha512-mPz81hhBUyLNU576Gkp4oSOg7pyTdCgLM8OOxULLGdv3u1qSeXpWrT7vG+uelTYo0Owb8WLHrZhq/BXuRFk5VA==
+"@pixcai/make-api@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@pixcai/make-api/-/make-api-0.0.3.tgz#540dd21ea15d1b1a9404a5eb0c629bc6b2704327"
+  integrity sha512-vK/WCuZdB0f2vgNb08JxnXY3moz45bwnXQdmJyxhKa3G4dTpqvbtZYsZUsF6+1YpnR338/NgkPvBu398lSWCMw==
   dependencies:
     lodash.clonedeep "^4.5.0"
+    lodash.get "^4.4.2"
     lodash.merge "^4.6.1"
 
 "@types/prop-types@*":

@@ -6,9 +6,8 @@ import ClassroomCard from '../../components/ClassroomCard';
 import IntroBanner from './components/IntroBanner';
 import AblityItems from './components/AblityItems';
 import IntroTab from './components/IntroTab';
-// import CardItems from './components/CardItems';
-import SlideBanner from './components/SlideBanner';
 import { classroom } from '../../utils/api';
+import { getCurrentUser } from '../../utils/helper';
 
 export default class Home extends Component {
   static displayName = 'Home';
@@ -20,7 +19,9 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
+    if (getCurrentUser()) {
+      classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
+    }
   }
 
   render() {
@@ -28,7 +29,7 @@ export default class Home extends Component {
 
     return (
       <div style={styles.container}>
-        <Header />
+        <Header {...this.props} />
         <IntroBanner {...this.props} />
         <h3 style={styles.hyThirdPartyTitle}>
           内容由世界领先的机构开发

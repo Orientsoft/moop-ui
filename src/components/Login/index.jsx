@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Input, Grid, Form } from '@alifd/next';
 import { user } from '../../utils/api';
+import { setCurrentUser } from '../../utils/helper';
 import './index.scss';
 
 const { Row } = Grid;
 const FormItem = Form.Item;
 
 export default class SignupForm extends Component {
-  static displayName = 'SignupForm';
-
   handleSubmit = (values, errors) => {
     if (!errors) {
-      // 提交当前填写的数据
-      user.login({ data: values }).then(() => this.props.history.replace('/home'));
-    } else {
-      // 处理表单报错
+      user.login({ data: values }).then(({ data }) => {
+        setCurrentUser(data);
+        this.props.history.replace('/home');
+      });
     }
   };
 
