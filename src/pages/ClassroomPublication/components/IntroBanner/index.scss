@@ -19,9 +19,13 @@
   .intro-banner-title{
     font-weight: 500;
     font-size: 32px;
+  }
+
+  .intro-banner-title, .intro-banner-subtitle {
     width: 80%;
     margin: 0 auto;
   }
+
   .text-warning{
      color: #ffc107;
      margin-left: 5px;
@@ -30,7 +34,7 @@
     height: 50px;
     padding: 0px 58px;
     font-size: 16px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     margin-right: 20px;
     background: rgb(0, 206, 114); 
     border-radius: 3px;

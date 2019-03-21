@@ -17,7 +17,7 @@ export default class IntroBanner extends Component {
               开课状态： {data.public ? '已开课' : '未开课'}<br />
               学时安排： {data.timeConsume}<br /><br />
             </p>
-            <p>
+            <p className="intro-banner-subtitle">
               <Link to="#" className="startbtn">开始学习</Link>
               <Link to="/classroom/presentation" className="startbtn">项目申报</Link>
               {this.current && this.current.id === data.owner ? <Link to="/classroom/publication" className="whitebtn">编辑专题</Link> : null}

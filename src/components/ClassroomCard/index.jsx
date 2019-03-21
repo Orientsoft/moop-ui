@@ -9,12 +9,12 @@ export default class CardItems extends Component {
       <div style={styles.hyThirdPartyWrapper}>
         <div style={styles.hyThirdParty}>
           <div style={styles.thirdPartyDetails}>
-            {data.map(({ id, title, description, timeConsume }) => (
+            {data.map(({ id, title, thumb, description, timeConsume }) => (
               <div key={id} style={styles.thirdPartyDetailItem}>
                 <img
                   style={styles.thirdPartyDetailImg}
-                  src={require('./images/index1.jpg')}
-                  alt=""
+                  src={thumb}
+                  alt={title}
                 />
                 <h5 style={styles.thirdPartyName}>{title}</h5>
                 <p style={styles.thirdPartySold}>

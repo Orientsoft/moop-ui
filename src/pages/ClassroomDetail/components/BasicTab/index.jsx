@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
+import React, { Children, Component } from 'react';
 import IceContainer from '@icedesign/container';
 import './index.scss';
 
-
 export default class BasicTab extends Component {
+  state = { current: 0 };
+
+  onTabChange = i => this.setState({ current: i });
+
   render() {
+    const { current } = this.state;
+    const { tabs = [], children } = this.props;
+
     return (
       <div className="basic-tab">
         <IceContainer style={styles.tabCardStyle}>
           <ul>
-            
-            <li><a href="#" className="active">详情</a></li>
-            <li><a href="#">讨论</a></li>
-            <li><a href="#">排行榜</a></li>
-            <li><a href="#">学生(老师看)</a></li>
+            {tabs.map((tab, i) => (
+              <li key={i} onClick={() => this.onTabChange(i)}>
+                {i === current ? <a href="javascript:void(0);" className="active">{tab}</a> : <a href="javascript:void(0);">{tab}</a>}
+              </li>
+            ))}
           </ul>
         </IceContainer>
+        {Children.map(children, (child, i) => <div key={i} style={{ display: i === current ? 'block' : 'none' }}>{child}</div>)}
       </div>
     );
   }
