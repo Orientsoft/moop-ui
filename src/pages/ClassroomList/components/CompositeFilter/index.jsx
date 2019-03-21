@@ -1,93 +1,59 @@
 import React, { Component } from 'react';
-import { Search, Tab, Tag, DatePicker } from '@alifd/next';
+import { Tag } from '@alifd/next';
 import IceContainer from '@icedesign/container';
-// import { enquireScreen } from 'enquire-js';
-
-const TabItem = Tab.Item;
-
-// mock data
-const tagList = [
-  {
-    key: 'all',
-    name: '全部商品',
-  },
-  {
-    key: 'unclassified',
-    name: '分类2',
-  },
-  {
-    key: 'invalid',
-    name: '分类3',
-  },
-  {
-    key: 'haohuo',
-    name: '分类4',
-  },
-  {
-    key: 'bimai',
-    name: '分类5',
-  },
-];
+import { tag } from '../../../../utils/api';
 
 export default class CompositeFilter extends Component {
-  static displayName = 'CompositeFilter';
-
-  static propTypes = {};
-
-  static defaultProps = {};
-
   constructor(props) {
     super(props);
-    this.state = {
-      isMobile: false,
-    };
+    this.state = { tagList: [] };
   }
 
-  onTabChange = (key) => {
-    console.log(`select tab is: ${key}`);
-  };
+  componentDidMount() {
+    tag.selectAll().then(({ data }) => {
+      this.setState({
+        tagList: [{ name: '全部', checked: true }].concat(data.map(d => ({ ...d, checked: false }))),
+      });
+    });
+  }
 
-  onTagChange = (key, selected) => {
-    console.log(`Tag: ${key} is ${selected ? 'selected' : 'unselected'}`);
-  };
+  onTagChange = (selected, index) => {
+    const { tagList } = this.state;
 
-  onDateChange = (value) => {
-    console.log(value);
-  };
-
-  onSearch = (value) => {
-    console.log(value);
+    if (index === 0) {
+      if (selected) {
+        for (let i = 1; i < tagList.length; i += 1) {
+          tagList[i].checked = false;
+        }
+      }
+    } else {
+      tagList[0].checked = false;
+    }
+    tagList[index].checked = selected;
+    this.setState({ tagList: [...tagList] });
+    if (this.props.onTagChange) {
+      this.props.onTagChange(tagList.filter(t => t.checked));
+    }
   };
 
   render() {
+    const { tagList } = this.state;
+
     return (
       <div className="composite-filter">
         <IceContainer style={styles.filterCard}>
           <div className="pro-container">
-            <Tab
-              shape="text"
-              onChange={this.onTabChange}
-              contentStyle={{ display: 'none' }}
-              // extra={
-              //   !this.state.isMobile ? this.renderTabBarExtraContent() : null
-              // }
-            >
-              <TabItem title="全部" key="all" />
-              <TabItem title="分类1" key="pic" />
-              <TabItem title="分类2" key="item" />
-              <TabItem title="分类3" key="new" />
-              <TabItem title="分类4" key="video" />
-              </Tab>       
             <div style={styles.tagList}>
-              {tagList.map((tag, index) => {
+              {tagList.map(({ name, checked }, index) => {
                 return (
                   <Tag.Selectable
                     type="normal"
                     key={index}
+                    checked={checked}
                     style={styles.tag}
-                    onChange={this.onTagChange.bind(this, tag.key)}
+                    onChange={e => this.onTagChange(e, index)}
                   >
-                    {tag.name}
+                    {name}
                   </Tag.Selectable>
                 );
               })}

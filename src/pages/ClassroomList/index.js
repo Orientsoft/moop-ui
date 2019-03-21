@@ -15,6 +15,14 @@ export default class ClassroomList extends Component {
     classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
   }
 
+  onTagChange = (tags) => {
+    classroom.selectAll({
+      params: {
+        tags: tags.map(tag => tag.id).join(','),
+      },
+    }).then(({ data: { data } }) => this.setState({ courses: data }));
+  };
+
   render() {
     const { courses } = this.state;
 
@@ -22,7 +30,7 @@ export default class ClassroomList extends Component {
       <div >
         <Header {...this.props} />
         <div style={styles.paddingtop}>
-          <CompositeFilter />
+          <CompositeFilter onTagChange={this.onTagChange} />
           <ClassroomCard data={courses} />
         </div>
         <Footer />

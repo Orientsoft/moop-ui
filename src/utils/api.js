@@ -71,3 +71,7 @@ export const report = {
   delete: DELETE('/reports/:reportId'),
   selectAll: GET('/reports'),
 };
+
+export const tag = {
+  selectAll: GET('/tag'),
+};
