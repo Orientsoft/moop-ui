@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import CreateActivityForm from './components/CreateActivityForm';
-import BasicTab from './components/BasicTab';
+// import BasicTab from './components/BasicTab';
 
 export default class ClassroomList extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class ClassroomList extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header {...this.props} />
         <div className="intro-banner-wrap">
           <div className="intro-banner-img-mask">
             <div className="intro-banner-text" >
@@ -21,7 +21,7 @@ export default class ClassroomList extends Component {
             </div>
           </div>
         </div>
-        <BasicTab />
+        {/* <BasicTab /> */}
         <div className="pro-container">
           <CreateActivityForm />
         </div>

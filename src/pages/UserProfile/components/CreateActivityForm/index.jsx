@@ -82,7 +82,7 @@ export default class SettingsForm extends Component {
         <IceContainer>
           <Form value={this.state.value} onChange={this.formChange} ref="form">
             <div style={styles.formContent}>
-              <h2 style={styles.formTitle}>基本设置</h2>
+              {/* <h2 style={styles.formTitle}>基本设置</h2> */}
 
               <FormItem
                 size="large"
@@ -204,6 +204,7 @@ const styles = {
   },
   formContent: {
     width: '100%',
+    paddingTop: 20,
     position: 'relative',
   },
   formItem: {

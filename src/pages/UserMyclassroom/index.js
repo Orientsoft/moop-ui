@@ -69,7 +69,7 @@ export default class ClassroomList extends Component {
 }
 const styles = {
   paddingtop: {
-    paddingTop: '60px',
+    paddingTop: 20,
     paddingBottom: '60px',
   },
   thirdPartyDetailItem: {
