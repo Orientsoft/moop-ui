@@ -7,7 +7,6 @@ import IntroBanner from './components/IntroBanner';
 import AblityItems from './components/AblityItems';
 import IntroTab from './components/IntroTab';
 import { classroom } from '../../utils/api';
-import { getCurrentUser } from '../../utils/helper';
 
 export default class Home extends Component {
   static displayName = 'Home';
@@ -19,9 +18,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    if (getCurrentUser()) {
-      classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
-    }
+    classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
   }
 
   render() {

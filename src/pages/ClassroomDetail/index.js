@@ -25,7 +25,9 @@ export default class ClassroomList extends Component {
       const parsed = queryString.parse(search);
 
       if (parsed.id) {
-        classroom.select({}, { classroomId: parsed.id }).then(({ data }) => {
+        classroom.select({
+          params: { embed: 1 },
+        }, { classroomId: parsed.id }).then(({ data }) => {
           this.setState({ detail: data });
         });
       }
@@ -38,7 +40,7 @@ export default class ClassroomList extends Component {
     return (
       <div>
         <Header />
-        <IntroBanner />
+        <IntroBanner data={detail} />
         <BasicTab />
         <div className="pro-container">
           <div className="pro-left">
@@ -74,7 +76,7 @@ export default class ClassroomList extends Component {
         <hr />
         <div className="pro-container pd60">
           <h2 className="title">讲师</h2>
-          {get(detail, 'assistants', []).map(id => <Introduction key={id} teacherId={id} />)}
+          {get(detail, 'assistants', []).map((data, i) => <Introduction key={i} data={data} />)}
         </div>
         <hr />
         <div className="pro-container pd60">

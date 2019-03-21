@@ -20,7 +20,6 @@ export default class CardItems extends Component {
                 <p style={styles.thirdPartySold}>
                   学时安排：
                   <span style={styles.thirdPartySoldNumber}>{timeConsume}</span>
-                  小时
                 </p>
                 <p style={styles.thirdPartyDesc}>{description}</p>
                 <Link style={styles.thirdPartyLink} to={`/classroom/detail?id=${id}`}>
