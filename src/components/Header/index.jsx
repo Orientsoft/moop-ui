@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MenuButton } from '@alifd/next';
 import Logo from '../Logo';
 import { user } from '../../utils/api';
+import roles from '../../utils/roles';
 import { getCurrentUser, removeCurrentUser } from '../../utils/helper';
 import './index.scss';
 
@@ -21,9 +22,13 @@ export default class Header extends Component {
         this.props.history.replace('/home');
       });
     } else if (key === 'classroom') {
-      this.props.history.push('/user/myclassroom');
+      if (this.current && this.current.role === roles.user.TEACHER) {
+        this.props.history.push('/userteacherclassroom');
+      } else {
+        this.props.history.push('/user/myclassroom');
+      }
     } else if (key === 'settings') {
-      this.props.history.push('/userteacherclassroom');
+      this.props.history.push('/user/profile');
     }
   };
 
@@ -44,7 +49,7 @@ export default class Header extends Component {
             <Fragment>
               <MenuButton className="reg" label={current.name} onItemClick={this.onItemClick}>
                 <Item key="classroom">我的专题</Item>
-                <Item key="settings">个人设置</Item>
+                <Item key="settings">我的档案</Item>
                 <Item key="logout">退出登录</Item>
               </MenuButton>
             </Fragment>
