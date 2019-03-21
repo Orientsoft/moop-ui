@@ -19,7 +19,7 @@ export default class ClassroomList extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header {...this.props} />
         <IntroBanner />
         <BasicTab />
         <div className="pro-container pb80">

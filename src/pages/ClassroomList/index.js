@@ -20,7 +20,7 @@ export default class ClassroomList extends Component {
 
     return (
       <div >
-        <Header />
+        <Header {...this.props} />
         <div style={styles.paddingtop}>
           <CompositeFilter />
           <ClassroomCard data={courses} />

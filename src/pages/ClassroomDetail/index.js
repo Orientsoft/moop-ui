@@ -39,7 +39,7 @@ export default class ClassroomList extends Component {
 
     return (
       <div>
-        <Header />
+        <Header {...this.props} />
         <IntroBanner data={detail} />
         <BasicTab />
         <div className="pro-container">

@@ -20,6 +20,10 @@ export default class Header extends Component {
         removeCurrentUser();
         this.props.history.replace('/home');
       });
+    } else if (key === 'classroom') {
+      this.props.history.push('/user/myclassroom');
+    } else if (key === 'settings') {
+      this.props.history.push('/userteacherclassroom');
     }
   };
 
@@ -39,11 +43,10 @@ export default class Header extends Component {
           {current ? (
             <Fragment>
               <MenuButton className="reg" label={current.name} onItemClick={this.onItemClick}>
+                <Item key="classroom">我的专题</Item>
+                <Item key="settings">个人设置</Item>
                 <Item key="logout">退出登录</Item>
               </MenuButton>
-              <Link to="/user/myclassroom" className="reg">我的专题</Link>
-              <Link to="/userteacherclassroom" className="reg">老师专题</Link>
-              <Link to="/user/profile" className="reg">档案</Link>
             </Fragment>
           ) : <Link to="/user/login" className="reg">登录</Link>}
         </div>

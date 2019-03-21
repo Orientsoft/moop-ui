@@ -13,7 +13,7 @@ export default class ClassroomList extends Component {
   render() {
     return (
       <div >
-        <Header />
+        <Header {...this.props} />
         <div className="intro-banner-wrap">
           <div className="intro-banner-img-mask">
             <Introduction />
