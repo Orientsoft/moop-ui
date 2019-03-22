@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Input, Radio, Switch, Upload, Grid, Form } from '@alifd/next';
+import { Input, Upload, Grid, Form } from '@alifd/next';
+import get from 'lodash-es/get';
+import { user } from '../../../../utils/api';
+import { getCurrentUser } from '../../../../utils/helper';
 import './SettingsForm.scss';
 
 const { Row, Col } = Grid;
-const { Group: RadioGroup } = Radio;
 const FormItem = Form.Item;
 
 const formItemLayout = {
@@ -12,67 +14,27 @@ const formItemLayout = {
   wrapperCol: { s: 12, l: 10 },
 };
 
-function beforeUpload(info) {
-  console.log('beforeUpload callback : ', info);
-}
-
-function onChange(info) {
-  console.log('onChane callback : ', info);
-}
-
-function onSuccess(res, file) {
-  console.log('onSuccess callback : ', res, file);
-}
-
-function onError(file) {
-  console.log('onError callback : ', file);
-}
-
 export default class SettingsForm extends Component {
-  static displayName = 'SettingsForm';
-
-  static propTypes = {};
-
-  static defaultProps = {};
-
   constructor(props) {
     super(props);
+
+    this.current = getCurrentUser();
+
     this.state = {
       value: {
-        name: '',
-        gender: 'male',
-        notice: false,
-        email: '',
+        name: get(this.current, 'name', ''),
+        email: get(this.current, 'email', ''),
         avatar: [],
-        siteUrl: '',
-        githubUrl: '',
-        twitterUrl: '',
-        description: '',
+        mobile: get(this.current, 'mobile', ''),
       },
     };
   }
 
-  onDragOver = () => {
-    console.log('dragover callback');
-  };
-
-  onDrop = (fileList) => {
-    console.log('drop callback : ', fileList);
-  };
-
-  formChange = (value) => {
-    console.log('value', value);
-    this.setState({
-      value,
-    });
-  };
-
   validateAllFormField = (values, errors) => {
-    console.log('error', errors, 'value', values);
     if (!errors) {
-      // 提交当前填写的数据
-    } else {
-      // 处理表单报错
+      const { name, email, mobile } = values;
+      user.update({ name, email, mobile }, { userId: get(this.current, 'id') })
+        .then(() => this.forceUpdate());
     }
   };
 
@@ -80,7 +42,7 @@ export default class SettingsForm extends Component {
     return (
       <div className="settings-form">
         <IceContainer>
-          <Form value={this.state.value} onChange={this.formChange} ref="form">
+          <Form value={this.state.value} onChange={this.formChange}>
             <div style={styles.formContent}>
               {/* <h2 style={styles.formTitle}>基本设置</h2> */}
 
@@ -92,48 +54,27 @@ export default class SettingsForm extends Component {
                 maxLength={10}
                 requiredMessage="必填"
               >
-                <Input name="name" placeholder="于江水" />
-              </FormItem>
-              <FormItem
-                label="头像："
-                {...formItemLayout}
-                required
-                requiredMessage="必填"
-              >
-                <Upload.Card
-                  name="avatar"
-                  listType="card"
-                  action=""
-                  accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-                  beforeUpload={beforeUpload}
-                  onChange={onChange}
-                  onSuccess={onSuccess}
-                  onError={onError}
-                />
-              </FormItem>
-              <FormItem
-                label="性别："
-                {...formItemLayout}
-                required
-                requiredMessage="必填"
-              >
-                <RadioGroup name="gender">
-                  <Radio value="male">男</Radio>
-                  <Radio value="female">女</Radio>
-                </RadioGroup>
-              </FormItem>
-              <FormItem label="通知：" {...formItemLayout}>
-                <Switch name="notice" />
+                <Input name="name" />
               </FormItem>
               <FormItem
                 size="large"
-                label="身份认证信息："
+                label="头像："
+                {...formItemLayout}
+              >
+                <Upload.Card
+                  name="thumb"
+                  listType="card"
+                  action="/api/v1/users/thumb"
+                  accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+                />
+              </FormItem>
+              <FormItem
+                size="large"
+                label="手机："
                 {...formItemLayout}
                 required
-                formatMessage="学号 / 学校邮箱..."
-                format="url"
               >
-                <Input name="twitterUrl" placeholder="学号 / 学校邮箱..." />
+                <Input htmlType="text" name="mobile" />
               </FormItem>
               <FormItem
                 size="large"
@@ -143,39 +84,6 @@ export default class SettingsForm extends Component {
                 requiredMessage="请输入正确的邮件"
               >
                 <Input htmlType="email" name="email" />
-              </FormItem>
-              <FormItem
-                size="large"
-                label="网站地址："
-                {...formItemLayout}
-                required
-                formatMessage="请输入正确的网站地址"
-                format="url"
-              >
-                <Input
-                  name="siteUrl"
-                  type="url"
-                  placeholder="https://alibaba.github.io/ice"
-                />
-              </FormItem>
-
-              <FormItem
-                size="large"
-                label="Github："
-                {...formItemLayout}
-                required
-                formatMessage="请输入正确的 Github 地址"
-                format="url"
-              >
-                <Input
-                  type="url"
-                  name="githubUrl"
-                  placeholder="https://github.com/alibaba/ice"
-                />
-              </FormItem>
-
-              <FormItem size="large" label="自我描述：" {...formItemLayout}>
-                <Input.TextArea placeholder="请输入描述..." />
               </FormItem>
               <Row style={{ marginTop: 20 }}>
                 <Col offset="3">
