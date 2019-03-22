@@ -23,7 +23,6 @@ export default class ClassroomList extends Component {
             </div>
           </div>
         </div>
-        <BasicTab />
         <div className="pro-container"> 
           <ProjectList />
           <ProjectList />

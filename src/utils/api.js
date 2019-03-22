@@ -1,7 +1,7 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
 API.request.defaults.timeout = 30000;
-API.request.defaults.baseURL = 'http://192.168.0.48:7777/api/v1';
+API.request.defaults.baseURL = 'http://192.168.0.204:7777/api/v1';
 API.request.defaults.withCredentials = true;
 
 export const user = {

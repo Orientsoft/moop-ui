@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ProjectList from './components/ProjectList';
+import { classroom } from '../../utils/api';
 
 export default class ClassroomList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { courses: [] };
+  }
+
+  componentDidMount() {
+    classroom.selectMine({ params: { embed: 1 } }).then(({ data }) => {
+      this.setState({ courses: data.data });
+    });
   }
 
   render() {
+    const { courses } = this.state;
+
     return (
       <div >
         <Header {...this.props} />
@@ -22,44 +32,28 @@ export default class ClassroomList extends Component {
         </div>
         <div className="pro-container" style={styles.paddingtop} >
           <div className="pro-left">
-            <h3 className="subtit">神经网络与深度学习</h3>
-            <ProjectList />
-            <ProjectList />
+            {/* <h3 className="subtit">神经网络与深度学习</h3> */}
+            {courses.map((course, i) => <ProjectList key={i} data={course} />)}
           </div>
           <div className="pro-right" >
             <h3 className="subtit">我的专题</h3>
-            <div style={styles.thirdPartyDetailItem}>
-              <img
-                style={styles.thirdPartyDetailImg}
-                src={require('./images/index2.jpg')}
-                alt=""
-              />
-              <h5 style={styles.thirdPartyName}>神经网络与深度学习</h5>
-              <p style={styles.thirdPartySold}>
-                学时安排：
-                <span style={styles.thirdPartySoldNumber}>206</span>
-                小时
-              </p>
-              <a style={styles.thirdPartyLink} href="#/classroom/detail">
-                进入学习 <span style={styles.linkAdd}>➪</span>
-              </a>
-            </div>
-            <div style={styles.thirdPartyDetailItem}>
-              <img
-                style={styles.thirdPartyDetailImg}
-                src={require('./images/index2.jpg')}
-                alt=""
-              />
-              <h5 style={styles.thirdPartyName}>神经网络与深度学习</h5>
-              <p style={styles.thirdPartySold}>
-                学时安排：
-                <span style={styles.thirdPartySoldNumber}>206</span>
-                小时
-              </p>
-              <a style={styles.thirdPartyLink} href="#/classroom/detail">
-                进入学习 <span style={styles.linkAdd}>➪</span>
-              </a>
-            </div>
+            {courses.map((course, i) => (
+              <div key={i} style={styles.thirdPartyDetailItem}>
+                <img
+                  style={styles.thirdPartyDetailImg}
+                  src={require('./images/index2.jpg')}
+                  alt=""
+                />
+                <h5 style={styles.thirdPartyName}>{course.title}</h5>
+                <p style={styles.thirdPartySold}>
+                  学时安排：
+                  <span style={styles.thirdPartySoldNumber}>{course.timeConsume}</span>
+                </p>
+                <Link style={styles.thirdPartyLink} to={`/classroom/detail?id=${course._id}`}>
+                  进入学习 <span style={styles.linkAdd}>➪</span>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
         <Footer />

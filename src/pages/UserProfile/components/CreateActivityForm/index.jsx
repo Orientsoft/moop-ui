@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Input, Upload, Grid, Form } from '@alifd/next';
+import API from '@pixcai/make-api';
 import get from 'lodash-es/get';
 import { user } from '../../../../utils/api';
-import { getCurrentUser } from '../../../../utils/helper';
+import { setCurrentUser, getCurrentUser } from '../../../../utils/helper';
 import './SettingsForm.scss';
 
 const { Row, Col } = Grid;
@@ -33,8 +34,11 @@ export default class SettingsForm extends Component {
   validateAllFormField = (values, errors) => {
     if (!errors) {
       const { name, email, mobile } = values;
-      user.update({ name, email, mobile }, { userId: get(this.current, 'id') })
-        .then(() => this.forceUpdate());
+      user.update({ data: { name, email, mobile } }, { userId: get(this.current, 'id') })
+        .then((data) => {
+          setCurrentUser(data.data);
+          location.reload();
+        });
     }
   };
 
@@ -64,7 +68,7 @@ export default class SettingsForm extends Component {
                 <Upload.Card
                   name="thumb"
                   listType="card"
-                  action="/api/v1/users/thumb"
+                  action={`${API.request.defaults.baseURL}/users/thumb`}
                   accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
                 />
               </FormItem>

@@ -30,7 +30,7 @@ export default class Header extends Component {
           <div className="-body" style={styles.overviewRatingCard}>
             <h5 className="card-title">老师评语</h5>
             <div style={styles.overviewRatingWrapper}>
-              <span style={styles.overviewRatingCount}>4.5</span>
+              {/* <span style={styles.overviewRatingCount}>4.5</span> */}
               <span style={styles.overviewRating}>
                 <Rating value={4.5} disabled />
               </span>
