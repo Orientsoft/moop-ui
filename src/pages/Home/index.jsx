@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ClassroomCard from '../../components/ClassroomCard';
@@ -18,7 +19,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    classroom.selectAll().then(({ data: { data } }) => this.setState({ courses: data }));
+    classroom.selectAll({ params: { pageSize: 3 } }).then(({ data: { data } }) => this.setState({ courses: data }));
   }
 
   render() {
@@ -32,7 +33,11 @@ export default class Home extends Component {
           内容由世界领先的机构开发
         </h3>
         <p style={styles.hyThirdPartySubTitle}>Please select your intresting course , and start !</p>
-        <ClassroomCard data={courses} />
+        <ClassroomCard data={courses}>
+          <Link style={styles.thirdPartyMore} to="/classroom/list">
+            查看更多学习 ➪
+          </Link>
+        </ClassroomCard>
         <AblityItems />
         <IntroTab />
         {/* <SlideBanner /> */}
@@ -66,5 +71,20 @@ const styles = {
     textAlign: 'center',
     verticalAlign: 'middle',
     marginBottom: '40px',
+  },
+  thirdPartyMore: {
+    position: 'absolute',
+    left: '44%',
+    bottom: '-50px',
+    color: '#108ee9',
+    fontSize: '16px',
+    lineHeight: '20px',
+    fontWeight: '500',
+    padding: '10px 30px',
+    textDecoration: 'none',
+    border: '1px solid #108ee9',
+    borderRadius: '4px',
+    WebkitTransition: 'all .2s linear',
+    transition: 'all .2s linear',
   },
 };

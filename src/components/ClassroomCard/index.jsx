@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class CardItems extends Component {
   render() {
-    const { data = [] } = this.props;
+    const { data = [], children } = this.props;
 
     return (
       <div style={styles.hyThirdPartyWrapper}>
@@ -13,7 +13,7 @@ export default class CardItems extends Component {
               <div key={id} style={styles.thirdPartyDetailItem}>
                 <img
                   style={styles.thirdPartyDetailImg}
-                  src={thumb}
+                  src={thumb.thumbnail}
                   alt={title}
                 />
                 <h5 style={styles.thirdPartyName}>{title}</h5>
@@ -27,9 +27,7 @@ export default class CardItems extends Component {
                 </Link>
               </div>
             ))}
-            <Link style={styles.thirdPartyMore} to="/classroom/list">
-              查看更多学习 ➪
-            </Link>
+            {children}
           </div>
         </div>
       </div>
@@ -48,22 +46,6 @@ const styles = {
     textAlign: 'left',
     width: '1200px',
     margin: '0 auto',
-  },
-
-  thirdPartyMore: {
-    position: 'absolute',
-    left: '44%',
-    bottom: '-50px',
-    color: '#108ee9',
-    fontSize: '16px',
-    lineHeight: '20px',
-    fontWeight: '500',
-    padding: '10px 30px',
-    textDecoration: 'none',
-    border: '1px solid #108ee9',
-    borderRadius: '4px',
-    WebkitTransition: 'all .2s linear',
-    transition: 'all .2s linear',
   },
   thirdPartyDetails: {
     position: 'relative',

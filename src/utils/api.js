@@ -1,7 +1,7 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
 API.request.defaults.timeout = 30000;
-API.request.defaults.baseURL = 'http://192.168.0.204:7777/api/v1';
+API.request.defaults.baseURL = 'http://192.168.0.48:7777/api/v1';
 API.request.defaults.withCredentials = true;
 
 export const user = {
@@ -43,8 +43,8 @@ export const classroom = {
   create: POST('/classrooms'),
   update: PATCH('/classrooms/:classroomId'),
   delete: DELETE('/classrooms/:classroomId'),
-  selectAll: GET('/classrooms'),
-  selectMine: GET('/classrooms/mine'),
+  selectAll: GET('/classrooms?embed=1'),
+  selectMine: GET('/classrooms/mine?embed=1'),
   selectPublic: GET('/classrooms/public'),
 };
 

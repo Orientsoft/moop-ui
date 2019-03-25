@@ -8,17 +8,22 @@ import { classroom } from '../../utils/api';
 export default class ClassroomList extends Component {
   constructor(props) {
     super(props);
-    this.state = { courses: [] };
+    this.state = {
+      courses: [],
+      preview: 0,
+    };
   }
 
   componentDidMount() {
-    classroom.selectMine({ params: { embed: 1 } }).then(({ data }) => {
+    classroom.selectMine().then(({ data }) => {
       this.setState({ courses: data.data });
     });
   }
 
+  onSwitchCourse = i => this.setState({ preview: i });
+
   render() {
-    const { courses } = this.state;
+    const { courses, preview } = this.state;
 
     return (
       <div >
@@ -33,7 +38,7 @@ export default class ClassroomList extends Component {
         <div className="pro-container" style={styles.paddingtop} >
           <div className="pro-left">
             {/* <h3 className="subtit">神经网络与深度学习</h3> */}
-            {courses.map((course, i) => <ProjectList key={i} data={course} />)}
+            {courses.map((course, i) => (preview === i ? <ProjectList key={i} data={course} /> : null))}
           </div>
           <div className="pro-right" >
             <h3 className="subtit">我的专题</h3>
@@ -41,17 +46,16 @@ export default class ClassroomList extends Component {
               <div key={i} style={styles.thirdPartyDetailItem}>
                 <img
                   style={styles.thirdPartyDetailImg}
-                  src={require('./images/index2.jpg')}
-                  alt=""
+                  src={course.thumb.thumbnail}
+                  onClick={() => this.onSwitchCourse(i)}
+                  alt={course.title}
                 />
-                <h5 style={styles.thirdPartyName}>{course.title}</h5>
+                <h5 onClick={() => this.onSwitchCourse(i)} style={styles.thirdPartyName}>{course.title}</h5>
                 <p style={styles.thirdPartySold}>
                   学时安排：
                   <span style={styles.thirdPartySoldNumber}>{course.timeConsume}</span>
                 </p>
-                <Link style={styles.thirdPartyLink} to={`/classroom/detail?id=${course._id}`}>
-                  进入学习 <span style={styles.linkAdd}>➪</span>
-                </Link>
+                <Link style={styles.thirdPartyLink} to={`/classroom/detail?id=${course.id}`}>进入学习 <span style={styles.linkAdd}>➪</span></Link>
               </div>
             ))}
           </div>
@@ -76,6 +80,7 @@ const styles = {
     position: 'relative',
     left: '0',
     border: '0',
+    cursor: 'pointer',
   },
   thirdPartyName: {
     margin: '10px 10px 6px',
@@ -83,6 +88,7 @@ const styles = {
     lineHeight: '28px',
     color: '#333',
     fontWeight: '600',
+    cursor: 'pointer',
   },
   thirdPartySold: {
     margin: '10px 10px 6px',
@@ -105,6 +111,8 @@ const styles = {
     overflow: 'hidden',
   },
   thirdPartyLink: {
+    padding: 0,
+    margin: '10px 10px 6px',
     // margin: '10px 20px 6px',
     display: 'inline-block',
     fontSize: '14px',
