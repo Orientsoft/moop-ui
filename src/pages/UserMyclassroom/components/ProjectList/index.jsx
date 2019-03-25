@@ -13,11 +13,13 @@ export default class Header extends Component {
           <span style={styles.titletime}>{moment(data.createdAt).format('YYYY年MM月DD日')}</span>
         </div>
         <div className="card-collapse">
-          <div className="list-group">
-            <span className="learnLesson all"><i></i></span>
-            <a href="#">→ Garch模型的实现-单变量 </a>
-            <span className=" time exend">已完成</span>
-          </div>
+          {data.projects.map(({ title, timeConsume }) => (
+            <div className="list-group">
+              <span className="learnLesson all"><i /></span>
+              <a href="#">{title}</a>
+              <span className="time exend">{timeConsume}</span>
+            </div>
+          ))}
           <div className="-body" style={styles.overviewRatingCard}>
             <h5 className="card-title">老师评语</h5>
             {/* <div style={styles.overviewRatingWrapper}>

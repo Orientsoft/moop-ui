@@ -52,8 +52,7 @@ export default class ClassroomList extends Component {
               </div>
               <h3 className="subtit">预备知识</h3>
               <div className="text-info">
-                <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
-                <p>你将有很多练习的机会。 您还将学习推理程序执行的方法，以便它不再神秘，并且您可以在程序不工作时调试程序。</p>
+                <p>{detail.requirement}</p>
               </div>
               <h3 className="subtit">考核内容</h3>
               <div className="text-info">
