@@ -16,7 +16,7 @@ export default class BasicLayout extends Component {
   render() {
     return (
       <Layout fixable>
-        <Header onLogout={this.onLogout} />
+        <Header onLogout={this.onLogout} history={this.props.history} />
         <Layout.Section>
           <Layout.Main scrollable>
             <Switch>
