@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { user } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
+import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
   const onSubmit = () => {
     const { name, key } = values;
 
-    if (name && name.length && key && key.length) {
+    if (name && key) {
       user.login({ data: { name, key } }).then(({ data }) => {
         if (!data.gender) {
-          data.gender = 0;
+          data.gender = consts.sex.MALE;
         }
         if (!data.thumb) {
           data.thumb = '/static/images/user.jpg';

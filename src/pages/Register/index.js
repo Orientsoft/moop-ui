@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { user } from '@/utils/api';
-import roles from '@/utils/roles';
+import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
@@ -10,7 +10,7 @@ export default ({ history }) => {
 
     if (name && name.length && key && key.length) {
       user.create({
-        data: { name, key, role: roles.user.STUDENT },
+        data: { name, key, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
     }
   };

@@ -6,4 +6,8 @@ export default {
     TEACHER: 3,
     STUDENT: 4,
   },
+  sex: {
+    MALE: 0,
+    FEMALE: 1,
+  },
 };
