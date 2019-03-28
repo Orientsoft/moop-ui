@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { headerMenuConfig } from '@/menuConfig';
+import { getCurrentUser } from '@/utils/helper';
 
 export default ({ onLogout }) => {
   const [active, setActive] = useState(0);
+  const user = getCurrentUser();
 
   return (
     <header className="bd-navbar">
@@ -24,16 +26,23 @@ export default ({ onLogout }) => {
               ))}
             </ul>
             {/* eslint-enable */}
-            <div className="my-2 my-lg-0">
-              <div className="dropdown usertop">
-                <img src="/static/images/user.jpg" alt="..." className="rounded-circle dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <Link className="dropdown-item" to="/user/courses">我的专题</Link>
-                  <Link className="dropdown-item" to="/user/profile">设置</Link>
-                  <a className="dropdown-item" onClick={onLogout}>退出</a>
+            {user ? (
+              <div className="my-2 my-lg-0">
+                <div className="dropdown usertop">
+                  <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <Link className="dropdown-item" to="/user/courses">我的专题</Link>
+                    <Link className="dropdown-item" to="/user/profile">设置</Link>
+                    <a className="dropdown-item" onClick={onLogout}>退出</a>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="my-2 my-lg-0 regbnt">
+                <Link to="/register">注册</Link>
+                <Link to="/login">登录</Link>
+              </div>
+            )}
           </div>
         </nav>
       </div>

@@ -4,13 +4,19 @@ import Layout from '@icedesign/layout';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NotFound from '@/components/NotFound';
+import { removeCurrentUser } from '@/utils/helper';
 import routerData from '@/routerConfig';
 
 export default class BasicLayout extends Component {
+  onLogout = () => {
+    removeCurrentUser();
+    this.props.history.replace('/login');
+  };
+
   render() {
     return (
       <Layout fixable>
-        <Header />
+        <Header onLogout={this.onLogout} />
         <Layout.Section>
           <Layout.Main scrollable>
             <Switch>
