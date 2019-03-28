@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { headerMenuConfig } from '@/menuConfig';
 import { getCurrentUser } from '@/utils/helper';
 
-export default ({ onLogout }) => {
-  const [active, setActive] = useState(0);
+export default ({ onLogout, history }) => {
   const user = getCurrentUser();
+  const { pathname } = history.location;
 
   return (
     <header className="bd-navbar">
@@ -20,7 +20,7 @@ export default ({ onLogout }) => {
             {/* eslint-disable */}
             <ul className="navbar-nav mr-auto">
               {headerMenuConfig.map((menu, i) => (
-                <li key={i} className={classnames('nav-item', { active: active === i })} onClick={() => setActive(i)}>
+                <li key={i} className={classnames('nav-item', { active: pathname === menu.path })}>
                   <Link className="nav-link" to={menu.path}>{menu.name}</Link>
                 </li>
               ))}

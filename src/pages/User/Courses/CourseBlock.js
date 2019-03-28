@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
+import get from 'lodash-es/get';
 
-export default () => {
+export default ({ data }) => {
   return (
     <Fragment>
       <div className="row ">
         <div className="cardinfo col-12 col-md-4 m-t-10">
-          <img className="imginfo" src="/static/images/index2.jpg" alt="Card image cap" />
-          <h5 className="card-title"><a href="#">神经网络与深度学习</a></h5>
+          <img className="imginfo" src={get(data.thumb, 'thumbnail')} alt={data.title} />
+          <h5 className="card-title"><a href="#">{data.title}</a></h5>
           <p className="fontsw">已加入 <span className="text-danger">12</span> 人 / 总共 13 人<br />
             开课时间： 2019年02月18日 ~ 2019年05月19日
           </p>
