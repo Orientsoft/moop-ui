@@ -23,7 +23,7 @@ export default () => (
         <h2 className="large m-t-60">内容由世界领先的机构开发。</h2>
         <h4 className="m-t-20"> Please select your intresting course , and start !</h4>
         <CourseList size={3} />
-        <h4 className="m-t-60"><Link to="/courses" className="btn btn-primary btn-lg">查看更多<span className="link-symbol">➩</span></Link></h4>
+        <h4 className="m-t-60"><Link to="/courses" className="btn btn-primary btn-lg">查看更多 <span className="link-symbol">➩</span></Link></h4>
       </div>
       <hr />
     </div>
