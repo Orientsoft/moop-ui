@@ -28,6 +28,9 @@ padding-bottom: 10px !important;
 .p-b-60{
 padding-bottom: 60px !important;
 }
+.p-b-120{
+padding-bottom: 120px !important;
+}
 .p-t-60{
 padding-top: 60px !important;
 }
@@ -259,6 +262,7 @@ background-image: -webkit-linear-gradient(90deg, #032f62, #024794);
 background-image: linear-gradient(90deg, #032f62, #024794); */
     background: linear-gradient(130deg, #400446 30%, #2bdada 100%);
 }
+.bg-detail{ background:url(../images/slide0.jpg);}
 .startbtn,.whitebtn{
     -moz-appearance: none;
     -moz-user-select: none;
@@ -555,5 +559,8 @@ a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
 .achieve{ background-color: #e6fff6}
 .achieve .card-body{ position: relative; }
 .card-imgico{ position: absolute; right: 20px; top: 50px;}
-a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 6px; font-size: 14px; padding:5px 10px; background: #00ce72; border: solid 1px #00ce72; color: #fff;border-radius: 5px;}
+a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; font-size: 14px; padding:5px 10px; background: #00ce72; border: solid 1px #00ce72; color: #fff;border-radius: 5px;}
 .reportbtn:hover{color: #fff; background: #00a95d;border: solid 1px #00a95d;}
+.tab-pane{ width: 100%;}
+.createdcont h5 span{ font-size: 14px; font-weight: normal; color: #666;}
+.editclassroombtn{ padding: 0; color: #333; padding-left: 14px; font-weight: bold}
