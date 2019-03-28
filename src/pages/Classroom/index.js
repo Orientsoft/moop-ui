@@ -1,25 +1,33 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import queryString from 'query-string';
+import { classroom } from '@/utils/api';
 import Tab from '@/components/Tab';
 import ProjectList from '@/components/ProjectList';
 import TeacherList from '@/components/TeacherList';
 import { Link } from 'react-router-dom';
 
-export default () => {
-  return (
+export default ({ history }) => {
+  const [course, setCourse] = useState(null);
+
+  useEffect(() => {
+    const url = queryString.parse(history.location.search);
+
+    classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+      .then(({ data }) => setCourse(data));
+  }, [history.location.search]);
+
+  return course ? (
     <Fragment>
       <div className="bg-conttop p-t-60 p-b-60">
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-7 m-b-30">
-              <h2 className="large ">Python 3 Programming 专项实验</h2>
+              <h2 className="large ">{course.title}</h2>
               <ul className="text-transparent m-t-20">
-                <li>100% 在线实验</li>
-                <li>灵活的计划</li>
-                <li>初级易懂。</li>
-                <li>完成时间大约为1 个月</li>
+                {course.tags.map(({ id, name }) => <li key={id}>{name}</li>)}
               </ul>
               <p className="coursetext ">开课时间： 2019年02月18日 ~ 2019年05月19日<br />
-                  学时安排：  <span className="text-warning">48小时</span><br />
+                  学时安排：<span className="text-warning">{course.timeConsume}</span><br />
               </p>
               <Link to="#" className="btn btn-primary btn-lg startbtn m-t-20">加入学习</Link>
               <Link to="/classroomdetail" className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>
@@ -27,7 +35,7 @@ export default () => {
             </div>
             <div className="col-12 col-md-5 m-b-30">
               <figure className="figure">
-               <img src="../../../public/images/index4.jpg" className="figure-img img-fluid rounded" />
+                <img src="/static/images/index4.jpg" className="figure-img img-fluid rounded" alt={course.title} />
               </figure>
             </div>
           </div>
@@ -63,20 +71,14 @@ export default () => {
 
                 <h2 className="m-b-20  m-t-40">实验项目描述</h2>
                 <div className="text-secondary">
-                  <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
-                  <p>你将有很多练习的机会。 您还将学习推理程序执行的方法，以便它不再神秘，并且您可以在程序不工作时调试程序。</p>
-                  <p><Link to="#" className="text-primary">Learn More</Link></p>
+                  <p>{course.description}</p>
                 </div>
 
                 <h2 className="m-b-20 m-t-40">预备知识</h2>
-                <p>本课程适合如下教学目标：</p>
-                <p>程序设计入门课：面向各层次各专业大学在校生、部分优秀高中生，作为程序设计入门课程</p>
-                <p>体系化编程基础：面向拟构建坚实编程能力的自学者，作为不断奋斗的参考在线课程</p>
-                <p>Python科目备考：面向全国计算机等级考试二级Python科目的备考考生，作为在线备考资源</p>
+                <p>{course.requirement}</p>
 
                 <h2 className="m-b-20 m-t-40">考核内容</h2>
-                <p>1，独立完全成实验步骤</p>
-                <p>2，完成实验报告</p>
+                <p>{course.testPoint}</p>
 
                 <h2 className="m-b-20 m-t-40">参考资料</h2>
                 <p>
@@ -100,7 +102,7 @@ export default () => {
           <hr />
           <div className="container m-t-40 p-b-120">
             <h2 className="large m-t-40">讲师</h2>
-            <TeacherList />
+            <TeacherList data={course.assistants} />
           </div>
         </Tab.Item>
         <Tab.Item title="学生(老师看)" className="bg-white">
@@ -169,5 +171,5 @@ export default () => {
         </Tab.Item>
       </Tab>
     </Fragment>
-  );
+  ) : null;
 };
