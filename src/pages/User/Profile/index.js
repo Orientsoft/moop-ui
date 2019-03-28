@@ -8,6 +8,7 @@ import consts from '@/utils/consts';
 
 export default () => {
   const [user, setUser] = useState(getCurrentUser());
+  const [password, setPassword] = useState({ value: '', repeat: '' });
   const uploader = useRef(null);
   const setField = name => e => setUser({ ...user, [name]: e.target.value.trim() });
   const onSubmit = () => {
@@ -20,6 +21,13 @@ export default () => {
       userAPI.update({
         data: { realname, certification, email, mobile, gender },
       }, { userId: user.id }).then(({ data }) => setCurrentUser(data));
+    }
+  };
+  const onUpdatePassword = () => {
+    const { value, repeat } = password;
+
+    if (value && repeat && value === repeat) {
+      userAPI.update({ data: { key: value } }, { userId: user.id });
     }
   };
 
@@ -116,20 +124,11 @@ export default () => {
         </Tab.Item>
         <Tab.Item title="密码修改" className="bg-white m-t-40 p-b-60">
           <div className="container p-b-60 ">
-            <form className="needs-validation" noValidate>
-              <div className="form-row row m-t-20">
-                <label htmlFor="validationCustom01" className="import col-sm-2 col-form-label">原始密码</label>
-                <div className="col-sm-6">
-                  <input type="text" className="form-control" id="validationCustom01" placeholder="First name" value="********" required />
-                  <div className="valid-feedback">
-                      请填写原始密码
-                  </div>
-                </div>
-              </div>
+            <div className="needs-validation">
               <div className="form-row row m-t-20">
                 <label htmlFor="validationCustom03" className="import col-sm-2 col-form-label">新密码</label>
                 <div className="col-sm-6">
-                  <input type="text" className="form-control" id="validationCustom03" placeholder="密码由26个字母与数字组成8个" required />
+                  <input type="password" onChange={e => setPassword({ ...password, value: e.target.value.trim() })} value={password.value} className="form-control" id="validationCustom03" required />
                   <div className="invalid-feedback">
                     请填写你的新密码
                   </div>
@@ -138,7 +137,7 @@ export default () => {
               <div className="form-row row m-t-20">
                 <label htmlFor="validationCustom02" className="import col-sm-2 col-form-label">再输入一次</label>
                 <div className="col-sm-6">
-                  <input type="text" className="form-control" id="validationCustom02" placeholder="****" value="********" required />
+                  <input type="password" onChange={e => setPassword({ ...password, repeat: e.target.value.trim() })} value={password.repeat} className="form-control" id="validationCustom02" required />
                   <div className="valid-feedback">
                     请再输入一次
                   </div>
@@ -147,10 +146,10 @@ export default () => {
               <div className="form-row row m-t-20">
                 <label htmlFor="validationCustom03" className=" col-sm-2 col-form-label" />
                 <div className="col-sm-6">
-                  <button className="btn btn-primary " type="submit">提交</button>
+                  <button className="btn btn-primary" onClick={onUpdatePassword}>提交</button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </Tab.Item>
       </Tab>
