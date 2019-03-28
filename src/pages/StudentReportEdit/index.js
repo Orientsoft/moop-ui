@@ -1,7 +1,4 @@
 import React, { Fragment } from 'react';
-import Tab from '@/components/Tab';
-import ProjectList from '@/components/ProjectList';
-import TeacherList from '@/components/TeacherList';
 import { Link } from 'react-router-dom';
 
 export default () => {
@@ -21,6 +18,12 @@ export default () => {
           <div className="row">
             <div className="col-sm-12">
               <form>
+                <div className="form-group row">
+                  <label className=" col-sm-2"></label>
+                  <div className="col-sm-10 text-right">
+                    <Link className="btn btn-primary " to="/classroom" >返回学生列表</Link>
+                  </div>
+                </div>
                 <div className="form-group row">
                   <label className="col-sm-2 ">学生姓名：</label>
                   <div className="fonts2 col-sm-10 ">吴崇试</div>

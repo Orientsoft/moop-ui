@@ -46,7 +46,7 @@ const User = () => {
                 </div>
               </Fragment>
             ) : (
-              <div className="row">
+              <div className="row p-t-60">
                 <div className="col-12 text-center">
                   <h4>您还没有激活专题</h4>
                   <p>目前您没有任何激活的专题。</p>
@@ -57,7 +57,36 @@ const User = () => {
             )}
           </div>
         </Tab.Item>
-        <Tab.Item title="我的成就" className="bg-white m-t-20 p-b-60"></Tab.Item>
+        <Tab.Item title="我的成就" className="bg-white m-t-20 p-b-60">
+          <div className="container p-b-60 ">
+            <div className="row p-t-60">
+              <div className="col text-center">
+                <h4>你还没有完成专题课程</h4>
+                <p>目前您没有任何激活的专题。</p>
+                <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
+              </div>
+            </div>
+            <div className="row ">
+              <div className="col-12 text-left m-b-20">
+                <h4>我的成就</h4>
+              </div>
+              <div className="col-12 col-md-4">
+                <div className="card p-b-10 achieve">
+                  <img className="card-img-top" src="/static/images/index2.jpg" alt="神经网络与深度学习" />
+                  <div className="card-body">
+                    <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
+                    <h5 className="card-title">神经网络与深度学习</h5>
+                    <h6 className="card-title">老师评分： <span className="text-success">A+</span></h6>
+                    <p className="card-text">
+                      2019年6月24日学期结束
+                    </p>
+                    <Link to="/classroom" className="btn bntlook">查看评语 </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Tab.Item>
       </Tab>
     </Fragment>
   );
