@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Tab from '@/components/Tab';
+import CourseCard from '@/components/CourseCard';
 
 const User = () => {
   return (
@@ -14,7 +16,32 @@ const User = () => {
         </div>
       </div>
       <Tab>
-        <Tab.Item title="实验专题" className="bg-white m-t-20 p-b-60"></Tab.Item>
+        <Tab.Item title="实验专题" className="bg-white m-t-20 p-b-60">
+          <div className="container p-b-60">
+            <div className="row">
+              <div className="col-12 text-center">
+                <h4>您还没有激活专题</h4>
+                <p>目前您没有任何激活的专题。</p>
+                <p><Link to="/courses" className="btn btn-primary addcouse">浏览专题</Link></p>
+                <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12 text-left m-b-20">
+                <h4>正在学习</h4>
+              </div>
+              <CourseCard />
+              <CourseCard />
+            </div>
+            <div className="row m-t-40 endcard">
+              <div className="col-12 text-left m-b-20">
+                <h4>已完成学习</h4>
+              </div>
+              <CourseCard />
+              <CourseCard />
+            </div>
+          </div>
+        </Tab.Item>
         <Tab.Item title="我的成就" className="bg-white m-t-20 p-b-60"></Tab.Item>
       </Tab>
     </Fragment>
