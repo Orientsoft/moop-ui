@@ -2,6 +2,7 @@ import React, { Fragment, useState, useRef } from 'react';
 import { Upload } from '@alifd/next';
 import API from '@pixcai/make-api';
 import Tab from '@/components/Tab';
+import get from 'lodash-es/get';
 import { user as userAPI } from '@/utils/api';
 import { getCurrentUser, setCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
@@ -20,7 +21,15 @@ export default () => {
       }
       userAPI.update({
         data: { realname, certification, email, mobile, gender },
-      }, { userId: user.id }).then(({ data }) => setCurrentUser(data));
+      }, { userId: user.id })
+        .then(({ data }) => setCurrentUser(data.data))
+        .catch((error) => {
+          const data = get(error, 'response.data.data');
+
+          if (data) {
+            setCurrentUser(data);
+          }
+        });
     }
   };
   const onUpdatePassword = () => {
