@@ -26,7 +26,7 @@ export default ({ history }) => {
               <h3 className="text-center uppercase">注册</h3>
               <div className="panel-body">
                 <form className="form-horizontal m-t-30">
-                  <div className="form-group ">
+                  <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
                     </div>
@@ -38,7 +38,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">
-                      <button className="btn loginbnt  btn-block" onClick={onSubmit}>注册</button>
+                      <button className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
                     </div>
                   </div>
                   <div className="form-group m-t-30 m-b-0">

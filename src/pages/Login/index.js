@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { user } from '@/utils/api';
+import { setCurrentUser } from '@/utils/helper';
 
-export default () => {
+export default ({ history }) => {
+  const [values, setValues] = useState({});
+  const onSubmit = () => {
+    const { name, key } = values;
+
+    if (name && name.length && key && key.length) {
+      user.login({ data: { name, key } }).then(({ data }) => {
+        if (!data.gender) {
+          data.gender = 0;
+        }
+        if (!data.thumb) {
+          data.thumb = '/static/images/user.jpg';
+        }
+        setCurrentUser(data);
+        history.push(data.check ? '/' : '/user/profile');
+      });
+    }
+  };
+  const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
+
   return (
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60">
@@ -11,21 +32,21 @@ export default () => {
             <div className=" card-box m-t-40">
               <h3 className="text-center uppercase">登录</h3>
               <div className="panel-body">
-                <form className="form-horizontal m-t-30" >
-                  <div className="form-group ">
+                <form className="form-horizontal m-t-30">
+                  <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" type="text" required="" placeholder="手机号" />
+                      <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" type="password" required="" placeholder="密码" />
+                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
                     </div>
-                    <div className="col-12 m-t-10">  <a href="page-recoverpw.html" >忘记密码？</a></div>
+                    <div className="col-12 m-t-10"><a href="page-recoverpw.html">忘记密码？</a></div>
                   </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">
-                      <button className="btn loginbnt  btn-block" type="submit">登录</button>
+                      <button className="btn loginbnt btn-block" onClick={onSubmit}>登录</button>
                     </div>
                   </div>
                   <div className="form-group m-t-30 m-b-0">
