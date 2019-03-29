@@ -1,7 +1,4 @@
 import React, { Fragment } from 'react';
-import Tab from '@/components/Tab';
-import ProjectList from '@/components/ProjectList';
-import TeacherList from '@/components/TeacherList';
 import { Link } from 'react-router-dom';
 
 export default () => {

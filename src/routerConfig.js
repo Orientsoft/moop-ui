@@ -8,7 +8,8 @@ import ClassroomCreateDetail from '@/pages/ClassroomCreateDetail';
 import CreateClassroom from '@/pages/CreateClassroom';
 import StudentReport from '@/pages/StudentReport';
 import StudentReportEdit from '@/pages/StudentReportEdit';
-
+import TeacherIntroduction from '@/pages/TeacherIntroduction';
+import Help from '@/pages/Help';
 
 const routerConfig = [
   {
@@ -50,6 +51,14 @@ const routerConfig = [
   {
     path: '/studentreportedit',
     component: StudentReportEdit,
+  },
+  {
+    path: '/teacherintroduction',
+    component: TeacherIntroduction,
+  },
+  {
+    path: '/help',
+    component: Help,
   },
 ];
 
