@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
-export default ({ size = 9 }) => {
+export default ({ size = 9, tag }) => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    classroom.selectAll().then(({ data }) => setCourses(data.data));
-  }, []);
+    const config = { params: {} };
+
+    if (tag) {
+      config.params.tag = tag;
+    }
+    classroom.selectAll(config).then(({ data }) => setCourses(data.data));
+  }, [size, tag]);
 
   return (
     <div className="row m-t-40">
