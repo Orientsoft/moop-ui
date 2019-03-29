@@ -27,15 +27,12 @@ const User = ({ data }) => (
                 <div className="col-12 text-left m-b-20">
                   <h4>正在学习</h4>
                 </div>
-                <CourseCard />
-                <CourseCard />
+                {data.map(course => <CourseCard key={course.id} data={course} />)}
               </div>
               <div className="row m-t-40 endcard">
                 <div className="col-12 text-left m-b-20">
                   <h4>已完成学习</h4>
                 </div>
-                <CourseCard />
-                <CourseCard />
               </div>
             </Fragment>
           ) : (
