@@ -1,13 +1,30 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import queryString from 'query-string';
-import { classroom } from '@/utils/api';
+import { classroom, invitation } from '@/utils/api';
+import { getCurrentUser } from '@/utils/helper';
 import Tab from '@/components/Tab';
 import ProjectList from '@/components/ProjectList';
 import TeacherList from '@/components/TeacherList';
-import { Link } from 'react-router-dom';
 
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
+  const onJoin = () => {
+    const user = getCurrentUser();
+
+    if (user) {
+      invitation.create({
+        data: {
+          invitee: user.id,
+          classroom: course.id,
+          confirmed: true,
+        },
+      });
+    } else {
+      history.push('/login');
+    }
+    return false;
+  };
 
   useEffect(() => {
     const url = queryString.parse(history.location.search);
@@ -29,7 +46,7 @@ export default ({ history }) => {
               <p className="coursetext ">开课时间： 2019年02月18日 ~ 2019年05月19日<br />
                   学时安排：<span className="text-warning">{course.timeConsume}</span><br />
               </p>
-              <Link to="#" className="btn btn-primary btn-lg startbtn m-t-20">加入学习</Link>
+              <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>
               <Link to="/classroomdetail" className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>
               <Link to="/createclassroom" className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
             </div>
