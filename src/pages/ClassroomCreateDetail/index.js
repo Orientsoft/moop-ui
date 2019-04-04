@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-// import Tab from '@/components/Tab';
+import React, { Fragment, useState } from 'react';
 import Timeline from '@/components/Timeline';
-import { Link } from 'react-router-dom';
 import Information from './Information';
 import MaterialEdit from './MaterialEdit';
 
 export default () => {
+  const [activeKey, setActiveKey] = useState(0);
+
   return (
     <Fragment>
       <div className="bg-conttop p-t-60 p-b-60">
@@ -17,11 +17,11 @@ export default () => {
           </div>
         </div>
       </div>
-      <Timeline>
+      <Timeline activeKey={activeKey}>
         <Timeline.Item title="1. 填写基本信息" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <Information />
+              <Information onNext={() => setActiveKey(1)} />
             </div>
           </div>
         </Timeline.Item>

@@ -1,4 +1,4 @@
-import React, { Fragment, Children, useState } from 'react';
+import React, { Fragment, Children, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import get from 'lodash-es/get';
 import isBoolean from 'lodash-es/isBoolean';
@@ -20,6 +20,10 @@ const Tab = ({ children, activeKey = 0, onChange }) => {
       setActive(key);
     }
   };
+
+  useEffect(() => {
+    setActive(activeKey);
+  }, [activeKey]);
 
   return (
     <Fragment>

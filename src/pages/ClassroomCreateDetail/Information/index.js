@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default () => {
+export default ({ onNext }) => {
   return (
     <div className="m-b-30 tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      <form className="needs-validation" >
+      <div className="needs-validation" >
         <div className="form-row row m-t-20">
           <label className="import col-sm-2 col-form-label">申报名称</label>
           <div className="col-sm-8 m-t-10">
@@ -53,12 +53,12 @@ export default () => {
           </div>
         </div>
         <div className="form-row row m-t-20">
-          <label className=" col-sm-2 col-form-label"></label>
+          <label className=" col-sm-2 col-form-label" />
           <div className="col-sm-8">
-            <p className="m-t-20"><a href="createdetails.html" className="btn btn-primary  addcouse">下一步</a></p>
+            <p className="m-t-20"><button className="btn btn-primary addcouse" onClick={onNext}>下一步</button></p>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

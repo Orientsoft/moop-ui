@@ -79,3 +79,10 @@ export const report = {
 export const tag = {
   selectAll: GET('/tag'),
 };
+
+export const publication = {
+  select: GET('/classrooms/:classroomId/publication'),
+  create: POST('/classrooms/:classroomId/publication'),
+  update: PATCH('/classrooms/:classroomId/publication'),
+  delete: DELETE('/classrooms/:classroomId/publication'),
+};
