@@ -67,7 +67,7 @@ export default ({ history }) => {
             <div className="row">
               <div className="col-12 col-md-8 m-b-30">
                 <h2 className="m-b-20">实验项目</h2>
-                <ProjectList />
+                <ProjectList data={course.projects} />
                 <div className="card">
                   <div className="card-header" id="headingcourse4">
                     <h5 className="mb-0">
@@ -101,12 +101,11 @@ export default ({ history }) => {
                 <p>{course.testPoint}</p>
 
                 <h2 className="m-b-20 m-t-40">参考资料</h2>
-                <p>
-                  《深放Python 3》<Link to="#">https://www.icourse163.org/course/BIT-268001</Link>
-                </p>
-                <p>
-                  讲座在线学习视频 <Link to="#">https://www.icourse163.org/course/BIT-268002</Link>
-                </p>
+                {course.material.map(({ name, href }, i) => (
+                  <p key={i}>
+                    <a href={href} target="_blank">{name}</a>
+                  </p>
+                ))}
               </div>
               <div className="col-12 col-md-3 ml-auto">
                 <div className="list-group list-group-flush">
