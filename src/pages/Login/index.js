@@ -33,7 +33,7 @@ export default ({ history }) => {
             <div className=" card-box m-t-40">
               <h3 className="text-center uppercase">登录</h3>
               <div className="panel-body">
-                <form className="form-horizontal m-t-30">
+                <div className="form-horizontal m-t-30">
                   <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
@@ -53,7 +53,7 @@ export default ({ history }) => {
                   <div className="form-group m-t-30 m-b-0">
                     <div className="col-12">没有帐号？<Link to="/register">注册</Link></div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
