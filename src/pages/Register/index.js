@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { user } from '@/utils/api';
+import { user, captcha as captchaAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
+  const [captchaUrl, setCaptchaUrl] = useState('#');
   const onSubmit = () => {
-    const { name, key } = values;
+    const { name, key, password, captcha } = values;
 
-    if (name && name.length && key && key.length) {
+    if (name && key && captcha && key === password) {
       user.create({
-        data: { name, key, role: consts.user.STUDENT },
+        data: { name, key, captcha, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
     }
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
+  const refreshCaptcha = () => captchaAPI.refresh().then(({ data }) => setCaptchaUrl(data));
+
+  useEffect(() => {
+    refreshCaptcha();
+  }, []);
 
   return (
     <div className="bglog" style={{ height: '100vh' }}>
@@ -34,6 +40,21 @@ export default ({ history }) => {
                   <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="col-12">
+                      <input className="form-control" onChange={setField('password')} type="password" required placeholder="再次输入密码" />
+                    </div>
+                  </div>
+                  <div className="form-group form-inline">
+                    <div className="col-6">
+                      <input style={{ marginTop: 0 }} className="form-control" onChange={setField('captcha')} type="password" required placeholder="验证码" />
+                    </div>
+                    <div className="col-6">
+                      {/* eslint-disable */}
+                      <img src={`data:image/png;base64,${captchaUrl}`} alt="验证码" onClick={refreshCaptcha} />
+                      {/* eslint-enable */}
                     </div>
                   </div>
                   <div className="form-group text-center m-t-40">

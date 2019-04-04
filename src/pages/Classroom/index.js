@@ -11,15 +11,18 @@ export default ({ history }) => {
   const [course, setCourse] = useState(null);
   const onJoin = () => {
     const user = getCurrentUser();
-
     if (user) {
-      invitation.create({
-        data: {
-          invitee: user.id,
-          classroom: course.id,
-          confirmed: true,
-        },
-      });
+      if (user.check) {
+        invitation.create({
+          data: {
+            invitee: user.id,
+            classroom: course.id,
+            confirmed: true,
+          },
+        });
+      } else {
+        history.push('/user/profile');
+      }
     } else {
       history.push('/login');
     }
@@ -46,7 +49,7 @@ export default ({ history }) => {
               <p className="coursetext ">开课时间： 2019年02月18日 ~ 2019年05月19日<br />
                   学时安排：<span className="text-warning">{course.timeConsume}</span><br />
               </p>
-              <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>
+              {course.join ? null : <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>}
               <Link to="/classroomdetail" className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>
               <Link to="/createclassroom" className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
             </div>

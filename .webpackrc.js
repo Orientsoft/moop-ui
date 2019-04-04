@@ -7,6 +7,9 @@ module.exports = context => ({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new CopyPlugin([{
       from: 'public',

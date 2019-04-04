@@ -4,6 +4,10 @@ API.request.defaults.timeout = 30000;
 API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
+export const captcha = {
+  refresh: GET('/captcha'),
+};
+
 export const user = {
   login: POST('/login'),
   logout: GET('/logout'),
