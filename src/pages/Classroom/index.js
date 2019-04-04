@@ -52,7 +52,7 @@ export default ({ history }) => {
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
       .then(({ data }) => setCourse(data));
     container.addEventListener('scroll', fixedNaver);
-    return () => container.removeEventListener(fixedNaver);
+    return () => container.removeEventListener('scroll', fixedNaver);
   }, [history.location.search]);
 
   return course ? (
