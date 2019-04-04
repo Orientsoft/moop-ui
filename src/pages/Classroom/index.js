@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
+import moment from 'moment';
 import { classroom, invitation } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import Tab from '@/components/Tab';
@@ -28,12 +29,30 @@ export default ({ history }) => {
     }
     return false;
   };
+  const naver = useRef(null);
 
   useEffect(() => {
     const url = queryString.parse(history.location.search);
+    const container = document.querySelector('.ice-layout-scrollable');
+    const fixedNaver = (e) => {
+      if (naver && naver.current) {
+        if (e.target.scrollTop >= 424) {
+          naver.current.style.position = 'fixed';
+          naver.current.style.left = `${naver.current.parentNode.offsetLeft + 15}px`;
+          naver.current.style.top = '90px';
+          naver.current.style.width = '255px';
+        } else {
+          naver.current.style.position = 'relative';
+          naver.current.style.left = 0;
+          naver.current.style.top = 0;
+        }
+      }
+    };
 
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
       .then(({ data }) => setCourse(data));
+    container.addEventListener('scroll', fixedNaver);
+    return () => container.removeEventListener(fixedNaver);
   }, [history.location.search]);
 
   return course ? (
@@ -44,9 +63,9 @@ export default ({ history }) => {
             <div className="col-12 col-md-7 m-b-30">
               <h2 className="large ">{course.title}</h2>
               <ul className="text-transparent m-t-20">
-                {course.tags.map(({ id, name }) => <li key={id}>{name}</li>)}
+                {course.characteristic.map((name, i) => <li key={i}>{name}</li>)}
               </ul>
-              <p className="coursetext ">开课时间： 2019年02月18日 ~ 2019年05月19日<br />
+              <p className="coursetext ">开课时间：{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}<br />
                   学时安排：<span className="text-warning">{course.timeConsume}</span><br />
               </p>
               {course.join ? null : <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>}
@@ -66,54 +85,54 @@ export default ({ history }) => {
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
               <div className="col-12 col-md-8 m-b-30">
-                <h2 className="m-b-20">实验项目</h2>
+                <h2 className="m-b-20" id="t-project">实验项目</h2>
                 <ProjectList data={course.projects} />
                 <div className="card">
                   <div className="card-header" id="headingcourse4">
                     <h5 className="mb-0">
-                      <Link className="btn btn-link editclassroombtn" to="/studentreportedit" >
-                          实验总结报告
-                      </Link>
+                      <a className="btn btn-link editclassroombtn">实验总结报告</a>
                     </h5>
-                    <Link to="/studentreportedit" className=" reportbtn">写实验报告</Link>
+                    {course.progress_status && <Link to="/studentreportedit" className=" reportbtn">写实验报告</Link>}
                   </div>
-                  <div className="card-body">
-                    <h5 className="card-title" id="experimentitem">实验报告名称</h5>
-                    <p className="fontsw">发布报告时间：2019-03-12</p>
-                    <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
-                    <p><Link to="#" className="text-primary">展开/收起</Link></p>
-                    <hr />
-                    <h5 className="card-title">老师评分： <span className="text-success">A+</span></h5>
-                    <h5 className="card-title">老师评语：</h5>
-                    <p>本课程是空间信息和数字技术专业的专业课，是该专业大部分其他专业的前导课程。 几乎所有专业的大学生，都可以学习运用空间信息工程技术专业知识，与自己的创新创业目标融合。</p>
-                  </div>
+                  {course.progress_status && (
+                    <div className="card-body">
+                      <h5 className="card-title" id="experimentitem">实验报告名称</h5>
+                      <p className="fontsw">发布报告时间：2019-03-12</p>
+                      <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
+                      <p><Link to="#" className="text-primary">展开/收起</Link></p>
+                      <hr />
+                      <h5 className="card-title">老师评分：<span className="text-success">A+</span></h5>
+                      <h5 className="card-title">老师评语：</h5>
+                      <p>本课程是空间信息和数字技术专业的专业课，是该专业大部分其他专业的前导课程。 几乎所有专业的大学生，都可以学习运用空间信息工程技术专业知识，与自己的创新创业目标融合。</p>
+                    </div>
+                  )}
                 </div>
 
-                <h2 className="m-b-20  m-t-40">实验项目描述</h2>
+                <h2 className="m-b-20 m-t-40" id="t-description">实验项目描述</h2>
                 <div className="text-secondary">
                   <p>{course.description}</p>
                 </div>
 
-                <h2 className="m-b-20 m-t-40">预备知识</h2>
+                <h2 className="m-b-20 m-t-40" id="t-testpoint">预备知识</h2>
                 <p>{course.requirement}</p>
 
-                <h2 className="m-b-20 m-t-40">考核内容</h2>
+                <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
                 <p>{course.testPoint}</p>
 
-                <h2 className="m-b-20 m-t-40">参考资料</h2>
+                <h2 className="m-b-20 m-t-40" id="t-material">参考资料</h2>
                 {course.material.map(({ name, href }, i) => (
                   <p key={i}>
-                    <a href={href} target="_blank">{name}</a>
+                    <a href={href} rel="noopener noreferrer" target="_blank">{name}</a>
                   </p>
                 ))}
               </div>
               <div className="col-12 col-md-3 ml-auto">
-                <div className="list-group list-group-flush">
-                  <Link to="#experimentitem" className="list-group-item list-group-item-action">实验项目</Link>
-                  <Link to="#" className="list-group-item list-group-item-action">实验项目描述</Link>
-                  <Link to="#" className="list-group-item list-group-item-action">预备知识</Link>
-                  <Link to="#" className="list-group-item list-group-item-action">考核内容</Link>
-                  <Link to="#" className="list-group-item list-group-item-action">参考资料</Link>
+                <div className="list-group list-group-flush" ref={naver}>
+                  <a href="#t-project" className="list-group-item list-group-item-action">实验项目</a>
+                  <a href="#t-description" className="list-group-item list-group-item-action">实验项目描述</a>
+                  <a href="#t-testpoint" className="list-group-item list-group-item-action">预备知识</a>
+                  <a href="#t-content" className="list-group-item list-group-item-action">考核内容</a>
+                  <a href="#t-material" className="list-group-item list-group-item-action">参考资料</a>
                 </div>
               </div>
             </div>
