@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import moment from 'moment';
 import { classroom, invitation } from '@/utils/api';
+import consts from '@/utils/consts';
 import { getCurrentUser } from '@/utils/helper';
 import Tab from '@/components/Tab';
 import ProjectList from '@/components/ProjectList';
@@ -10,8 +11,8 @@ import TeacherList from '@/components/TeacherList';
 
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
+  const user = getCurrentUser();
   const onJoin = () => {
-    const user = getCurrentUser();
     if (user) {
       if (user.check) {
         invitation.create({
@@ -143,70 +144,72 @@ export default ({ history }) => {
             <TeacherList data={course.assistants} />
           </div>
         </Tab.Item>
-        <Tab.Item title="学生(老师看)" className="bg-white">
-          <div className="container text-left m-t-60 p-b-60">
-            <div className="row p-b-60">
-              <div className="col-sm-12">
-                <h3 className="m-b-20">学生完成进度表</h3>
-                <table className="table">
-                  <tbody>
-                    <tr>
-                      <th width="200">学生身份信息</th>
-                      <th width="140">姓名</th>
-                      <th>进度</th>
-                      <th width="140">评分</th>
-                      <th width="200">操作</th>
-                    </tr>
-                    <tr>
-                      <td>5072120019098922</td>
-                      <td>吴崇试</td>
-                      <td>
-                        <div className="progress m-t-5">
-                          <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                      </td>
-                      <td>A+</td>
-                      <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                    </tr>
-                    <tr>
-                      <td>072120019098922</td>
-                      <td>高春媛</td>
-                      <td>
-                        <div className="progress m-t-5">
-                          <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                      </td>
-                      <td>A+</td>
-                      <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                    </tr>
-                    <tr>
-                      <td>072120019098922</td>
-                      <td>王林</td>
-                      <td>
-                        <div className="progress m-t-5">
-                          <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                      </td>
-                      <td>A+</td>
-                      <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                    </tr>
-                    <tr>
-                      <td>072120019098922</td>
-                      <td>王森林</td>
-                      <td>
-                        <div className="progress m-t-5">
-                          <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                      </td>
-                      <td>A+</td>
-                      <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                    </tr>
-                  </tbody>
-                </table>
+        {user && user.role === consts.user.TEACHER ? (
+          <Tab.Item title="学生(老师看)" className="bg-white">
+            <div className="container text-left m-t-60 p-b-60">
+              <div className="row p-b-60">
+                <div className="col-sm-12">
+                  <h3 className="m-b-20">学生完成进度表</h3>
+                  <table className="table">
+                    <tbody>
+                      <tr>
+                        <th width="200">学生身份信息</th>
+                        <th width="140">姓名</th>
+                        <th>进度</th>
+                        <th width="140">评分</th>
+                        <th width="200">操作</th>
+                      </tr>
+                      <tr>
+                        <td>5072120019098922</td>
+                        <td>吴崇试</td>
+                        <td>
+                          <div className="progress m-t-5">
+                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </td>
+                        <td>A+</td>
+                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                      </tr>
+                      <tr>
+                        <td>072120019098922</td>
+                        <td>高春媛</td>
+                        <td>
+                          <div className="progress m-t-5">
+                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </td>
+                        <td>A+</td>
+                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                      </tr>
+                      <tr>
+                        <td>072120019098922</td>
+                        <td>王林</td>
+                        <td>
+                          <div className="progress m-t-5">
+                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </td>
+                        <td>A+</td>
+                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                      </tr>
+                      <tr>
+                        <td>072120019098922</td>
+                        <td>王森林</td>
+                        <td>
+                          <div className="progress m-t-5">
+                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </td>
+                        <td>A+</td>
+                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-        </Tab.Item>
+          </Tab.Item>
+        ) : null}
       </Tab>
     </Fragment>
   ) : null;

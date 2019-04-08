@@ -30,7 +30,7 @@ const Tab = ({ children, activeKey = 0, onChange }) => {
       <div className="bg-white">
         <div className="container m-t-20">
           <ul className="nav nav-pills nav-fill">
-            {Children.map(children, (item, i) => (
+            {Children.map(children, (item, i) => item && (
               <li key={i} className="nav-item">
                 <a className={classnames('nav-link', { active: active === i })} onClick={() => onClick(i)}>{item.props.title}</a>
               </li>

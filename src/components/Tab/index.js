@@ -30,7 +30,7 @@ const Tab = ({ children, activeKey = 0, onChange }) => {
       <div className="bg-white border_foot">
         <div className="container">
           <ul className="nav pronav">
-            {Children.map(children, (item, i) => (
+            {Children.map(children, (item, i) => item && (
               <li key={i} className="nav-item" style={{ cursor: 'pointer' }}>
                 <a className={classnames('nav-link', { active: active === i })} onClick={() => onClick(i)}>{item.props.title}</a>
               </li>
