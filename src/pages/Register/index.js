@@ -7,11 +7,11 @@ export default ({ history }) => {
   const [values, setValues] = useState({});
   const [captchaUrl, setCaptchaUrl] = useState('#');
   const onSubmit = () => {
-    const { name, key, password, captcha } = values;
+    const { name, key, password, captcha, invation } = values;
 
-    if (name && key && captcha && key === password) {
+    if (name && key && captcha && key === password && invation) {
       user.create({
-        data: { name, key, captcha, role: consts.user.STUDENT },
+        data: { name, key, captcha, invation, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
     }
   };
@@ -55,6 +55,11 @@ export default ({ history }) => {
                       {/* eslint-disable */}
                       <img src={`data:image/png;base64,${captchaUrl}`} alt="验证码" onClick={refreshCaptcha} />
                       {/* eslint-enable */}
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="col-12">
+                      <input className="form-control" onChange={setField('invation')} type="invation" required placeholder="邀请码" />
                     </div>
                   </div>
                   <div className="form-group text-center m-t-40">

@@ -145,7 +145,7 @@ export default ({ history }) => {
           </div>
         </Tab.Item>
         {user && user.role === consts.user.TEACHER ? (
-          <Tab.Item title="学生(老师看)" className="bg-white">
+          <Tab.Item title="学生" className="bg-white">
             <div className="container text-left m-t-60 p-b-60">
               <div className="row p-b-60">
                 <div className="col-sm-12">
