@@ -19,25 +19,13 @@ export default ({ onNext }) => {
         <div className="form-row row m-t-20">
           <label className="import col-sm-2 col-form-label">所属专业</label>
           <div className="col-sm-8">
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>地球探测科学与技术学院</option>
-              <option>地质类</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <input type="text" className="form-control" required />
           </div>
         </div>
         <div className="form-row row m-t-20">
           <label className="import col-sm-2 col-form-label">对应专业</label>
           <div className="col-sm-8">
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>勘查技术与工程</option>
-              <option>计算机与科学</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <input type="text" className="form-control" required />
           </div>
         </div>
         <div className="form-row row m-t-20">
