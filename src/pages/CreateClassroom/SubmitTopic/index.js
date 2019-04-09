@@ -45,11 +45,10 @@ export default () => {
           </div>
         </div>
         <div className="form-row row m-t-20">
-          <label className=" col-sm-2 col-form-label"></label>
+          <label className=" col-sm-2 col-form-label" />
           <div className="col-sm-8">
             <p className="m-t-20">
-              <Link to="#" className="btn btn-primary m-r-10 savecouse">保存 </Link>
-              <Link to="#" className="btn btn-primary  addcouse" data-toggle="modal" data-target="#publish">立即发布 </Link>
+              <Link to="#" className="btn btn-primary m-r-10 savecouse">保存专题</Link>
             </p>
           </div>
         </div>
