@@ -64,7 +64,7 @@ export default () => {
                   <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
                   <label className="form-check-label" >专题立即发布</label>
                 </div>
-                <p className="m-t-20"><button className="btn btn-primary  addcouse">下一步 </button></p>
+                <p className="m-t-20"><button className="btn btn-primary  addcouse">完成创建</button></p>
               </div>
             </div>
           </div>
