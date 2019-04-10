@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Dialog } from '@alifd/next';
+import { Grid, Dialog, Button, Tag, Table, Pagination } from '@alifd/next';
 import { project } from '@/utils/api';
 
 const { Row, Col } = Grid;
+const { Group: TagGroup, Selectable: SelectableTag } = Tag;
 
 export default () => {
   const [visible, setVisible] = useState(false);
-  const onOk = () => {};
+  const [categories, setCategories] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const onOk = () => {
+    setVisible(false);
+  };
+  const queryProjects = (id) => {
+    project.selectAll({ params: { tag: id } }).then(({ data }) => {
+      setProjects(data);
+    });
+  };
 
   useEffect(() => {
-    project.categories();
+    project.categories().then(({ data }) => {
+      setCategories(data);
+    });
   }, []);
 
   return (
@@ -43,7 +55,7 @@ export default () => {
           </div>
         </div>
         <div className="form-row row m-t-20">
-          <label for="validationCustom03" className=" col-sm-2 col-form-label"></label>
+          <label htmlFor="validationCustom03" className="col-sm-2 col-form-label" />
           <div className="col-sm-8">
             <div className="col-sm-8">
               <p className="m-t-20"><Link to="#" className="btn btn-primary  addcouse">下一步 </Link></p>
@@ -51,9 +63,16 @@ export default () => {
           </div>
         </div>
       </form>
-      <Dialog visible={visible} onOk={onOk} onCancel={() => setVisible(false)}>
-        <div>Content</div>
+      <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 600 }}>
+        <TagGroup>
+          {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
+            <SelectableTag key={id} onChange={() => queryProjects(id)}>{name}({count})</SelectableTag>
+          ))), [])}
+        </TagGroup>
+        <Table dataSource={projects}>
+          <Table.Column title="项目名称" dataIndex="title" />
+        </Table>
       </Dialog>
-   </div>
+    </div>
   );
 };
