@@ -1,13 +1,38 @@
-import React, { Fragment } from 'react';
-// import Tab from '@/components/Tab';
-import Timeline from '@/components/Timeline';
-import SpecialDescription from './SpecialDescription';
-import ExperimentalProject from './ExperimentalProject';
-import AddData from './AddData';
-import AddStudents from './AddStudents';
-import SubmitTopic from './SubmitTopic';
+import React, { Fragment, useState } from 'react';
+import { Button, Step, Grid } from '@alifd/next';
+import Step1 from './Step1';
+import Step2 from './Step2';
+import Step3 from './Step3';
+import Step4 from './Step4';
+import Step5 from './Step5';
+
+const StepItem = Step.Item;
+const { Row, Col } = Grid;
+
+const stepN = [{
+  title: '专题描述',
+  render: props => <Step1 {...props} />,
+}, {
+  title: '实验项目',
+  render: props => <Step2 {...props} />,
+}, {
+  title: '添加学生',
+  render: props => <Step3 {...props} />,
+}, {
+  title: '提交专题',
+  render: props => <Step4 {...props} />,
+}, {
+  title: '添加数据',
+  render: props => <Step5 {...props} />,
+}, {
+  title: '发布专题',
+  render: props => null,
+}];
 
 export default () => {
+  const [current, setCurrent] = useState(0);
+  const next = () => setCurrent(current + 1);
+
   return (
     <Fragment>
       <div className="bg-conttop p-t-60 p-b-60">
@@ -19,57 +44,14 @@ export default () => {
           </div>
         </div>
       </div>
-      <Timeline>
-        <Timeline.Item title="1.专题描述" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <SpecialDescription />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="2.实验项目" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <ExperimentalProject />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="3.添加学生" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <AddStudents />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="4.提交专题" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <SubmitTopic />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="5.添加数据" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <AddData />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="6.发布专题" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="form-row row m-t-20">
-              <label className="import col-sm-2 col-form-label">立即发布</label>
-              <div className="col-sm-8 m-t-10">
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
-                  <label className="form-check-label" >专题立即发布</label>
-                </div>
-                <p className="m-t-20"><button className="btn btn-primary  addcouse">完成创建</button></p>
-              </div>
-            </div>
-          </div>
-        </Timeline.Item>
-      </Timeline>
+      <Step current={current} shape="arrow">
+        {stepN.map((step, i) => (
+          <StepItem key={i} title={step.title} disabled={i > current} onClick={() => setCurrent(i)} />
+        ))}
+      </Step>
+      <div style={{ margin: '30px 0' }}>
+        {stepN[current].render({ next })}
+      </div>
     </Fragment>
   );
 };

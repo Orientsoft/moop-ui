@@ -60,11 +60,10 @@ export default () => {
                   <label className="col-sm-2 ">评分</label>
                   <div className="col-sm-10">
                     <select className="form-control" id="exampleFormControlSelect1">
-                      <option>A++</option>
                       <option>A+</option>
                       <option>A</option>
-                      <option>A-</option>
-                      <option>B+</option>
+                      <option>B</option>
+                      <option>C</option>
                       <option>D</option>
                     </select>
                   </div>
@@ -76,7 +75,7 @@ export default () => {
                   </div>
                 </div>
                 <div className="form-group row m-t-20">
-                  <label  className="col-sm-2 "></label>
+                  <label className="col-sm-2" />
                   <div className="col-sm-10">
                     <a href="createcourse.html" className="btn btn-primary  addcouse">提交</a>
                   </div>

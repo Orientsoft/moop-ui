@@ -32,6 +32,7 @@ export const project = {
   update: PATCH('/projects/:projectId'),
   delete: DELETE('/projects/:projectId'),
   selectAll: GET('/projects'),
+  categories: GET('/projects/tag'),
 };
 
 export const purchase = {

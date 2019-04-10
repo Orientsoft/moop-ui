@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Grid, Dialog } from '@alifd/next';
+import { project } from '@/utils/api';
+
+const { Row, Col } = Grid;
 
 export default () => {
+  const [visible, setVisible] = useState(false);
+  const onOk = () => {};
+
+  useEffect(() => {
+    project.categories();
+  }, []);
+
   return (
     <div className="m-b-30 tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <form className="needs-validation" >
         <div className="form-row row m-t-20">
           <label className="import col-sm-2 col-form-label">选择实验</label>
           <div className="col-sm-8">
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            <button type="button" className="btn btn-primary" onClick={() => setVisible(true)}>
               添加实验模板
             </button>
             <ul className="list-group list-group-flush m-t-20 course">
@@ -40,6 +51,9 @@ export default () => {
           </div>
         </div>
       </form>
+      <Dialog visible={visible} onOk={onOk} onCancel={() => setVisible(false)}>
+        <div>Content</div>
+      </Dialog>
    </div>
   );
 };

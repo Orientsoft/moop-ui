@@ -8,7 +8,7 @@ export default ({ data }) => {
     <Fragment>
       <div className="row ">
         <div className="cardinfo col-12 col-md-4 m-t-10">
-          <img className="imginfo" src={get(data.thumb, 'thumbnail')} alt={data.title} />
+          <img className="imginfo" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
           <h5 className="card-title">{data.title}</h5>
           <p className="fontsw">已加入 <span className="text-danger">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
             开课时间： {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}
