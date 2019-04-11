@@ -89,7 +89,7 @@ const Teacher = ({ data }) => (
             <h2 className="large ">老师专题例表</h2>
           </div>
           <div className="col-6 col-md-6 text-right">
-            <a href="createcourse.html" className="btn btn-primary  addcouse">创建专题 <span className="link-add">+</span></a>
+            <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
           </div>
         </div>
       </div>
