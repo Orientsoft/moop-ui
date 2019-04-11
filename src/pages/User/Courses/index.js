@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Tab from '@/components/Tab';
+import EurekaBanner from '@/components/EurekaBanner';
 import { classroom } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
@@ -9,15 +10,13 @@ import CourseBlock from './CourseBlock';
 
 const User = ({ data }) => (
   <Fragment>
-    <div className="bg-conttop p-t-60 p-b-60">
-      <div className="container  text-left">
-        <div className="row">
-          <div className="col-12 col-md-6">
-            <h2 className="large ">我的实验</h2>
-          </div>
+    <EurekaBanner>
+      <div className="row">
+        <div className="col-12 col-md-6">
+          <h2 className="large ">我的实验</h2>
         </div>
       </div>
-    </div>
+    </EurekaBanner>
     <Tab>
       <Tab.Item title="实验专题" className="bg-white m-t-20 p-b-60">
         <div className="container p-b-60">
@@ -82,18 +81,16 @@ const User = ({ data }) => (
 );
 const Teacher = ({ data }) => (
   <Fragment>
-    <div className="bg-conttop p-t-60 p-b-60">
-      <div className="container  text-left">
-        <div className="row">
-          <div className="col-6 col-md-6">
-            <h2 className="large ">老师专题例表</h2>
-          </div>
-          <div className="col-6 col-md-6 text-right">
-            <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
-          </div>
+    <EurekaBanner>
+      <div className="row">
+        <div className="col-6 col-md-6">
+          <h2 className="large">老师专题例表</h2>
+        </div>
+        <div className="col-6 col-md-6 text-right">
+          <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
         </div>
       </div>
-    </div>
+    </EurekaBanner>
     <div className="bg-white p-t-60 p-b-60">
       <div className="container p-b-60 ">
         {data.length ? (
