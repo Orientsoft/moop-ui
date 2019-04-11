@@ -32,11 +32,27 @@ export default class extends React.Component {
 
   state = { current: 0 };
 
+  componentDidMount() {
+    this.onSwitch(0);
+  }
+
+  onSwitch = (current) => {
+    const values = sessionStorage.getItem(`step${current}`);
+
+    if (values) {
+      try {
+        this.field.setValues(JSON.parse(values));
+      } catch (error) { /**/ }
+    }
+    this.setState({ current });
+  };
+
   onSubmit = () => {
     const { current } = this.state;
 
     this.field.validate((error, values) => {
       if (!error) {
+        sessionStorage.setItem(`step${current}`, JSON.stringify(values));
         this.setState({ current: current + 1 });
       }
     });
@@ -49,7 +65,7 @@ export default class extends React.Component {
       <Fragment>
         <Step current={current} shape="arrow">
           {steps.map((step, i) => (
-            <Step.Item key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+            <Step.Item key={i} title={step.title} onClick={() => this.onSwitch(i)} />
           ))}
         </Step>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} style={{ margin: '40px 0', minHeight: 160 }}>
