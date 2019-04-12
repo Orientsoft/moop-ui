@@ -43,7 +43,7 @@ export default ({ history }) => {
                     <div className="col-12">
                       <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
                     </div>
-                    <div className="col-12 m-t-10"><a href="page-recoverpw.html">忘记密码？</a></div>
+                    <div className="col-12 m-t-10"><a href="#">忘记密码？</a></div>
                   </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">

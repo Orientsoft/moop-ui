@@ -7,11 +7,11 @@ export default ({ history }) => {
   const [values, setValues] = useState({});
   const [captchaUrl, setCaptchaUrl] = useState('#');
   const onSubmit = () => {
-    const { name, key, password, captcha, invation } = values;
+    const { name, key, password, captcha, invitation } = values;
 
-    if (name && key && captcha && key === password && invation) {
+    if (name && key && captcha && key === password && invitation) {
       user.create({
-        data: { name, key, captcha, invation, role: consts.user.STUDENT },
+        data: { name, key, captcha, invitation, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
     }
   };
@@ -59,7 +59,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('invation')} type="invation" required placeholder="邀请码" />
+                      <input className="form-control" onChange={setField('invitation')} required placeholder="邀请码" />
                     </div>
                   </div>
                   <div className="form-group text-center m-t-40">
