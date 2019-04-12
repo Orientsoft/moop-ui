@@ -1,10 +1,31 @@
 import React, { Fragment, useState } from 'react';
-import Timeline from '@/components/Timeline';
-import Information from './Information';
+import { Step, Input, Upload, Button } from '@alifd/next';
+import EurekaForm from '@/components/EurekaForm';
 import MaterialEdit from './MaterialEdit';
 
+const items = [{
+  label: '申报名称',
+  required: true,
+  render: () => <Input />,
+}, {
+  label: '学校',
+  required: true,
+  render: () => <Input />,
+}, {
+  label: '所属院校',
+  required: true,
+  render: () => <Input />,
+}, {
+  label: '对应专业',
+  required: true,
+  render: () => <Input />,
+}, {
+  label: '项目广告',
+  render: () => <Upload><Button>上传图片</Button></Upload>,
+}];
+
 export default () => {
-  const [activeKey, setActiveKey] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   return (
     <Fragment>
@@ -17,22 +38,17 @@ export default () => {
           </div>
         </div>
       </div>
-      <Timeline activeKey={activeKey}>
-        <Timeline.Item title="1. 填写基本信息" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <Information onNext={() => setActiveKey(1)} />
-            </div>
-          </div>
-        </Timeline.Item>
-        <Timeline.Item title="2. 材料编辑" className="bg-white">
-          <div className="container text-left m-t-40 p-b-120">
-            <div className="row">
-              <MaterialEdit />
-            </div>
-          </div>
-        </Timeline.Item>
-      </Timeline>
+      <Step current={current} shape="arrow">
+        <Step.Item title="填写基本信息" onClick={() => setCurrent(0)} />
+        <Step.Item title="材料编辑" onClick={() => setCurrent(1)} />
+      </Step>
+      {current === 0 ? (
+        <EurekaForm style={{ margin: '40px 0', minHeight: 160 }} items={items} submitProps={{ onClick: () => setCurrent(1), label: '下一步' }} />
+      ) : (
+        <div className="row">
+          <MaterialEdit />
+        </div>
+      )}
     </Fragment>
   );
 };
