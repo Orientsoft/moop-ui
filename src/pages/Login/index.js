@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Message } from '@alifd/next';
 import { user } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
@@ -19,7 +20,7 @@ export default ({ history }) => {
         }
         setCurrentUser(data);
         history.push(data.check ? '/' : '/user/profile');
-      });
+      }).catch(() => Message.error(<span className="text-danger">忘记密码？请联系管理员重置</span>));
     }
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
@@ -43,7 +44,6 @@ export default ({ history }) => {
                     <div className="col-12">
                       <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
                     </div>
-                    <div className="col-12 m-t-10"><a href="#">忘记密码？</a></div>
                   </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">
