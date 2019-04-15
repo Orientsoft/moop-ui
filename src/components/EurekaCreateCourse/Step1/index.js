@@ -1,20 +1,25 @@
 import React from 'react';
 import { Button, Input, Radio, Upload } from '@alifd/next';
 import { IMAGE_UPLOAD_URL } from '@/utils/api';
+import get from 'lodash-es/get';
+import set from 'lodash-es/set';
 
 const RadioGroup = Radio.Group;
 
-export default (current, step) => [{
+export default (current, formValues) => [{
   label: '专题名称',
   required: true,
   render: () => <Input name="title" />,
 }, {
   label: '专题封面',
-  render: () => (
-    <Upload className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
-      <Button>上传图片</Button>
-    </Upload>
-  ),
+  render: () => {
+    formValues[current] = get(formValues, current, {});
+    return (
+      <Upload onSuccess={data => set(formValues[current], 'thumb', data.url)} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
+        <Button>上传图片</Button>
+      </Upload>
+    );
+  },
 }, {
   label: '专题描述',
   required: true,
@@ -29,12 +34,12 @@ export default (current, step) => [{
   render: () => <Input.TextArea name="testPoint" />,
 }, {
   label: '参考资料',
-  render: () => <Input />,
+  render: () => <Input name="material" />,
 }, {
   label: '专题特点',
-  render: () => <Input />,
+  render: () => <Input name="characteristic" />,
 }, {
   label: '是否公开',
   required: true,
-  render: () => <RadioGroup dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />,
+  render: () => <RadioGroup name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />,
 }];
