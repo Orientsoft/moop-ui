@@ -6,6 +6,7 @@ import UserCourses from '@/pages/User/Courses';
 import ClassroomDetail from '@/pages/ClassroomDetail';
 import ClassroomCreateDetail from '@/pages/ClassroomCreateDetail';
 import CreateClassroom from '@/pages/CreateClassroom';
+import EditClassroom from '@/pages/EditClassroom';
 import StudentReport from '@/pages/StudentReport';
 import StudentReportEdit from '@/pages/StudentReportEdit';
 import TeacherIntroduction from '@/pages/TeacherIntroduction';
@@ -43,6 +44,10 @@ const routerConfig = [
   {
     path: '/createclassroom',
     component: CreateClassroom,
+  },
+  {
+    path: '/editclassroom',
+    component: EditClassroom,
   },
   {
     path: '/studentreport',

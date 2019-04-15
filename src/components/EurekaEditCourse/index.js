@@ -72,7 +72,7 @@ export default class extends React.Component {
                 material: [],
                 testPoint: postData[0].testPoint,
                 public: postData[0].public !== 0,
-                tags: postData[3].tags,
+                tags: postData[3].tags || [],
                 projects: postData[1],
                 characteristic: [postData[0].characteristic],
                 startTime: postData[3].times[0],

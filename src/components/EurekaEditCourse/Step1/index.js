@@ -15,7 +15,7 @@ export default (current, formValues) => [{
   render: () => {
     formValues[current] = get(formValues, current, {});
     return (
-      <Upload onSuccess={data => set(formValues[current], 'thumb', data.id)} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
+      <Upload onSuccess={data => set(formValues[current], 'thumb', data.url)} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
         <Button>上传图片</Button>
       </Upload>
     );
