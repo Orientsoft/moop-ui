@@ -5,6 +5,7 @@ API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
 export const IMAGE_UPLOAD_URL = `${API.request.defaults.baseURL}/users/thumb`;
+export const FILE_UPLOAD_URL = `${API.request.defaults.baseURL}/upload`;
 
 export const captcha = {
   refresh: GET('/captcha'),

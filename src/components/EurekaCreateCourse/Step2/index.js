@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Dialog, Tag, Button, Grid } from '@alifd/next';
+import { Dialog, Tag, Button, Grid, Checkbox } from '@alifd/next';
 import { project } from '@/utils/api';
 
 const { Row, Col } = Grid;
@@ -34,7 +34,11 @@ const AddDialog = () => {
           ))), [])}
         </TagGroup>
         <Row>
-          {projects.map(p => <Col span={12} key={p.id}>{p.title}</Col>)}
+          {projects.map(p => (
+            <Col span={12} key={p.id}>
+              <Checkbox>{p.title}</Checkbox>
+            </Col>
+          ))}
         </Row>
       </Dialog>
     </Fragment>
