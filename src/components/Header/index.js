@@ -39,8 +39,8 @@ export default ({ onLogout, history }) => {
               </div>
             ) : (
               <div className="my-2 my-lg-0 regbnt">
-                <Link to="/register">注册</Link>
-                <Link to="/login">登录</Link>
+                {/* <Link to="/register">注册</Link> */}
+                <Link to="/login" className="toploginbtn">登录</Link>
               </div>
             )}
           </div>

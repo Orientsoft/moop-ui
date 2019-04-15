@@ -30,7 +30,7 @@ export default ({ history }) => {
       <div className="container p-t-60">
         <h2 className="text-center"><a className="navbar-brand logo" href="index.html"><i>E</i><span>ureka</span></a></h2>
         <div className="row justify-content-center">
-          <div className="col-6">
+          <div className="col-5">
             <div className=" card-box m-t-40">
               <h3 className="text-center uppercase">登录</h3>
               <div className="panel-body">

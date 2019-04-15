@@ -110,22 +110,30 @@ margin-bottom: 20px !important;
 margin-bottom: 30px !important;
 }
 html,body{ padding:0 ; margin: 0;overflow-x: hidden;}
-.bd-navbar{background: #24292e}
+.bd-navbar{
+    /* background: #24292e; */
+    background: #4760de;
+    border-bottom: solid 1px #7c8ee8;
+}
 .bd-navbar .bg-dark {
 padding: 0;
-background-color: #24292e!important;
+background-color: #4760de!important;
 }
-.bd-navbar li.nav-item{ margin: 0 10px}
+.bd-navbar li.nav-item{ 
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0 20px;}
 .logo{
 color: #ffffff !important;
 font-size: 40px;
-font-weight: 400;
-letter-spacing: .05em;
+font-weight: 600;
+margin-right: 20px;
+/* letter-spacing: .05em; */
 line-height: 60px;
 }
 a.logo:hover{ text-decoration: none}
 .logo i {
-  color: #2ebc4f;
+  color: #00ce72;
   font-style: normal;
 }
 .bd-navbar a.reg {
@@ -145,15 +153,15 @@ height: 34px;
 }
 .mainbg{
 /* background: url(../images/helloworld.jpg),#2b3137; */
-background: url(../images/obbg.jpg),#2b3137;
-
-background-position: center 10%;
+/* background: url(../images/obbg.jpg),#2b3137; */
+background: url(../images/loginbg.png),#4760de;
+background-position: center 70%;
 background-repeat: no-repeat;
 background-size: cover;
 color: hsla(0,0%,100%,.6);
 padding-bottom: 64px;}
 .bglog{
-  background: url(../images/helloworld.jpg),#2b3137;
+  background: url(../images/loginbg.png),#4760de;
   background-position: center 10%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -168,11 +176,12 @@ font-weight: 400;
 }
 .mainbg .large{  font-size: 64px!important; color: #fff;}
 .card-box {
-     background: #f8f8f8;
-padding:6% 6% 8%;
-border: 1px solid rgba(255,255,255,.4);
-background-clip: padding-box;
-color: #333 ;
+     /* background: #f8f8f8; */
+    background-color: #fff;
+    padding:6% 6% 8%;
+    /* border: 1px solid rgba(255,255,255,.4); */
+    background-clip: padding-box;
+    color: #333 ;
 }
 /* .card-box {
 padding: 14px;
@@ -522,7 +531,7 @@ display: inline-block;}
     .course li:hover{ background: #f8f8f8;}
     .course li a.cbtn{background: #f8f8f8; margin-right: 10px;float: right; color: #666; text-decoration: none;border: 1px #ddd solid; width: 30px; height: 30px; text-align: center; line-height: 30px;border-radius: 50%; display: inline-block;}
 .course li a.cbtn.cclose span{ line-height: 24px; font-size: 1.2rem;}
-.coursetext{ font-size: 12px;}
+.coursetext,fonts12{ font-size: 12px;}
 .carousel-item{ background-color: #000}
 .adbg{
     height: 400px; width: 100%;
@@ -553,7 +562,9 @@ a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
 .rowline .float-left{ width: 30%; font-size: 14px; color: #333; padding-left: 10px;}
 .rowline .progress{ float: left; width: 50%;}
 .rowline .float-right{width: 20%; font-size: 12px; color: #666; padding-left: 10px;}
-.regbnt a,.regbnt a:hover{ color: #fff; margin: 0 10px}
+/* .regbnt a,.regbnt a:hover{ color: #fff; margin: 0 10px;    font-size: 14px; padding: 0 20px;} */
+.regbnt a.toploginbtn{ color: #fff; font-size: 14px; background-color: #00ce72; border-radius: 2px; padding: 8px 30px; text-decoration: none; height: 20px; }
+
 .endcard .card{ color: #666}
 .endcard .card-img-top{ opacity: .6; background: #000}
 .achieve{ background-color: #e6fff6}
