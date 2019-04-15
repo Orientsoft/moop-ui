@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import get from 'lodash-es/get';
 import { Dialog } from '@alifd/next';
+import { container } from '@/utils/api';
 
 export default ({ course, data = [] }) => {
   const [isRunning, setIsRunning] = useState({});
@@ -11,10 +12,19 @@ export default ({ course, data = [] }) => {
   const onStart = (id) => {
     Dialog.alert({
       title: '启动',
-      content: '项目启动中......',
+      content: '是否确定启动？',
+    });
+    container.start({
+      data: {
+        classroom: course.id,
+        project: id,
+      },
+    }).then(() => {
+      setIsRunning({ ...isRunning, [id]: true });
     });
   };
   const onStop = (id) => {
+    container.stop({}, { projectId: id });
     Dialog.alert({
       title: '停止',
       content: '正在停止......',

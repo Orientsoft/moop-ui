@@ -1,11 +1,12 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
-API.request.defaults.timeout = 30000;
+API.request.defaults.timeout = 60000;
 API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
-export const IMAGE_UPLOAD_URL = `${API.request.defaults.baseURL}/users/thumb`;
+export const IMAGE_UPLOAD_URL = `${API.request.defaults.baseURL}/thumb`;
 export const FILE_UPLOAD_URL = `${API.request.defaults.baseURL}/upload`;
+export const STUDENT_UPLOAD_URL = `${API.request.defaults.baseURL}/classrooms/upload`;
 
 export const captcha = {
   refresh: GET('/captcha'),
@@ -89,4 +90,9 @@ export const publication = {
   create: POST('/classrooms/:classroomId/publication'),
   update: PATCH('/classrooms/:classroomId/publication'),
   delete: DELETE('/classrooms/:classroomId/publication'),
+};
+
+export const container = {
+  start: POST('/container'),
+  stop: DELETE('/container'),
 };
