@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Input, Radio, Upload } from '@alifd/next';
+import { IMAGE_UPLOAD_URL } from '@/utils/api';
 
 const RadioGroup = Radio.Group;
 
@@ -9,7 +10,11 @@ export default (current, step) => [{
   render: () => <Input name="title" />,
 }, {
   label: '专题封面',
-  render: () => <Upload><Button>上传图片</Button></Upload>,
+  render: () => (
+    <Upload className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
+      <Button>上传图片</Button>
+    </Upload>
+  ),
 }, {
   label: '专题描述',
   required: true,

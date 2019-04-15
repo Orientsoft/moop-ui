@@ -571,3 +571,12 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
  }
  /* .media-body a{ color: #333;}
  .media-body a:hover{ text-decoration: none; color: #007bff;} */
+ .eureka-upload .next-upload-list-card .next-upload-list-item {
+    float: none;
+ }
+ .eureka-upload .next-upload-list .next-upload-list-card {
+     width: 100%;
+ }
+ .eureka-upload .next-upload-list-card .next-upload-list-item-wrapper {
+     width: auto;
+ }

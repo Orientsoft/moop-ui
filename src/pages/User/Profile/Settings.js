@@ -53,7 +53,18 @@ export default (props) => {
     required: true,
     render: () => <Radio.Group name="gender" defaultValue={1} dataSource={[{ label: '女', value: 0 }, { label: '男', value: 1 }]} />,
   }];
-  const items = isTeacher(props.user) ? itemBefore.concat(itemAfter) : itemBefore.concat(certification, ...itemAfter);
+  const items = isTeacher(props.user) ? itemBefore.concat({
+    label: '职称',
+    required: true,
+    render: () => <Input name="certification" />,
+  }, {
+    label: '个人简介',
+    required: true,
+    render: () => <Input.TextArea name="certification" />,
+  }, {
+    label: '链接',
+    render: () => <Input name="certification" />,
+  }, itemAfter) : itemBefore.concat(certification, ...itemAfter);
   const onClick = (values, form) => {
     form.field.validate(() => {
       if (uploader) {
