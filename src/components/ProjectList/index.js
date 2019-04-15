@@ -13,14 +13,16 @@ export default ({ course, data = [] }) => {
     Dialog.alert({
       title: '启动',
       content: '是否确定启动？',
-    });
-    container.start({
-      data: {
-        classroom: course.id,
-        project: id,
+      onOk: () => {
+        container.start({
+          data: {
+            classroom: course.id,
+            project: id,
+          },
+        }).then(() => {
+          setIsRunning({ ...isRunning, [id]: true });
+        });
       },
-    }).then(() => {
-      setIsRunning({ ...isRunning, [id]: true });
     });
   };
   const onStop = (id) => {

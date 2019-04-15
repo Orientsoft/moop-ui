@@ -7,7 +7,6 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
-import Step6 from './Step6';
 
 const { Row, Col } = Grid;
 
@@ -26,9 +25,6 @@ const steps = [{
 }, {
   title: '添加数据',
   render: Step5,
-}, {
-  title: '发布专题',
-  render: Step6,
 }];
 
 const formValues = [];
@@ -112,9 +108,7 @@ export default class extends React.Component {
             );
           })}
           <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-            <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>
-              {current === steps.length - 1 ? '完成创建' : '下一步'}
-            </Form.Submit>
+            <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>保存</Form.Submit>
           </Form.Item>
         </Form>
       </Fragment>
