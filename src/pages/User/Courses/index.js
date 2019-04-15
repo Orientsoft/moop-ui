@@ -79,12 +79,13 @@ const User = ({ data }) => (
     </Tab>
   </Fragment>
 );
-const Teacher = ({ data }) => (
+const Teacher = ({ user, data }) => (
   <Fragment>
     <EurekaBanner>
       <div className="row">
         <div className="col-6 col-md-6">
-          <h2 className="large">老师专题例表</h2>
+          <h2 className="large">HI! {user.name}</h2>
+          <h2 style={{ fontSize: 18 }}>您有 {data.length} 个专题</h2>
         </div>
         <div className="col-6 col-md-6 text-right">
           <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
@@ -119,5 +120,5 @@ export default () => {
     classroom.selectMine().then(({ data }) => setCourses(data.data));
   }, []);
 
-  return user.role === consts.user.TEACHER ? <Teacher data={courses} /> : <User data={courses} />;
+  return user.role === consts.user.TEACHER ? <Teacher user={user} data={courses} /> : <User user={user} data={courses} />;
 };

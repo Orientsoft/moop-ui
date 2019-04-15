@@ -4,9 +4,13 @@ import EurekaForm from '@/components/EurekaForm';
 import { user } from '@/utils/api';
 
 const items = [{
-  label: '新密码',
+  label: '原始密码',
   required: true,
   render: () => <Input htmlType="password" name="key" />,
+}, {
+  label: '新密码',
+  required: true,
+  render: () => <Input htmlType="password" name="newKey" />,
 }, {
   label: '确认密码',
   required: true,
@@ -14,12 +18,12 @@ const items = [{
 }];
 
 export default (props) => {
-  const onClick = ({ key, password }, form) => {
+  const onClick = ({ key, newKey, password }, form) => {
     form.field.validate(() => {
-      if (key !== password) {
+      if (newKey !== password) {
         Message.error('两次输入不一致，请重新输入');
       } else {
-        user.update({ data: { key } }, { userId: props.user.id }).then(() => {
+        user.update({ data: { key, newKey } }, { userId: props.user.id }).then(() => {
           Message.success('更新成功');
         });
       }

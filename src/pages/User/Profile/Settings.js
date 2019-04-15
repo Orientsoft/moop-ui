@@ -3,10 +3,16 @@ import { Input, Button, Radio, Upload, Message } from '@alifd/next';
 import EurekaForm from '@/components/EurekaForm';
 import { user, IMAGE_UPLOAD_URL } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
+import { isTeacher } from '@/utils';
 
 export default (props) => {
   const uploader = useRef(null);
-  const items = [{
+  const certification = {
+    label: '身份认证信息',
+    required: true,
+    render: () => <Input name="certification" />,
+  };
+  const itemBefore = [{
     label: '用户名',
     required: true,
     render: () => <Input disabled name="name" />,
@@ -22,17 +28,20 @@ export default (props) => {
         listType="image"
       >
         <Button>上传图片</Button>
+        <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
       </Upload>
     ),
   }, {
     label: '真实姓名',
     required: true,
-    render: () => <Input name="realname" />,
-  }, {
-    label: '身份认证信息',
-    required: true,
-    render: () => <Input name="certification" />,
-  }, {
+    render: () => (
+      <div>
+        <Input name="realname" style={{ width: '100%' }} />
+        <div className="text-muted fontsw m-t-10">请填写真实姓名</div>
+      </div>
+    ),
+  }];
+  const itemAfter = [{
     label: '常用邮箱',
     render: () => <Input name="email" />,
   }, {
@@ -44,6 +53,7 @@ export default (props) => {
     required: true,
     render: () => <Radio.Group name="gender" defaultValue={1} dataSource={[{ label: '女', value: 0 }, { label: '男', value: 1 }]} />,
   }];
+  const items = isTeacher(props.user) ? itemBefore.concat(itemAfter) : itemBefore.concat(certification, ...itemAfter);
   const onClick = (values, form) => {
     form.field.validate(() => {
       if (uploader) {
