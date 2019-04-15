@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Form, Field, Grid, Step } from '@alifd/next';
+import { Form, Field, Grid, Step, Message } from '@alifd/next';
 import merge from 'lodash-es/merge';
 import { classroom } from '@/utils/api';
 import Step1 from './Step1';
@@ -55,33 +55,18 @@ export default class extends React.Component {
 
     this.field.validate((error, values) => {
       if (!error) {
-        if (current === steps.length - 1) {
-          let postData = sessionStorage.getItem('form');
-          try {
-            postData = JSON.parse(postData);
-            classroom.create({
-              data: {
-                title: postData[0].title,
-                thumb: postData[0].thumb,
-                description: postData[0].description,
-                requirement: postData[0].requirement,
-                material: [],
-                testPoint: postData[0].testPoint,
-                public: postData[0].public !== 0,
-                tags: postData[3].tags || [],
-                projects: postData[1],
-                characteristic: [postData[0].characteristic],
-                startTime: postData[3].times[0],
-                endTime: postData[3].times[1],
-              },
-            });
-          } catch (err) { /**/ }
-        } else {
-          formValues[current] = merge(formValues[current], values);
-          sessionStorage.setItem('form', JSON.stringify(formValues));
-          this.field.remove();
-          this.setState({ current: current + 1 });
+        let postData = null;
+
+        switch (current) {
+          case 0:
+            postData = {};
+            break;
+          default:
+            postData = null;
         }
+        classroom.update({ data: postData }, { classroomId: this.props.location.state.id }).then(() => {
+          Message.success('更新成功');
+        });
       }
     });
   };

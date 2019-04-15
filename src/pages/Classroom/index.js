@@ -73,7 +73,7 @@ export default ({ history }) => {
               {user && user.role === consts.user.TEACHER ? (
                 <Fragment>
                   <Link to="/classroomdetail" className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>
-                  <Link to="/editclassroom" className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
+                  <Link to={{ pathname: '/editclassroom', state: course }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
                 </Fragment>
               ) : null}
             </div>

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import EurekaBanner from '@/components/EurekaBanner';
 import EurekaEditCourse from '@/components/EurekaEditCourse';
 
-export default () => {
+export default (props) => {
   return (
     <Fragment>
       <EurekaBanner>
@@ -12,7 +12,7 @@ export default () => {
           </div>
         </div>
       </EurekaBanner>
-      <EurekaEditCourse />
+      <EurekaEditCourse {...props} />
     </Fragment>
   );
 };
