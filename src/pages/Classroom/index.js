@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import moment from 'moment';
 import { Tab } from '@alifd/next';
-import { classroom, invitation } from '@/utils/api';
+import { classroom, invitation, progress as progressAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 import { getCurrentUser } from '@/utils/helper';
+import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
 import TeacherList from '@/components/TeacherList';
 
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
+  const [students, setStudents] = useState([]);
   const user = getCurrentUser();
   const onJoin = () => {
     if (user) {
@@ -51,7 +53,12 @@ export default ({ history }) => {
     };
 
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
-      .then(({ data }) => setCourse(data));
+      .then(({ data }) => {
+        setCourse(data);
+        if (user && isTeacher(user)) {
+          progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+        }
+      });
     container.addEventListener('scroll', fixedNaver);
     return () => container.removeEventListener('scroll', fixedNaver);
   }, [history.location.search]);
@@ -163,50 +170,23 @@ export default ({ history }) => {
                         <th width="140">评分</th>
                         <th width="200">操作</th>
                       </tr>
-                      <tr>
-                        <td>5072120019098922</td>
-                        <td>吴崇试</td>
-                        <td>
-                          <div className="progress m-t-5">
-                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                          </div>
-                        </td>
-                        <td>A+</td>
-                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                      </tr>
-                      <tr>
-                        <td>072120019098922</td>
-                        <td>高春媛</td>
-                        <td>
-                          <div className="progress m-t-5">
-                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                          </div>
-                        </td>
-                        <td>A+</td>
-                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                      </tr>
-                      <tr>
-                        <td>072120019098922</td>
-                        <td>王林</td>
-                        <td>
-                          <div className="progress m-t-5">
-                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                          </div>
-                        </td>
-                        <td>A+</td>
-                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                      </tr>
-                      <tr>
-                        <td>072120019098922</td>
-                        <td>王森林</td>
-                        <td>
-                          <div className="progress m-t-5">
-                            <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                          </div>
-                        </td>
-                        <td>A+</td>
-                        <td><Link to="/studentreport" className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
-                      </tr>
+                      {students.map(({ participant, progress, score = 'N/A' }) => {
+                        const { id, certification, realname } = participant;
+                        const percent = parseInt(progress * 100, 10);
+                        return (
+                          <tr key={id}>
+                            <td>{certification}</td>
+                            <td>{realname}</td>
+                            <td>
+                              <div className="progress m-t-5">
+                                <div className="progress-bar" role="progressbar" style={{ width: `${percent}%` }} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">{percent}%</div>
+                              </div>
+                            </td>
+                            <td>{score}</td>
+                            <td><Link to={`/studentreport?id=${id}&classroom=${course.id}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

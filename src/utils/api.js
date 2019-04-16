@@ -72,6 +72,7 @@ export const progress = {
   create: POST('/progresses'),
   delete: DELETE('/progresses/:progressId'),
   selectAll: GET('/progresses'),
+  getStudents: GET('/progress/teacher'),
 };
 
 export const report = {
