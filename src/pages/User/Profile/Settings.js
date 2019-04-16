@@ -66,7 +66,7 @@ export default (props) => {
   const items = isTeacher(props.user) ? itemBefore.concat({
     label: '职称',
     required: true,
-    render: () => <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="title" />,
+    render: () => <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="profession" />,
   }, {
     label: '个人简介',
     required: true,

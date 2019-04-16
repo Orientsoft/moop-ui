@@ -34,8 +34,28 @@ export default class extends React.Component {
 
   state = { current: 0 };
 
-  componentDidMount() {
-    this.onSwitch(0);
+  constructor(props) {
+    super(props);
+    const { state } = props.location;
+
+    if (state) {
+      classroom.select({}, { classroomId: state.id }).then(({ data }) => {
+        formValues[0] = {
+          title: data.title,
+          description: data.description,
+          requirement: data.requirement,
+          testPoint: data.testPoint,
+          public: data.public ? 1 : 0,
+          characteristic: data.characteristic.join(', '),
+        };
+        formValues[3] = {
+          times: [data.startTime, data.endTime],
+          tags: data.tags.map(tag => tag.id),
+        };
+        sessionStorage.setItem('form', JSON.stringify(formValues));
+        this.onSwitch(0);
+      });
+    }
   }
 
   onSwitch = (current) => {
@@ -56,17 +76,36 @@ export default class extends React.Component {
     this.field.validate((error, values) => {
       if (!error) {
         let postData = null;
+        formValues[current] = merge(formValues[current], values);
 
         switch (current) {
+          // 专题描述
           case 0:
+            postData = {
+              ...formValues[current],
+              characteristic: formValues[current].characteristic.split(/[,，]/).map(c => c.trim()),
+              public: !!formValues[current].public,
+            };
+            break;
+          // 实验项目
+          case 1:
             postData = {};
+            break;
+          case 3:
+            postData = {
+              startTime: formValues[current].times[0],
+              endTime: formValues[current].times[1],
+              tags: formValues[current].tags,
+            };
             break;
           default:
             postData = null;
         }
-        classroom.update({ data: postData }, { classroomId: this.props.location.state.id }).then(() => {
-          Message.success('更新成功');
-        });
+        if (postData) {
+          classroom.update({ data: postData }, { classroomId: this.props.location.state.id }).then(() => {
+            Message.success('更新成功');
+          });
+        }
       }
     });
   };
