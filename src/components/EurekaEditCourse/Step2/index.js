@@ -10,9 +10,15 @@ const AddDialog = ({ save }) => {
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [currentTag, setCurrentTag] = useState(null);
   const onOk = () => {
     save([...selected]);
     setVisible(false);
+  };
+  const onChangeTag = (id) => {
+    setCurrentTag(id);
+    setProjects([]);
+    queryProjects(id);
   };
   const onChange = (isSelected, id) => {
     if (isSelected) {
@@ -45,7 +51,7 @@ const AddDialog = ({ save }) => {
       <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
         <TagGroup>
           {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
-            <SelectableTag key={id} onChange={() => queryProjects(id)} title={`${name}(${count})`}>{name}({count})</SelectableTag>
+            <SelectableTag checked={currentTag === id} key={id} onChange={() => onChangeTag(id)} title={`${name}(${count})`}>{name}({count})</SelectableTag>
           ))), [])}
         </TagGroup>
         <Row>
