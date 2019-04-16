@@ -18,14 +18,14 @@ export default ({ size = 9, tag }) => {
   return (
     <div className="row m-t-40">
       {courses.slice(0, size).map(({ id, title, description, thumb, timeConsume }) => (
-        <div key={id} className="col-12 col-md-4 m-b-30">
+        <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">
-            <img className="card-img-top" src={get(thumb, 'thumbnail') ? thumb.thumbnail : '/static/images/index1.jpg'} alt={title} style={{ height: 124 }} />
+            <div className="post"><Link to={`/classroom?id=${id}`} ><img className="card-img-top" src={get(thumb, 'thumbnail') ? thumb.thumbnail : '/static/images/index1.jpg'} alt={title} /></Link></div>
             <div className="card-body text-left">
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
               <p className="card-text">{description}</p>
-              <p className="text-success fs14">学时安排：{timeConsume}</p>
-              <Link to={`/classroom?id=${id}`} className="btn btn-primary">查看详情 <span className="link-add">➪</span></Link>
+              <span className="text-secondary fs12">学时安排：{timeConsume}</span>
+              {/* <Link to={`/classroom?id=${id}`} className="btn indexbtn">查看详情</Link> */}
             </div>
           </div>
         </div>
