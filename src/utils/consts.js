@@ -10,4 +10,5 @@ export default {
     MALE: 0,
     FEMALE: 1,
   },
+  titles: ['助教', '讲师', '教授'],
 };
