@@ -4,6 +4,7 @@ import EurekaForm from '@/components/EurekaForm';
 import { user, IMAGE_UPLOAD_URL } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
 import { isTeacher } from '@/utils';
+import consts from '@/utils/consts';
 
 export default (props) => {
   const uploader = useRef(null);
@@ -51,7 +52,7 @@ export default (props) => {
   }, {
     label: '性别',
     required: true,
-    render: () => <Radio.Group name="gender" defaultValue={1} dataSource={[{ label: '女', value: 0 }, { label: '男', value: 1 }]} />,
+    render: () => <Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} />,
   }];
   const items = isTeacher(props.user) ? itemBefore.concat({
     label: '职称',

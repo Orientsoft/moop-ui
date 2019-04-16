@@ -16,7 +16,11 @@ export default ({ history }) => {
           data.gender = consts.sex.MALE;
         }
         if (!data.thumb) {
-          data.thumb = '/static/images/user.jpg';
+          if (data.gender === consts.sex.MALE) {
+            data.thumb = '/static/images/headerboy.png';
+          } else {
+            data.thumb = '/static/images/headgirl.png';
+          }
         }
         setCurrentUser(data);
         history.push(data.check ? '/' : '/user/profile');
