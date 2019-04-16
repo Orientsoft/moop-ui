@@ -105,10 +105,16 @@ export default class extends React.Component {
           classroom.update({ data: postData }, { classroomId: this.props.location.state.id }).then(() => {
             Message.success('更新成功');
           });
+        } else {
+          Message.success('更新成功');
         }
       }
     });
   };
+
+  componentWillUnmount() {
+    sessionStorage.removeItem('form');
+  }
 
   render() {
     const { current } = this.state;

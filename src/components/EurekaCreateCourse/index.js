@@ -42,6 +42,10 @@ export default class extends React.Component {
     this.onSwitch(0);
   }
 
+  componentWillUnmount() {
+    sessionStorage.removeItem('form');
+  }
+
   onSwitch = (current) => {
     let values = sessionStorage.getItem('form');
 
@@ -77,6 +81,7 @@ export default class extends React.Component {
                 characteristic: [postData[0].characteristic],
                 startTime: postData[3].times[0],
                 endTime: postData[3].times[1],
+                status: postData[5].status,
               },
             });
           } catch (err) { /**/ }
