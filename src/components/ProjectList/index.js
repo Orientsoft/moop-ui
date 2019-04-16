@@ -5,32 +5,49 @@ import { container } from '@/utils/api';
 
 export default ({ course, data = [] }) => {
   const [isRunning, setIsRunning] = useState({});
+  const [containers, setContainers] = useState({});
   const onClick = () => Dialog.alert({
     title: '提示',
     content: '请先运行项目',
   });
-  const onStart = (id) => {
-    Dialog.alert({
-      title: '启动',
-      content: '是否确定启动？',
-      onOk: () => {
-        container.start({
-          data: {
-            classroom: course.id,
-            project: id,
-          },
-        }).then(() => {
-          setIsRunning({ ...isRunning, [id]: true });
-        });
-      },
-    });
+  const onStart = (id, isStarted) => {
+    if (isRunning[id] || isStarted) {
+      Dialog.alert({
+        title: '启动',
+        content: '项目已经启动',
+      });
+    } else {
+      Dialog.alert({
+        title: '启动',
+        content: '是否确定启动？',
+        onOk: () => {
+          container.start({
+            data: {
+              classroom: course.id,
+              project: id,
+            },
+          }).then(({ data: { callback } }) => {
+            setContainers({ ...containers, [id]: callback });
+            setIsRunning({ ...isRunning, [id]: true });
+          });
+        },
+      });
+    }
   };
-  const onStop = (id) => {
-    container.stop({}, { projectId: id });
-    Dialog.alert({
-      title: '停止',
-      content: '正在停止......',
-    });
+  const onStop = (id, isStarted) => {
+    if (isRunning[id] || isStarted) {
+      setIsRunning({ ...isRunning, [id]: false });
+      container.stop({ params: { projectId: id } });
+      Dialog.alert({
+        title: '停止',
+        content: '正在停止......',
+      });
+    } else {
+      Dialog.alert({
+        title: '停止',
+        content: '项目未运行',
+      });
+    }
   };
 
   return (
@@ -44,16 +61,16 @@ export default ({ course, data = [] }) => {
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
-              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id)} className="palyico">▶</a>
-              <a href="javascript:void(0);" onClick={() => onStop(project.id)} className="stopico">▪</a>
+              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className="palyico">▶</a>
+              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className="stopico">▪</a>
               {/* eslint-enable */}
             </h5>
           </div>
           <div id="courses" className="collapse">
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
-                {project.running ? (
-                  <a href={lab.url} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
+                {isRunning[project.id] || project.running ? (
+                  <a href={get(containers, `${project.id}.labs.${lab.id}`, project.labURL[lab.id])} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">{lab.name}</a>
                 )}
