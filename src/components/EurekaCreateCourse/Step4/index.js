@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Checkbox, DatePicker } from '@alifd/next';
-import get from 'lodash/get';
 import { tag } from '@/utils/api';
 
-const TagList = ({ save }) => {
+const TagList = ({ selected, save }) => {
   const [tags, setTags] = useState([]);
-  const [_, setSelected] = useState([]);
+  const [current, setSelected] = useState(selected);
   const onChange = (items) => {
     setSelected(items);
     save(items);
@@ -18,7 +17,7 @@ const TagList = ({ save }) => {
     }))));
   }, []);
 
-  return <Checkbox.Group dataSource={tags} onChange={onChange} />;
+  return <Checkbox.Group value={current} dataSource={tags} onChange={onChange} />;
 };
 
 export default (current, formValues) => [{
@@ -29,7 +28,7 @@ export default (current, formValues) => [{
   label: '添加标签',
   required: true,
   render: () => {
-    formValues[current] = get(formValues[current], 'tags', {});
-    return <TagList save={data => formValues[current].tags = data} />;
+    formValues[current] = formValues[current] || {};
+    return <TagList selected={formValues[current].tags} save={data => formValues[current].tags = data} />;
   },
 }];

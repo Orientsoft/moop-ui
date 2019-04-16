@@ -41,5 +41,5 @@ export default (current, formValues) => [{
 }, {
   label: '是否公开',
   required: true,
-  render: () => <RadioGroup name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />,
+  render: () => <RadioGroup defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />,
 }];

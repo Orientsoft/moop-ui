@@ -36,7 +36,7 @@ const formValues = [];
 export default class extends React.Component {
   field = new Field(this);
 
-  state = { current: 0 };
+  state = { current: 0, classroomData: {} };
 
   componentDidMount() {
     this.onSwitch(0);
@@ -63,30 +63,43 @@ export default class extends React.Component {
 
     this.field.validate((error, values) => {
       if (!error) {
+        formValues[current] = merge(formValues[current], values);
+        if (current === 3) {
+          classroom.create({
+            data: {
+              title: formValues[0].title,
+              thumb: formValues[0].thumb,
+              description: formValues[0].description,
+              requirement: formValues[0].requirement,
+              material: [],
+              invited: 0,
+              testPoint: formValues[0].testPoint,
+              public: formValues[0].public !== 0,
+              projects: formValues[1],
+              characteristic: formValues[0].characteristic.split(/[,，]/),
+              startTime: formValues[3].times[0],
+              endTime: formValues[3].times[1],
+              tags: formValues[3].tags,
+              status: 0,
+            },
+          }).then(({ data }) => {
+            this.setState({ classroomData: data });
+          });
+          sessionStorage.setItem('form', JSON.stringify(formValues));
+          this.field.remove();
+          this.setState({ current: current + 1 });
+          return;
+        }
         if (current === steps.length - 1) {
-          let postData = sessionStorage.getItem('form');
-          try {
-            postData = JSON.parse(postData);
-            classroom.create({
-              data: {
-                title: postData[0].title,
-                thumb: postData[0].thumb,
-                description: postData[0].description,
-                requirement: postData[0].requirement,
-                material: [],
-                testPoint: postData[0].testPoint,
-                public: postData[0].public !== 0,
-                tags: postData[3].tags,
-                projects: postData[1],
-                characteristic: [postData[0].characteristic],
-                startTime: postData[3].times[0],
-                endTime: postData[3].times[1],
-                status: postData[5].status,
-              },
-            });
-          } catch (err) { /**/ }
+          classroom.update({
+            data: {
+              invited: formValues[5].status ? 1 : 0,
+              status: formValues[5].status,
+            },
+          }, { classroomId: this.state.classroomData.id }).then(({ data }) => {
+            this.props.history.push(`/classroom?id=${data.id}`);
+          });
         } else {
-          formValues[current] = merge(formValues[current], values);
           sessionStorage.setItem('form', JSON.stringify(formValues));
           this.field.remove();
           this.setState({ current: current + 1 });
@@ -102,7 +115,7 @@ export default class extends React.Component {
       <Fragment>
         <Step current={current} shape="arrow">
           {steps.map((step, i) => (
-            <Step.Item key={i} title={step.title} onClick={() => this.onSwitch(i)} />
+            <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.onSwitch(i)} />
           ))}
         </Step>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} style={{ margin: '40px 0', minHeight: 160 }}>

@@ -6,5 +6,5 @@ import { DATA_UPLOAD_URL } from '@/utils/api';
 export default (current, formValue, form) => [{
   label: '上传数据',
   required: true,
-  render: () => <Upload listType="text" action={`${DATA_UPLOAD_URL}?classroomId=${get(form, 'props.location.state.id')}`}><Button>上传文件</Button></Upload>,
+  render: () => <Upload listType="text" action={`${DATA_UPLOAD_URL}?classroomId=${get(form, 'state.classroomData.id')}`}><Button>上传文件</Button></Upload>,
 }];
