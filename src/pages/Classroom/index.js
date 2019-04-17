@@ -92,6 +92,29 @@ export default ({ history }) => {
           </div>
         </div>
       </div>
+
+      <div className="modal fade modaltop" id="dataloading" tabindex="-1" role="dialog" aria-labelledby="dataloadingTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialogloading" role="document">
+          <div className="loadingmodal-header">
+          </div>
+          <div className="modalloading">
+            <div className="css-typing">
+              <p className="starttime ">开始启动实验环境...</p>
+              <p className="fright">✓</p>
+              <p className="starttime time2">装载实验数据...</p>
+              <p className="fright fright2">✓</p>
+              <p className="starttime time3">启动实验容器...</p>
+              <p className="fright fright3">✓</p>
+              <p className="starttime time14">授权用户...</p>
+              <p className="fright fright4">✓</p>
+              <p className="starttime time5">装备跳转到实验环境</p>
+              <p className="fright fright5">✓</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <Tab navStyle={{ padding: '0 10%' }} contentStyle={{ padding: '30px 0' }}>
         <Tab.Item title="详情">
           <div className="container text-left m-t-60 p-b-60">

@@ -61,8 +61,9 @@ export default ({ course, data = [] }) => {
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
-              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className="palyico">▶</a>
-              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className="stopico">▪</a>
+              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className="palyico " title="启动实验环境">▶</a>
+              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className="stopico noico" title="停止实验环境">▪</a>
+              <a href="#" class="dataico noico" title="查看实验数据" data-toggle="modal" data-target="#dataloading">≡</a>
               {/* eslint-enable */}
             </h5>
           </div>
@@ -79,6 +80,8 @@ export default ({ course, data = [] }) => {
           </div>
         </div>
       ))}
+ 
     </div>
+    
   );
 };
