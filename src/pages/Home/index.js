@@ -13,7 +13,7 @@ export default () => (
               转变您的组织提供您的将来需要的技能。减少时间和成本通过利用edX审查的熟练用户群填充您<br /><br />
               产生影响创建增长文化，并通过提供按需学习平台帮助<br />
             </h4>
-            <Link to="/courses" class="btn btn-lg startbtn m-t-40">更多专题</Link>
+            <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多专题</Link>
           </div>
         </div>
       </div>
