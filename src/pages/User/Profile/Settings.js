@@ -9,8 +9,8 @@ import consts from '@/utils/consts';
 
 export default (props) => {
   const [thumb, setThumb] = useState(null);
-  const [realname, setRealname] = useState('');
-  const [certification, setCertification] = useState('');
+  const [realname, setRealname] = useState(props.user.realname || '');
+  const [certification, setCertification] = useState(props.user.certification || '');
   const onClick = (values, form) => {
     form.field.validate(() => {
       const postData = thumb ? { ...values, thumb, realname, certification } : { ...values, realname, certification };
@@ -25,7 +25,7 @@ export default (props) => {
     required: true,
     render: () => (
       <Fragment>
-        <Input trim onChange={e => setCertification(e)} style={{ width: '100%' }} />
+        <Input trim value={certification} onChange={e => setCertification(e)} style={{ width: '100%' }} />
         <div className="text-muted fontsw m-t-10">请填写你的真实学号</div>
       </Fragment>
     ),
@@ -53,7 +53,7 @@ export default (props) => {
     required: true,
     render: () => (
       <Fragment>
-        <Input trim onChange={e => setRealname(e)} style={{ width: '100%' }} />
+        <Input trim value={realname} onChange={e => setRealname(e)} style={{ width: '100%' }} />
         <div className="text-muted fontsw m-t-10">请填写真实姓名</div>
       </Fragment>
     ),

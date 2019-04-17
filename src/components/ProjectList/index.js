@@ -63,7 +63,7 @@ export default ({ course, data = [] }) => {
               {/* eslint-disable */}
               <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className="palyico " title="启动实验环境">▶</a>
               <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className="stopico noico" title="停止实验环境">▪</a>
-              <a href="#" class="dataico noico" title="查看实验数据" data-toggle="modal" data-target="#dataloading">≡</a>
+              <a href="#" className="dataico noico" title="查看实验数据" data-toggle="modal" data-target="#dataloading">≡</a>
               {/* eslint-enable */}
             </h5>
           </div>
@@ -71,7 +71,7 @@ export default ({ course, data = [] }) => {
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
                 {isRunning[project.id] || project.running ? (
-                  <a href={get(containers, `${project.id}.labs.${lab.id}`, project.labURL[lab.id])} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
+                  <a href={project.labURL[lab.id] || get(containers[project.id], `labURL.${lab.id}`)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">{lab.name}</a>
                 )}
@@ -80,8 +80,25 @@ export default ({ course, data = [] }) => {
           </div>
         </div>
       ))}
- 
+      <div className="modal fade modaltop" id="dataloading" tabIndex="-1" role="dialog" aria-labelledby="dataloadingTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialogloading" role="document">
+          <div className="loadingmodal-header" />
+          <div className="modalloading">
+            <div className="css-typing">
+              <p className="starttime ">开始启动实验环境...</p>
+              <p className="fright">✓</p>
+              <p className="starttime time2">装载实验数据...</p>
+              <p className="fright fright2">✓</p>
+              <p className="starttime time3">启动实验容器...</p>
+              <p className="fright fright3">✓</p>
+              <p className="starttime time14">授权用户...</p>
+              <p className="fright fright4">✓</p>
+              <p className="starttime time5">装备跳转到实验环境</p>
+              <p className="fright fright5">✓</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
   );
 };
