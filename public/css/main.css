@@ -227,10 +227,10 @@ color: #1277eb;} */
 .headerbottom{    
     z-index: 2;
     position: absolute;
-    bottom: -1rem;
+    bottom: -0.5rem;
     background: #f0f3ff;
     width: 100%;
-    height: 20%;
+    height: 23%;
     -webkit-transform: skewY(2.5deg);
     transform: skewY(2.5deg);
     -webkit-transform-origin: bottom left;
