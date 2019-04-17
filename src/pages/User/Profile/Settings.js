@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { Input, Button, Radio, Upload, Select } from '@alifd/next';
+import { Input, Button, Radio, Upload, Select, Message } from '@alifd/next';
+import get from 'lodash-es/get';
 import EurekaForm from '@/components/EurekaForm';
 import { user, IMAGE_UPLOAD_URL } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
@@ -9,19 +10,25 @@ import consts from '@/utils/consts';
 export default (props) => {
   const [thumb, setThumb] = useState(null);
   const [realname, setRealname] = useState('');
+  const [certification, setCertification] = useState('');
   const onClick = (values, form) => {
     form.field.validate(() => {
-      const postData = thumb ? { ...values, thumb, realname } : { ...values, realname };
+      const postData = thumb ? { ...values, thumb, realname, certification } : { ...values, realname, certification };
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);
         location.reload();
-      });
+      }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
     });
   };
-  const certification = {
+  const certificationField = {
     label: '身份认证信息',
     required: true,
-    render: () => <Input name="certification" />,
+    render: () => (
+      <Fragment>
+        <Input trim onChange={e => setCertification(e)} style={{ width: '100%' }} />
+        <div className="text-muted fontsw m-t-10">请填写你的真实学号</div>
+      </Fragment>
+    ),
   };
   const itemBefore = [{
     label: '用户名',
@@ -52,16 +59,16 @@ export default (props) => {
     ),
   }];
   const itemAfter = [{
-    label: '常用邮箱',
-    render: () => <Input name="email" />,
+    label: '性别',
+    required: true,
+    render: () => <Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} />,
   }, {
     label: '手机号',
     required: true,
     render: () => <Input name="mobile" />,
   }, {
-    label: '性别',
-    required: true,
-    render: () => <Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} />,
+    label: '常用邮箱',
+    render: () => <Input name="email" />,
   }];
   const items = isTeacher(props.user) ? itemBefore.concat({
     label: '职称',
@@ -74,7 +81,7 @@ export default (props) => {
   }, {
     label: '链接',
     render: () => <Input name="site" />,
-  }, itemAfter) : itemBefore.concat(certification, ...itemAfter);
+  }, itemAfter) : itemBefore.concat(certificationField, ...itemAfter);
 
   return <EurekaForm items={items} values={props.user} submitProps={{ onClick }} />;
 };

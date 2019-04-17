@@ -34,10 +34,10 @@ export default (current, formValues) => [{
   render: () => <Input.TextArea name="testPoint" />,
 }, {
   label: '参考资料',
-  render: () => <Input name="material" />,
+  render: () => <Input.TextArea name="material" placeholder="每一行代表一份参考资料" />,
 }, {
   label: '专题特点',
-  render: () => <Input name="characteristic" />,
+  render: () => <Input name="characteristic" placeholder="多个特点用逗号分隔" />,
 }, {
   label: '是否公开',
   required: true,

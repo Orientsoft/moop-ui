@@ -3,7 +3,7 @@ import get from 'lodash-es/get';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
-export default ({ size = 15, tag }) => {
+export default ({ size = 99, tag }) => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
