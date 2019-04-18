@@ -1,27 +1,54 @@
-import React, { Fragment, useState } from 'react';
-import { Dialog, Button, Input, Upload, Table } from '@alifd/next';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Dialog, Button, Input, Upload, Table, Message } from '@alifd/next';
 import { STUDENT_UPLOAD_URL, invitation } from '@/utils/api';
+import merge from 'lodash-es/merge';
 
 export default (current, formValues, form) => [{
   render: () => {
     const [visible, setVisible] = useState(false);
     const [students, setStudents] = useState(null);
+    const [invitations, setInvitations] = useState([]);
     const onSuccess = (data) => {
-      setStudents(data.response);
-      formValues[current] = data.response;
+      const ss = merge(students, data.response);
+
+      formValues[current] = ss;
+      setStudents(ss);
     };
     const onOk = () => {
       invitation.createBatch({
         data: {
           classroom: form.state.classroomData.id,
-          certifications: students.success.map(s => s['学生身份信息']),
+          certifications: students.success.map(s => s.id),
         },
+      }).then(({ data }) => {
+        setInvitations(data);
+        sessionStorage.setItem('formInvitations', JSON.stringify(data));
       });
       setVisible(false);
     };
     const onDelete = (student) => {
-      invitation.delete({});
+      const ins = invitations.find(i => i.invitee === student.id);
+      if (ins) {
+        invitation.delete({}, { invitationId: ins.id }).then(() => {
+          const index = students.success.findIndex(s => s.id === student.id);
+          if (index !== -1) {
+            students.success.splice(index, 1);
+            setStudents({ ...students });
+          }
+          Message.success('删除成功');
+        }).catch(() => Message.success('删除失败'));
+      }
     };
+
+    useEffect(() => {
+      let ins = sessionStorage.getItem('formInvitations');
+      if (ins) {
+        try {
+          ins = JSON.parse(ins);
+          setInvitations(ins);
+        } catch (err) { /**/ }
+      }
+    }, []);
 
     return (
       <Fragment>

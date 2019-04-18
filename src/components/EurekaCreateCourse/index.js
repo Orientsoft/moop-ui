@@ -44,11 +44,21 @@ export default class extends React.Component {
 
   componentWillUnmount() {
     sessionStorage.removeItem('form');
+    sessionStorage.removeItem('formClassroom');
   }
 
   onSwitch = (current) => {
     let values = sessionStorage.getItem('form');
+    let formClassroom = sessionStorage.getItem('formClassroom');
 
+    if (formClassroom) {
+      try {
+        formClassroom = JSON.parse(formClassroom);
+      } catch (error) {
+        formClassroom = {};
+      }
+      this.setState({ classroomData: formClassroom });
+    }
     if (values) {
       try {
         values = JSON.parse(values);
@@ -89,6 +99,7 @@ export default class extends React.Component {
               },
             }).then(({ data }) => {
               this.field.remove();
+              sessionStorage.setItem('formClassroom', JSON.stringify(data));
               this.setState({
                 current: current + 1,
                 classroomData: data,
@@ -109,7 +120,7 @@ export default class extends React.Component {
               status: formValues[5].status,
             },
           }, { classroomId: this.state.classroomData.id }).then(({ data }) => {
-            this.props.history.push(`/classroom?id=${data.id}`);
+            history.push(`/classroom?id=${data.id}`);
           });
         } else if (!this.disableSubmit) {
           this.field.remove();
