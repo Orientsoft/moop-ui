@@ -45,6 +45,7 @@ export default class extends React.Component {
   componentWillUnmount() {
     sessionStorage.removeItem('form');
     sessionStorage.removeItem('formClassroom');
+    sessionStorage.removeItem('formInvitations');
   }
 
   onSwitch = (current) => {
