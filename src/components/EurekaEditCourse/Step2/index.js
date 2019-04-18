@@ -32,6 +32,25 @@ const AddDialog = ({ save, projectList = [] }) => {
     }
     setSelected([...selected]);
   };
+  const onMoveUp = (p) => {
+    const index = selected.findIndex(s => s.id === p.id);
+    if (index > 0) {
+      const temp = selected[index];
+
+      selected[index] = selected[index - 1];
+      selected[index - 1] = temp;
+      setSelected([...selected]);
+    }
+  };
+  const onMoveDown = (p) => {
+    const index = selected.findIndex(s => s.id === p.id);
+    if (index !== -1 && index < selected.length - 1) {
+      const temp = selected[index];
+      selected[index] = selected[index + 1];
+      selected[index + 1] = temp;
+      setSelected([...selected]);
+    }
+  };
   const onDelete = (p) => {
     const index = selected.findIndex(s => s.id === p.id);
     if (index !== -1) {
@@ -74,7 +93,7 @@ const AddDialog = ({ save, projectList = [] }) => {
     <Fragment>
       <Button onClick={() => setVisible(true)}>添加实验模板</Button>
       <div className="m-t-20">
-        <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onDelete={onDelete} />
+        <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
       </div>
       <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
         <TagGroup>

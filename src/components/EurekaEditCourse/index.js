@@ -32,7 +32,7 @@ const formValues = [];
 export default class extends React.Component {
   field = new Field(this);
 
-  state = { current: 0 };
+  state = { current: 0, classroomData: {} };
 
   constructor(props) {
     super(props);
@@ -44,14 +44,17 @@ export default class extends React.Component {
           embed: 1,
         },
       }, { classroomId: state.id }).then(({ data }) => {
+        this.setState({ classroomData: data });
+        sessionStorage.setItem('formClassroom', JSON.stringify(data));
         formValues[0] = {
           title: data.title,
           thumb: data.thumb.thumbnail,
           description: data.description,
           requirement: data.requirement,
           testPoint: data.testPoint,
+          material: data.material,
           public: data.public ? 1 : 0,
-          characteristic: data.characteristic.join(', '),
+          characteristic: data.characteristic,
         };
         formValues[1] = {
           projects: data.projects,
@@ -68,7 +71,16 @@ export default class extends React.Component {
 
   onSwitch = (current) => {
     let values = sessionStorage.getItem('form');
+    let formClassroom = sessionStorage.getItem('formClassroom');
 
+    if (formClassroom) {
+      try {
+        formClassroom = JSON.parse(formClassroom);
+      } catch (error) {
+        formClassroom = {};
+      }
+      this.setState({ classroomData: formClassroom });
+    }
     if (values) {
       try {
         values = JSON.parse(values);
@@ -92,7 +104,6 @@ export default class extends React.Component {
           case 0:
             postData = {
               ...restFormValues,
-              characteristic: restFormValues.characteristic.split(/[,，]/).map(c => c.trim()),
               public: !!restFormValues.public,
             };
             if (thumb && thumb.indexOf('.') === -1) {
