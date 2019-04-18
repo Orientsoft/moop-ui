@@ -115,7 +115,7 @@ export default class extends React.Component {
       <Fragment>
         <Step current={current} shape="arrow">
           {steps.map((step, i) => (
-            <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.onSwitch(i)} />
+            <Step.Item disabled={false} key={i} title={step.title} onClick={() => this.onSwitch(i)} />
           ))}
         </Step>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} style={{ margin: '40px 0', minHeight: 160 }}>

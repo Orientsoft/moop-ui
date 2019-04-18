@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import get from 'lodash-es/get';
+import classnames from 'classnames';
 import { Dialog } from '@alifd/next';
 import { container } from '@/utils/api';
 
-export default ({ course, data = [] }) => {
+export default ({ course, data = [], onStarted, onStoped }) => {
   const [isRunning, setIsRunning] = useState({});
   const [containers, setContainers] = useState({});
   const onClick = () => Dialog.alert({
@@ -17,18 +18,19 @@ export default ({ course, data = [] }) => {
         content: '项目已经启动',
       });
     } else {
+      const postData = { project: id };
+
+      if (course) {
+        postData.classroom = course.id;
+      }
       Dialog.alert({
         title: '启动',
         content: '是否确定启动？',
         onOk: () => {
-          container.start({
-            data: {
-              classroom: course.id,
-              project: id,
-            },
-          }).then(({ data: { callback } }) => {
+          return container.start({ data: postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
             setIsRunning({ ...isRunning, [id]: true });
+            onStarted();
           });
         },
       });
@@ -36,11 +38,13 @@ export default ({ course, data = [] }) => {
   };
   const onStop = (id, isStarted) => {
     if (isRunning[id] || isStarted) {
-      setIsRunning({ ...isRunning, [id]: false });
-      container.stop({ params: { projectId: id } });
       Dialog.alert({
         title: '停止',
-        content: '正在停止......',
+        content: '是否确认停止？',
+        onOk: () => container.stop({ params: { projectId: id } }).then(() => {
+          setIsRunning({ ...isRunning, [id]: false });
+          onStoped();
+        }),
       });
     } else {
       Dialog.alert({
@@ -49,29 +53,31 @@ export default ({ course, data = [] }) => {
       });
     }
   };
+  const shouldDisabled = data.some(project => project.running);
 
   return (
     <div className="courselist">
-      {data.map(project => (
+      {data.map((project, i) => (
         <div key={project.id} className="card">
           <div className="card-header">
             <h5 className="mb-0">
-              <button className="btn" data-toggle="collapse" data-target="#courses" aria-expanded="true" aria-controls="courses">
+              <button className="btn" data-toggle="collapse" data-target={`#courses${i}`} aria-expanded="true" aria-controls="courses">
                 {project.title}
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
-              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className="palyico " title="启动实验环境">▶</a>
-              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className="stopico noico" title="停止实验环境">▪</a>
-              <a href="#" className="dataico noico" title="查看实验数据" data-toggle="modal" data-target="#dataloading">≡</a>
+              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} title="启动实验环境">▶</a>
+              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
+              <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">≡</a>
+              {/* data-toggle="modal" data-target="#dataloading" */}
               {/* eslint-enable */}
             </h5>
           </div>
-          <div id="courses" className="collapse">
+          <div id={`courses${i}`} className={classnames({ collapse: true, show: project.running })}>
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
                 {isRunning[project.id] || project.running ? (
-                  <a href={project.labURL[lab.id] || get(containers[project.id], `labURL.${lab.id}`)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
+                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">{lab.name}</a>
                 )}
@@ -80,7 +86,7 @@ export default ({ course, data = [] }) => {
           </div>
         </div>
       ))}
-      <div className="modal fade modaltop" id="dataloading" tabIndex="-1" role="dialog" aria-labelledby="dataloadingTitle" aria-hidden="true">
+      <div className="modal fade modaltop">
         <div className="modal-dialog modal-dialogloading" role="document">
           <div className="loadingmodal-header" />
           <div className="modalloading">

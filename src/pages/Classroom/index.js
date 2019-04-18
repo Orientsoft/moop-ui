@@ -23,7 +23,7 @@ export default ({ history }) => {
             classroom: course.id,
             confirmed: true,
           },
-        });
+        }).then(() => location.reload());
       } else {
         history.push('/user/profile');
       }
@@ -33,6 +33,19 @@ export default ({ history }) => {
     return false;
   };
   const naver = useRef(null);
+  const onProjectStarted = () => {
+    const url = queryString.parse(history.location.search);
+    classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+      .then(({ data }) => {
+        setCourse(data);
+        if (user && isTeacher(user)) {
+          progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+        }
+      });
+  };
+  const onProjectStoped = () => {
+    onProjectStarted();
+  };
 
   useEffect(() => {
     const url = queryString.parse(history.location.search);
@@ -98,7 +111,7 @@ export default ({ history }) => {
             <div className="row">
               <div className="col-12 col-md-8 m-b-30">
                 <h2 className="m-b-20" id="t-project">实验项目</h2>
-                <ProjectList course={course} data={course.projects} />
+                <ProjectList course={course} data={course.projects} onStarted={onProjectStarted} onStoped={onProjectStoped} />
                 <div className="card">
                   <div className="card-header" id="headingcourse4">
                     <h5 className="mb-0">
@@ -145,13 +158,14 @@ export default ({ history }) => {
                   <a href="#t-testpoint" className="list-group-item list-group-item-action">预备知识</a>
                   <a href="#t-content" className="list-group-item list-group-item-action">考核内容</a>
                   <a href="#t-material" className="list-group-item list-group-item-action">参考资料</a>
+                  <a href="#t-assistant" className="list-group-item list-group-item-action">讲师</a>
                 </div>
               </div>
             </div>
           </div>
           <hr />
           <div className="container m-t-40 p-b-120">
-            <h2 className="large m-t-40">讲师</h2>
+            <h2 className="large m-t-40" id="t-assistant">讲师</h2>
             <TeacherList data={course.assistants} />
           </div>
         </Tab.Item>

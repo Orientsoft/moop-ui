@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Input, Select, Message } from '@alifd/next';
 import queryString from 'query-string';
 import get from 'lodash-es/get';
@@ -20,6 +19,9 @@ export default () => {
     }, { reportId: report.id }).then(() => {
       Message.success('更新成功');
     });
+  };
+  const onBack = () => {
+    history.go(-1);
   };
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export default () => {
                   <div className="form-group row">
                     <label className=" col-sm-2" />
                     <div className="col-sm-10 text-right">
-                      <Link className="btn btn-primary" to="/classroom" >返回学生列表</Link>
+                      <a className="btn btn-primary" style={{ color: 'white' }} onClick={onBack}>返回学生列表</a>
                     </div>
                   </div>
                   <div className="form-group row">

@@ -42,11 +42,15 @@ export default class extends React.Component {
       classroom.select({}, { classroomId: state.id }).then(({ data }) => {
         formValues[0] = {
           title: data.title,
+          thumb: data.thumb,
           description: data.description,
           requirement: data.requirement,
           testPoint: data.testPoint,
           public: data.public ? 1 : 0,
           characteristic: data.characteristic.join(', '),
+        };
+        formValues[1] = {
+          projects: data.projects,
         };
         formValues[3] = {
           times: [data.startTime, data.endTime],
@@ -77,15 +81,19 @@ export default class extends React.Component {
       if (!error) {
         let postData = null;
         formValues[current] = merge(formValues[current], values);
+        const { thumb, ...restFormValues } = formValues[current];
 
         switch (current) {
           // 专题描述
           case 0:
             postData = {
-              ...formValues[current],
-              characteristic: formValues[current].characteristic.split(/[,，]/).map(c => c.trim()),
-              public: !!formValues[current].public,
+              ...restFormValues,
+              characteristic: restFormValues.characteristic.split(/[,，]/).map(c => c.trim()),
+              public: !!restFormValues.public,
             };
+            if (thumb && thumb.indexOf('.') === -1) {
+              postData.thumb = thumb;
+            }
             break;
           // 实验项目
           case 1:

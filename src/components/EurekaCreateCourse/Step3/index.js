@@ -1,35 +1,34 @@
-import React, { Fragment, useState } from 'react';
-import { Dialog, Button, Input, Upload, Table } from '@alifd/next';
-import { STUDENT_UPLOAD_URL } from '@/utils/api';
+import React, { useState, useEffect } from 'react';
+import { Checkbox, DatePicker } from '@alifd/next';
+import { tag } from '@/utils/api';
+
+const TagList = ({ selected, save }) => {
+  const [tags, setTags] = useState([]);
+  const [current, setSelected] = useState(selected);
+  const onChange = (items) => {
+    setSelected(items);
+    save(items);
+  };
+
+  useEffect(() => {
+    tag.selectAll().then(({ data }) => setTags(data.map(item => ({
+      label: item.name,
+      value: item.id,
+    }))));
+  }, []);
+
+  return <Checkbox.Group value={current} dataSource={tags} onChange={onChange} />;
+};
 
 export default (current, formValues) => [{
+  label: '设置时间',
+  required: true,
+  render: () => <DatePicker.RangePicker name="times" />,
+}, {
+  label: '添加标签',
+  required: true,
   render: () => {
-    const [visible, setVisible] = useState(false);
-    const [students, setStudents] = useState(null);
-    const onSuccess = (data) => {
-      setStudents(data.response);
-      formValues[current] = data.response;
-    };
-    const onOk = () => setVisible(false);
-
-    return (
-      <Fragment>
-        <Button type="primary" style={{ marginBottom: 20 }} onClick={() => setVisible(true)}>导入学生列表</Button>
-        {students ? null : <p>你还没有添加学生，请添加学生</p>}
-        <Table dataSource={students ? students.success : []}>
-          <Table.Column dataIndex="学生身份信息" title="学生身份信息" />
-          <Table.Column dataIndex="姓名" title="姓名" />
-        </Table>
-        {students ? <p>已导入{students.success.length}个学生，有{students.fail.length}个导入失败。</p> : null}
-        <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
-          <p>选择上传文件</p>
-          <Upload action={STUDENT_UPLOAD_URL} limit={1} listType="text" onSuccess={onSuccess}>
-            <Button type="primary">上传文件</Button>
-          </Upload>
-          <p>或粘贴学生信息</p>
-          <Input.TextArea style={{ width: '100%' }} rows={16} />
-        </Dialog>
-      </Fragment>
-    );
+    formValues[current] = formValues[current] || {};
+    return <TagList selected={formValues[current].tags} save={data => formValues[current].tags = data} />;
   },
 }];

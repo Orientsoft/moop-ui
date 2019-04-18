@@ -1,20 +1,23 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Tag, Button, Grid, Checkbox } from '@alifd/next';
+import ProjectList from '@/components/ProjectList';
 import { project } from '@/utils/api';
 
 const { Row, Col } = Grid;
 const { Group: TagGroup, Selectable: SelectableTag } = Tag;
 
-const AddDialog = ({ save }) => {
+const AddDialog = ({ save, projectList }) => {
   const [visible, setVisible] = useState(false);
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(projectList);
   const [currentTag, setCurrentTag] = useState(null);
   const onOk = () => {
     save([...selected]);
     setVisible(false);
   };
+  const onStarted = () => setProjects(projects);
+  const onStoped = () => setProjects(projects);
   const onChangeTag = (id) => {
     setCurrentTag(id);
     setProjects([]);
@@ -48,6 +51,9 @@ const AddDialog = ({ save }) => {
   return (
     <Fragment>
       <Button onClick={() => setVisible(true)}>添加实验模板</Button>
+      <div className="m-t-20">
+        <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} />
+      </div>
       <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
         <TagGroup>
           {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
@@ -70,6 +76,6 @@ export default (current, formValues) => {
   return [{
     label: '选择实验',
     required: true,
-    render: () => <AddDialog save={data => formValues[current] = data} />,
+    render: () => <AddDialog save={data => formValues[current] = data} projectList={formValues.projects || []} />,
   }];
 };

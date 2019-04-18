@@ -13,10 +13,17 @@ export default (props) => {
   const [certification, setCertification] = useState(props.user.certification || '');
   const onClick = (values, form) => {
     form.field.validate(() => {
-      const postData = thumb ? { ...values, thumb, realname, certification } : { ...values, realname, certification };
+      let postData = {};
+      delete values.thumb;
+      // Thumb must is a uuid, not a url
+      if (thumb && thumb.indexOf('.') === -1) {
+        postData = { ...values, thumb, realname, certification };
+      } else {
+        postData = { ...values, realname, certification };
+      }
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);
-        location.reload();
+        // location.reload();
       }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
     });
   };
@@ -45,6 +52,7 @@ export default (props) => {
         onSuccess={data => setThumb(data.response.id)}
       >
         <Button>上传图片</Button>
+        <img src={props.user.thumb} alt="" width={32} height={32} />
         <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
       </Upload>
     ),

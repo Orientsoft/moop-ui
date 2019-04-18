@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Message } from '@alifd/next';
 import EurekaForm from '@/components/EurekaForm';
 import { user } from '@/utils/api';
+import get from 'lodash-es/get';
 
 const items = [{
   label: '原始密码',
@@ -25,7 +26,7 @@ export default (props) => {
       } else {
         user.update({ data: { key, newKey } }, { userId: props.user.id }).then(() => {
           Message.success('更新成功');
-        });
+        }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
       }
     });
   };
