@@ -97,4 +97,5 @@ export const publication = {
 export const container = {
   start: POST('/container'),
   stop: DELETE('/container'),
+  getDataFiles: GET('/data/list'),
 };

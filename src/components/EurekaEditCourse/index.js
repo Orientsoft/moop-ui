@@ -17,10 +17,10 @@ const steps = [{
   title: '实验项目',
   render: Step2,
 }, {
-  title: '添加学生',
+  title: '提交专题',
   render: Step3,
 }, {
-  title: '提交专题',
+  title: '添加学生',
   render: Step4,
 }, {
   title: '添加数据',
@@ -39,10 +39,14 @@ export default class extends React.Component {
     const { state } = props.location;
 
     if (state) {
-      classroom.select({}, { classroomId: state.id }).then(({ data }) => {
+      classroom.select({
+        params: {
+          embed: 1,
+        },
+      }, { classroomId: state.id }).then(({ data }) => {
         formValues[0] = {
           title: data.title,
-          thumb: data.thumb,
+          thumb: data.thumb.thumbnail,
           description: data.description,
           requirement: data.requirement,
           testPoint: data.testPoint,
@@ -52,7 +56,7 @@ export default class extends React.Component {
         formValues[1] = {
           projects: data.projects,
         };
-        formValues[3] = {
+        formValues[2] = {
           times: [data.startTime, data.endTime],
           tags: data.tags.map(tag => tag.id),
         };

@@ -84,7 +84,7 @@ const Teacher = ({ user, data }) => (
     <EurekaBanner>
       <div className="row">
         <div className="col-6 col-md-6">
-          <h2 className="large">HI! {user.name}</h2>
+          <h2 className="large">Hi, {user.realname}</h2>
           <h2 style={{ fontSize: 18 }}>您有 {data.length} 个专题</h2>
         </div>
         <div className="col-6 col-md-6 text-right">

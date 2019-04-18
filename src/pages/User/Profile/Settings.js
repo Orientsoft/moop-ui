@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Input, Button, Radio, Upload, Select, Message } from '@alifd/next';
+import { Input, Button, Radio, Upload, Select, Message, Dialog } from '@alifd/next';
 import get from 'lodash-es/get';
 import EurekaForm from '@/components/EurekaForm';
 import { user, IMAGE_UPLOAD_URL } from '@/utils/api';
@@ -23,7 +23,10 @@ export default (props) => {
       }
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);
-        // location.reload();
+        Dialog.success({
+          content: '更新成功',
+          onOk: () => location.reload(),
+        });
       }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
     });
   };
@@ -52,7 +55,7 @@ export default (props) => {
         onSuccess={data => setThumb(data.response.id)}
       >
         <Button>上传图片</Button>
-        <img src={props.user.thumb} alt="" width={32} height={32} />
+        <img src={props.user.thumb} alt="" width={48} height={48} />
         <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
       </Upload>
     ),

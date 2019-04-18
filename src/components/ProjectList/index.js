@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Dialog } from '@alifd/next';
 import { container } from '@/utils/api';
 
-export default ({ course, data = [], onStarted, onStoped }) => {
+export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
   const [isRunning, setIsRunning] = useState({});
   const [containers, setContainers] = useState({});
   const onClick = () => Dialog.alert({
@@ -30,7 +30,7 @@ export default ({ course, data = [], onStarted, onStoped }) => {
           return container.start({ data: postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
             setIsRunning({ ...isRunning, [id]: true });
-            onStarted();
+            onStarted(id);
           });
         },
       });
@@ -43,7 +43,7 @@ export default ({ course, data = [], onStarted, onStoped }) => {
         content: '是否确认停止？',
         onOk: () => container.stop({ params: { projectId: id } }).then(() => {
           setIsRunning({ ...isRunning, [id]: false });
-          onStoped();
+          onStoped(id);
         }),
       });
     } else {
@@ -66,6 +66,15 @@ export default ({ course, data = [], onStarted, onStoped }) => {
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
+              {onMoveUp && (
+                <a href="javascript:void(0);" onClick={() => onMoveUp(project)}>上移</a>
+              )}
+              {onMoveDown && (
+                <a href="javascript:void(0);" onClick={() => onMoveDown(project)}>下移</a>
+              )}
+              {onDelete && (
+                <a href="javascript:void(0);" onClick={() => onDelete(project)}>删除</a>
+              )}
               <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} title="启动实验环境">▶</a>
               <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
               <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">≡</a>

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Button, Input, Upload, Table } from '@alifd/next';
-import { STUDENT_UPLOAD_URL } from '@/utils/api';
+import { STUDENT_UPLOAD_URL, invitation } from '@/utils/api';
 
-export default (current, formValues) => [{
+export default (current, formValues, form) => [{
   render: () => {
     const [visible, setVisible] = useState(false);
     const [students, setStudents] = useState(null);
@@ -10,7 +10,18 @@ export default (current, formValues) => [{
       setStudents(data.response);
       formValues[current] = data.response;
     };
-    const onOk = () => setVisible(false);
+    const onOk = () => {
+      invitation.createBatch({
+        data: {
+          classroom: form.state.classroomData.id,
+          certifications: students.success.map(s => s['学生身份信息']),
+        },
+      });
+      setVisible(false);
+    };
+    const onDelete = (student) => {
+      invitation.delete({});
+    };
 
     return (
       <Fragment>
@@ -19,6 +30,7 @@ export default (current, formValues) => [{
         <Table dataSource={students ? students.success : []}>
           <Table.Column dataIndex="学生身份信息" title="学生身份信息" />
           <Table.Column dataIndex="姓名" title="姓名" />
+          <Table.Column width={120} cell={v => <Button type="normal" warning onClick={() => onDelete(v)}>删除</Button>} title="操作" />
         </Table>
         {students ? <p>已导入{students.success.length}个学生，有{students.fail.length}个导入失败。</p> : null}
         <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
