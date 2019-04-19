@@ -1,34 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { Checkbox, DatePicker } from '@alifd/next';
-import { tag } from '@/utils/api';
+import React from 'react';
+import { Form, Field, Checkbox, DatePicker, Dialog, Message } from '@alifd/next';
+import moment from 'moment';
+import { tag as tagAPI, classroom } from '@/utils/api';
 
-const TagList = ({ save, selected = [] }) => {
-  const [tags, setTags] = useState([]);
-  const [current, setSelected] = useState(selected);
-  const onChange = (items) => {
-    setSelected(items);
-    save(items);
-  };
+export default class Step3 extends React.Component {
+  state = { tags: [] };
 
-  useEffect(() => {
-    tag.selectAll().then(({ data }) => setTags(data.map(item => ({
-      label: item.name,
-      value: item.id,
-    }))));
-  }, []);
+  field = new Field(this);
 
-  return <Checkbox.Group value={current} dataSource={tags} onChange={onChange} />;
-};
+  componentDidMount() {
+    const values = this.props.getData();
 
-export default (current, formValues) => [{
-  label: '设置时间',
-  required: true,
-  render: () => <DatePicker.RangePicker name="times" />,
-}, {
-  label: '添加标签',
-  required: true,
-  render: () => {
-    formValues[current] = formValues[current] || {};
-    return <TagList selected={formValues[current].tags} save={data => formValues[current].tags = data} />;
-  },
-}];
+    if (values) {
+      const { startTime, endTime, tags, ...restValues } = values;
+      this.field.setValues({
+        ...restValues,
+        tags: tags.map(tag => tag.id),
+        timeRange: [moment(startTime), moment(endTime)],
+      });
+    }
+    tagAPI.selectAll().then(({ data }) => this.setState({
+      tags: data.map(item => ({ label: item.name, value: item.id })),
+    }));
+  }
+
+  onSubmit = () => {
+    const { setData, setClassroom, getClassroom } = this.props;
+
+    this.field.validate((error, values) => {
+      if (!error) {
+        const { timeRange, tags, ...restValues } = values;
+        const postData = { tags, startTime: timeRange[0], endTime: timeRange[1] };
+
+        setData({ ...restValues, ...postData });
+        classroom.update({ data: postData, params: { embed: 1 } }, { classroomId: getClassroom().id }).then(({ data }) => {
+          setClassroom(data);
+          setData({
+            tags: data.tags,
+            startTime: data.startTime,
+            endTime: data.endTime,
+          });
+          Message.success('更新成功');
+        }).catch(e => Dialog.alert({
+          title: '保存失败',
+          content: e.message,
+        }));
+      }
+    });
+  }
+
+  render() {
+    const { tags } = this.state;
+    const { labelSpan, wrapperSpan } = this.props;
+
+    return (
+      <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
+        <Form.Item label="设置时间" required>
+          <DatePicker.RangePicker name="timeRange" />
+        </Form.Item>
+        <Form.Item label="添加标签" required>
+          <Checkbox.Group name="tags" dataSource={tags} />
+        </Form.Item>
+        <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
+          <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>保存</Form.Submit>
+        </Form.Item>
+      </Form>
+    );
+  }
+}

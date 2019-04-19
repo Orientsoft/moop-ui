@@ -1,141 +1,115 @@
 import React, { Fragment } from 'react';
-import { Form, Field, Grid, Step, Message } from '@alifd/next';
-import merge from 'lodash-es/merge';
-import { classroom } from '@/utils/api';
+import { Step } from '@alifd/next';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
 
-const { Row, Col } = Grid;
-
 const steps = [{
   title: '专题描述',
-  render: Step1,
+  render: props => <Step1 {...props} />,
 }, {
   title: '实验项目',
-  render: Step2,
+  render: props => <Step2 {...props} />,
 }, {
   title: '提交专题',
-  render: Step3,
+  render: props => <Step3 {...props} />,
 }, {
   title: '添加学生',
-  render: Step4,
+  render: props => <Step4 {...props} />,
 }, {
   title: '添加数据',
-  render: Step5,
+  render: props => <Step5 {...props} />,
 }];
 
-const formValues = [];
+const FORM_SESSION = 'CREATEFORM';
+const CLASSROOM_SESSION = 'CREATECLASSROOM';
 
-export default class extends React.Component {
-  field = new Field(this);
-
-  state = { current: 0, classroomData: {} };
+export default class EurekaEditCourse extends React.Component {
+  state = { current: 0 };
 
   constructor(props) {
     super(props);
-    const { state } = props.location;
 
-    if (state) {
-      classroom.select({
-        params: {
-          embed: 1,
-        },
-      }, { classroomId: state.id }).then(({ data }) => {
-        this.setState({ classroomData: data });
-        sessionStorage.setItem('formClassroom', JSON.stringify(data));
-        formValues[0] = {
-          title: data.title,
-          thumb: data.thumb.thumbnail,
-          description: data.description,
-          requirement: data.requirement,
-          testPoint: data.testPoint,
-          material: data.material,
-          public: data.public ? 1 : 0,
-          characteristic: data.characteristic,
-        };
-        formValues[1] = data.projects;
-        formValues[2] = {
-          times: [data.startTime, data.endTime],
-          tags: data.tags.map(tag => tag.id),
-        };
-        sessionStorage.setItem('form', JSON.stringify(formValues));
-        this.onSwitch(0);
-      });
-    }
+    const classroom = props.location.state;
+    this.setData(0, {
+      title: classroom.title,
+      thumb: classroom.thumb,
+      description: classroom.description,
+      requirement: classroom.requirement,
+      testPoint: classroom.testPoint,
+      material: classroom.material,
+      characteristic: classroom.characteristic,
+      public: classroom.public,
+    });
+    this.setData(1, classroom);
+    this.setData(2, classroom);
+    this.setClassroom(classroom);
   }
 
-  onSwitch = (current) => {
-    let values = sessionStorage.getItem('form');
-    let formClassroom = sessionStorage.getItem('formClassroom');
+  setData = (key, data) => {
+    let savedItem = sessionStorage.getItem(FORM_SESSION);
 
-    if (formClassroom) {
+    if (savedItem) {
       try {
-        formClassroom = JSON.parse(formClassroom);
+        savedItem = JSON.parse(savedItem);
       } catch (error) {
-        formClassroom = {};
+        savedItem = {};
       }
-      this.setState({ classroomData: formClassroom });
+    } else {
+      savedItem = {};
     }
-    if (values) {
-      try {
-        values = JSON.parse(values);
-        this.field.setValues(values[current]);
-      } catch (error) { /**/ }
-    }
-    this.setState({ current });
+    sessionStorage.setItem(FORM_SESSION, JSON.stringify(Object.assign(savedItem, { [key]: data })));
   };
 
-  onSubmit = () => {
-    const { current } = this.state;
+  getData = (key) => {
+    let savedItem = sessionStorage.getItem(FORM_SESSION);
 
-    this.field.validate((error, values) => {
-      if (!error) {
-        let postData = null;
-        const { thumb, ...restFormValues } = formValues[current];
-        formValues[current] = merge(formValues[current], values);
-        switch (current) {
-          // 专题描述
-          case 0:
-            postData = {
-              ...restFormValues,
-              public: !!restFormValues.public,
-            };
-            if (thumb && thumb.indexOf('.') === -1) {
-              postData.thumb = thumb;
-            }
-            break;
-          // 实验项目
-          case 1:
-            postData = {};
-            break;
-          case 2:
-            postData = {
-              startTime: formValues[current].times[0],
-              endTime: formValues[current].times[1],
-              tags: formValues[current].tags,
-            };
-            break;
-          default:
-            postData = null;
-        }
-        if (postData) {
-          classroom.update({ data: postData }, { classroomId: this.props.location.state.id }).then(() => {
-            Message.success('更新成功');
-          });
-        } else {
-          Message.success('更新成功');
-        }
+    if (savedItem) {
+      try {
+        savedItem = JSON.parse(savedItem);
+      } catch (error) {
+        savedItem = {};
       }
-    });
+    } else {
+      savedItem = {};
+    }
+    return savedItem[key];
+  };
+
+  getPostData = () => {
+    const item0 = this.getData(0);
+    const item1 = this.getData(1);
+    const item2 = this.getData(2);
+
+    return {
+      ...item0,
+      projects: item1.projects.map(p => p.id),
+      ...item2,
+      invited: item0.public,
+      status: 0,
+    };
+  };
+
+  setClassroom = data => sessionStorage.setItem(CLASSROOM_SESSION, JSON.stringify(data));
+
+  getClassroom = () => {
+    let savedItem = sessionStorage.getItem(CLASSROOM_SESSION);
+
+    if (savedItem) {
+      try {
+        savedItem = JSON.parse(savedItem);
+      } catch (error) {
+        savedItem = null;
+      }
+    }
+    return savedItem;
   };
 
   componentWillUnmount() {
-    sessionStorage.removeItem('form');
-    sessionStorage.removeItem('formClassroom');
-    sessionStorage.removeItem('formInvitations');
+    sessionStorage.removeItem(FORM_SESSION);
+    sessionStorage.removeItem(CLASSROOM_SESSION);
   }
 
   render() {
@@ -145,24 +119,22 @@ export default class extends React.Component {
       <Fragment>
         <Step current={current} shape="arrow">
           {steps.map((step, i) => (
-            <Step.Item key={i} title={step.title} onClick={() => this.onSwitch(i)} />
+            <Step.Item key={i} title={step.title} onClick={() => this.setState({ current: i })} />
           ))}
         </Step>
-        <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} style={{ margin: '40px 0', minHeight: 160 }}>
-          {steps[current].render(current, formValues, this).map(({ render, label, ...itemProps }, i) => {
-            if (label) {
-              return <Form.Item key={i} label={label} {...itemProps}>{render()}</Form.Item>;
-            }
-            return (
-              <Row key={i} justify="center" style={{ marginBottom: 40 }}>
-                <Col span={18}>{React.createElement(render)}</Col>
-              </Row>
-            );
+        <div style={{ margin: '40px 0', minHeight: 160 }}>
+          {steps[current].render({
+            setData: data => this.setData(current, data),
+            getData: () => this.getData(current),
+            getPostData: this.getPostData,
+            toNext: () => this.setState({ current: current + 1 }),
+            history: this.props.history,
+            setClassroom: this.setClassroom,
+            getClassroom: this.getClassroom,
+            labelSpan: 6,
+            wrapperSpan: 12,
           })}
-          <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-            <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>保存</Form.Submit>
-          </Form.Item>
-        </Form>
+        </div>
       </Fragment>
     );
   }
