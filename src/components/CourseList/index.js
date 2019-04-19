@@ -3,7 +3,7 @@ import get from 'lodash-es/get';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
-export default ({ size = 99, tag }) => {
+export default ({ size = 99, tag, owner }) => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -11,6 +11,10 @@ export default ({ size = 99, tag }) => {
 
     if (tag) {
       config.params.tag = tag;
+    }
+    if (owner) {
+      config.params.owner = owner;
+      config.params.all = 1;
     }
     classroom.selectAll(config).then(({ data }) => setCourses(data.data));
   }, [size, tag]);
