@@ -71,7 +71,7 @@ export default class Step1 extends React.Component {
 
   render() {
     const { labelSpan, wrapperSpan } = this.props;
-    const { material, characteristic } = this.state;
+    const { thumb, material, characteristic } = this.state;
 
     return (
       <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
@@ -81,6 +81,7 @@ export default class Step1 extends React.Component {
         <Form.Item label="专题封面">
           <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
             <Button>上传图片</Button>
+            {thumb ? <img src={thumb.url} alt="" width={64} height={64} /> : null}
           </Upload>
         </Form.Item>
         <Form.Item label="专题描述" required>
