@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 import { Button, Input, Radio, Upload } from '@alifd/next';
 import { IMAGE_UPLOAD_URL } from '@/utils/api';
-import set from 'lodash-es/set';
 
 const RadioGroup = Radio.Group;
 
@@ -47,7 +46,7 @@ export default (current, formValues) => [{
   render: () => {
     formValues[current] = formValues[current] || {};
     return (
-      <Upload onSuccess={data => set(formValues[current], 'thumb', data.id)} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
+      <Upload onSuccess={data => formValues[current].thumb = data.response.id} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
         <Button>上传图片</Button>
         <img src={formValues[current].thumb} alt="" width={48} height={48} />
       </Upload>

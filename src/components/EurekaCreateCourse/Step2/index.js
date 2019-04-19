@@ -1,34 +1,35 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Tag, Button, Grid, Checkbox } from '@alifd/next';
+import get from 'lodash-es/get';
 import ProjectList from '@/components/ProjectList';
-import { project } from '@/utils/api';
+import { project as projectAPI } from '@/utils/api';
 
 const { Row, Col } = Grid;
-const { Group: TagGroup, Selectable: SelectableTag } = Tag;
 
-const AddDialog = ({ save, projectList = [] }) => {
+export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   const [visible, setVisible] = useState(false);
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [selected, setSelected] = useState(projectList);
+  const [selected, setSelected] = useState(get(getData(), 'projects', []));
   const [currentTag, setCurrentTag] = useState(null);
+  const onCancel = () => setVisible(false);
   const onOk = () => {
-    save([...selected]);
-    setVisible(false);
+    setData({ projects: [...selected] });
+    onCancel();
   };
   const onStarted = (id) => {
-    const pro = selected.find(p => p.id === id);
+    const project = selected.find(p => p.id === id);
 
-    if (pro) {
-      pro.running = true;
+    if (project) {
+      project.running = true;
     }
     setSelected([...selected]);
   };
   const onStoped = (id) => {
-    const pro = selected.find(p => p.id === id);
+    const project = selected.find(p => p.id === id);
 
-    if (pro) {
-      pro.running = false;
+    if (project) {
+      project.running = false;
     }
     setSelected([...selected]);
   };
@@ -56,15 +57,15 @@ const AddDialog = ({ save, projectList = [] }) => {
     if (index !== -1) {
       selected.splice(index, 1);
       setSelected([...selected]);
-      save([...selected]);
+      setData({ projects: [...selected] });
     }
   };
-  const onChangeTag = (id) => {
+  const onChange = (id) => {
     setCurrentTag(id);
     setProjects([]);
-    queryProjects(id);
+    projectAPI.selectAll({ params: { tag: id } }).then(({ data }) => setProjects(data.projects));
   };
-  const onChange = (isSelected, p) => {
+  const onSelect = (isSelected, p) => {
     if (isSelected) {
       if (selected.indexOf(p.id) === -1) {
         setSelected([...selected, p]);
@@ -77,46 +78,42 @@ const AddDialog = ({ save, projectList = [] }) => {
       }
     }
   };
-  const queryProjects = (id) => {
-    project.selectAll({ params: { tag: id } }).then(({ data }) => {
-      setProjects(data.projects);
-    });
-  };
 
   useEffect(() => {
-    project.categories().then(({ data }) => {
-      setCategories(data);
-    });
+    projectAPI.categories().then(({ data }) => setCategories(data));
   }, []);
 
   return (
     <Fragment>
-      <Button onClick={() => setVisible(true)}>添加实验模板</Button>
-      <div className="m-t-20">
-        <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
-      </div>
-      <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
-        <TagGroup>
+      <Row justify="center">
+        <Col span={labelSpan + wrapperSpan}>
+          <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
+        </Col>
+      </Row>
+      <Row justify="center" className="m-t-20">
+        <Col span={labelSpan + wrapperSpan}>
+          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
+        </Col>
+      </Row>
+      <Row justify="center" className="m-t-20">
+        <Col span={4}>
+          <Button type="primary" style={{ width: '100%' }} onClick={toNext}>下一步</Button>
+        </Col>
+      </Row>
+      <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
+        <Tag.Group>
           {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
-            <SelectableTag checked={currentTag === id} key={id} onChange={() => onChangeTag(id)} title={`${name}(${count})`}>{name}({count})</SelectableTag>
+            <Tag.Selectable checked={currentTag === id} key={id} onChange={() => onChange(id)} title={`${name}(${count})`}>{name}({count})</Tag.Selectable>
           ))), [])}
-        </TagGroup>
+        </Tag.Group>
         <Row>
-          {projects.map(p => (
-            <Col span={12} key={p.id}>
-              <Checkbox onChange={isSelected => onChange(isSelected, p)}>{p.title}</Checkbox>
+          {projects.map(project => (
+            <Col span={12} key={project.id}>
+              <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
             </Col>
           ))}
         </Row>
       </Dialog>
     </Fragment>
   );
-};
-
-export default (current, formValues) => {
-  return [{
-    label: '选择实验',
-    required: true,
-    render: () => <AddDialog save={data => formValues[current] = data} projectList={formValues[current]} />,
-  }];
 };

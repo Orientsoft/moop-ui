@@ -56,9 +56,7 @@ export default class extends React.Component {
           public: data.public ? 1 : 0,
           characteristic: data.characteristic,
         };
-        formValues[1] = {
-          projects: data.projects,
-        };
+        formValues[1] = data.projects;
         formValues[2] = {
           times: [data.startTime, data.endTime],
           tags: data.tags.map(tag => tag.id),
@@ -96,9 +94,8 @@ export default class extends React.Component {
     this.field.validate((error, values) => {
       if (!error) {
         let postData = null;
-        formValues[current] = merge(formValues[current], values);
         const { thumb, ...restFormValues } = formValues[current];
-
+        formValues[current] = merge(formValues[current], values);
         switch (current) {
           // 专题描述
           case 0:
@@ -114,7 +111,7 @@ export default class extends React.Component {
           case 1:
             postData = {};
             break;
-          case 3:
+          case 2:
             postData = {
               startTime: formValues[current].times[0],
               endTime: formValues[current].times[1],

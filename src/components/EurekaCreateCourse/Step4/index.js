@@ -1,74 +1,90 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Dialog, Button, Input, Upload, Table, Message } from '@alifd/next';
+import { Dialog, Button, Input, Grid, Upload, Table, Message, Pagination } from '@alifd/next';
 import { STUDENT_UPLOAD_URL, invitation } from '@/utils/api';
-import merge from 'lodash-es/merge';
+import get from 'lodash-es/get';
 
-export default (current, formValues, form) => [{
-  render: () => {
-    const [visible, setVisible] = useState(false);
-    const [students, setStudents] = useState(null);
-    const [invitations, setInvitations] = useState([]);
-    const onSuccess = (data) => {
-      const ss = merge(students, data.response);
+const { Row, Col } = Grid;
 
-      formValues[current] = ss;
-      setStudents(ss);
-    };
-    const onOk = () => {
-      invitation.createBatch({
-        data: {
-          classroom: form.state.classroomData.id,
-          certifications: students.success.map(s => s.id),
-        },
-      }).then(({ data }) => {
-        setInvitations(data);
-        sessionStorage.setItem('formInvitations', JSON.stringify(data));
-      });
-      setVisible(false);
-    };
-    const onDelete = (student) => {
-      const ins = invitations.find(i => i.invitee === student.id);
-      if (ins) {
-        invitation.delete({}, { invitationId: ins.id }).then(() => {
-          const index = students.success.findIndex(s => s.id === student.id);
-          if (index !== -1) {
-            students.success.splice(index, 1);
-            setStudents({ ...students });
-          }
-          Message.success('删除成功');
-        }).catch(() => Message.success('删除失败'));
-      }
-    };
+export default ({ getClassroom, toNext, labelSpan, wrapperSpan }) => {
+  const [visible, setVisible] = useState(false);
+  const [students, setStudents] = useState([]);
+  const [pagination, setPagination] = useState({ total: 0, current: 1, pageSize: 10 });
+  const [isLoading, setIsLoading] = useState(false);
+  const [certifications, setCertifications] = useState('');
+  const onSuccess = ({ response }) => setCertifications(`${certifications}\n${response.join('\n')}`);
+  const getStudents = () => {
+    setIsLoading(true);
+    invitation.selectAll({
+      params: {
+        classroom: get(getClassroom(), 'id', ''),
+        embed: 1,
+        page: pagination.current,
+        pageSize: pagination.pageSize,
+      },
+    }).then(({ data }) => {
+      setStudents(data.data);
+      setPagination({ ...pagination, total: data.total });
+      setIsLoading(false);
+    }).catch(() => setIsLoading(false));
+  };
+  const onOk = () => {
+    const classroom = getClassroom();
 
-    useEffect(() => {
-      let ins = sessionStorage.getItem('formInvitations');
-      if (ins) {
-        try {
-          ins = JSON.parse(ins);
-          setInvitations(ins);
-        } catch (err) { /**/ }
-      }
-    }, []);
+    invitation.createBatch({
+      data: {
+        classroom: classroom.id,
+        certifications: certifications.split(/\s/).map(c => c.trim()).filter(c => c),
+      },
+    }).then(() => {
+      setCertifications('');
+      getStudents();
+    });
+    setVisible(false);
+  };
+  const onDelete = (student) => {
+    invitation.delete({}, { invitationId: student.id }).then(() => {
+      Message.success('删除成功');
+      getStudents();
+    }).catch(() => Message.success('删除失败'));
+  };
+  const onPagination = current => setPagination({ ...pagination, current });
 
-    return (
-      <Fragment>
-        <Button type="primary" style={{ marginBottom: 20 }} onClick={() => setVisible(true)}>导入学生列表</Button>
-        {students ? null : <p>你还没有添加学生，请添加学生</p>}
-        <Table dataSource={students ? students.success : []}>
-          <Table.Column dataIndex="学生身份信息" title="学生身份信息" />
-          <Table.Column dataIndex="姓名" title="姓名" />
-          <Table.Column width={120} cell={v => <Button type="normal" warning onClick={() => onDelete(v)}>删除</Button>} title="操作" />
-        </Table>
-        {students ? <p>已导入{students.success.length}个学生，有{students.fail.length}个导入失败。</p> : null}
-        <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
-          <p>选择上传文件</p>
-          <Upload action={STUDENT_UPLOAD_URL} limit={1} listType="text" onSuccess={onSuccess}>
-            <Button type="primary">上传文件</Button>
-          </Upload>
-          <p>或粘贴学生信息</p>
-          <Input.TextArea style={{ width: '100%' }} rows={16} />
-        </Dialog>
-      </Fragment>
-    );
-  },
-}];
+  useEffect(() => {
+    getStudents();
+  }, [pagination.current]);
+
+  return (
+    <Fragment>
+      <Row justify="center">
+        <Col span={labelSpan + wrapperSpan}>
+          <Button type="primary" onClick={() => setVisible(true)}>导入学生列表</Button>
+          {students ? null : <div className="m-t-20">你还没有添加学生，请添加学生</div>}
+        </Col>
+      </Row>
+      <Row justify="center" className="m-t-20">
+        <Col span={labelSpan + wrapperSpan}>
+          <Table loading={isLoading} dataSource={students}>
+            <Table.Column dataIndex="invitee.certification" title="学生身份信息" />
+            <Table.Column dataIndex="invitee.realname" title="姓名" />
+            <Table.Column width={120} cell={(_, i, student) => <Button type="normal" warning onClick={() => onDelete(student)}>删除</Button>} title="操作" />
+          </Table>
+        </Col>
+      </Row>
+      <div className="m-t-10" style={{ textAlign: 'center' }}>
+        <Pagination type="simple" {...pagination} onChange={onPagination} />
+      </div>
+      <Row justify="center" className="m-t-20">
+        <Col span={4}>
+          <Button type="primary" style={{ width: '100%' }} onClick={toNext}>下一步</Button>
+        </Col>
+      </Row>
+      <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
+        <Upload action={STUDENT_UPLOAD_URL} limit={1} listType="text" onSuccess={onSuccess}>
+          <Button type="primary">上传 .csv 或 .xls(x) 文件</Button>
+        </Upload>
+        <p className="m-t-20">或粘贴学生信息</p>
+        <Input.TextArea value={certifications} onChange={e => setCertifications(e)} style={{ width: '100%' }} rows={16} />
+      </Dialog>
+    </Fragment>
+  );
+};

@@ -64,13 +64,13 @@ const AddDialog = ({ save, projectList = [] }) => {
     setProjects([]);
     queryProjects(id);
   };
-  const onChange = (isSelected, id) => {
+  const onChange = (isSelected, p) => {
     if (isSelected) {
-      if (selected.indexOf(id) === -1) {
-        setSelected([...selected, id]);
+      if (selected.indexOf(p.id) === -1) {
+        setSelected([...selected, p]);
       }
     } else {
-      const index = selected.findIndex(oldId => oldId === id);
+      const index = selected.findIndex(old => old === p);
       if (index !== -1) {
         selected.splice(index, 1);
         setSelected(selected);
@@ -117,6 +117,6 @@ export default (current, formValues) => {
   return [{
     label: '选择实验',
     required: true,
-    render: () => <AddDialog save={data => formValues[current] = data} projectList={formValues[current].projects} />,
+    render: () => <AddDialog save={data => formValues[current] = data} projectList={formValues[current]} />,
   }];
 };

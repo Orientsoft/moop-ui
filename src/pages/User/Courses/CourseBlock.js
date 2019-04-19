@@ -29,7 +29,7 @@ export default ({ data }) => {
             开课时间： {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}
           </p>
           <Link to={`/classroom?id=${data.id}`} className="btn btn-primary">查看专题</Link>&nbsp;&nbsp;
-          <Link to="/createclassroom" className="btn btn-primary">编辑专题</Link>
+          <Link to="/editclassroom" className="btn btn-primary">编辑专题</Link>
         </div>
         <div className="col-12 col-md-8 m-t-10">
           {get(data, 'projects', []).map((project, i) => (

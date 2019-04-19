@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
-import { Form, Field, Grid, Step, Dialog } from '@alifd/next';
-import merge from 'lodash-es/merge';
-import { classroom } from '@/utils/api';
+import { Step } from '@alifd/next';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -9,127 +7,95 @@ import Step4 from './Step4';
 import Step5 from './Step5';
 import Step6 from './Step6';
 
-const { Row, Col } = Grid;
-
 const steps = [{
   title: '专题描述',
-  render: Step1,
+  render: props => <Step1 {...props} />,
 }, {
   title: '实验项目',
-  render: Step2,
+  render: props => <Step2 {...props} />,
 }, {
   title: '提交专题',
-  render: Step3,
+  render: props => <Step3 {...props} />,
 }, {
   title: '添加学生',
-  render: Step4,
+  render: props => <Step4 {...props} />,
 }, {
   title: '添加数据',
-  render: Step5,
+  render: props => <Step5 {...props} />,
 }, {
   title: '发布专题',
-  render: Step6,
+  render: props => <Step6 {...props} />,
 }];
 
-const formValues = [];
+const FORM_SESSION = 'CREATEFORM';
+const CLASSROOM_SESSION = 'CREATECLASSROOM';
 
-export default class extends React.Component {
-  field = new Field(this);
+export default class EurekaCreateCourse extends React.Component {
+  state = { current: 0 };
 
-  state = { current: 0, classroomData: {} };
+  setData = (key, data) => {
+    let savedItem = sessionStorage.getItem(FORM_SESSION);
 
-  componentDidMount() {
-    this.onSwitch(0);
-  }
+    if (savedItem) {
+      try {
+        savedItem = JSON.parse(savedItem);
+      } catch (error) {
+        savedItem = {};
+      }
+    } else {
+      savedItem = {};
+    }
+    sessionStorage.setItem(FORM_SESSION, JSON.stringify(Object.assign(savedItem, { [key]: data })));
+  };
+
+  getData = (key) => {
+    let savedItem = sessionStorage.getItem(FORM_SESSION);
+
+    if (savedItem) {
+      try {
+        savedItem = JSON.parse(savedItem);
+      } catch (error) {
+        savedItem = {};
+      }
+    } else {
+      savedItem = {};
+    }
+    return savedItem[key];
+  };
+
+  getPostData = () => {
+    const item0 = this.getData(0);
+    const item1 = this.getData(1);
+    const item2 = this.getData(2);
+
+    return {
+      ...item0,
+      projects: item1.projects.map(p => p.id),
+      ...item2,
+      invited: item0.public,
+      status: 0,
+    };
+  };
+
+  setClassroom = data => sessionStorage.setItem(CLASSROOM_SESSION, JSON.stringify(data));
+
+  getClassroom = () => {
+    let savedItem = sessionStorage.getItem(CLASSROOM_SESSION);
+
+    if (savedItem) {
+      try {
+        savedItem = JSON.parse(savedItem);
+      } catch (error) {
+        savedItem = null;
+      }
+    }
+    return savedItem;
+  };
 
   componentWillUnmount() {
-    sessionStorage.removeItem('form');
-    sessionStorage.removeItem('formClassroom');
-    sessionStorage.removeItem('formInvitations');
+    sessionStorage.removeItem(FORM_SESSION);
+    sessionStorage.removeItem(CLASSROOM_SESSION);
   }
-
-  onSwitch = (current) => {
-    let values = sessionStorage.getItem('form');
-    let formClassroom = sessionStorage.getItem('formClassroom');
-
-    if (formClassroom) {
-      try {
-        formClassroom = JSON.parse(formClassroom);
-      } catch (error) {
-        formClassroom = {};
-      }
-      this.setState({ classroomData: formClassroom });
-    }
-    if (values) {
-      try {
-        values = JSON.parse(values);
-        Object.assign(formValues, values);
-        this.field.setValues(values[current]);
-      } catch (error) { /**/ }
-    }
-    this.setState({ current });
-  };
-
-  onSubmit = () => {
-    const { current } = this.state;
-
-    this.field.validate((error, values) => {
-      if (!error) {
-        formValues[current] = merge(formValues[current], values);
-        sessionStorage.setItem('form', JSON.stringify(formValues));
-        if (current === 2) {
-          Dialog.confirm({
-            title: '创建专题',
-            content: '确定创建？',
-            onOk: () => classroom.create({
-              data: {
-                title: formValues[0].title,
-                thumb: formValues[0].thumb,
-                description: formValues[0].description,
-                requirement: formValues[0].requirement,
-                material: formValues[0].material.filter(m => m.name.trim()),
-                invited: 0,
-                testPoint: formValues[0].testPoint,
-                public: formValues[0].public !== 0,
-                projects: formValues[1] ? formValues[1].map(p => p.id) : [],
-                characteristic: formValues[0].characteristic,
-                startTime: formValues[2].times[0],
-                endTime: formValues[2].times[1],
-                tags: formValues[2].tags,
-                status: 0,
-              },
-            }).then(({ data }) => {
-              this.field.remove();
-              sessionStorage.setItem('formClassroom', JSON.stringify(data));
-              this.setState({
-                current: current + 1,
-                classroomData: data,
-              });
-            }).catch(() => {
-              Dialog.alert({
-                title: '失败',
-                content: '创建专题失败',
-              });
-            }),
-          });
-          return;
-        }
-        if (current === steps.length - 1) {
-          classroom.update({
-            data: {
-              invited: formValues[5].status ? 1 : 0,
-              status: formValues[5].status,
-            },
-          }, { classroomId: this.state.classroomData.id }).then(({ data }) => {
-            history.push(`/classroom?id=${data.id}`);
-          });
-        } else if (!this.disableSubmit) {
-          this.field.remove();
-          this.setState({ current: current + 1 });
-        }
-      }
-    });
-  };
 
   render() {
     const { current } = this.state;
@@ -138,27 +104,22 @@ export default class extends React.Component {
       <Fragment>
         <Step current={current} shape="arrow">
           {steps.map((step, i) => (
-            <Step.Item disabled={false} key={i} title={step.title} onClick={() => this.onSwitch(i)} />
+            <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
           ))}
         </Step>
-        <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} style={{ margin: '40px 0', minHeight: 160 }}>
-          {steps[current].render(current, formValues, this).map(({ render, label, ...itemProps }, i) => {
-            if (label) {
-              return <Form.Item key={i} label={label} {...itemProps}>{render()}</Form.Item>;
-            }
-            return (
-              <Row key={i} justify="center" style={{ marginBottom: 40 }}>
-                <Col span={18}>{React.createElement(render)}</Col>
-              </Row>
-            );
+        <div style={{ margin: '40px 0', minHeight: 160 }}>
+          {steps[current].render({
+            setData: data => this.setData(current, data),
+            getData: () => this.getData(current),
+            getPostData: this.getPostData,
+            toNext: () => this.setState({ current: current + 1 }),
+            history: this.props.history,
+            setClassroom: this.setClassroom,
+            getClassroom: this.getClassroom,
+            labelSpan: 6,
+            wrapperSpan: 12,
           })}
-          <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-            <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>
-              {/* eslint-disable */}
-              {current === steps.length - 1 ? '完成创建' : current === 2 ? '创建专题' : '下一步'}
-            </Form.Submit>
-          </Form.Item>
-        </Form>
+        </div>
       </Fragment>
     );
   }

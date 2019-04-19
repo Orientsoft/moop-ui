@@ -1,99 +1,125 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Form, Field, Grid, Input, Button, Upload, Radio } from '@alifd/next';
 import classnames from 'classnames';
-import { Button, Input, Radio, Upload } from '@alifd/next';
 import { IMAGE_UPLOAD_URL } from '@/utils/api';
-import set from 'lodash-es/set';
 
-const RadioGroup = Radio.Group;
+const { Row, Col } = Grid;
 
-const Materials = ({ data = [{ href: '', name: '' }], save }) => {
-  const [materials, setMaterials] = useState(data);
-  const setValue = (i, value) => {
-    materials[i] = Object.assign(materials[i], value);
-    setMaterials([...materials]);
-    save([...materials]);
+export default class Step1 extends React.Component {
+  state = { thumb: null, material: [], characteristic: [] };
+
+  field = new Field(this);
+
+  componentDidMount() {
+    this.field.setValues(this.props.getData());
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    const values = nextProps.getData();
+
+    if (values) {
+      return {
+        thumb: { id: values.thumb },
+        material: values.material,
+        characteristic: values.characteristic,
+      };
+    }
+    return null;
+  }
+
+  addMaterial = () => {
+    this.setState({ material: [...this.state.material, {}] });
   };
-  const addMaterial = () => setMaterials([...materials, { href: '', name: '' }]);
 
-  return (
-    <div>
-      {materials.map(({ href, name }, i) => {
-        if (i === materials.length - 1) {
-          return (
-            <div key={i} className={classnames({ 'm-t-10': i !== 0 })}>
-              <Input value={name} onChange={v => setValue(i, { name: v })} placeholder="资料名称" style={{ width: '30%', marginRight: 10 }} />
-              <Input value={href} onChange={v => setValue(i, { href: v })} placeholder="网址" style={{ width: '60%', marginRight: 10 }} />
-              <Button onClick={addMaterial}>+</Button>
-            </div>
-          );
+  removeMaterial = (index) => {
+    const { material } = this.state;
+
+    material.splice(index, 1);
+    this.setState([...material]);
+  };
+
+  modifyMaterial = (index, value) => {
+    const { material } = this.state;
+
+    material[index] = { ...material[index], ...value };
+    this.setState([...material]);
+  };
+
+  setCharacteristic = (index, value) => {
+    const { characteristic } = this.state;
+
+    characteristic[index] = value;
+    this.setState({ characteristic: [...characteristic] });
+  };
+
+  onSubmit = () => {
+    const { toNext, setData } = this.props;
+    const { thumb, material, characteristic } = this.state;
+
+    this.field.validate((error, values) => {
+      if (!error) {
+        if (thumb) {
+          values.thumb = thumb.id;
         }
-        return (
-          <div key={i} className={classnames({ 'm-t-10': i !== 0 })}>
-            <Input value={name} onChange={v => setValue(i, { name: v })} placeholder="资料名称" style={{ width: '30%', marginRight: 10 }} />
-            <Input value={href} onChange={v => setValue(i, { href: v })} placeholder="网址" style={{ width: '60%', marginRight: 10 }} />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+        values.material = material.filter(m => m.name);
+        values.characteristic = characteristic.filter(c => c);
+        setData(values);
+        toNext();
+      }
+    });
+  };
 
-export default (current, formValues) => [{
-  label: '专题名称',
-  required: true,
-  render: () => <Input name="title" />,
-}, {
-  label: '专题封面',
-  render: () => {
-    formValues[current] = formValues[current] || {};
+  render() {
+    const { labelSpan, wrapperSpan } = this.props;
+    const { material, characteristic } = this.state;
+
     return (
-      <Upload onSuccess={data => set(formValues[current], 'thumb', data.id)} className="eureka-upload" listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
-        <Button>上传图片</Button>
-      </Upload>
+      <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
+        <Form.Item label="专题名称" required>
+          <Input name="title" />
+        </Form.Item>
+        <Form.Item label="专题封面">
+          <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
+            <Button>上传图片</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item label="专题描述" required>
+          <Input.TextArea name="description" />
+        </Form.Item>
+        <Form.Item label="预备知识" required>
+          <Input.TextArea name="requirement" />
+        </Form.Item>
+        <Form.Item label="考核内容" required>
+          <Input.TextArea name="testPoint" />
+        </Form.Item>
+        <Form.Item label="参考资料">
+          {material.concat({}).map((({ name, href }, i, self) => (
+            <Row key={i} className={classnames({ 'm-t-10': i !== 0 })}>
+              <Col span={11}>
+                <Input trim value={name} onChange={e => this.modifyMaterial(i, { name: e })} style={{ width: '98%' }} placeholder="资料名称" />
+              </Col>
+              <Col span={11}>
+                <Input trim value={href} onChange={e => this.modifyMaterial(i, { href: e })} style={{ width: '98%' }} placeholder="网址(选填)" />
+              </Col>
+              <Col>
+                {i + 1 === self.length ? <Button onClick={() => this.addMaterial(i)}>+</Button> : <Button onClick={() => this.removeMaterial(i)}>-</Button>}
+              </Col>
+            </Row>
+          )))}
+        </Form.Item>
+        <Form.Item label="专题特点">
+          <Input trim value={characteristic[0]} onChange={e => this.setCharacteristic(0, e)} placeholder="特点一(选填)" />
+          <Input trim value={characteristic[1]} onChange={e => this.setCharacteristic(1, e)} className="m-t-10" placeholder="特点二(选填)" />
+          <Input trim value={characteristic[2]} onChange={e => this.setCharacteristic(2, e)} className="m-t-10" placeholder="特点三(选填)" />
+          <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
+        </Form.Item>
+        <Form.Item label="是否公开">
+          <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />
+        </Form.Item>
+        <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
+          <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>下一步</Form.Submit>
+        </Form.Item>
+      </Form>
     );
-  },
-}, {
-  label: '专题描述',
-  required: true,
-  render: () => <Input.TextArea name="description" />,
-}, {
-  label: '预备知识',
-  required: true,
-  render: () => <Input.TextArea name="requirement" />,
-}, {
-  label: '考核内容',
-  required: true,
-  render: () => <Input.TextArea name="testPoint" />,
-}, {
-  label: '参考资料',
-  render: () => <Materials data={formValues[current].material} save={data => formValues[current].material = data} />,
-}, {
-  label: '专题特点',
-  render: () => {
-    const setValue = (i, v) => formValues[current].characteristic[i] = v;
-    const getValue = i => formValues[current].characteristic[i];
-
-    formValues[current].characteristic = formValues[current].characteristic || [];
-
-    return (
-      <div>
-        <div>
-          <Input defaultValue={getValue(0)} onChange={v => setValue(0, v)} placeholder="可选，特点一" />
-        </div>
-        <div className="m-t-10">
-          <Input defaultValue={getValue(1)} onChange={v => setValue(1, v)} placeholder="可选，特点二" />
-        </div>
-        <div className="m-t-10">
-          <Input defaultValue={getValue(2)} onChange={v => setValue(2, v)} placeholder="可选，特点三" />
-        </div>
-        <div className="m-t-10">
-          <Input defaultValue={getValue(3)} onChange={v => setValue(3, v)} placeholder="可选，特点四" />
-        </div>
-      </div>
-    )
-  },
-}, {
-  label: '是否公开',
-  required: true,
-  render: () => <RadioGroup defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />,
-}];
+  }
+}
