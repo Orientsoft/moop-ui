@@ -166,7 +166,7 @@ export default ({ history }) => {
           <hr />
           <div className="container m-t-40 p-b-120">
             <h2 className="large m-t-40" id="t-assistant">讲师</h2>
-            <TeacherList data={course.assistants} />
+            <TeacherList data={course.tutors} />
           </div>
         </Tab.Item>
         {user && user.role === consts.user.TEACHER ? (
