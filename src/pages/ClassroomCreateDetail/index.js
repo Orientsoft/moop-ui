@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Step, Input, Upload, Button } from '@alifd/next';
+import { publication } from '@/utils/api';
 import EurekaForm from '@/components/EurekaForm';
 import MaterialEdit from './MaterialEdit';
 
@@ -26,6 +27,15 @@ const items = [{
 
 export default () => {
   const [current, setCurrent] = useState(0);
+  const onSubmit = (values, form) => {
+    form.field.validate((error) => {
+      if (!error) {
+        publication.create({ data: values }, { classroomId: '' }).then(() => {
+          setCurrent(1);
+        });
+      }
+    });
+  };
 
   return (
     <Fragment>
@@ -43,7 +53,7 @@ export default () => {
         <Step.Item title="材料编辑" onClick={() => setCurrent(1)} />
       </Step>
       {current === 0 ? (
-        <EurekaForm style={{ margin: '40px 0', minHeight: 160 }} items={items} submitProps={{ onClick: () => setCurrent(1), label: '下一步' }} />
+        <EurekaForm style={{ margin: '40px 0', minHeight: 160 }} items={items} submitProps={{ onClick: onSubmit, label: '保存' }} />
       ) : (
         <div className="row">
           <MaterialEdit />
