@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 export default () => {
   return (
     <div className="m-b-30 tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      <form className="needs-validation createdcont">
+      <div className="needs-validation createdcont">
         <h5>项目团队<span>（请下载模板填写文档好再上传。）</span></h5>
         <div className="form-row row m-t-20">
           <label className="import col-sm-2 col-form-label">下载word模板</label>
@@ -190,7 +191,7 @@ export default () => {
           </div>
         </div>
         <div className="form-row row m-t-20">
-           <label className="col-sm-2 col-form-label"> </label>
+          <label className="col-sm-2 col-form-label" />
           <div className="col-sm-8">
             <p className="m-t-20">
               <Link to="createdetails.html" className="btn btn-primary m-r-10 savecouse">保存 </Link>
@@ -198,7 +199,7 @@ export default () => {
             </p>
           </div>
         </div>
-      </form>
-   </div>
+      </div>
+    </div>
   );
 };

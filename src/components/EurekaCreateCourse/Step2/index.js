@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Dialog, Tag, Button, Grid, Checkbox } from '@alifd/next';
+import { Dialog, Tag, Button, Grid, Checkbox, Pagination } from '@alifd/next';
 import get from 'lodash-es/get';
 import ProjectList from '@/components/ProjectList';
 import { project as projectAPI } from '@/utils/api';
@@ -10,7 +10,9 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   const [visible, setVisible] = useState(false);
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [pagination, setPagination] = useState({ pageSize: 10, current: 1, total: 0 });
   const [selected, setSelected] = useState(get(getData(), 'projects', []));
+  const [currentTag0, setCurrentTag0] = useState(null);
   const [currentTag, setCurrentTag] = useState(null);
   const onCancel = () => setVisible(false);
   const onOk = () => {
@@ -63,7 +65,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   const onChange = (id) => {
     setCurrentTag(id);
     setProjects([]);
-    projectAPI.selectAll({ params: { tag: id } }).then(({ data }) => setProjects(data.projects));
+    setPagination({ ...pagination, current: 1, total: 0 });
   };
   const onSelect = (isSelected, p) => {
     if (isSelected) {
@@ -82,6 +84,20 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   useEffect(() => {
     projectAPI.categories().then(({ data }) => setCategories(data));
   }, []);
+  useEffect(() => {
+    if (currentTag) {
+      projectAPI.selectAll({
+        params: {
+          tag: currentTag,
+          page: pagination.current,
+          pageSize: pagination.pageSize,
+        },
+      }).then(({ data }) => {
+        setProjects(data.projects);
+        setPagination({ ...pagination, total: data.meta.total });
+      });
+    }
+  }, [pagination.current, currentTag]);
 
   return (
     <Fragment>
@@ -101,17 +117,34 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
         </Col>
       </Row>
       <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
-        <Tag.Group>
+        {/* <Tag.Group>
           {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
             <Tag.Selectable checked={currentTag === id} key={id} onChange={() => onChange(id)} title={`${name}(${count})`}>{name}({count})</Tag.Selectable>
           ))), [])}
+        </Tag.Group> */}
+        <Tag.Group>
+          {categories.map((cat, i) => (
+            <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => setCurrentTag0(i)} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+          ))}
         </Tag.Group>
-        <Row>
+        {currentTag0 !== null ? (
+          <Tag.Group className="m-t-20">
+            {categories[currentTag0].type.map(cat => (
+              <Tag.Selectable checked={currentTag === cat.id} key={cat.id} onChange={() => onChange(cat.id)} title={`${cat.name}(${cat.count})`}>{cat.name}({cat.count})</Tag.Selectable>
+            ))}
+          </Tag.Group>
+        ) : null}
+        <Row wrap className="m-t-20">
           {projects.map(project => (
             <Col span={12} key={project.id}>
               <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
             </Col>
           ))}
+        </Row>
+        <Row className="m-t-20" style={{ textAlign: 'center' }}>
+          <Col span={24}>
+            {pagination.total > pagination.pageSize && <Pagination type="simple" {...pagination} onChange={current => setPagination({ ...pagination, current })} />}
+          </Col>
         </Row>
       </Dialog>
     </Fragment>

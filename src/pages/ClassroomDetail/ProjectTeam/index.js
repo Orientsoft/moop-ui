@@ -1,9 +1,11 @@
 import React from 'react';
+import Markdown from 'react-markdown';
 
 export default () => {
   return (
     <div className="m-b-30 tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <h5 className="m-b-20">实验教学项目负责人情况</h5>
+      <Markdown source="# this 阿萨德撒地方 `console.log(this)`" />
       <div className="text-secondary">
         <table className="table table-bordered part-table">
           <tbody>

@@ -96,7 +96,7 @@ const Teacher = ({ user, data }) => (
       <div className="container p-b-60 ">
         {data.length ? (
           data.map((course, i) => (
-            <div style={{ width: '33%', display: 'inline-block' }}>
+            <div key={i} style={{ width: '33%', display: 'inline-block' }}>
               <CourseBlock key={i} data={course} />
             </div>
           ))
@@ -121,7 +121,7 @@ export default () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    classroom.selectMine().then(({ data }) => setCourses(data.data));
+    classroom.selectMine({ params: { all: 1 } }).then(({ data }) => setCourses(data.data));
   }, []);
 
   return user.role === consts.user.TEACHER ? <Teacher user={user} data={courses} /> : <User user={user} data={courses} />;
