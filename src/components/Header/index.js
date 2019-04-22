@@ -12,7 +12,7 @@ export default ({ onLogout, history }) => {
     <header className="bd-navbar">
       <div className="container ">
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
-          <a className="navbar-brand logo" href="index.html"><i>E</i><span>ureka</span></a>
+          <Link className="navbar-brand logo" to="/"><i>E</i><span>ureka</span></Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
