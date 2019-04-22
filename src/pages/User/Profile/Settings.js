@@ -45,59 +45,56 @@ export default (props) => {
   const itemBefore = [{
     label: <span className="col-sm-2 col-form-label">用户名：</span>,
     required: true,
-    render: () => <div className="form-check col-sm-8 "><Input disabled name="name" style={{ width: '100%' }} /></div>,
+    render: () => <Input disabled name="name" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }, {
     label: <span className="col-sm-2 col-form-label">头像：</span>,
     render: () => (
-      <div className="form-check col-sm-8 ">
-        <Upload
-          action={IMAGE_UPLOAD_URL}
-          accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-          limit={1}
-          listType="card"
-          onSuccess={data => setThumb(data.response.id)}
-        >
-          <img src={props.user.thumb} alt="" width={100} height={100} className="float-left m-r-10" />
-          <Button className="m-t-10">上传图片</Button>
-          <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
-        </Upload>
-      </div >
+      <Upload
+        className="form-check col-sm-8"
+        action={IMAGE_UPLOAD_URL}
+        accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+        limit={1}
+        listType="card"
+        onSuccess={data => setThumb(data.response.id)}
+      >
+        <img src={props.user.thumb} alt="" width={100} height={100} className="float-left m-r-10" />
+        <Button className="m-t-10">上传图片</Button>
+        <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
+      </Upload>
     ),
   }, {
     label: <span className="col-sm-2 col-form-label">性别：</span>,
     required: true,
-    render: () => <div className="form-check col-sm-8 "><Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} /></div>,
+    render: () => <Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} className="form-check col-sm-8" />,
   }, {
     label: <span className="col-sm-2 col-form-label">手机号：</span>,
     required: true,
-    render: () => <div className="form-check col-sm-8 "><Input name="mobile" style={{ width: '100%' }} /></div>,
+    render: () => <Input name="mobile" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }, {
     label: <span className="col-sm-2 col-form-label">真实姓名：</span>,
     required: true,
     render: () => (
-      <div className="form-check col-sm-8 ">
-        <Fragment>
-          <Input trim value={realname} onChange={e => setRealname(e)} style={{ width: '100%' }} />
-          <div className="text-muted fontsw m-t-10">请填写真实姓名</div>
-        </Fragment>
-      </div>
+      <Fragment>
+        <Input trim value={realname} onChange={e => setRealname(e)} style={{ width: '100%' }} className="form-check col-sm-8" />
+        <div className="text-muted fontsw m-t-10">请填写真实姓名</div>
+      </Fragment>
     ),
   }];
   const itemAfter = [{
     label: <span className="col-sm-2 col-form-label">常用邮箱：</span>,
-    render: () => <div className="form-check col-sm-8 "> <Input name="email" style={{ width: '100%' }} /></div>,
+    render: () => <Input name="email" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }];
   const items = isTeacher(props.user) ? itemBefore.concat({
     label: <span className="col-sm-2 col-form-label">职称：</span>,
     required: true,
-    render: () => <div className="form-check col-sm-8 "> <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="profession" style={{ width: '100%' }}  /></div>,
+    render: () => <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="profession" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }, {
-      label: <span className="col-sm-2 col-form-label">个人简介：</span>,
+    label: <span className="col-sm-2 col-form-label">个人简介：</span>,
     required: true,
-    render: () => <div className="form-check col-sm-8 ">  <Input.TextArea name="remark" style={{ width: '100%', height: '200px' }} /></div>,
+    render: () => <Input.TextArea name="remark" style={{ width: '100%', height: '200px' }} className="form-check col-sm-8" />,
   }, {
-      label: <span className="col-sm-2 col-form-label">链接：</span>,
-    render: () => <div className="form-check col-sm-8 "> <Input name="site" style={{ width: '100%' }} /></div>,
+    label: <span className="col-sm-2 col-form-label">链接：</span>,
+    render: () => <Input name="site" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }, itemAfter) : itemBefore.concat(certificationField, ...itemAfter);
 
   return <EurekaForm items={items} values={props.user} submitProps={{ onClick }} />;
