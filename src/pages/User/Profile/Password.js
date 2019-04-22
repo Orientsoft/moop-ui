@@ -5,17 +5,17 @@ import { user } from '@/utils/api';
 import get from 'lodash-es/get';
 
 const items = [{
-  label: '原始密码',
+  label: <span className="col-sm-2 col-form-label">原始密码</span>,
   required: true,
-  render: () => <Input htmlType="password" name="key" />,
+  render: () => <div className="form-check col-sm-8 "><Input htmlType="password" name="key" style={{ width: '100%' }} /></div>,
 }, {
-  label: '新密码',
+  label: <span className="col-sm-2 col-form-label">新密码</span>,
   required: true,
-  render: () => <Input htmlType="password" name="newKey" />,
+    render: () => <div className="form-check col-sm-8 "><Input htmlType="password" name="newKey" style={{ width: '100%' }} /></div>,
 }, {
-  label: '确认密码',
+  label: <span className="col-sm-2 col-form-label">确认密码</span>,
   required: true,
-  render: () => <Input htmlType="password" name="password" />,
+    render: () => <div className="form-check col-sm-8 "><Input htmlType="password" name="password" style={{ width: '100%' }} /></div>,
 }];
 
 export default (props) => {

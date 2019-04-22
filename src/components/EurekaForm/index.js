@@ -18,8 +18,8 @@ export default class extends React.Component {
       const { label = '提交', onClick, ...restProps } = submitProps;
 
       submitItem = (
-        <Form.Item wrapperCol={{ span: 4, offset: 10 }} {...restProps}>
-          <Form.Submit type="primary" style={{ width: '100%' }} onClick={values => onClick(values, this)}>{label}</Form.Submit>
+        <Form.Item wrapperCol={{ span: 2, offset: 8 }} {...restProps}>
+          <Form.Submit type="primary" className="serverbtn" onClick={values => onClick(values, this)}>{label}</Form.Submit>
         </Form.Item>
       );
     }

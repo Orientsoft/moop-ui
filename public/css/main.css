@@ -25,6 +25,12 @@ padding-top: 10px !important;
 .p-b-10 {
 padding-bottom: 10px !important;
 }
+.p-t-30{
+padding-top: 30px !important;
+}
+.p-b-30{
+padding-bottom: 30px !important;
+}
 .p-b-60{
 padding-bottom: 60px !important;
 }
@@ -311,10 +317,14 @@ color: #fff;}
 background-position: center 10%;
 background-size: cover;
 color: #fff;
+background: #4760de url(../images/settingui.png);
+background-repeat: no-repeat;
+background-size: 14%;
+background-position: 69% bottom;
 /* background-image: -moz-linear-gradient(90deg, #032f62, #024794);
 background-image: -webkit-linear-gradient(90deg, #032f62, #024794);
 background-image: linear-gradient(90deg, #032f62, #024794); */
-    background: linear-gradient(130deg, #400446 30%, #2bdada 100%);
+    /* background: linear-gradient(130deg, #400446 30%, #2bdada 100%); */
 }
 .main-container{ position: relative; }
 .mainproico{margin-bottom: 0;
@@ -357,9 +367,26 @@ background-image: linear-gradient(90deg, #032f62, #024794); */
     vertical-align: middle;
     white-space: nowrap;
 }
+
 .startbtn:hover,.whitebtn:hover,.startbtn:focus,.whitebtn:focus{
     background-color:#00a95d;
     border: 1px solid #00a95d;}
+.serverbtn{  background-color: #00ce72 !important;
+border: 1px solid #00ce72!important;
+border-radius: 2px!important;
+color: #fff !important;
+cursor: pointer;
+display: inline-block;
+font-size: 14px!important;
+font-weight: 500!important;
+padding: 0 60px!important;
+transition: .2s!important;
+height: 40px !important;
+user-select: none;
+vertical-align: middle;
+white-space: nowrap;}
+.serverbtn:hover{ background-color:#00a95d!important;
+    border: 1px solid #00a95d !important;}
 .whitebtn{
     background-color: #fff;
     border: 1px solid #ddd;
@@ -905,3 +932,7 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
           border-color: tranparent;
         }
       }
+.col-sm-2.col-form-label{ font-size: 14px; color: #000;}    
+.inputinfoation{ width: 500px; margin: 0 auto; text-align: center }
+
+.inputinfoation h2{ border: solid 1px #012E61; padding: 10px 20px; width: 200px; margin: 20px auto 40px; background: #f0f0f0; color:#15b73a;}

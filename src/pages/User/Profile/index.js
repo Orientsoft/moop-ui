@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Tab } from '@alifd/next';
+// import { Tab } from '@alifd/next';
+import Tab from '@/components/Tab';
 import EurekaBanner from '@/components/EurekaBanner';
 import { isTeacher } from '@/utils';
 import { getCurrentUser } from '@/utils/helper';
@@ -15,20 +16,26 @@ export default () => {
       <EurekaBanner>
         <div className="row">
           <div className="col-12 col-md-6">
-            <h2 className="large">设置</h2>
+            <h3 className="large">设置</h3>
           </div>
         </div>
       </EurekaBanner>
-      <Tab navStyle={{ padding: '0 10%' }} contentStyle={{ padding: '30px 0' }}>
-        <Tab.Item title="设置">
-          <Settings user={user} />
+      <Tab >
+        <Tab.Item title="设置" >
+          <div className="p-t-60 p-b-60 p-l-r-30">
+            <Settings user={user} />
+          </div>
         </Tab.Item>
         <Tab.Item title="密码修改">
-          <Password user={user} />
+          <div className="p-t-60 p-b-60">
+            <Password user={user} />
+          </div>
         </Tab.Item>
         {isTeacher(user) && (
           <Tab.Item title="我的邀请码">
-            <Invitation user={user} />
+            <div className="p-t-60 p-b-60">
+              <Invitation user={user} />
+            </div>
           </Tab.Item>
         )}
       </Tab>
