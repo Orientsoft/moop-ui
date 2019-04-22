@@ -23,7 +23,7 @@ export default (props) => {
       }
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);
-        Dialog.success({
+        Dialog.alert({
           content: '更新成功',
           onOk: () => location.reload(),
         });

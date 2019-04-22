@@ -95,7 +95,11 @@ const Teacher = ({ user, data }) => (
     <div className="bg-white p-t-60 p-b-60">
       <div className="container p-b-60 ">
         {data.length ? (
-          data.map((course, i) => <CourseBlock key={i} data={course} />)
+          data.map((course, i) => (
+            <div style={{ width: '33%', display: 'inline-block' }}>
+              <CourseBlock key={i} data={course} />
+            </div>
+          ))
         ) : (
           <div className="row ">
             <div className="col-12">

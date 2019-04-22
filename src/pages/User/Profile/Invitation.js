@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@alifd/next';
 import EurekaForm from '@/components/EurekaForm';
 
 export default ({ user }) => {

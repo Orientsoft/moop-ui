@@ -21,9 +21,10 @@ const ntoc = n => ntocMap[n];
 export default ({ data }) => {
   return (
     <Fragment>
-      <div className="row ">
-        <div className="cardinfo col-12 col-md-4 m-t-10">
-          <img className="imginfo" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
+      <div className="row" style={{ width: '90%' }}>
+        {/* col-12 col-md-4 */}
+        <div className="cardinfo m-t-10">
+          <img className="imginfo" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
           <h5 className="card-title">{data.title}</h5>
           <p className="fontsw">已加入 <span className="text-danger">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
             开课时间： {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}
@@ -31,7 +32,7 @@ export default ({ data }) => {
           <Link to={`/classroom?id=${data.id}`} className="btn btn-primary">查看专题</Link>&nbsp;&nbsp;
           <Link to="/editclassroom" className="btn btn-primary">编辑专题</Link>
         </div>
-        <div className="col-12 col-md-8 m-t-10">
+        {/* <div className="col-12 col-md-8 m-t-10">
           {get(data, 'projects', []).map((project, i) => (
             <div key={project.id} className="m-t-20">
               <h6 className="card-title">{ntoc(i + 1)}、{project.title}</h6>
@@ -46,7 +47,7 @@ export default ({ data }) => {
               ))}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
       <hr />
     </Fragment>

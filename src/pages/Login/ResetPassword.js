@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Message } from '@alifd/next';
 import { user } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
@@ -8,10 +7,10 @@ import consts from '@/utils/consts';
 export default ({ history }) => {
   const [values, setValues] = useState({});
   const onSubmit = () => {
-    const { name, key } = values;
+    const { rekey, key } = values;
 
-    if (name && key) {
-      user.login({ data: { name, key } }).then(({ data }) => {
+    if (rekey && key) {
+      user.login({ data: { key } }).then(({ data }) => {
         if (!data.gender) {
           data.gender = consts.sex.MALE;
         }
@@ -36,31 +35,23 @@ export default ({ history }) => {
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-40">
-              <h3 className="text-center uppercase">登录</h3>
+              <h3 className="text-center uppercase">请输入新密码</h3>
               <div className="panel-body">
                 <div className="form-horizontal m-t-30">
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
+                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="请输入新密码" />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="col-12">
-                      <Link to="/forgot_pass">忘记密码?</Link>
+                      <input className="form-control" onChange={setField('rekey')} type="password" required placeholder="确认密码" />
                     </div>
                   </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">
-                      <button className="btn loginbnt btn-block" onClick={onSubmit}>登录</button>
+                      <button className="btn loginbnt btn-block" onClick={onSubmit}>提交</button>
                     </div>
-                  </div>
-                  <div className="form-group m-t-30 m-b-0">
-                    <div className="col-12">没有帐号？<Link to="/register">注册</Link></div>
                   </div>
                 </div>
               </div>
