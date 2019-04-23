@@ -29,12 +29,11 @@ export default ({ location }) => {
             <div className="col-12 col-md-7 m-b-30">
               <h2 className="large ">{publication.name}</h2>
               <ul className="text-transparent m-t-20">
-                <li>所属院校：{publication.school}</li>
-                <li>对应专业：勘查技术与工程</li>
+                <li>所属院校：{publication.institute}</li>
+                <li>对应专业：{publication.specialty}</li>
                 <li>学校：{publication.school}</li>
-                <li> 负责人：刘财</li>
               </ul>
-              <Link to="/classroom" className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>
+              <Link to={`/classroom?id=${publication.classroom}`} className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>
               <Link to={{ pathname: '/classroomcreatedetail', state: publication }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑项目</Link>
             </div>
           </div>
@@ -44,35 +43,35 @@ export default ({ location }) => {
         <Tab.Item title="项目团队" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <ProjectTeam />
+              <ProjectTeam data={publication} />
             </div>
           </div>
         </Tab.Item>
         <Tab.Item title="项目描述" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <ProjectDescription />
+              <ProjectDescription data={publication} />
             </div>
           </div>
         </Tab.Item>
         <Tab.Item title="网络要求" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <Network />
+              <Network data={publication} />
             </div>
           </div>
         </Tab.Item>
         <Tab.Item title="技术架构" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <Technical />
+              <Technical data={publication} />
             </div>
           </div>
         </Tab.Item>
         <Tab.Item title="项目特色" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <ItemAdvantage />
+              <ItemAdvantage data={publication} />
             </div>
           </div>
         </Tab.Item>
@@ -86,7 +85,7 @@ export default ({ location }) => {
         <Tab.Item title="服务计划" className="bg-white">
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
-              <ServicePlan />
+              <ServicePlan data={publication} />
             </div>
           </div>
         </Tab.Item>
