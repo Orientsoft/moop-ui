@@ -95,7 +95,7 @@ export default (props) => {
   }, {
     label: <span className="col-sm-2 col-form-label">链接：</span>,
     render: () => <Input name="site" style={{ width: '100%' }} className="form-check col-sm-8" />,
-  }, itemAfter) : itemBefore.concat(certificationField, ...itemAfter);
+  }, itemAfter) : itemBefore.concat(props.user.certificated ? [] : certificationField, ...itemAfter);
 
   return <EurekaForm items={items} values={props.user} submitProps={{ onClick }} />;
 };
