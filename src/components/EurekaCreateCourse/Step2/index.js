@@ -114,7 +114,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary"  onClick={toNext} className="serverbtn">下一步</Button>
+            <Button type="primary" onClick={toNext} className="serverbtn">下一步</Button>
           </Col>
         </Row>
         <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
@@ -125,7 +125,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
           </Tag.Group> */}
           <Tag.Group>
             {categories.map((cat, i) => (
-              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => setCurrentTag0(i)} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
             ))}
           </Tag.Group>
           {currentTag0 !== null ? (
@@ -138,7 +138,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
           <Row wrap className="m-t-20">
             {projects.map(project => (
               <Col span={12} key={project.id}>
-                <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
+                <Checkbox disabled={!project.purchase} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
               </Col>
             ))}
           </Row>

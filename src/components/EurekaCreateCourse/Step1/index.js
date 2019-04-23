@@ -80,7 +80,7 @@ export default class Step1 extends React.Component {
         </Form.Item>
         <Form.Item label="专题封面：">
           <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
-            {thumb ? <img src={thumb.url} alt="" width={300} height={180} className="m-r-10" /> : null}
+            {thumb.url ? <img src={thumb.url} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/headerboy.png" alt="" />}
             <Button>上传图片</Button>
           </Upload>
         </Form.Item>

@@ -142,7 +142,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
           </Tag.Group> */}
           <Tag.Group>
             {categories.map((cat, i) => (
-              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => setCurrentTag0(i)} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
             ))}
           </Tag.Group>
           {currentTag0 !== null ? (
@@ -155,7 +155,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
           <Row className="m-t-20" wrap>
             {projects.map(project => (
               <Col span={12} key={project.id}>
-                <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
+                <Checkbox disabled={!project.purchase} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
               </Col>
             ))}
           </Row>
