@@ -388,14 +388,14 @@ white-space: nowrap;}
 .serverbtn:hover{ background-color:#00a95d!important;
     border: 1px solid #00a95d !important;}
 .whitebtn{
-    background-color: #fff;
-    border: 1px solid #ddd;
-    color: #333;
+    background-color: rgba(255, 255, 255, 1)!important;
+    border: 1px solid rgba(255, 255, 255, 1)!important;
+    color: #333!important;
 }
 .whitebtn:hover{
-    background-color: #fff;
-    border: 1px solid #ddd;
-    color: #333;
+    background-color: rgba(255, 255, 255, .8)!important;
+    border: 1px solid rgba(255, 255, 255, .8)!important;
+    color: #333!important;
 }
 .bg-white.border_foot{background-color: #f8f8f8 !important}
 .pronav li{ padding: 5px 8px;  }
@@ -647,18 +647,18 @@ a.stopico{ position: absolute; right: 34px; width: 26px; height: 26px; border-ra
 a.stopico:hover{ text-decoration: none;color: #f44336; background: #fff}
 a.dataico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 18px;font-size: 26px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
-a.noico,a.noico:hover{background: #999;border: solid 1px #999;color: #fff;}
+a.noico,a.noico:hover{background: #999;border: solid 1px #999;color: #fff !important;}
 
 a.rightico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 22px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
-.fonts2{ font-size: 18px; font-weight: bold;}
+/* .fonts2{ font-size: 18px; font-weight: bold;}
 .course li a.cbtn.playcbtn{ padding-left: 3px; line-height: 29px;}
 .cardinfo .imginfo{ width: 100%; margin-bottom: 20px;}
 .fontsw{ font-size: 12px;}
 .rowline{ overflow: hidden; margin-bottom: 10px;}
 .rowline .float-left{ width: 30%; font-size: 14px; color: #333; padding-left: 10px;}
 .rowline .progress{ float: left; width: 50%;}
-.rowline .float-right{width: 20%; font-size: 12px; color: #666; padding-left: 10px;}
+.rowline .float-right{width: 20%; font-size: 12px; color: #666; padding-left: 10px;} */
 /* .regbnt a,.regbnt a:hover{ color: #fff; margin: 0 10px;    font-size: 14px; padding: 0 20px;} */
 .regbnt a.toploginbtn{ color: #fff; font-size: 14px; background-color: #00ce72; border-radius: 2px; padding: 8px 30px; text-decoration: none; height: 20px; }
 
@@ -936,3 +936,5 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
 .inputinfoation{ width: 500px; margin: 0 auto; text-align: center }
 
 .inputinfoation h2{ border: solid 1px #012E61; padding: 10px 20px; width: 200px; margin: 20px auto 40px; background: #f0f0f0; color:#15b73a;}
+.form-check{ padding: 0;}
+.setbox{ margin: 20px 40px 40px 0;}

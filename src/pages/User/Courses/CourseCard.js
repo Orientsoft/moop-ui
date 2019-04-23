@@ -4,7 +4,7 @@ import get from 'lodash-es/get';
 
 export default ({ data }) => {
   return (
-    <div className="col-12 col-md-4">
+    <div className="col-12 courseslist col-md-4 m-b-30">
       <div className="card p-b-10">
         <img className="card-img-top" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
         <div className="card-body">

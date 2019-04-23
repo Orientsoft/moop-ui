@@ -2,7 +2,8 @@ import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import moment from 'moment';
-import { Tab } from '@alifd/next';
+// import { Tab } from '@alifd/next';
+import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 import { getCurrentUser } from '@/utils/helper';
@@ -86,8 +87,9 @@ export default ({ history }) => {
               <ul className="text-transparent m-t-20">
                 {course.characteristic.map((name, i) => <li key={i}>{name}</li>)}
               </ul>
-              <p className="coursetext ">开课时间：{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}<br />
-                  学时安排：<span className="text-warning">{course.timeConsume}</span><br />
+              <p className="coursetext ">
+                学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
+                开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br />
               </p>
               {(course.join || (user && user.role === consts.user.TEACHER)) ? null : <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>}
               {user && user.role === consts.user.TEACHER ? (
@@ -152,13 +154,13 @@ export default ({ history }) => {
                 ))}
               </div>
               <div className="col-12 col-md-3 ml-auto">
-                <div className="list-group list-group-flush" ref={naver}>
-                  <a href="#t-project" className="list-group-item list-group-item-action">实验项目</a>
-                  <a href="#t-description" className="list-group-item list-group-item-action">实验项目描述</a>
-                  <a href="#t-testpoint" className="list-group-item list-group-item-action">预备知识</a>
-                  <a href="#t-content" className="list-group-item list-group-item-action">考核内容</a>
-                  <a href="#t-material" className="list-group-item list-group-item-action">参考资料</a>
-                  <a href="#t-assistant" className="list-group-item list-group-item-action">讲师</a>
+                <div className="list-group " ref={naver}>
+                  <a href="#t-project" className="list-group-item ">实验项目</a>
+                  <a href="#t-description" className="list-group-item ">实验项目描述</a>
+                  <a href="#t-testpoint" className="list-group-item ">预备知识</a>
+                  <a href="#t-content" className="list-group-item ">考核内容</a>
+                  <a href="#t-material" className="list-group-item">参考资料</a>
+                  <a href="#t-assistant" className="list-group-item ">讲师</a>
                 </div>
               </div>
             </div>

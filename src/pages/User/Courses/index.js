@@ -93,25 +93,26 @@ const Teacher = ({ user, data }) => (
       </div>
     </EurekaBanner>
     <div className="bg-white p-t-60 p-b-60">
-      <div className="container p-b-60 ">
-        {data.length ? (
-          data.map((course, i) => (
-            <div key={i} style={{ width: '33%', display: 'inline-block' }}>
-              <CourseBlock key={i} data={course} />
-            </div>
-          ))
-        ) : (
-          <div className="row ">
+      <div className="container ">
+        <div className="row">
+          {data.length ? (
+            data.map((course, i) => (
+              <div key={i} className="col-12 courseslist col-md-4 m-b-30">
+                {/* style={{ width: '33%', display: 'inline-block' }} */}
+                <CourseBlock key={i} data={course} />
+              </div>
+            ))
+          ) : (
             <div className="col-12">
               <div className="text-center">
                 <h4>最后激活专题</h4>
                 <p>目前您没有任何激活的专题。</p>
                 <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
               </div>
-            </div>
-          </div>
+        </div>
         )}
       </div>
+    </div>
     </div>
   </Fragment>
 );
