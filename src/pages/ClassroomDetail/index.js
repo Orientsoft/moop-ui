@@ -27,11 +27,11 @@ export default ({ location }) => {
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-7 m-b-30">
-              <h2 className="large ">Python 3 Programming 专项项目实验</h2>
+              <h2 className="large ">{publication.name}</h2>
               <ul className="text-transparent m-t-20">
-                <li>所属专业类：地质类</li>
+                <li>所属院校：{publication.school}</li>
                 <li>对应专业：勘查技术与工程</li>
-                <li>学校：吉林大学</li>
+                <li>学校：{publication.school}</li>
                 <li> 负责人：刘财</li>
               </ul>
               <Link to="/classroom" className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>

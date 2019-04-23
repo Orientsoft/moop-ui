@@ -9,6 +9,8 @@ export const FILE_UPLOAD_URL = `${API.request.defaults.baseURL}/upload`;
 export const STUDENT_UPLOAD_URL = `${API.request.defaults.baseURL}/classrooms/upload`;
 export const DATA_UPLOAD_URL = `${API.request.defaults.baseURL}/data/upload`;
 
+export const makeMarkdownUploadUrl = classroomId => `${API.request.defaults.baseURL}/classrooms/${classroomId}/publication`;
+
 export const captcha = {
   refresh: GET('/captcha'),
 };
