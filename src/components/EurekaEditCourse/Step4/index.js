@@ -54,32 +54,34 @@ export default ({ getClassroom, labelSpan, wrapperSpan }) => {
   }, [pagination.current]);
 
   return (
-    <Fragment>
-      <Row justify="center">
-        <Col span={labelSpan + wrapperSpan}>
-          <Button type="primary" onClick={() => setVisible(true)}>导入学生列表</Button>
-          {students ? null : <div className="m-t-20">你还没有添加学生，请添加学生</div>}
-        </Col>
-      </Row>
-      <Row justify="center" className="m-t-20">
-        <Col span={labelSpan + wrapperSpan}>
-          <Table loading={isLoading} dataSource={students}>
-            <Table.Column dataIndex="invitee.certification" title="学生身份信息" />
-            <Table.Column dataIndex="invitee.realname" title="姓名" />
-            <Table.Column width={120} cell={(_, i, student) => <Button type="normal" warning onClick={() => onDelete(student)}>删除</Button>} title="操作" />
-          </Table>
-        </Col>
-      </Row>
-      <div className="m-t-10" style={{ textAlign: 'center' }}>
-        <Pagination type="simple" {...pagination} onChange={onPagination} />
-      </div>
-      <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
-        <Upload action={STUDENT_UPLOAD_URL} limit={1} listType="text" onSuccess={onSuccess}>
-          <Button type="primary">上传 .csv 或 .xls(x) 文件</Button>
-        </Upload>
-        <p className="m-t-20">或粘贴学生信息</p>
-        <Input.TextArea value={certifications} onChange={e => setCertifications(e)} style={{ width: '100%' }} rows={16} />
-      </Dialog>
-    </Fragment>
+    <div className="centminheight">
+      <Fragment>
+        <Row justify="center">
+          <Col span={labelSpan + wrapperSpan}>
+            <Button type="primary" onClick={() => setVisible(true)}>导入学生列表</Button>
+            {students ? null : <div className="m-t-20">你还没有添加学生，请添加学生</div>}
+          </Col>
+        </Row>
+        <Row justify="center" className="m-t-20">
+          <Col span={labelSpan + wrapperSpan}>
+            <Table loading={isLoading} dataSource={students}>
+              <Table.Column dataIndex="invitee.certification" title="学生身份信息" />
+              <Table.Column dataIndex="invitee.realname" title="姓名" />
+              <Table.Column width={120} cell={(_, i, student) => <Button type="normal" warning onClick={() => onDelete(student)}>删除</Button>} title="操作" />
+            </Table>
+          </Col>
+        </Row>
+        <div className="m-t-10" style={{ textAlign: 'center' }}>
+          <Pagination type="simple" {...pagination} onChange={onPagination} />
+        </div>
+        <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
+          <Upload action={STUDENT_UPLOAD_URL} limit={1} listType="text" onSuccess={onSuccess}>
+            <Button type="primary">上传 .csv 或 .xls(x) 文件</Button>
+          </Upload>
+          <p className="m-t-20">或粘贴学生信息</p>
+          <Input.TextArea value={certifications} onChange={e => setCertifications(e)} style={{ width: '100%' }} rows={16} />
+        </Dialog>
+      </Fragment>
+    </div>
   );
 };

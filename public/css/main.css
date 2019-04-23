@@ -371,7 +371,7 @@ background-image: linear-gradient(90deg, #032f62, #024794); */
 .startbtn:hover,.whitebtn:hover,.startbtn:focus,.whitebtn:focus{
     background-color:#00a95d;
     border: 1px solid #00a95d;}
-.serverbtn{  background-color: #00ce72 !important;
+.serverbtn,.noserverbtn{  background-color: #00ce72 !important;
 border: 1px solid #00ce72!important;
 border-radius: 2px!important;
 color: #fff !important;
@@ -387,6 +387,9 @@ vertical-align: middle;
 white-space: nowrap;}
 .serverbtn:hover{ background-color:#00a95d!important;
     border: 1px solid #00a95d !important;}
+ .noserverbtn{ background-color: rgb(223, 223, 223)!important;
+    border: 1px solid rgba(223, 223, 223, 1)!important;
+    color: #333!important;}   
 .whitebtn{
     background-color: rgba(255, 255, 255, 1)!important;
     border: 1px solid rgba(255, 255, 255, 1)!important;
@@ -455,7 +458,9 @@ display: inline-block;}
     font-weight: bold;
     color: #333;
     background-color: transparent;
+    padding-left: 0;
 }
+.centminheight{ min-height: 500px;}
 .learnLesson{
     height:  6px; display: inline-block;
     width: 20px; border: 1px solid #ccc; margin-right: 10px; }
@@ -616,15 +621,14 @@ display: inline-block;}
     letter-spacing: 3px;
     border-radius: 0 !important;}
 .savecouse{width: 160px;
-
     border: 2px solid #eee!important;
     background: #eee !important;
     color: #666!important;}
     .list-group-flush a{ font-weight: bold;}
     .modaltop{ top: 10%;}
-    .course li:hover{ background: #f8f8f8;}
+    /* .course li:hover{ background: #f8f8f8;}
     .course li a.cbtn{background: #f8f8f8; margin-right: 10px;float: right; color: #666; text-decoration: none;border: 1px #ddd solid; width: 30px; height: 30px; text-align: center; line-height: 30px;border-radius: 50%; display: inline-block;}
-.course li a.cbtn.cclose span{ line-height: 24px; font-size: 1.2rem;}
+.course li a.cbtn.cclose span{ line-height: 24px; font-size: 1.2rem;} */
 .coursetext,fonts12{ font-size: 12px;}
 .carousel-item{ background-color: #000}
 .adbg{
@@ -645,9 +649,12 @@ a.palyico{ position: absolute; right: 68px; width: 26px; height: 26px; border-ra
 a.palyico:hover{ text-decoration: none;color: #1277eb; background: #fff}
 a.stopico{ position: absolute; right: 34px; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 34px; background: #f44336; padding-left: 1px;border: solid 1px #f44336; color: #fff;}
 a.stopico:hover{ text-decoration: none;color: #f44336; background: #fff}
-a.dataico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 18px;font-size: 26px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
+a.dataico{ position: absolute; cursor: pointer; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 18px;font-size: 26px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
-a.noico,a.noico:hover{background: #999;border: solid 1px #999;color: #fff !important;}
+a.noico,a.noico:hover{background: #fff; border: solid 1px #ccc;color: #aaa !important;}
+a.deleico{position: absolute; cursor: pointer; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 20px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
+a.deleico:hover{ text-decoration: none;color: #00ce72; background: #fff; text-decoration: none}
+
 
 a.rightico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 22px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
@@ -938,3 +945,12 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
 .inputinfoation h2{ border: solid 1px #012E61; padding: 10px 20px; width: 200px; margin: 20px auto 40px; background: #f0f0f0; color:#15b73a;}
 .form-check{ padding: 0;}
 .setbox{ margin: 20px 40px 40px 0;}
+.textareaheight180{ height: 150px;    }
+.textareaheight180 textarea{line-height: 150% !important;}
+.card-body p.card-text{ 
+      color: #666;
+    margin-bottom: 0;
+    overflow: hidden;
+    height: 64px;
+}
+.card-title{ font-weight: bold}

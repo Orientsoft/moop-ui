@@ -117,53 +117,55 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
   }, [pagination.current, currentTag]);
 
   return (
-    <Fragment>
-      <Row justify="center">
-        <Col span={labelSpan + wrapperSpan}>
-          <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
-        </Col>
-      </Row>
-      <Row justify="center" className="m-t-20">
-        <Col span={labelSpan + wrapperSpan}>
-          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
-        </Col>
-      </Row>
-      <Row justify="center" className="m-t-20">
-        <Col span={4}>
-          <Button type="primary" style={{ width: '100%' }} onClick={onSubmit}>保存</Button>
-        </Col>
-      </Row>
-      <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
-        {/* <Tag.Group>
-          {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
-            <Tag.Selectable checked={currentTag === id} key={id} onChange={() => onChange(id)} title={`${name}(${count})`}>{name}({count})</Tag.Selectable>
-          ))), [])}
-        </Tag.Group> */}
-        <Tag.Group>
-          {categories.map((cat, i) => (
-            <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => setCurrentTag0(i)} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
-          ))}
-        </Tag.Group>
-        {currentTag0 !== null ? (
-          <Tag.Group className="m-t-20">
-            {categories[currentTag0].type.map(cat => (
-              <Tag.Selectable checked={currentTag === cat.id} key={cat.id} onChange={() => onChange(cat.id)} title={`${cat.name}(${cat.count})`}>{cat.name}({cat.count})</Tag.Selectable>
-            ))}
-          </Tag.Group>
-        ) : null}
-        <Row className="m-t-20" wrap>
-          {projects.map(project => (
-            <Col span={12} key={project.id}>
-              <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
-            </Col>
-          ))}
-        </Row>
-        <Row className="m-t-20" style={{ textAlign: 'center' }}>
-          <Col span={24}>
-            {pagination.total > pagination.pageSize && <Pagination type="simple" {...pagination} onChange={current => setPagination({ ...pagination, current })} />}
+    <div className="centminheight">
+      <Fragment >
+        <Row justify="center">
+          <Col span={labelSpan + wrapperSpan}>
+            <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
           </Col>
         </Row>
-      </Dialog>
-    </Fragment>
+        <Row justify="center" className="m-t-20">
+          <Col span={labelSpan + wrapperSpan}>
+            <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
+          </Col>
+        </Row>
+        <Row justify="center" className="m-t-20">
+          <Col span={4}>
+            <Button type="primary" style={{ width: '100%' }} onClick={onSubmit} className="serverbtn">保存</Button>
+          </Col>
+        </Row>
+        <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
+          {/* <Tag.Group>
+            {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
+              <Tag.Selectable checked={currentTag === id} key={id} onChange={() => onChange(id)} title={`${name}(${count})`}>{name}({count})</Tag.Selectable>
+            ))), [])}
+          </Tag.Group> */}
+          <Tag.Group>
+            {categories.map((cat, i) => (
+              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => setCurrentTag0(i)} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+            ))}
+          </Tag.Group>
+          {currentTag0 !== null ? (
+            <Tag.Group className="m-t-20">
+              {categories[currentTag0].type.map(cat => (
+                <Tag.Selectable checked={currentTag === cat.id} key={cat.id} onChange={() => onChange(cat.id)} title={`${cat.name}(${cat.count})`}>{cat.name}({cat.count})</Tag.Selectable>
+              ))}
+            </Tag.Group>
+          ) : null}
+          <Row className="m-t-20" wrap>
+            {projects.map(project => (
+              <Col span={12} key={project.id}>
+                <Checkbox onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
+              </Col>
+            ))}
+          </Row>
+          <Row className="m-t-20" style={{ textAlign: 'center' }}>
+            <Col span={24}>
+              {pagination.total > pagination.pageSize && <Pagination type="simple" {...pagination} onChange={current => setPagination({ ...pagination, current })} />}
+            </Col>
+          </Row>
+        </Dialog>
+      </Fragment>
+    </div>
   );
 };

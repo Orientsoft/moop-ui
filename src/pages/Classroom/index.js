@@ -141,17 +141,21 @@ export default ({ history }) => {
                 </div>
 
                 <h2 className="m-b-20 m-t-40" id="t-testpoint">预备知识</h2>
-                <p>{course.requirement}</p>
-
+                <div className="text-secondary">
+                  <p>{course.requirement}</p>
+                </div>
                 <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
-                <p>{course.testPoint}</p>
-
+                <div className="text-secondary">
+                  <p>{course.testPoint}</p>
+                </div>
                 <h2 className="m-b-20 m-t-40" id="t-material">参考资料</h2>
-                {course.material.map(({ name, href }, i) => (
-                  <p key={i}>
-                    <a href={href} rel="noopener noreferrer" target="_blank">{name}</a>
-                  </p>
-                ))}
+                <div className="text-secondary">
+                  {course.material.map(({ name, href }, i) => (
+                    <p key={i}>
+                      <a href={href} rel="noopener noreferrer" target="_blank">{name}</a>
+                    </p>
+                  ))}
+                </div>
               </div>
               <div className="col-12 col-md-3 ml-auto">
                 <div className="list-group " ref={naver}>

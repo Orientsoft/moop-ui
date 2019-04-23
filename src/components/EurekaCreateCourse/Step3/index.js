@@ -51,17 +51,19 @@ export default class Step3 extends React.Component {
     const { labelSpan, wrapperSpan } = this.props;
 
     return (
-      <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
-        <Form.Item label="设置时间" required>
-          <DatePicker.RangePicker name="timeRange" />
-        </Form.Item>
-        <Form.Item label="添加标签" required>
-          <Checkbox.Group name="tags" dataSource={tags} />
-        </Form.Item>
-        <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-          <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit}>创建专题</Form.Submit>
-        </Form.Item>
-      </Form>
+      <div className="centminheight">
+        <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
+          <Form.Item label="设置时间：" required>
+            <DatePicker.RangePicker name="timeRange" />
+          </Form.Item>
+          <Form.Item label="添加标签：" required>
+            <Checkbox.Group name="tags" dataSource={tags} />
+          </Form.Item>
+          <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
+            <Form.Submit type="primary"  onClick={this.onSubmit} className="serverbtn">创建专题</Form.Submit>
+          </Form.Item>
+        </Form>
+      </div>
     );
   }
 }

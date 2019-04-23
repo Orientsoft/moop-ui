@@ -22,25 +22,27 @@ export default ({ labelSpan, wrapperSpan, getClassroom, toNext }) => {
   }, []);
 
   return (
-    <Fragment>
-      <Row justify="center">
-        <Col span={labelSpan + wrapperSpan}>
-          <Upload listType="text" action={`${DATA_UPLOAD_URL}?classroomId=${get(getClassroom(), 'id', '')}`} onSuccess={onListFiles}>
-            <Button type="primary">上传 .zip 文件</Button>
-          </Upload>
-        </Col>
-      </Row>
-      <Row justify="center">
-        <Col span={labelSpan + wrapperSpan} className="m-t-20">
-          {files.data.map((file, i) => <div key={i}>{file.filename}</div>)}
-          {files.count > files.data.length ? <div>还有 {files.count - files.data.length} 个文件未显示</div> : null}
-        </Col>
-      </Row>
-      <Row justify="center" className="m-t-20">
-        <Col span={4}>
-          <Button type="primary" style={{ width: '100%' }} onClick={toNext}>下一步</Button>
-        </Col>
-      </Row>
-    </Fragment>
+    <div className="centminheight">
+      <Fragment>
+        <Row justify="center">
+          <Col span={labelSpan + wrapperSpan}>
+            <Upload listType="text" action={`${DATA_UPLOAD_URL}?classroomId=${get(getClassroom(), 'id', '')}`} onSuccess={onListFiles}>
+              <Button type="primary">上传 .zip 文件</Button>
+            </Upload>
+          </Col>
+        </Row>
+        <Row justify="center">
+          <Col span={labelSpan + wrapperSpan} className="m-t-20">
+            {files.data.map((file, i) => <div key={i}>{file.filename}</div>)}
+            {files.count > files.data.length ? <div>还有 {files.count - files.data.length} 个文件未显示</div> : null}
+          </Col>
+        </Row>
+        <Row justify="center" className="m-t-20">
+          <Col span={4}>
+            <Button type="primary"  onClick={toNext} className="serverbtn">下一步</Button>
+          </Col>
+        </Row>
+      </Fragment>
+    </div>
   );
 };

@@ -124,7 +124,7 @@ export default class EurekaEditCourse extends React.Component {
             ))}
           </Step>
         </div>
-        <div style={{ margin: '40px 0', minHeight: 160 }}>
+        <div>
           {steps[current].render({
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),

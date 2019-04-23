@@ -22,6 +22,7 @@ export default ({ labelSpan, wrapperSpan, getClassroom }) => {
   }, []);
 
   return (
+    <div className="centminheight">
     <Fragment>
       <Row justify="center">
         <Col span={labelSpan + wrapperSpan}>
@@ -37,5 +38,6 @@ export default ({ labelSpan, wrapperSpan, getClassroom }) => {
         </Col>
       </Row>
     </Fragment>
+    </div>
   );
 };

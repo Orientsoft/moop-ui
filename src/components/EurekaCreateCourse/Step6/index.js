@@ -28,13 +28,21 @@ export default ({ getClassroom, history }) => {
   };
 
   return (
-    <Row justify="center">
-      <Col span={2}>
-        <Button type="secondary" onClick={onOk}>完成创建</Button>
-      </Col>
-      <Col span={2}>
-        <Button type="primary" onClick={onPublish}>完成创建并发布</Button>
-      </Col>
-    </Row>
+    <div className="centminheight ">
+      <Row justify="center">
+        <Col span={10} className="text-center">
+          <h5>专题发布</h5>
+          <p className="m-t-20 text-secondary">专题名称：数学文化十讲</p>
+          <div className="alert alert-warning" role="alert">
+            请仔细阅读 <a href="#" className="alert-link">专题</a>. 发布你专题.</div>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col span={10} className="m-t-20 text-center">
+          <Button type="secondary" onClick={onOk} className="noserverbtn m-r-10">完成创建保存</Button>
+          <Button type="primary" onClick={onPublish} className="serverbtn ">完成创建并发布</Button>
+        </Col>
+      </Row>
+    </div>
   );
 };
