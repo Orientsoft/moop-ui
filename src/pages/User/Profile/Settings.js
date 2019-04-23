@@ -21,6 +21,10 @@ export default (props) => {
       } else {
         postData = { ...values, realname, certification };
       }
+      if (props.user.certificated) {
+        delete postData.certificated;
+        delete postData.certification;
+      }
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);
         Dialog.alert({
