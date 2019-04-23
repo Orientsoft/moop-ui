@@ -1,15 +1,27 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
+import { Message } from '@alifd/next';
 
 API.request.defaults.timeout = 60000;
 API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
+
+API.request.interceptors.response.use((response) => {
+  return response;
+}, (error) => {
+  if (error.status >= 500) {
+    Message.error('内部错误，请联系网站管理员');
+  } else if (error.response) {
+    Message.error(error.response.data);
+  }
+  return Promise.reject(error);
+});
 
 export const IMAGE_UPLOAD_URL = `${API.request.defaults.baseURL}/thumb`;
 export const FILE_UPLOAD_URL = `${API.request.defaults.baseURL}/upload`;
 export const STUDENT_UPLOAD_URL = `${API.request.defaults.baseURL}/classrooms/upload`;
 export const DATA_UPLOAD_URL = `${API.request.defaults.baseURL}/data/upload`;
 
-export const makeMarkdownUploadUrl = classroomId => `${API.request.defaults.baseURL}/classrooms/${classroomId}/publication`;
+export const makeMarkdownUploadUrl = classroomId => `${API.request.defaults.baseURL}/classrooms/${classroomId}/publication/markdown`;
 
 export const captcha = {
   refresh: GET('/captcha'),

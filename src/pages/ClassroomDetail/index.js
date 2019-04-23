@@ -35,7 +35,7 @@ export default ({ location }) => {
                 <li> 负责人：刘财</li>
               </ul>
               <Link to="/classroom" className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>
-              <Link to="/classroomcreatedetail" className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑项目</Link>
+              <Link to={{ pathname: '/classroomcreatedetail', state: publication }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑项目</Link>
             </div>
           </div>
         </div>
