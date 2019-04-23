@@ -31,7 +31,7 @@ export default (props) => {
     });
   };
   const certificationField = {
-    label: <span className="col-sm-2 col-form-label">身份认证信息</span>,
+    label: <span className="col-sm-2 col-form-label">学号</span>,
     required: true,
     render: () => (
       <div className="form-check col-sm-8 ">
