@@ -230,10 +230,10 @@ color: #1277eb;} */
 .headerbottom{    
     z-index: 2;
     position: absolute;
-    bottom: -0.5rem;
+    bottom: -.8rem;
     background: #f0f3ff;
     width: 100%;
-    height: 23%;
+    height: 18%;
     -webkit-transform: skewY(2.5deg);
     transform: skewY(2.5deg);
     -webkit-transform-origin: bottom left;
@@ -467,7 +467,7 @@ display: inline-block;}
 .learnLesson.half i{ background:#2ebc4f; width: 50%;     display: block; height: 4px; }
 .learnLesson.all{ background:#2ebc4f;border: 1px solid #15b73a; }
 
-.courselist .list-group-item-action{border:none; border-radius: 0; border-top: solid 1px #ddd;border-bottom: solid 1px #fff; text-decoration: underline;}
+.courselist .list-group-item-action{border:none; border-radius: 0; cursor: pointer; border-top: solid 1px #ddd;border-bottom: solid 1px #fff; text-decoration: underline;}
 .courselist .list-group-item-action:hover{ border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;}
 .list-group{ position: relative;}
  .list-group span.time{ position: absolute; right: 20px; padding-top: 5px;font-size: 12px; color: #666}
@@ -658,10 +658,11 @@ a.deleico:hover{ text-decoration: none;color: #00ce72; background: #fff; text-de
 
 a.rightico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 22px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
+.fontsw{ font-size: 12px;}
 /* .fonts2{ font-size: 18px; font-weight: bold;}
 .course li a.cbtn.playcbtn{ padding-left: 3px; line-height: 29px;}
 .cardinfo .imginfo{ width: 100%; margin-bottom: 20px;}
-.fontsw{ font-size: 12px;}
+
 .rowline{ overflow: hidden; margin-bottom: 10px;}
 .rowline .float-left{ width: 30%; font-size: 14px; color: #333; padding-left: 10px;}
 .rowline .progress{ float: left; width: 50%;}
@@ -954,3 +955,11 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
     height: 64px;
 }
 .card-title{ font-weight: bold}
+.coursesimg .next-upload-list-card .next-upload-list-item-wrapper{    
+    width: 300px !important;
+    height: 180px !important;}
+.next-upload-list-item-error::after{
+  content: '图片格式有误!';
+  color: #FF3000;
+ font-size: 14px;
+}

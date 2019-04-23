@@ -83,8 +83,9 @@ export default class Step1 extends React.Component {
         </Form.Item>
         <Form.Item label="专题封面：" required>
           <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
-            {thumb.thumbnail ? <img src={thumb.thumbnail} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/headerboy.png" alt="" />}
+            {thumb && thumb.thumbnail ? <img src={thumb.thumbnail} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/coursesimg.png" alt="" width={300} height={180} className="m-r-10" />}
             <Button>上传图片</Button>
+            <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为专题封面。</div>
           </Upload>
         </Form.Item>
         <Form.Item label="专题描述：" required>
@@ -121,7 +122,7 @@ export default class Step1 extends React.Component {
           <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-          <Form.Submit type="primary" style={{ width: '100%' }} onClick={this.onSubmit} className="serverbtn">保存</Form.Submit>
+          <Form.Submit type="primary" onClick={this.onSubmit} className="serverbtn">保存</Form.Submit>
         </Form.Item>
       </Form>
     );

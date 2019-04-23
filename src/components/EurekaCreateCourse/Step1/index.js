@@ -78,11 +78,13 @@ export default class Step1 extends React.Component {
         <Form.Item label="专题名称：" required>
           <Input name="title" />
         </Form.Item>
-        <Form.Item label="专题封面：">
-          <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
-            {thumb.url ? <img src={thumb.url} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/headerboy.png" alt="" />}
+        <Form.Item label="专题封面：" className="coursesimg">
+          <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1} >
+            {thumb && thumb.url ? <img src={thumb.url} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/coursesimg.png" alt="" width={300} height={180} className="m-r-10" />}
             <Button>上传图片</Button>
+            <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为专题封面。</div>
           </Upload>
+         
         </Form.Item>
         <Form.Item label="专题描述：" required>
           <Input.TextArea name="description" className="textareaheight180" rows="8" />

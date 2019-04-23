@@ -109,7 +109,7 @@ export default class EurekaCreateCourse extends React.Component {
             ))}
           </Step>
         </div>
-        <div>
+        <div className="p-b-60">
           {steps[current].render({
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),

@@ -57,9 +57,9 @@ export default (props) => {
         listType="card"
         onSuccess={data => setThumb(data.response.id)}
       >
-        <img src={props.user.thumb} alt="" width={100} height={100} className="float-left m-r-10" />
+        <img src={props.user.thumb} alt="" width={100} height={100} className=" m-r-10" />
         <Button className="m-t-10">上传图片</Button>
-        <div className="text-muted fontsw m-t-10">请上传大小不超过1M的图片</div>
+        <div className="text-muted fontsw m-t-10">请上传尺寸宽为100px，高为100px,大小不超过1M，图片格式为jpg，png为头像。</div>
       </Upload>
     ),
   }, {
