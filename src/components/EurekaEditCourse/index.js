@@ -117,11 +117,13 @@ export default class EurekaEditCourse extends React.Component {
 
     return (
       <Fragment>
-        <Step current={current} shape="arrow">
-          {steps.map((step, i) => (
-            <Step.Item key={i} title={step.title} onClick={() => this.setState({ current: i })} />
-          ))}
-        </Step>
+        <div className="setbox">
+          <Step current={current} shape="arrow">
+            {steps.map((step, i) => (
+              <Step.Item key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+            ))}
+          </Step>
+        </div>
         <div style={{ margin: '40px 0', minHeight: 160 }}>
           {steps[current].render({
             setData: data => this.setData(current, data),

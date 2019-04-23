@@ -87,7 +87,7 @@ export default (props) => {
   const items = isTeacher(props.user) ? itemBefore.concat({
     label: <span className="col-sm-2 col-form-label">职称：</span>,
     required: true,
-    render: () => <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="profession" style={{ width: '100%' }} className="form-check col-sm-8" />,
+    render: () => <Select defaultValue={consts.titles[0]} dataSource={consts.titles} name="profession" style={{ width: '50%' }} />,
   }, {
     label: <span className="col-sm-2 col-form-label">个人简介：</span>,
     required: true,
