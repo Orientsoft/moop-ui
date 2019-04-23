@@ -55,7 +55,7 @@ const User = ({ data }) => (
               <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
             </div>
           </div>
-          <div className="row ">
+          {/* <div className="row ">
             <div className="col-12 text-left m-b-20">
               <h4>我的成就</h4>
             </div>
@@ -73,7 +73,7 @@ const User = ({ data }) => (
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Tab.Item>
     </Tab>
