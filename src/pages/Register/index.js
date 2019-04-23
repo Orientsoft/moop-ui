@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Message } from '@alifd/next';
 import { user, captcha as captchaAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 
@@ -9,10 +10,14 @@ export default ({ history }) => {
   const onSubmit = () => {
     const { name, key, password, captcha, invitation } = values;
 
-    if (name && key && captcha && key === password && invitation) {
+    if (key !== password) {
+      Message.error('两次密码输入不一致');
+    } else if (name && key && captcha && key === password && invitation) {
       user.create({
         data: { name, key, captcha, invitation, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
+    } else {
+      Message.error('必填项不能为空');
     }
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
@@ -50,7 +55,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group form-inline">
                     <div className="col-6">
-                      <input style={{ marginTop: 0 }} className="form-control" onChange={setField('captcha')} type="password" required placeholder="验证码" />
+                      <input style={{ marginTop: 0 }} className="form-control" onChange={setField('captcha')} type="text" required placeholder="验证码" />
                     </div>
                     <div className="col-6">
                       {/* eslint-disable */}
