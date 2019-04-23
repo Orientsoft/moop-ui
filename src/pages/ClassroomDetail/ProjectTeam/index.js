@@ -35,7 +35,7 @@ export default () => {
             </tr>
             <tr>
               <th>地址</th>
-              <td colspan="5">吉林省长春市西民主大街938号</td>
+              <td colSpan="5">吉林省长春市西民主大街938号</td>
             </tr>
           </tbody>
         </table>
