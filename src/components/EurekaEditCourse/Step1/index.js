@@ -88,13 +88,13 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="专题描述：" required>
-          <Input.TextArea name="description" className="textareaheight180" />
+          <Input.TextArea name="description" className="textareaheight180" rows="8" />
         </Form.Item>
         <Form.Item label="预备知识：" required>
-          <Input.TextArea name="requirement" className="textareaheight180" />
+          <Input.TextArea name="requirement" className="textareaheight180" rows="8" />
         </Form.Item>
         <Form.Item label="考核内容：" required>
-          <Input.TextArea name="testPoint" className="textareaheight180" />
+          <Input.TextArea name="testPoint" className="textareaheight180" rows="8" />
         </Form.Item>
         <Form.Item label="参考资料：">
           {material.concat({}).map((({ name, href }, i, self) => (
