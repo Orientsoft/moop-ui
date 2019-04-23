@@ -26,8 +26,8 @@ export default ({ data }) => {
         <div className="cardinfo m-t-10">
           <img className="imginfo" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
           <h5 className="card-title">{data.title}</h5>
-          <p className="fontsw">已加入 <span className="text-danger">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
-            开课时间： {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}
+          <p className="fontsw ">已加入：<span className="text-danger font-weight-bold">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
+            开课时间：<span className="font-italic text-secondary"> {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}</span>
           </p>
           <Link to={`/classroom?id=${data.id}`} className="btn btn-primary">查看专题</Link>&nbsp;&nbsp;
           <Link to="/editclassroom" className="btn btn-primary">编辑专题</Link>

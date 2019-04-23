@@ -85,7 +85,7 @@ const Teacher = ({ user, data }) => (
       <div className="row">
         <div className="col-6 col-md-6">
           <h2 className="large">Hi, {user.realname}</h2>
-          <h2 style={{ fontSize: 18 }}>您有 {data.length} 个专题</h2>
+          <p className=" text-warning card-text">您有 {data.length} 个专题</p>
         </div>
         <div className="col-6 col-md-6 text-right">
           <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
