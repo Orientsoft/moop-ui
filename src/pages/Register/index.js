@@ -16,6 +16,8 @@ export default ({ history }) => {
       user.create({
         data: { name, key, captcha, invitation, role: consts.user.STUDENT },
       }).then(() => history.push('/login'));
+    } else {
+      Message.error('必填项不能为空');
     }
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
