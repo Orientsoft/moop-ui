@@ -1,15 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Tab from '@/components/Tab';
 import { Link } from 'react-router-dom';
+import { publication as publicationAPI } from '@/utils/api';
 import ProjectTeam from './ProjectTeam';
 import ProjectDescription from './ProjectDescription';
 import Network from './Network';
 import Technical from './Technical';
+import ProjectVideos from './ProjectVideos';
 import ItemAdvantage from './ItemAdvantage';
 import ServicePlan from './ServicePlan';
 
+export default ({ location }) => {
+  const [publication, setPublication] = useState({});
 
-export default () => {
+  useEffect(() => {
+    publicationAPI.select({}, { classroomId: location.state.id }).then(({ data }) => {
+      setPublication(data);
+    });
+
+    return () => sessionStorage.removeItem('PUBLICATION');
+  }, []);
+
   return (
     <Fragment>
       <div className="bg-conttop bg-detail p-t-60 p-b-60">
@@ -62,6 +73,13 @@ export default () => {
           <div className="container text-left m-t-40 p-b-120">
             <div className="row">
               <ItemAdvantage />
+            </div>
+          </div>
+        </Tab.Item>
+        <Tab.Item title="项目视频" className="bg-white">
+          <div className="container text-left m-t-40 p-b-120">
+            <div className="row">
+              <ProjectVideos data={publication.videos} />
             </div>
           </div>
         </Tab.Item>
