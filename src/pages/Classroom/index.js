@@ -101,7 +101,7 @@ export default ({ history }) => {
             </div>
             <div className="col-12 col-md-5 m-b-30">
               <figure className="figure">
-                <img src="/static/images/index4.jpg" className="figure-img img-fluid rounded" alt={course.title} />
+                <img src="/static/images/coursesimg.png" className="figure-img img-fluid rounded" alt={course.title} />
               </figure>
             </div>
           </div>

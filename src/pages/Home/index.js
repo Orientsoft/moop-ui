@@ -68,13 +68,13 @@ export default () => (
           <div className="col-12 col-md-4 text-left">
             <img src="/static/images/teacher1.png" alt="..." style={{ width: 300 }} />
             <h5 className="m-t-20">Media heading</h5>
-            <p className="m-t-10">讲师</p>
+            <i className="m-t-10">讲师</i><br /><br />
             学习者可以使用iOS和Android上的应用程序随时随地学习Coursera。还可以下载专题以供离线观看。。。
           </div>
           <div className="col-12 col-md-4 text-left">
             <img src="/static/images/teacher2.jpg" alt="..." style={{ width: 300 }} />
             <h5 className="m-t-20">陈思宁</h5>
-            <p className="m-t-10">助教</p>
+            <i className="m-t-10">助教</i><br /><br />
             学习者可以使用iOS和Android上的应用程序随时随地学习Coursera。还可以下载专题以供离线观看。。。
           </div>
           <div className="col-12 col-md-4 text-left">
