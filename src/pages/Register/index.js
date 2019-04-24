@@ -12,6 +12,8 @@ export default ({ history }) => {
 
     if (key !== password) {
       Message.error('两次密码输入不一致');
+    } else if (!(/[0-9]+/.test(key) && /[a-zA-Z]+/.test(key) && key.length >= 8)) {
+      Message.error('密码格式错误，必须是8位以上的数字和字母组合');
     } else if (name && key && captcha && key === password && invitation) {
       user.create({
         data: { name, key, captcha, invitation, role: consts.user.STUDENT },
@@ -45,7 +47,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
+                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码, 8位以上的数字和字母组合" />
                     </div>
                   </div>
                   <div className="form-group">
