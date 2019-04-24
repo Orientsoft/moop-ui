@@ -49,6 +49,16 @@ export default ({ history }) => {
                       <input className="form-control" onChange={setField('code')} type="text" required placeholder="验证码" />
                     </div>
                   </div>
+                  <div className="form-group">
+                    <div className="col-12">
+                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="请输入新密码" />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="col-12">
+                      <input className="form-control" onChange={setField('rekey')} type="password" required placeholder="确认密码" />
+                    </div>
+                  </div>
                   <div className="form-group text-center m-t-40">
                     <div className="col-12">
                       <button className="btn loginbnt btn-block" onClick={onSubmit}>提交</button>

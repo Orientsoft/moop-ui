@@ -5,7 +5,7 @@ import get from 'lodash-es/get';
 
 const { Row, Col } = Grid;
 
-export default ({ getClassroom, toNext, labelSpan, wrapperSpan }) => {
+export default ({ getClassroom, labelSpan, wrapperSpan, history }) => {
   const [visible, setVisible] = useState(false);
   const [students, setStudents] = useState([]);
   const [pagination, setPagination] = useState({ total: 0, current: 1, pageSize: 10 });
@@ -58,7 +58,8 @@ export default ({ getClassroom, toNext, labelSpan, wrapperSpan }) => {
       <Fragment>
         <Row justify="center">
           <Col span={labelSpan + wrapperSpan}>
-            <Button type="primary" onClick={() => setVisible(true)}>导入学生列表</Button>
+            <Button type="primary" disabled={!get(getClassroom(), 'status', 0)} onClick={() => setVisible(true)}>导入学生列表</Button>
+            <span style={{ marginLeft: 10 }}>{get(getClassroom(), 'status', 0) ? '' : '已发布的专题才能添加学生'}</span>
             {students ? null : <div className="m-t-20">你还没有添加学生，请添加学生</div>}
           </Col>
         </Row>
@@ -76,7 +77,7 @@ export default ({ getClassroom, toNext, labelSpan, wrapperSpan }) => {
         </Row>
         <Row justify="center" className="m-t-30">
           <Col span={4}>
-            <Button type="primary" onClick={toNext} className="serverbtn">下一步</Button>
+            <Button type="primary" onClick={() => history.push(`/classroom?id=${getClassroom().id}`)} className="serverbtn">完成</Button>
           </Col>
         </Row>
         <Dialog title="添加学生" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} style={{ width: 680 }}>
@@ -87,6 +88,6 @@ export default ({ getClassroom, toNext, labelSpan, wrapperSpan }) => {
           <Input.TextArea value={certifications} onChange={e => setCertifications(e)} style={{ width: '100%' }} rows={16} />
         </Dialog>
       </Fragment>
-   </div>
+    </div>
   );
 };

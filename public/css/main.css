@@ -964,3 +964,6 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
   color: #FF3000;
  font-size: 14px;
 }
+.next-upload-list-card .next-upload-list-item-thumbnail img {
+  width: auto !important;
+}

@@ -17,13 +17,13 @@ const steps = [{
   title: '提交专题',
   render: props => <Step3 {...props} />,
 }, {
-  title: '添加学生',
+  title: '发布专题',
   render: props => <Step4 {...props} />,
 }, {
   title: '添加数据',
   render: props => <Step5 {...props} />,
 }, {
-  title: '发布专题',
+  title: '添加学生',
   render: props => <Step6 {...props} />,
 }];
 
@@ -105,7 +105,7 @@ export default class EurekaCreateCourse extends React.Component {
         <div className="setbox">
           <Step current={current} shape="arrow">
             {steps.map((step, i) => (
-              <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+              <Step.Item disabled={false} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
             ))}
           </Step>
         </div>
