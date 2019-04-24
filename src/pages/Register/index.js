@@ -17,7 +17,10 @@ export default ({ history }) => {
     } else if (name && key && captcha && key === password && invitation) {
       user.create({
         data: { name, key, captcha, invitation, role: consts.user.STUDENT },
-      }).then(() => history.push('/login'));
+      }).then(() => {
+        Message.alert('注册成功');
+        setTimeout(() => history.push('/login'), 1000);
+      });
     } else {
       Message.error('必填项不能为空');
     }

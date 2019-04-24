@@ -1,6 +1,15 @@
+import consts from './consts';
+
 const KEY_USER = 'user';
 
 export const setCurrentUser = (user) => {
+  if (!user.thumb) {
+    if (user.gender === consts.sex.MALE) {
+      user.thumb = '/static/images/headerboy.png';
+    } else {
+      user.thumb = '/static/images/headgirl.png';
+    }
+  }
   sessionStorage.setItem(KEY_USER, JSON.stringify(user));
 };
 
