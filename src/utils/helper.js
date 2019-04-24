@@ -26,3 +26,12 @@ export const getCurrentUser = () => {
 };
 
 export const removeCurrentUser = () => sessionStorage.removeItem(KEY_USER);
+
+export const startCounter = (count, callback) => {
+  setTimeout(() => {
+    if (count > 0) {
+      callback(count - 1);
+      startCounter(count - 1, callback);
+    }
+  }, 1000);
+};

@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { Message } from '@alifd/next';
+import { Message, Button, Dialog } from '@alifd/next';
 import { Link } from 'react-router-dom';
-import { user } from '@/utils/api';
-import { setCurrentUser } from '@/utils/helper';
+import { user, captcha as captchaAPI } from '@/utils/api';
+import { startCounter } from '@/utils/helper';
 import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
+  const [visible, setVisible] = useState(false);
+  const [counter, setCounter] = useState(null);
+  const [captchaUrl, setCaptchaUrl] = useState('#');
   const onSubmit = () => {
-    const { phone, code } = values;
+    const { mobile, code, key, password } = values;
 
-    if (phone && code) {
-      user.login({ data: { phone, code } }).then(({ data }) => {
+    if (key !== password) {
+      Message.error('两次密码输入不一致');
+    } else if (mobile && code && key) {
+      user.login({ data: { mobile, code, key } }).then(({ data }) => {
         if (!data.gender) {
           data.gender = consts.sex.MALE;
         }
@@ -22,12 +27,28 @@ export default ({ history }) => {
             data.thumb = '/static/images/headgirl.png';
           }
         }
-        setCurrentUser(data);
-        history.push(data.check ? '/' : '/user/profile');
+        Message.alert('更新成功');
+        setTimeout(() => history.push('/login'), 1000);
       }).catch(() => Message.error(<span className="text-danger">忘记密码？请联系管理员重置</span>));
+    } else {
+      Message.error('必填项不能为空');
     }
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
+  const refreshCaptcha = () => captchaAPI.refresh().then(({ data }) => setCaptchaUrl(data));
+  const onSendCode = () => {
+    if (counter > 0) return;
+    refreshCaptcha();
+    setVisible(true);
+  };
+  const onSendOk = () => {
+    const { captcha, mobile } = values;
+
+    setVisible(false);
+    user.sendVerifyCode({ data: { mobile, captcha } }).then(() => {
+      startCounter(60, n => setCounter(n));
+    });
+  };
 
   return (
     <div className="bglog" style={{ height: '100vh' }}>
@@ -41,12 +62,15 @@ export default ({ history }) => {
                 <div className="form-horizontal m-t-30">
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('phone')} type="text" required placeholder="请输入手机号" />
+                      <input className="form-control" onChange={setField('mobile')} type="text" required placeholder="请输入手机号" />
                     </div>
                   </div>
-                  <div className="form-group">
-                    <div className="col-12">
-                      <input className="form-control" onChange={setField('code')} type="text" required placeholder="验证码" />
+                  <div className="form-group form-inline">
+                    <div className="col-6">
+                      <input style={{ marginTop: 0 }} className="form-control" onChange={setField('code')} type="text" required placeholder="手机验证码" />
+                    </div>
+                    <div className="col-6">
+                      <Button type="secondary" onClick={onSendCode}>{counter ? `重新发送(${counter}s)` : '发送验证码'}</Button>
                     </div>
                   </div>
                   <div className="form-group">
@@ -56,7 +80,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('rekey')} type="password" required placeholder="确认密码" />
+                      <input className="form-control" onChange={setField('password')} type="password" required placeholder="确认密码" />
                     </div>
                   </div>
                   <div className="form-group text-center m-t-40">
@@ -69,6 +93,18 @@ export default ({ history }) => {
             </div>
           </div>
         </div>
+        <Dialog visible={visible} title="请输入图形验证码" onOk={onSendOk} onCancel={() => setVisible(false)}>
+          <div className="form-horizontal m-t-30">
+            <div className="form-group form-inline">
+              <div className="col-6">
+                <input style={{ marginTop: 0, width: '100%' }} className="form-control" onChange={setField('captcha')} type="text" required placeholder="图形验证码" />
+              </div>
+              <div className="col-6">
+                <img src={`data:image/png;base64,${captchaUrl}`} alt="图形验证码" onClick={refreshCaptcha} />
+              </div>
+            </div>
+          </div>
+        </Dialog>
       </div>
       <div className="container text-center p-30">
         <span className="fade-half">© 版权所有 Eureka</span>

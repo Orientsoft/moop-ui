@@ -35,6 +35,8 @@ export const user = {
   update: PATCH('/users/:userId'),
   delete: DELETE('/users/:userId'),
   selectAll: GET('/users'),
+  sendVerifyCode: POST('/verifycode'),
+  updateMobile: POST('/users/phone'),
 };
 
 export const tenant = {
