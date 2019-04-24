@@ -26,11 +26,11 @@ const routerConfig = [
     component: Classroom,
   },
   {
-    path: '/user/profile',
+    path: '/users/profile',
     component: UserProfile,
   },
   {
-    path: '/user/courses',
+    path: '/users/courses',
     component: UserCourses,
   },
   {

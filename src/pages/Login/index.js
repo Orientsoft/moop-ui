@@ -27,6 +27,11 @@ export default ({ history }) => {
       }).catch(() => Message.error(<span className="text-danger">忘记密码？请联系管理员重置</span>));
     }
   };
+  const onKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      onSubmit();
+    }
+  };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
 
   return (
@@ -46,7 +51,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码" />
+                      <input className="form-control" onKeyUp={onKeyUp} onChange={setField('key')} type="password" required placeholder="密码" />
                     </div>
                   </div>
                   <div className="form-group">
