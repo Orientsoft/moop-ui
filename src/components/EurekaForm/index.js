@@ -26,7 +26,7 @@ export default class extends React.Component {
 
     return (
       <Form labelCol={{ span: 6 }} wrapperCol={{ span: 12 }} field={this.field} {...formProps}>
-        {items.map(({ render, ...props }, i) => <Form.Item key={i} requiredMessage={`${props.label}不能为空`} {...props}>{render(itemProps)}</Form.Item>)}
+        {items.map(({ render, ...props }, i) => <Form.Item key={i} requiredMessage="必填项不能为空" patternMessage="格式不正确" {...props}>{render(itemProps)}</Form.Item>)}
         {submitItem}
       </Form>
     );

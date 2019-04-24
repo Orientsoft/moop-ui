@@ -12,8 +12,12 @@ export default (props) => {
   const [realname, setRealname] = useState(props.user.realname || '');
   const [certification, setCertification] = useState(props.user.certification || '');
   const onClick = (values, form) => {
-    form.field.validate(() => {
+    form.field.validate((error) => {
       let postData = {};
+
+      if (error) {
+        return;
+      }
       delete values.thumb;
       // Thumb must is a uuid, not a url
       if (thumb && thumb.indexOf('.') === -1) {
@@ -36,11 +40,10 @@ export default (props) => {
   };
   const certificationField = {
     label: <span className="col-sm-2 col-form-label">学号</span>,
-    required: true,
     render: () => (
       <div className="form-check col-sm-8 ">
         <Fragment>
-          <Input trim value={certification} onChange={e => setCertification(e)} style={{ width: '100%' }} />
+          <Input trim disabled={props.user.certificated} value={certification} onChange={e => setCertification(e)} style={{ width: '100%' }} />
           <div className="text-muted fontsw m-t-10">请填写你的真实学号</div>
         </Fragment>
       </div>
@@ -73,6 +76,7 @@ export default (props) => {
   }, {
     label: <span className="col-sm-2 col-form-label">手机号：</span>,
     required: true,
+    pattern: /1[0-9]{10}/,
     render: () => <Input name="mobile" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }, {
     label: <span className="col-sm-2 col-form-label">真实姓名：</span>,
@@ -86,6 +90,7 @@ export default (props) => {
   }];
   const itemAfter = [{
     label: <span className="col-sm-2 col-form-label">常用邮箱：</span>,
+    pattern: /^\w+@\w+(?:\.\w+)+$/,
     render: () => <Input name="email" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }];
   const items = isTeacher(props.user) ? itemBefore.concat({
@@ -99,7 +104,7 @@ export default (props) => {
   }, {
     label: <span className="col-sm-2 col-form-label">链接：</span>,
     render: () => <Input name="site" style={{ width: '100%' }} className="form-check col-sm-8" />,
-  }, itemAfter) : itemBefore.concat(props.user.certificated ? [] : certificationField, ...itemAfter);
+  }, itemAfter) : itemBefore.concat(certificationField, ...itemAfter);
 
   return <EurekaForm items={items} values={props.user} submitProps={{ onClick }} />;
 };
