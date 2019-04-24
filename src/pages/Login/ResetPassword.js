@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Message } from '@alifd/next';
+import { Link } from 'react-router-dom';
 import { user } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
@@ -31,7 +32,7 @@ export default ({ history }) => {
   return (
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60">
-        <h2 className="text-center"><a className="navbar-brand logo" href="/"><i>E</i><span>ureka</span></a></h2>
+        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>E</i><span>ureka</span></Link></h2>
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-40">

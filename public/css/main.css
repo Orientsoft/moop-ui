@@ -131,11 +131,12 @@ background-color: #4760de!important;
     margin: 0 20px;}
 .logo{
 color: #ffffff !important;
-font-size: 40px;
+font-size: 32px;
 font-weight: 600;
 margin-right: 20px;
 /* letter-spacing: .05em; */
 line-height: 60px;
+cursor: pointer;
 }
 a.logo:hover{ text-decoration: none}
 .logo i {
