@@ -73,12 +73,14 @@ export default (props) => {
     label: <span className="col-sm-2 col-form-label">性别：</span>,
     required: true,
     render: () => <Radio.Group name="gender" defaultValue={consts.sex.MALE} dataSource={[{ label: '男', value: consts.sex.MALE }, { label: '女', value: consts.sex.FEMALE }]} className="form-check col-sm-8" />,
-  }, {
-    label: <span className="col-sm-2 col-form-label">手机号：</span>,
-    required: true,
-    pattern: /1[0-9]{10}/,
-    render: () => <Input name="mobile" style={{ width: '100%' }} className="form-check col-sm-8" />,
-  }, {
+  },
+  // {
+  //   label: <span className="col-sm-2 col-form-label">手机号：</span>,
+  //   required: true,
+  //   pattern: /1[0-9]{10}/,
+  //   render: () => <Input name="mobile" style={{ width: '100%' }} className="form-check col-sm-8" />,
+  // },
+  {
     label: <span className="col-sm-2 col-form-label">真实姓名：</span>,
     required: true,
     render: () => (
