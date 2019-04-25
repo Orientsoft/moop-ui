@@ -190,7 +190,7 @@ export default ({ history }) => {
             <TeacherList data={course.tutors} />
           </div>
         </Tab.Item>
-        {user && user.role === consts.user.TEACHER ? (
+        {user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? (
           <Tab.Item title="学生">
             <div className="container text-left m-t-60 p-b-60">
               <div className="row p-b-60">
