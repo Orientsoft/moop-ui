@@ -30,7 +30,7 @@ export default ({ size = 99, tag, owner }) => {
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
               <p className="card-text">{description}</p>
               <span className="text-secondary fs12">学时安排：{timeConsume}</span>
-            {list_running ? <span className="couserun">正在学习</span> : ''}
+                {list_running ? <span className="couserun">正在学习</span> : ''}
             </div>
           </div>
         </div>
