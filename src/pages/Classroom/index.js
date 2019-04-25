@@ -92,7 +92,7 @@ export default ({ history }) => {
                 学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
                 开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br />
               </p>
-              {(course.join || (user && user.role === consts.user.TEACHER)) ? null : <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>}
+              {(course.join || (user && user.role === consts.user.TEACHER)) ? <a className="btn btn-lg startbtn m-t-20">已加入</a> : <a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>}
               {user && user.role === consts.user.TEACHER ? (
                 <Fragment>
                   <Link to={{ pathname: '/classroomdetail', state: course }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>

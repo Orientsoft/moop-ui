@@ -19,13 +19,21 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       });
     } else {
       const postData = { project: id };
+      let content = '是否确定启动？';
 
+      if (course.container) {
+        content = (
+          <span>
+            已经启动实验：<a href={`/classroom?id=${course.container.classroom}`}>{course.container.classroom_name}</a>，是否强制关闭并启动当前实验？
+          </span>
+        );
+      }
       if (course) {
         postData.classroom = course.id;
       }
       Dialog.alert({
         title: '启动',
-        content: '是否确定启动？',
+        content,
         onOk: () => {
           return container.start({ data: postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
