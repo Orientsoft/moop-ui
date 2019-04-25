@@ -5,18 +5,18 @@ name: moop-ui-ci
 
 steps:
 # build node application
-- name: build-ui
-  image: node:8
-  commands:
-  - npm install
-  - npm run build
-  # when:
-  #   event:
-  #   - tag
-  # trigger step when branch release branch push
-  when:
-    branch:
-    - dev
+# - name: build-ui
+#   image: node:8
+#   commands:
+#   - npm install
+#   - npm run build
+#   # when:
+#   #   event:
+#   #   - tag
+#   # trigger step when branch release branch push
+#   # when:
+#   #   branch:
+#   #   - dev
 
 - name: rsync-to-web-server
   image: drillster/drone-rsync
@@ -30,3 +30,9 @@ steps:
       - 192.168.0.31
     source: ./build/*
     target: /opt/ui-root
+
+trigger:
+  branch:
+  - dev
+  # event:
+  # - push
