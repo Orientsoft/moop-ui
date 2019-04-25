@@ -19,7 +19,7 @@ export default ({ history }) => {
   const user = getCurrentUser();
   const onJoin = () => {
     if (user) {
-      Dialog.show({
+      Dialog.alert({
         title: '加入学生',
         content: '是否确认加入？',
         onOk: () => invitation.create({
