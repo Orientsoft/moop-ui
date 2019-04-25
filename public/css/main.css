@@ -248,6 +248,7 @@ color: #1277eb;} */
 .courseslist .card:hover{
 	box-shadow: 0 5px 21px 0 rgba(0, 0, 0, 0.1);
 }
+.courseslist .card-img-top{     height: 208px;}
 .card-text{ font-size:14px;}
 .indexbtn{ border: 1px solid #2ebc4f; font-size: 14px; color: #00a95d }
 .courseslist .card .card-title a{ color: #333; text-decoration: none}
@@ -610,7 +611,7 @@ display: inline-block;}
     margin-left: -42px;
 }
 .text-transparent{color: rgba(255,255,255,.8); font-size: 12px; overflow: hidden;}
-.text-transparent li{ float: left; margin-right: 30px;}
+.text-transparent li{margin-right: 30px; margin-bottom: 4px;}
 .povr{ position: relative;}
 .addcouse,.savecouse{    height: 50px;
     line-height: 38px;
@@ -673,6 +674,7 @@ a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
 
 .endcard .card{ color: #666}
 .endcard .card-img-top{ opacity: .6; background: #000}
+
 .achieve{ background-color: #e6fff6}
 .achieve .card-body{ position: relative; }
 .card-imgico{ position: absolute; right: 20px; top: 50px;}

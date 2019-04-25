@@ -102,7 +102,7 @@ export default (props) => {
   }, {
     label: <span className="col-sm-2 col-form-label">个人简介：</span>,
     required: true,
-    render: () => <Input.TextArea name="remark" style={{ width: '100%', height: '200px' }} className="form-check col-sm-8" />,
+    render: () => <Input.TextArea name="remark" className="form-check col-sm-8 textareaheight180" rows="8" />,
   }, {
     label: <span className="col-sm-2 col-form-label">链接：</span>,
     render: () => <Input name="site" style={{ width: '100%' }} className="form-check col-sm-8" />,
