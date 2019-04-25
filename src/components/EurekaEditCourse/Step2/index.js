@@ -126,12 +126,12 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={labelSpan + wrapperSpan}>
-            <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
+            <ProjectList course={getClassroom()} data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary"  onClick={onSubmit} className="serverbtn">保存</Button>
+            <Button type="primary" onClick={onSubmit} className="serverbtn">保存</Button>
           </Col>
         </Row>
         <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>

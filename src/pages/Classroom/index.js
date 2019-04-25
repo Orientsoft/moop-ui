@@ -20,7 +20,7 @@ export default ({ history }) => {
   const onJoin = () => {
     if (user) {
       Dialog.alert({
-        title: '加入学生',
+        title: '加入学习',
         content: '是否确认加入？',
         onOk: () => invitation.create({
           data: {
@@ -70,26 +70,7 @@ export default ({ history }) => {
 
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
       .then(({ data }) => {
-        const buttons = [];
-
         setCourse(data);
-        if (user && data) {
-          if (user.role === consts.user.STUDENT) {
-            if (data.join) {
-              buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
-            } else {
-              buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
-            }
-          } else if (data.owner.id === user.id) {
-            buttons.push(
-              <Link to={{ pathname: '/classroomdetail', state: data }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>,
-              <Link to={{ pathname: '/editclassroom', state: data }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
-            );
-          }
-        } else {
-          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
-        }
-        setActionButtons(buttons);
         if (user && isTeacher(user)) {
           progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
         }
@@ -97,6 +78,29 @@ export default ({ history }) => {
     container.addEventListener('scroll', fixedNaver);
     return () => container.removeEventListener('scroll', fixedNaver);
   }, [history.location.search]);
+  useEffect(() => {
+    const buttons = [];
+
+    if (user && course) {
+      if (user.role === consts.user.STUDENT) {
+        if (course.join) {
+          buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
+        } else {
+          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+        }
+        setActionButtons(buttons);
+      } else if (course.owner.id === user.id) {
+        buttons.push(
+          <Link to={{ pathname: '/classroomdetail', state: course }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>,
+          <Link to={{ pathname: '/editclassroom', state: course }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
+        );
+        setActionButtons(buttons);
+      }
+    } else {
+      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+      setActionButtons(buttons);
+    }
+  }, [course]);
 
   return course ? (
     <Fragment>
