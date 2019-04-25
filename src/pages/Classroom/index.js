@@ -26,7 +26,7 @@ export default ({ history }) => {
           },
         }).then(() => location.reload());
       } else {
-        history.push('/user/profile');
+        history.push('/users/profile');
       }
     } else {
       history.push('/login');
