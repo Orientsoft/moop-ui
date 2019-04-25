@@ -4,7 +4,7 @@ import { classroom as classroomAPI } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
-export default ({ getClassroom, getPostData, toNext }) => {
+export default ({ getClassroom, setClassroom, getPostData, toNext }) => {
   const onOk = () => {
     Dialog.confirm({
       title: '创建专题',
@@ -21,7 +21,10 @@ export default ({ getClassroom, getPostData, toNext }) => {
       title: '创建专题',
       content: '确定发布专题？',
       onOk: () => classroomAPI.update({ data: { status: 1 } }, { classroomId: classroom.id })
-        .then(toNext),
+        .then(({ data }) => {
+          setClassroom(data);
+          toNext();
+        }),
     });
   };
 
