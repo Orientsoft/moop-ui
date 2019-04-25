@@ -22,7 +22,7 @@ export default ({ size = 99, tag, owner }) => {
 
   return (
     <div className="row m-t-40">
-      {courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running }) => (
+      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running }) => (
         <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">
             <div className="post"><Link to={`/classroom?id=${id}`} ><img className="card-img-top" src={get(thumb, 'thumbnail') ? thumb.thumbnail : '/static/images/index1.jpg'} alt={title} /></Link></div>
@@ -34,7 +34,16 @@ export default ({ size = 99, tag, owner }) => {
             </div>
           </div>
         </div>
-      ))}
+      )) : (
+        <div className="container p-b-60 ">
+          <div className="row p-t-60">
+            <div className="col text-center">
+              <h4>当前分类还没有专题</h4>
+              <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
