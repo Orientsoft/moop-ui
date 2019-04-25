@@ -21,7 +21,7 @@ export default ({ history }) => {
       user.create({
         data: { name, key, code, mobile, invitation, role: consts.user.STUDENT },
       }).then(() => {
-        Message.alert('注册成功');
+        Message.success('注册成功');
         setTimeout(() => history.push('/login'), 1000);
       });
     } else {

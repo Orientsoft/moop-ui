@@ -27,7 +27,7 @@ export default ({ history }) => {
             data.thumb = '/static/images/headgirl.png';
           }
         }
-        Message.alert('更新成功');
+        Message.success('更新成功');
         setTimeout(() => history.push('/login'), 1000);
       }).catch(() => Message.error(<span className="text-danger">忘记密码？请联系管理员重置</span>));
     } else {
