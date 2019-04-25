@@ -18,7 +18,7 @@ steps:
   #   branch:
   #   - release
 
-- name: rsync to web server
+- name: rsync-to-web-server
   image: drillster/drone-rsync
   environment:
     RSYNC_KEY:
