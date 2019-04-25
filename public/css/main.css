@@ -969,3 +969,11 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
 .next-upload-list-card .next-upload-list-item-thumbnail img {
   width: auto !important;
 }
+.couserun{ position: absolute;
+    top: 190px;
+    right: 10px;
+    background: #4760de;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 14px;}

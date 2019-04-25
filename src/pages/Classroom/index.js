@@ -76,7 +76,7 @@ export default ({ history }) => {
         if (user && data) {
           if (user.role === consts.user.STUDENT) {
             if (data.join) {
-              buttons.push(<a className="btn btn-lg startbtn m-t-20">已加入</a>);
+              buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
             } else {
               buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
             }
