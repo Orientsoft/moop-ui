@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import get from 'lodash-es/get';
 import classnames from 'classnames';
 import { Dialog } from '@alifd/next';
-import { container } from '@/utils/api';
+import { container, progress } from '@/utils/api';
+import { getCurrentUser } from '@/utils/helper';
 
 export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
   const [isRunning, setIsRunning] = useState({});
   const [containers, setContainers] = useState({});
+  const [currentRunning, setCurrentRunning] = useState(false);
   const onClick = () => Dialog.alert({
     title: '提示',
     content: '请先运行项目',
   });
+  const onLearn = (labId) => {
+    const user = getCurrentUser();
+
+    progress.create({
+      data: {
+        participant: user.id,
+        classroom: course.id,
+        message: { lab: labId },
+      },
+    });
+  };
   const onStart = (id, isStarted) => {
     if (isRunning[id] || isStarted) {
       Dialog.alert({
@@ -35,9 +48,11 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
         title: '启动',
         content,
         onOk: () => {
+          setCurrentRunning(true);
           return container.start({ data: postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
             setIsRunning({ ...isRunning, [id]: true });
+            setCurrentRunning(false);
             onStarted(id);
           });
         },
@@ -94,7 +109,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
                 {isRunning[project.id] || project.running ? (
-                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
+                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">{lab.name}</a>
                 )}
@@ -103,7 +118,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
           </div>
         </div>
       ))}
-      <div className="modal fade modaltop">
+      <div className="modal modaltop">
         <div className="modal-dialog modal-dialogloading" role="document">
           <div className="loadingmodal-header" />
           <div className="modalloading">
