@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
+import { Dialog } from '@alifd/next';
 import moment from 'moment';
 import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI } from '@/utils/api';
@@ -17,13 +18,17 @@ export default ({ history }) => {
   const user = getCurrentUser();
   const onJoin = () => {
     if (user) {
-      invitation.create({
-        data: {
-          invitee: user.id,
-          classroom: course.id,
-          confirmed: true,
-        },
-      }).then(() => location.reload());
+      Dialog.show({
+        title: '加入学生',
+        content: '是否确认加入？',
+        onOk: () => invitation.create({
+          data: {
+            invitee: user.id,
+            classroom: course.id,
+            confirmed: true,
+          },
+        }).then(() => location.reload()),
+      });
     } else {
       history.push('/login');
     }
