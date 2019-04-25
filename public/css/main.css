@@ -941,7 +941,7 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
           border-color: tranparent;
         }
       }
-.col-sm-2.col-form-label{ font-size: 14px; color: #000;}    
+.col-sm-2.col-form-label,.col-3.col-form-label{ font-size: 14px; color: #000;}    
 .inputinfoation{ width: 500px; margin: 0 auto; text-align: center }
 
 .inputinfoation h2{ border: solid 1px #012E61; padding: 10px 20px; width: 200px; margin: 20px auto 40px; background: #f0f0f0; color:#15b73a;}

@@ -44,22 +44,18 @@ export default (props) => {
     <div className="row justify-content-center">
       <div className="col-5">
         <div className="form-horizontal m-t-30">
-          <div className="form-group">
-            <div className="col-12">
-              <input className="form-control" value={values.mobile} onChange={setField('mobile')} type="text" required placeholder="手机号" />
-            </div>
+          <div className="form-group row" >
+            <span className="col-3 col-form-label ">请输入手机号：</span>
+            <input className="form-control col-6" value={values.mobile} onChange={setField('mobile')} type="text" required placeholder="手机号" />
           </div>
-          <div className="form-group form-inline">
-            <div className="col-6">
-              <input style={{ marginTop: 0 }} className="form-control" onChange={setField('code')} type="text" required placeholder="手机验证码" />
-            </div>
-            <div className="col-6">
-              <Button type="secondary" onClick={onSendCode}>{counter ? `重新发送(${counter}s)` : '发送验证码'}</Button>
-            </div>
+          <div className="form-group form-inline row">
+            <span className="col-3 col-form-label ">请输入验证码：</span>
+            <input style={{ marginTop: 0 }} className="form-control col-3 m-r-10" onChange={setField('code')} type="text" required placeholder="手机验证码" />
+            <Button type="secondary" className="col-2" onClick={onSendCode}>{counter ? `重新发送(${counter}s)` : '发送验证码'}</Button>
           </div>
           <div className="form-group text-center m-t-40">
-            <div className="col-12">
-              <button className="btn loginbnt btn-block" onClick={onSubmit}>保存</button>
+            <div className="col-4 offset-4">
+              <button className="btn loginbnt btn-block serverbtn" onClick={onSubmit}>保存</button>
             </div>
           </div>
         </div>

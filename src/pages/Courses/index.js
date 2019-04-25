@@ -19,8 +19,8 @@ export default () => {
         {tags.map(({ id, name }) => <Tab.Item key={id} title={name} />)}
       </Tab>
       <div className="container p-b-60 text-center">
-        <h2 className="large m-t-60">内容由世界领先的机构开发。</h2>
-        <h4 className="m-t-20"> Please select your intresting course , and start !</h4>
+        {/* <h2 className="large m-t-60">内容由世界领先的机构开发。</h2>
+        <h4 className="m-t-20"> Please select your intresting course , and start !</h4> */}
         <CourseList tag={tag} />
       </div>
     </div>

@@ -88,6 +88,9 @@ export default ({ history }) => {
                       <button className="btn loginbnt btn-block" onClick={onSubmit}>提交</button>
                     </div>
                   </div>
+                  <div className="form-group m-t-30 m-b-0">
+                    <div className="col-12">没有帐号？<Link to="/register">注册</Link></div>
+                  </div>
                 </div>
               </div>
             </div>
