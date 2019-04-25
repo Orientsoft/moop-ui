@@ -24,7 +24,9 @@ export default ({ history }) => {
         }
         setCurrentUser(data);
         history.push(data.check ? '/' : '/users/profile');
-      }).catch(() => Message.error(<span className="text-danger">忘记密码？请联系管理员重置</span>));
+      });
+    } else {
+      Message.error('必填项不能为空');
     }
   };
   const onKeyUp = (e) => {
