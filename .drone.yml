@@ -28,5 +28,5 @@ steps:
   settings:
     hosts:
       - 192.168.0.34
-    source: ./build
+    source: ./build/*
     target: ~/build
