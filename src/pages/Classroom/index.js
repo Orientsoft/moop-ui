@@ -2,11 +2,11 @@ import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import moment from 'moment';
-// import { Tab } from '@alifd/next';
 import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 import { getCurrentUser } from '@/utils/helper';
+import get from 'lodash-es/get';
 import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
 import TeacherList from '@/components/TeacherList';
@@ -101,7 +101,7 @@ export default ({ history }) => {
             </div>
             <div className="col-12 col-md-5 m-b-30">
               <figure className="figure">
-                <img src="/static/images/coursesimg.png" className="figure-img img-fluid rounded" alt={course.title} />
+                <img src={get(course, 'thumb.thumbnail', '/static/images/coursesimg.png')} className="figure-img img-fluid rounded" alt={course.title} />
               </figure>
             </div>
           </div>
