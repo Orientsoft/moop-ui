@@ -34,5 +34,5 @@ steps:
 trigger:
   branch:
   - dev
-  event:
-  - push
+  # event:
+  # - push
