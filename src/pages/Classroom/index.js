@@ -81,7 +81,12 @@ export default ({ history }) => {
   useEffect(() => {
     const buttons = [];
 
-    if (user && course) {
+    if (course && !user) {
+      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+      setActionButtons(buttons);
+      return;
+    }
+    if (course && user) {
       if (user.role === consts.user.STUDENT) {
         if (course.join) {
           buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
@@ -96,9 +101,6 @@ export default ({ history }) => {
         );
         setActionButtons(buttons);
       }
-    } else {
-      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
-      setActionButtons(buttons);
     }
   }, [course]);
 

@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Dialog } from '@alifd/next';
 import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
+import consts from '@/utils/consts';
 
 export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
   const [isRunning, setIsRunning] = useState({});
@@ -13,9 +14,8 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
     title: '提示',
     content: '请先运行项目',
   });
+  const user = getCurrentUser();
   const onLearn = (labId) => {
-    const user = getCurrentUser();
-
     progress.create({
       data: {
         participant: user.id,
@@ -76,7 +76,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       });
     }
   };
-  const shouldDisabled = data.some(project => project.running);
+  const shouldDisabled = user && user.role === consts.user.STUDENT && !course.join ? true : data.some(project => project.running);
 
   return (
     <div className="courselist">
