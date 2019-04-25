@@ -9,14 +9,14 @@ steps:
   image: node:8
   commands:
   - npm install
-  - npm test
+  - npm run build
   # when:
   #   event:
   #   - tag
   # trigger step when branch release branch push
-  # when:
-  #   branch:
-  #   - release
+  when:
+    branch:
+    - dev
 
 - name: rsync-to-web-server
   image: drillster/drone-rsync
