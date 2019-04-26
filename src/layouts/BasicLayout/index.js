@@ -5,10 +5,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NotFound from '@/components/NotFound';
 import { removeCurrentUser } from '@/utils/helper';
+import { user } from '@/utils/api';
 import routerData from '@/routerConfig';
 
 export default class BasicLayout extends Component {
   onLogout = () => {
+    user.logout();
     removeCurrentUser();
     this.props.history.replace('/login');
   };
