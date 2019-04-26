@@ -21,7 +21,7 @@ export default ({ data = [] }) => {
       {(data || []).map(teacher => (
         <div key={teacher.id} className="media col">
           <div className="media-left p-r-40">
-            <Link to={{ pathname: '/teacherintroduction', state: teacher }}><img className="media-object" alt={teacher.realname} src={teacher.thumb} style={{ width: 128, height: 128 }} /></Link>
+            <Link to={{ pathname: '/teacherintroduction', state: teacher }}><img className="media-object" alt={teacher.realname} src={teacher.thumb} style={{ width: 256, height: 256 }} /></Link>
           </div>
           <div className="media-body ">
             <h3><Link to={{ pathname: '/teacherintroduction', state: teacher }}>{teacher.realname}</Link></h3>
