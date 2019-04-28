@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Input, Select, Message } from '@alifd/next';
+import { Select, Message } from '@alifd/next';
+import BraftEditor from 'braft-editor';
 import queryString from 'query-string';
 import get from 'lodash-es/get';
 import { report as reportAPI, user } from '@/utils/api';
@@ -8,13 +9,13 @@ export default () => {
   const [student, setStudent] = useState(null);
   const [report, setReport] = useState(null);
   const [score, setScore] = useState('A+');
-  const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState(null);
   const url = queryString.parse(location.search);
   const onSubmit = () => {
     reportAPI.update({
       data: {
         score,
-        feedback,
+        feedback: feedback ? feedback.toHTML() : '',
       },
     }, { reportId: report.id }).then(() => {
       Message.success('更新成功');
@@ -93,7 +94,7 @@ export default () => {
                   <div className="form-group row">
                     <label className="col-sm-2 ">评语</label>
                     <div className="col-sm-10">
-                      <Input.TextArea onChange={setFeedback} style={{ width: '100%' }} value={feedback} rows={6} />
+                      <BraftEditor value={feedback} onChange={setFeedback} style={{ border: '1px solid #C4C6CF ' }} />
                     </div>
                   </div>
                   <div className="form-group row m-t-20">

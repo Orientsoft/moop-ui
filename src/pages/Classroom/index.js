@@ -140,7 +140,7 @@ export default ({ history }) => {
                     <h5 className="mb-0">
                       <a className="btn btn-link editclassroombtn">实验总结报告</a>
                     </h5>
-                    {course.progress_status && <Link to="/studentreportedit" className=" reportbtn">写实验报告</Link>}
+                    {course.progress_status && <Link to={`/studentreportedit?id=${course.id}`} className="reportbtn">写实验报告</Link>}
                   </div>
                   {course.progress_status && (
                     <div className="card-body">

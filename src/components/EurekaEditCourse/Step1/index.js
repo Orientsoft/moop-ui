@@ -78,26 +78,26 @@ export default class Step1 extends React.Component {
 
     return (
       <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
-        <Form.Item label="专题名称：" required>
+        <Form.Item label="专题名称：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input name="title" />
         </Form.Item>
-        <Form.Item label="专题封面：" required>
+        <Form.Item label="专题封面：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1}>
             {thumb && thumb.thumbnail ? <img src={thumb.thumbnail} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/coursesimg.png" alt="" width={300} height={180} className="m-r-10" />}
             <Button>上传图片</Button>
             <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为专题封面。</div>
           </Upload>
         </Form.Item>
-        <Form.Item label="专题描述：" required>
+        <Form.Item label="专题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input.TextArea name="description" className="textareaheight180" rows="8" />
         </Form.Item>
-        <Form.Item label="预备知识：" required>
+        <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input.TextArea name="requirement" className="textareaheight180" rows="8" />
         </Form.Item>
-        <Form.Item label="考核内容：" required>
+        <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input.TextArea name="testPoint" className="textareaheight180" rows="8" />
         </Form.Item>
-        <Form.Item label="参考资料：">
+        <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           {material.concat({}).map((({ name, href }, i, self) => (
             <Row key={i} className={classnames({ 'm-t-10': i !== 0 })}>
               <Col span={11}>
@@ -112,13 +112,13 @@ export default class Step1 extends React.Component {
             </Row>
           )))}
         </Form.Item>
-        <Form.Item label="专题特点：">
+        <Form.Item label="专题特点：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input trim value={characteristic[0]} onChange={e => this.setCharacteristic(0, e)} placeholder="特点一(选填)" />
           <Input trim value={characteristic[1]} onChange={e => this.setCharacteristic(1, e)} className="m-t-10" placeholder="特点二(选填)" />
           <Input trim value={characteristic[2]} onChange={e => this.setCharacteristic(2, e)} className="m-t-10" placeholder="特点三(选填)" />
           <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
         </Form.Item>
-        <Form.Item label="是否公开：">
+        <Form.Item label="是否公开：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 4, offset: 10 }}>

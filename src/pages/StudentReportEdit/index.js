@@ -1,7 +1,29 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { Message } from '@alifd/next';
+import BraftEditor from 'braft-editor';
+import queryString from 'query-string';
+import { report as reportAPI } from '@/utils/api';
+import { getCurrentUser } from '@/utils/helper';
+import get from 'lodash-es/get';
 
 export default () => {
+  const [feedback, setFeedback] = useState(null);
+  const onBack = () => {
+    history.go(-1);
+  };
+  const onSubmit = () => {
+    reportAPI.create({
+      data: {
+        participant: get(getCurrentUser(), 'id'),
+        classroom: get(queryString.parse(location.query), 'id'),
+        summary: feedback ? feedback.toHTML() : '',
+      },
+    }).then(() => {
+      Message.success('保存成功');
+      setTimeout(onBack, 1000);
+    });
+  };
+
   return (
     <Fragment>
       <div className="bg-conttop p-t-60 p-b-60">
@@ -19,9 +41,9 @@ export default () => {
             <div className="col-sm-12">
               <form>
                 <div className="form-group row">
-                  <label className=" col-sm-2"></label>
+                  <label className=" col-sm-2" />
                   <div className="col-sm-10 text-right">
-                    <Link className="btn btn-primary " to="/classroom" >返回学生列表</Link>
+                    <a className="btn btn-primary" style={{ color: 'white' }} onClick={onBack}>返回学生列表</a>
                   </div>
                 </div>
                 <div className="form-group row">
@@ -33,21 +55,15 @@ export default () => {
                   <div className="fonts2 col-sm-10">518092873898</div>
                 </div>
                 <div className="form-group row">
-                  <label className="col-sm-2 ">实验报告名称：</label>
-                  <div className="fonts2 col-sm-10">
-                    <input type="text" className="form-control" id="validationCustom01" placeholder="First name" value="例如：计算机程序设计（Python 3）" />
-                  </div>
-                </div>
-                <div className="form-group row">
                   <label className="col-sm-2 ">实验报告内容：</label>
                   <div className="col-sm-10">
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" />
+                    <BraftEditor value={feedback} onChange={setFeedback} style={{ border: '1px solid #C4C6CF ' }} />
                   </div>
                 </div>
                 <div className="form-group row m-t-20">
-                  <label  className="col-sm-2 "></label>
+                  <label className="col-sm-2" />
                   <div className="col-sm-10">
-                    <a href="createcourse.html" className="btn btn-primary  addcouse">提交</a>
+                    <a onClick={onSubmit} className="btn btn-primary addcouse">提交</a>
                   </div>
                 </div>
               </form>

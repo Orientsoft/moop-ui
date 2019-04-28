@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import router from '@/router';
+import 'braft-editor/dist/index.css';
 
 const ICE_CONTAINER = document.getElementById('ice-container');
 
