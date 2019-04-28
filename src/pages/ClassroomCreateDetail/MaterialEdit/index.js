@@ -1,38 +1,31 @@
 import React, { useState } from 'react';
-import { Grid, Upload, Button, Dialog, Message } from '@alifd/next';
-import Markdown from 'react-markdown';
-import { makeMarkdownUploadUrl, publication } from '@/utils/api';
+import { Grid, Button, Message } from '@alifd/next';
+import BraftEditor from 'braft-editor';
+import { publication } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
 export default ({ data = {} }) => {
   const [contents, setContents] = useState({});
-  const [visible, setVisible] = useState(false);
-  const [markdown, setMarkdown] = useState('');
-  const onFinish = i => response => setContents({ ...contents, [i]: response.response });
-  const onPreview = i => () => {
-    setMarkdown(contents[i].markdown);
-    setVisible(true);
-  };
   const onSubmit = () => {
     const postData = {};
     if (contents[0]) {
-      postData.group = contents[0].markdown;
+      postData.group = contents[0].toHTML();
     }
     if (contents[1]) {
-      postData.description = contents[1].markdown;
+      postData.description = contents[1].toHTML();
     }
     if (contents[2]) {
-      postData.requirement = contents[2].markdown;
+      postData.requirement = contents[2].toHTML();
     }
     if (contents[3]) {
-      postData.architecture = contents[3].markdown;
+      postData.architecture = contents[3].toHTML();
     }
     if (contents[4]) {
-      postData.characteristic = contents[4].markdown;
+      postData.characteristic = contents[4].toHTML();
     }
     if (contents[5]) {
-      postData.service = contents[5].markdown;
+      postData.service = contents[5].toHTML();
     }
     publication.update({ data: postData }, { classroomId: data.classroom }).then(() => {
       Message.success('保存成功');
@@ -52,25 +45,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传项目团队</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(0)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传项目团队word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(0)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[0]} onChange={s => setContents({ ...contents, 0: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
             <hr />
             <h5>项目描述<span>（请下载模板填写文档好再上传。）</span></h5>
@@ -81,25 +56,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传项目描述</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(1)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传项目描述word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(1)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[1]} onChange={s => setContents({ ...contents, 1: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
             <hr />
             <h5>网络要求<span>（请下载模板填写文档好再上传。）</span></h5>
@@ -110,25 +67,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传网络要求</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(2)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传网络要求word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(2)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[2]} onChange={s => setContents({ ...contents, 2: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
             <hr />
             <h5>技术架构<span>（请下载模板填写文档好再上传。）</span></h5>
@@ -139,25 +78,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传技术架构</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(3)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传技术架构word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(3)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[3]} onChange={s => setContents({ ...contents, 3: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
             <hr />
             <h5>项目特色<span>（请下载模板填写文档好再上传。）</span></h5>
@@ -168,25 +89,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传项目特色</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(4)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传项目特色word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(4)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[4]} onChange={s => setContents({ ...contents, 4: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
             <hr />
             <h5>服务计划<span>（请下载模板填写文档好再上传。）</span></h5>
@@ -197,25 +100,7 @@ export default ({ data = {} }) => {
               </div>
             </div>
             <div className="form-row row m-t-10 ">
-              <label className="import col-sm-2 col-form-label">上传服务计划</label>
-              <div className="col-sm-8">
-                <div className="custom-file ">
-                  <Upload limit={1} listType="text" onSuccess={onFinish(5)} action={makeMarkdownUploadUrl(data.classroom)}>
-                    <label className="custom-file-label">.md</label>
-                  </Upload>
-                </div>
-                <div className="valid-feedback">
-                  请上传服务计划word模板
-                </div>
-              </div>
-            </div>
-            <div className="form-row row m-t-20">
-              <label className="col-sm-2" />
-              <div className="col-sm-8">
-                <button type="button" className="btn btn-primary" onClick={onPreview(5)}>
-                  预览文件
-                </button>
-              </div>
+              <BraftEditor value={contents[5]} onChange={s => setContents({ ...contents, 5: s })} style={{ border: '1px solid #C4C6CF ' }} />
             </div>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -223,9 +108,6 @@ export default ({ data = {} }) => {
           </div>
         </Col>
       </Row>
-      <Dialog title="预览" visible={visible} onOk={() => setVisible(false)} onClose={() => setVisible(false)} onCancel={() => setVisible(false)} style={{ width: 800 }}>
-        <Markdown source={markdown} />
-      </Dialog>
     </div>
   );
 };
