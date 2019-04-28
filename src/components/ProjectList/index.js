@@ -24,7 +24,10 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       },
     });
   };
-  const onStart = (id, isStarted) => {
+  const onStart = (id, isStarted, e) => {
+    if (Array.from(e.target.classList).indexOf('noico') !== -1) {
+      return;
+    }
     if (isRunning[id] || isStarted) {
       Dialog.alert({
         title: '启动',
@@ -59,7 +62,10 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       });
     }
   };
-  const onStop = (id, isStarted) => {
+  const onStop = (id, isStarted, e) => {
+    if (Array.from(e.target.classList).indexOf('noico') !== -1) {
+      return;
+    }
     if (isRunning[id] || isStarted) {
       Dialog.alert({
         title: '停止',
@@ -76,7 +82,15 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       });
     }
   };
-  const shouldDisabled = user && user.role === consts.user.STUDENT && !course.join ? true : data.some(project => project.running);
+  let shouldDisabled = data.some(project => project.running);
+
+  if (user) {
+    if (user.role === consts.user.STUDENT && !course.join) {
+      shouldDisabled = true;
+    }
+  } else {
+    shouldDisabled = true;
+  }
 
   return (
     <div className="courselist">
@@ -98,10 +112,9 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
               {onDelete && (
                 <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '170px' }}>×</a>
               )}
-              <a href="javascript:void(0);" disabled onClick={() => onStart(project.id, project.running)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} title="启动实验环境">▶</a>
-              <a href="javascript:void(0);" onClick={() => onStop(project.id, project.running)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
+              <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} title="启动实验环境">▶</a>
+              <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
               <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">≡</a>
-              {/* data-toggle="modal" data-target="#dataloading" */}
               {/* eslint-enable */}
             </h5>
           </div>

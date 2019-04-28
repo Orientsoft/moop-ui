@@ -11,7 +11,7 @@ export default ({ data }) => {
         <div className="card-body">
           <h5 className="card-title">{data.title}</h5>
           <p className="card-text font-italic" style={{ height: 'auto' }}>
-            已学习0个实验
+            已学习 {data.progress_count} 个实验
           </p>
           {/* <div className="progress m-b-10">
             <div className="progress-bar" role="progressbar" style={{ width: '25%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>

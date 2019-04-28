@@ -115,7 +115,7 @@ margin-bottom: 20px !important;
 .m-b-30 {
 margin-bottom: 30px !important;
 }
-html,body{ padding:0 ; margin: 0;overflow-x: hidden;}
+html,body{ padding:0 ; margin: 0;overflow-x: hidden;    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;}
 .bd-navbar{
     /* background: #24292e; */
     background: #4760de;
@@ -439,9 +439,9 @@ border-radius: 0 !important;
 padding: 15px 36px;
 }
 .media-left img{
-border: 1px #ddd solid;
+/* border: 1px #ddd solid; */
 background: #efefef;
-border-radius: 50%
+/* border-radius: 50% */
 }
 
 .faqcard .btn-link{ color: #24292e; font-weight: bold;  text-align: left;
@@ -651,7 +651,7 @@ a.palyico{ position: absolute; right: 68px; width: 26px; height: 26px; border-ra
 a.palyico:hover{ text-decoration: none;color: #1277eb; background: #fff}
 a.stopico{ position: absolute; right: 34px; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 34px; background: #f44336; padding-left: 1px;border: solid 1px #f44336; color: #fff;}
 a.stopico:hover{ text-decoration: none;color: #f44336; background: #fff}
-a.dataico{ position: absolute; cursor: pointer; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 18px;font-size: 26px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
+a.dataico{ position: absolute; cursor: pointer; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 24px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
 a.noico,a.noico:hover{background: #fff; border: solid 1px #ccc;color: #aaa !important;}
 a.deleico{position: absolute; cursor: pointer; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 20px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
