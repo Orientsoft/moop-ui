@@ -8,13 +8,14 @@ import get from 'lodash-es/get';
 
 export default () => {
   const [feedback, setFeedback] = useState(null);
+  const user = getCurrentUser();
   const onBack = () => {
     history.go(-1);
   };
   const onSubmit = () => {
     reportAPI.create({
       data: {
-        participant: get(getCurrentUser(), 'id'),
+        participant: get(user, 'id'),
         classroom: get(queryString.parse(location.query), 'id'),
         summary: feedback ? feedback.toHTML() : '',
       },
@@ -43,16 +44,16 @@ export default () => {
                 <div className="form-group row">
                   <label className=" col-sm-2" />
                   <div className="col-sm-10 text-right">
-                    <a className="btn btn-primary" style={{ color: 'white' }} onClick={onBack}>返回学生列表</a>
+                    <a className="btn btn-primary" style={{ color: 'white' }} onClick={onBack}>返回课程</a>
                   </div>
                 </div>
                 <div className="form-group row">
                   <label className="col-sm-2 ">学生姓名：</label>
-                  <div className="fonts2 col-sm-10 ">吴崇试</div>
+                  <div className="fonts2 col-sm-10 ">{get(user, 'realname')}</div>
                 </div>
                 <div className="form-group row">
                   <label className="col-sm-2 ">学生身份信息：</label>
-                  <div className="fonts2 col-sm-10">518092873898</div>
+                  <div className="fonts2 col-sm-10">{get(user, 'certification')}</div>
                 </div>
                 <div className="form-group row">
                   <label className="col-sm-2 ">实验报告内容：</label>
