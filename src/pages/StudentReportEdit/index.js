@@ -16,7 +16,7 @@ export default () => {
     reportAPI.create({
       data: {
         participant: get(user, 'id'),
-        classroom: get(queryString.parse(location.query), 'id'),
+        classroom: get(queryString.parse(location.search), 'id'),
         summary: feedback ? feedback.toHTML() : '',
       },
     }).then(() => {
