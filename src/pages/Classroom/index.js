@@ -147,7 +147,6 @@ export default ({ history }) => {
                       <h5 className="card-title" id="experimentitem">实验报告名称</h5>
                       <p className="fontsw">发布报告时间：2019-03-12</p>
                       <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
-                      <p><Link to="#" className="text-primary">展开/收起</Link></p>
                       <hr />
                       <h5 className="card-title">老师评分：<span className="text-success">A+</span></h5>
                       <h5 className="card-title">老师评语：</h5>

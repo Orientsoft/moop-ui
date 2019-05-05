@@ -6,11 +6,11 @@ import { report as reportAPI } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import get from 'lodash-es/get';
 
-export default () => {
+export default ({ history, location }) => {
   const [feedback, setFeedback] = useState(null);
   const user = getCurrentUser();
   const onBack = () => {
-    history.go(-1);
+    history.goBack();
   };
   const onSubmit = () => {
     reportAPI.create({
