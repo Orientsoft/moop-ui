@@ -122,9 +122,15 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
                 {isRunning[project.id] || project.running ? (
-                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">{lab.name}</a>
+                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
+                    {lab.name}
+                    {lab.finish && <span style={{ float: 'right', color: 'green' }}>已完成</span>}
+                  </a>
                 ) : (
-                  <a onClick={onClick} className="list-group-item list-group-item-action">{lab.name}</a>
+                  <a onClick={onClick} className="list-group-item list-group-item-action">
+                    {lab.name}
+                    {lab.finish && <span style={{ float: 'right', color: 'green' }}>已完成</span>}
+                  </a>
                 )}
               </div>
             ))}

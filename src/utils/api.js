@@ -9,11 +9,13 @@ API.request.defaults.withCredentials = true;
 API.request.interceptors.response.use(response => response, (error) => {
   if (error.status >= 500) {
     Message.error('内部错误，请联系网站管理员');
-  } else if (error.status === 403) {
-    removeCurrentUser();
-    user.logout().then(() => location.href = '/users/login');
   } else if (error.response) {
-    Message.error(error.response.data);
+    if (error.response.status === 403) {
+      removeCurrentUser();
+      user.logout().then(() => location.href = '/login').catch(() => location.href = '/login');
+    } else {
+      Message.error(error.response.data);
+    }
   }
   return Promise.reject(error);
 });
@@ -94,7 +96,7 @@ export const progress = {
 };
 
 export const report = {
-  select: GET('/reports/:reportId'),
+  select: GET('/report/:reportId'),
   create: POST('/reports'),
   update: PATCH('/reports/:reportId'),
   delete: DELETE('/reports/:reportId'),

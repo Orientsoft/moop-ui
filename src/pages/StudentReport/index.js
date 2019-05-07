@@ -77,12 +77,12 @@ export default () => {
                   </div>
                   <div className="form-group row">
                     <label className="col-sm-2 ">实验报告名称：</label>
-                    <div className="fonts2 col-sm-10">有关 Python 3 学习报告体会</div>
+                    <div className="fonts2 col-sm-10">{get(report, 'title', '')}</div>
                   </div>
                   <div className="form-group row">
                     <label className="col-sm-2 ">实验报告：</label>
                     <div className="col-sm-10">
-                      <p>{get(report, 'summary')}</p>
+                      <p dangerouslySetInnerHTML={{ __html: get(report, 'summary') }} />
                     </div>
                   </div>
                   <div className="form-group row">

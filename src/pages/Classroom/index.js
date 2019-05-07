@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import { Dialog } from '@alifd/next';
 import moment from 'moment';
 import Tab from '@/components/Tab';
-import { classroom, invitation, progress as progressAPI } from '@/utils/api';
+import { classroom, invitation, progress as progressAPI, report as reportAPI } from '@/utils/api';
 import consts from '@/utils/consts';
 import { getCurrentUser } from '@/utils/helper';
 import get from 'lodash-es/get';
@@ -15,6 +15,7 @@ import TeacherList from '@/components/TeacherList';
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
   const [students, setStudents] = useState([]);
+  const [report, setReport] = useState({});
   const [actionButtons, setActionButtons] = useState([]);
   const user = getCurrentUser();
   const onJoin = () => {
@@ -67,6 +68,8 @@ export default ({ history }) => {
         }
       }
     };
+
+    reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
 
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
       .then(({ data }) => {
@@ -140,17 +143,17 @@ export default ({ history }) => {
                     <h5 className="mb-0">
                       <a className="btn btn-link editclassroombtn">实验总结报告</a>
                     </h5>
-                    {course.progress_status && <Link to={`/studentreportedit?id=${course.id}`} className="reportbtn">写实验报告</Link>}
+                    {report.isShow && <Link to={`/studentreportedit?id=${course.id}`} className="reportbtn">写实验报告</Link>}
                   </div>
-                  {course.progress_status && (
+                  {course.progress_status && !report.isShow && (
                     <div className="card-body">
-                      <h5 className="card-title" id="experimentitem">实验报告名称</h5>
-                      <p className="fontsw">发布报告时间：2019-03-12</p>
-                      <p>这个专业化教授Python 3中的编程基础。我们将从头开始，使用变量，条件和循环，并获得一些中间材料，如关键字参数，列表推导，lambda表达式和类继承。</p>
+                      <h5 className="card-title" id="experimentitem">{report.title}</h5>
+                      <p className="fontsw">发布报告时间：{moment(report.updatedAt).format('YYYY年MM月DD日')}</p>
+                      <p dangerouslySetInnerHTML={{ __html: report.summary }} />
                       <hr />
-                      <h5 className="card-title">老师评分：<span className="text-success">A+</span></h5>
+                      <h5 className="card-title">老师评分：<span className="text-success">{report.score}</span></h5>
                       <h5 className="card-title">老师评语：</h5>
-                      <p>本课程是空间信息和数字技术专业的专业课，是该专业大部分其他专业的前导课程。 几乎所有专业的大学生，都可以学习运用空间信息工程技术专业知识，与自己的创新创业目标融合。</p>
+                      <p dangerouslySetInnerHTML={{ __html: report.feedback }} />
                     </div>
                   )}
                 </div>
@@ -223,7 +226,7 @@ export default ({ history }) => {
                               </div>
                             </td>
                             <td>{score}</td>
-                            <td><Link to={`/studentreport?id=${id}&classroom=${course.id}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link></td>
+                            <td>{percent >= 100 && <Link to={`/studentreport?id=${id}&classroom=${course.id}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
                           </tr>
                         );
                       })}
