@@ -101,6 +101,8 @@ export const report = {
   update: PATCH('/reports/:reportId'),
   delete: DELETE('/reports/:reportId'),
   selectAll: GET('/reports'),
+  buildPreviewURL: id => `${API.request.defaults.baseURL}/classroom/report/preview/${id}`,
+  buildDownloadURL: id => `${API.request.defaults.baseURL}/classroom/report/download/${id}`,
 };
 
 export const tag = {

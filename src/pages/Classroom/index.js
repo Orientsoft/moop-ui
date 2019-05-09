@@ -6,7 +6,7 @@ import moment from 'moment';
 import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI, report as reportAPI } from '@/utils/api';
 import consts from '@/utils/consts';
-import { getCurrentUser } from '@/utils/helper';
+import { getCurrentUser, openURL } from '@/utils/helper';
 import get from 'lodash-es/get';
 import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
@@ -49,6 +49,14 @@ export default ({ history }) => {
   };
   const onProjectStoped = () => {
     onProjectStarted();
+  };
+  const onPreview = () => {
+    const url = queryString.parse(history.location.search);
+    openURL(reportAPI.buildPreviewURL(url.id));
+  };
+  const onDownload = () => {
+    const url = queryString.parse(history.location.search);
+    openURL(reportAPI.buildDownloadURL(url.id));
   };
 
   useEffect(() => {
@@ -204,8 +212,8 @@ export default ({ history }) => {
               <div className="row p-b-60">
                 <div className="col-sm-12">
                   <h3 >教学报告</h3>
-                  <a className="btn btn-primary btn-lg startbtn m-t-20 m-l-15" href="/#">生成预览</a>
-                  <a className="btn btn-primary btn-lg brownbtn m-t-20 m-l-15" href="#">生成PDF</a>
+                  <a className="btn btn-primary btn-lg startbtn m-t-20 m-l-15" onClick={onPreview}>生成预览</a>
+                  <a className="btn btn-primary btn-lg brownbtn m-t-20 m-l-15" onClick={onDownload}>生成PDF</a>
                   <h3 className="m-b-20 m-t-40 p-t-10">学生完成进度表</h3>
                   <table className="table table-bordered">
                     <tbody>

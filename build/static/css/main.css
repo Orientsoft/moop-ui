@@ -348,7 +348,7 @@ background-image: linear-gradient(90deg, #032f62, #024794); */
     -webkit-transform-origin: bottom left;
     transform-origin: bottom left;}
 .bg-detail{ background:url(../images/slide0.jpg);}
-.startbtn,.whitebtn,.startbtn:hover,.whitebtn:hover,.startbtn:focus,.whitebtn:focus{
+.startbtn,.whitebtn,.startbtn:hover,.whitebtn:hover,.startbtn:focus,.whitebtn:focus,.brownbtn,.brownbtn:hover{
     -moz-appearance: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -400,6 +400,16 @@ white-space: nowrap;}
 .whitebtn:hover{
     background-color: rgba(255, 255, 255, .8)!important;
     border: 1px solid rgba(255, 255, 255, .8)!important;
+    color: #333!important;
+}
+.brownbtn{
+    background-color: rgba(222, 222, 222, 1)!important;
+    border: 1px solid rgba(222, 222, 222, 1)!important;
+    color: #333!important;
+}
+.brownbtn:hover{
+    background-color: rgba(222, 222, 222, .8)!important;
+    border: 1px solid rgba(222, 222, 222, .8)!important;
     color: #333!important;
 }
 .bg-white.border_foot{background-color: #f8f8f8 !important}
