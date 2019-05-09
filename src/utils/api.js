@@ -101,6 +101,8 @@ export const report = {
   update: PATCH('/reports/:reportId'),
   delete: DELETE('/reports/:reportId'),
   selectAll: GET('/reports'),
+  preview: GET('/classroom/report/preview/:classroomId'),
+  download: GET('/classroom/report/download/:classroomId'),
 };
 
 export const tag = {

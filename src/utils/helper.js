@@ -35,3 +35,21 @@ export const startCounter = (count, callback) => {
     }
   }, 1000);
 };
+
+export const openTab = (data) => {
+  const tab = window.open(null, '_blank');
+
+  if (tab) {
+    tab.document.write(data);
+  }
+};
+
+export const download = (data, filename = '下载') => {
+  const href = window.URL.createObjectURL(new Blob([data]));
+  const downloadElement = document.createElement('a');
+
+  downloadElement.href = href;
+  downloadElement.download = filename;
+  downloadElement.click();
+  window.URL.revokeObjectURL(href);
+};
