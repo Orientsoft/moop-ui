@@ -203,8 +203,11 @@ export default ({ history }) => {
             <div className="container text-left m-t-60 p-b-60">
               <div className="row p-b-60">
                 <div className="col-sm-12">
-                  <h3 className="m-b-20">学生完成进度表</h3>
-                  <table className="table">
+                  <h3 >教学报告</h3>
+                  <a className="btn btn-primary btn-lg startbtn m-t-20 m-l-15" href="/#">生成预览</a>
+                  <a className="btn btn-primary btn-lg brownbtn m-t-20 m-l-15" href="#">生成PDF</a>
+                  <h3 className="m-b-20 m-t-40 p-t-10">学生完成进度表</h3>
+                  <table className="table table-bordered">
                     <tbody>
                       <tr>
                         <th width="200">学生身份信息</th>
