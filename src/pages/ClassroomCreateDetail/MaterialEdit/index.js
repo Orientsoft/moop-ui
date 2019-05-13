@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Grid, Button, Message } from '@alifd/next';
+import get from 'lodash-es/get';
 import BraftEditor from 'braft-editor';
 import { publication } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
-export default ({ data = {} }) => {
+export default ({ classroom, data = {} }) => {
   const [contents, setContents] = useState({});
   const onSubmit = () => {
     const postData = {};
@@ -27,7 +28,7 @@ export default ({ data = {} }) => {
     if (contents[5]) {
       postData.service = contents[5].toHTML();
     }
-    publication.update({ data: postData }, { classroomId: data.classroom }).then(() => {
+    publication.update({ data: postData }, { classroomId: get(data, 'classroom', classroom) }).then(() => {
       Message.success('保存成功');
     });
   };

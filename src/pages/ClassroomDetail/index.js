@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Tab from '@/components/Tab';
 import { Link } from 'react-router-dom';
+import get from 'lodash-es/get';
+import queryString from 'query-string';
 import { publication as publicationAPI } from '@/utils/api';
 import ProjectTeam from './ProjectTeam';
 import ProjectDescription from './ProjectDescription';
@@ -12,9 +14,10 @@ import ServicePlan from './ServicePlan';
 
 export default ({ location }) => {
   const [publication, setPublication] = useState({});
+  const classId = get(queryString.parse(location.search), 'id');
 
   useEffect(() => {
-    publicationAPI.select({}, { classroomId: location.state.id }).then(({ data }) => {
+    publicationAPI.select({}, { classroomId: classId }).then(({ data }) => {
       setPublication(data);
     });
 
@@ -33,8 +36,8 @@ export default ({ location }) => {
                 <li>对应专业：{publication.specialty}</li>
                 <li>学校：{publication.school}</li>
               </ul>
-              <Link to={`/classroom?id=${publication.classroom}`} className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>
-              <Link to={{ pathname: '/classroomcreatedetail', state: publication }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑项目</Link>
+              <Link to={`/classroom?id=${classId}`} className="btn btn-primary btn-lg startbtn m-t-20">进入学习</Link>
+              <Link to={{ pathname: '/classroomcreatedetail', search: `?id=${classId}`, state: publication }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑项目</Link>
             </div>
           </div>
         </div>

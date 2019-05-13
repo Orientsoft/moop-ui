@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Step, Input, Upload, Button, Message } from '@alifd/next';
+import queryString from 'query-string';
 import { IMAGE_UPLOAD_URL, publication } from '@/utils/api';
 import EurekaForm from '@/components/EurekaForm';
 import MaterialEdit from './MaterialEdit';
@@ -7,21 +8,38 @@ import MaterialEdit from './MaterialEdit';
 export default ({ history }) => {
   const [current, setCurrent] = useState(0);
   const [postData, setPostData] = useState({});
-  const { state } = history.location;
+  const { state, search } = history.location;
+  const queryParams = queryString.parse(search);
   const onSubmit = (values, form) => {
     form.field.validate((error) => {
       if (!error) {
-        publication.update({
-          data: {
-            name: values.name,
-            school: values.school,
-            institute: values.institute,
-            specialty: values.specialty,
-            ...postData,
-          },
-        }, { classroomId: state.classroom }).then(() => {
-          Message.success('保存成功');
-        });
+        if (state && state.classroom) {
+          publication.update({
+            data: {
+              name: values.name,
+              school: values.school,
+              institute: values.institute,
+              specialty: values.specialty,
+              ...postData,
+            },
+          }, { classroomId: state.classroom }).then(() => {
+            Message.success('保存成功');
+            setCurrent(1);
+          });
+        } else {
+          publication.create({
+            data: {
+              name: values.name,
+              school: values.school,
+              institute: values.institute,
+              specialty: values.specialty,
+              ...postData,
+            },
+          }, { classroomId: queryParams.id }).then(() => {
+            Message.success('保存成功');
+            setCurrent(1);
+          });
+        }
       }
     });
   };
@@ -86,7 +104,7 @@ export default ({ history }) => {
         <EurekaForm values={state} style={{ margin: '40px 0', minHeight: 160 }} items={items} submitProps={{ onClick: onSubmit, label: '保存' }} />
       ) : (
         <div className="row">
-          <MaterialEdit data={state} />
+          <MaterialEdit classroom={queryParams.id} data={state} />
         </div>
       )}
     </Fragment>
