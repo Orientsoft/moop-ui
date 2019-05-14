@@ -7,7 +7,7 @@ export default ({ user }) => {
     wrapperCol: { span: 24 },
     render: () => (
       <div className="inputinfoation" >
-        <p>你的邀请码是：</p>
+        <p>邀请码是：</p>
         <h2 className="m-t-10 ">{user.invitation ? user.invitation : '暂无邀请码'}</h2>
         <div className="m-t-10 alert alert-warning alert-dismissible fade show" role="alert">
           <strong>注意</strong>， 请把以上邀请码复制给被邀请的学生。
