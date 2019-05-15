@@ -335,7 +335,9 @@ background-image: linear-gradient(90deg, #032f62, #024794); */
     top: 20%;
     right: 0;
    width: 600px; height: 480px;
- background:url(../images/main.png); background-size: cover; background-position: -15% top; background-repeat: no-repeat; }
+ /* background:url(../images/main.png);  */
+ background-size: cover;
+  background-position: -15% top; background-repeat: no-repeat; }
 .bg-bottom{background-color: rgb(245, 245, 245)}
 .bgbottom{ z-index: 2;
     position: absolute;
@@ -692,7 +694,7 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
 .reportbtn:hover{color: #fff; background: #00a95d;border: solid 1px #00a95d;}
 .tab-pane{ width: 100%;}
 .createdcont h5 span{ font-size: 14px; font-weight: normal; color: #666;}
-.editclassroombtn{ padding: 0; color: #333; padding-left: 14px; font-weight: bold}
+.editclassroombtn{ padding: 0; color: #333;  font-weight: bold;}
 .bntlook{   
     border: 2px solid #2ebc4f!important;
     background: #2ebc4f !important;
@@ -709,6 +711,7 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
  .eureka-upload .next-upload-list-card .next-upload-list-item-wrapper {
      width: auto;
  }
+ .figure{ width: 400px; height: 238px; overflow: hidden;}
 
 
  /*  */
