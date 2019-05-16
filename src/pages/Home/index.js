@@ -8,7 +8,7 @@ export default () => (
       <div className="container">
         <div className="row p-b-120">
           <div className="col  m-t-60  p-b-60 text-center">
-            <h1 className="large m-t-40">数据科学在线实验室</h1>
+            <h1 className="large p-t-60">数据科学在线实验室</h1>
             <h4 className="lead m-t-40 "><br />
               我们提供数据科学所需的实验环境，提供从入门到精深的课程，从数据分析师<br /><br />
               的训练到复杂的行业精益分析都可以在此完成。<br />
@@ -22,7 +22,7 @@ export default () => (
     <div className="bg-eee p-t-80 p-b-60">
       <div className="container p-b-60 text-center">
         <h2 className="large">Jupyter 创始团队支持，与Jupyter社区同步演进</h2>
-        <p className="m-t-20"> Jupyter Notebook 支持可视化交互编程，把文档、程序、报告融为一体，是数据科学家最常用的工具。</p>
+        <p className="m-t-20 p-b-30"> Jupyter Notebook 支持可视化交互编程，把文档、程序、报告融为一体，是数据科学家最常用的工具。</p>
         <CourseList size={3} />
         <h4 className="m-t-40"><Link to="/courses" className="btn btn-lg startbtn ">查看更多 <span className="link-symbol">→</span></Link></h4>
       </div>
