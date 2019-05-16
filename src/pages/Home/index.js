@@ -33,29 +33,27 @@ export default () => (
       {/* <div className="mainproico"></div> */}
       <div className="container p-t-60 text-center  p-b-60 ">
         <h2 className="large m-t-60 p-t-120">我们向用户提供</h2>
-        <p className="m-t-20 "> 从头开始设计，为您和您的团队使复杂的数据科学无痛。</p>
+        <p className="m-t-20 "> 全面的设施和教程，让您和您的团队轻松的探索数据科学。</p>
         <div className="row m-t-60  p-b-120 procont" >
           <div className="col-12 col-md-4 ">
             <div className="feature">
               <img src="/static/images/icno3.png"  width=" "/>
               <h5 className="mb8 uppercase bold p-b-10">一键启动 </h5>
-              <p className="fade-1-4 p-b-10">准备计算机软硬件环境对数据分析专家来说最为复杂，我们使用分布式容器技术，使每个实验都能一键启动实验环境 。</p>
+              <p className="fade-1-4 p-b-10">准备程序的运行环境是数据分析中相对复杂的环节，我们使用分布式容器技术，使每个实验环境都能一键启动。</p>
             </div>
           </div>
           <div className="col-12 col-md-4 ">
             <div className="feature ">
               <img src="/static/images/icno1.png" />
               <h5 className="mb8 uppercase bold p-b-10">数据安全</h5>
-              <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验主题成员之间能够通过授权进行数据交换。 
-</p>
+              <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验专题成员之间能够通过授权进行数据交换。 </p>
             </div>
           </div>
           <div className="col-12 col-md-4 ">
             <div className="feature ">
               <img src="/static/images/icno2.png" />
               <h5 className="mb8 uppercase bold p-b-10">课程先进</h5>
-              <p className="fade-1-4 p-b-10">我们随时跟踪业界的先进算法和论文，并转化为实验供学员学习，课程使用jupyter Notebook编写，业界最先进的数据分析工具。  
-</p>
+              <p className="fade-1-4 p-b-10">我们随时跟踪业界前沿算法和论文，并转化为实验供学员学习，课程使用先进的数据分析工具Jupyter Notebook编写。</p>
             </div>
           </div>
         </div>

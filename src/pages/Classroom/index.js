@@ -133,7 +133,7 @@ export default ({ history }) => {
             </div>
             <div className="col-12 col-md-5 m-b-30">
               <figure className="figure">
-                <img src={get(course, 'thumb.thumbnail', '/static/images/coursesimg.png')} className="figure-img img-fluid rounded" alt={course.title} />
+                <img src={get(course, 'thumb.thumbnail', '/static/images/coursesimg.png')} className="figure-img img-fluid" alt={course.title} />
               </figure>
             </div>
           </div>
