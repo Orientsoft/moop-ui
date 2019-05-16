@@ -53,7 +53,7 @@ export default ({ history }) => {
   return (
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60">
-        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>E</i><span>ureka</span></Link></h2>
+        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>M</i><span>oopLab</span></Link></h2>
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-40">
@@ -110,7 +110,7 @@ export default ({ history }) => {
         </Dialog>
       </div>
       <div className="container text-center p-30">
-        <span className="fade-half">© 版权所有 Eureka</span>
+        <span className="fade-half">© 版权所有 MoopLab</span>
       </div>
     </div>
   );

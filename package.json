@@ -1,7 +1,7 @@
 {
-  "name": "moop-ui",
+  "name": "MoopLab",
   "version": "1.0.0",
-  "description": "moop-ui",
+  "description": "MoopLab",
   "files": [
     "src/",
     "build/",
@@ -70,5 +70,5 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "title": "moop-ui"
+  "title": "MoopLab"
 }
