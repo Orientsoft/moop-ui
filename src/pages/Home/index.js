@@ -45,14 +45,14 @@ export default () => (
           <div className="col-12 col-md-4 ">
             <div className="feature ">
               <img src="/static/images/icno1.png" />
-              <h5 className="mb8 uppercase bold p-b-10">数据安全</h5>
+              <h5 className="mb8 uppercase bold p-b-10">数据保护</h5>
               <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验专题成员之间能够通过授权进行数据交换。 </p>
             </div>
           </div>
           <div className="col-12 col-md-4 ">
             <div className="feature ">
               <img src="/static/images/icno2.png" />
-              <h5 className="mb8 uppercase bold p-b-10">课程先进</h5>
+              <h5 className="mb8 uppercase bold p-b-10">实验组装</h5>
               <p className="fade-1-4 p-b-10">我们随时跟踪业界前沿算法和论文，并转化为实验供学员学习，课程使用先进的数据分析工具Jupyter Notebook编写。</p>
             </div>
           </div>
