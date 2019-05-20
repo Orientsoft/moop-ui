@@ -2,7 +2,7 @@ import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 import { Message } from '@alifd/next';
 import { removeCurrentUser } from './helper';
 
-API.request.defaults.timeout = 60000;
+API.request.defaults.timeout = 600000;
 API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
