@@ -16,6 +16,7 @@ export default ({ history }) => {
   const [course, setCourse] = useState(null);
   const [students, setStudents] = useState([]);
   const [report, setReport] = useState({});
+  const [activeTab, setActiveTab] = useState(0);
   const [actionButtons, setActionButtons] = useState([]);
   const user = getCurrentUser();
   const onJoin = () => {
@@ -77,6 +78,13 @@ export default ({ history }) => {
       }
     };
 
+    if (url.tab) {
+      const key = parseInt(url.tab, 10);
+
+      if (!isNaN(key) && key < 2) {
+        setActiveTab(key);
+      }
+    }
     reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
 
     classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
@@ -139,7 +147,7 @@ export default ({ history }) => {
           </div>
         </div>
       </div>
-      <Tab navStyle={{ padding: '0 10%' }} contentStyle={{ padding: '30px 0' }}>
+      <Tab navStyle={{ padding: '0 10%' }} activeKey={activeTab} onChange={key => setActiveTab(key)} contentStyle={{ padding: '30px 0' }}>
         <Tab.Item title="详情">
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
@@ -237,7 +245,7 @@ export default ({ history }) => {
                               </div>
                             </td>
                             <td>{score}</td>
-                            <td>{percent >= 100 && <Link to={`/studentreport?id=${id}&classroom=${course.id}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
+                            <td>{percent >= 100 && <Link to={`/studentreport?id=${id}&classroom=${course.id}&tab=${activeTab}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
                           </tr>
                         );
                       })}

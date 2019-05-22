@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import get from 'lodash-es/get';
 import { report as reportAPI, user } from '@/utils/api';
 
-export default () => {
+export default ({ history }) => {
   const [student, setStudent] = useState(null);
   const [report, setReport] = useState(null);
   const [score, setScore] = useState('A+');
@@ -22,7 +22,13 @@ export default () => {
     });
   };
   const onBack = () => {
-    history.go(-1);
+    const tab = parseInt(url.tab, 10);
+    let backTo = `/classroom?id=${url.classroom}`;
+
+    if (!isNaN(tab)) {
+      backTo = `${backTo}&tab=${tab}`;
+    }
+    history.push(backTo);
   };
 
   useEffect(() => {
@@ -37,9 +43,11 @@ export default () => {
           classroom: url.classroom,
         },
       }).then((res) => {
-        setReport(res.data.reports[0]);
-        setScore(res.data.reports[0].score);
-        setFeedback(res.data.reports[0].feedback);
+        if (res.data.reports.length) {
+          setReport(res.data.reports[0]);
+          setScore(res.data.reports[0].score);
+          setFeedback(res.data.reports[0].feedback);
+        }
       });
     });
   }, []);
