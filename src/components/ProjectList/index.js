@@ -52,7 +52,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
         content,
         onOk: () => {
           setCurrentRunning(true);
-          return container.start({ data: postData }).then(({ data: { callback } }) => {
+          container.start({ data: postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
             setIsRunning({ ...isRunning, [id]: true });
             setCurrentRunning(false);
@@ -137,8 +137,8 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
           </div>
         </div>
       ))}
-      <div className="modal modaltop">
-        <div className="modal-dialog modal-dialogloading" role="document">
+      <div className="modal modaltop" style={{ display: currentRunning ? 'block' : 'none' }}>
+        <div className="modal-dialog modal-dialogloading">
           <div className="loadingmodal-header" />
           <div className="modalloading">
             <div className="css-typing">
@@ -150,7 +150,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
               <p className="fright fright3">✓</p>
               <p className="starttime time14">授权用户...</p>
               <p className="fright fright4">✓</p>
-              <p className="starttime time5">装备跳转到实验环境</p>
+              <p className="starttime time5">进入实验环境</p>
               <p className="fright fright5">✓</p>
             </div>
           </div>
