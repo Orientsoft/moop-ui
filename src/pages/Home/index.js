@@ -37,7 +37,7 @@ export default () => (
         <div className="row m-t-60  p-b-120 procont" >
           <div className="col-12 col-md-4 ">
             <div className="feature">
-              <img src="/static/images/icno3.png"  width=" "/>
+              <img src="/static/images/icno3.png" width=" "/>
               <h5 className="mb8 uppercase bold p-b-10">一键启动 </h5>
               <p className="fade-1-4 p-b-10">准备程序的运行环境是数据分析中相对复杂的环节，我们使用分布式容器技术，使每个实验环境都能一键启动。</p>
             </div>
