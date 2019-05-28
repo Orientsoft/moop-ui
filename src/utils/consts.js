@@ -11,4 +11,5 @@ export default {
     FEMALE: 1,
   },
   titles: ['助教', '讲师', '教授'],
+  scores: { 4.33: 'A+', 4: 'A', 3: 'B', 2: 'C', 1: 'D' },
 };

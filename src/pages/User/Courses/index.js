@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import get from 'lodash-es/get';
 import Tab from '@/components/Tab';
 import EurekaBanner from '@/components/EurekaBanner';
 import { classroom } from '@/utils/api';
@@ -56,25 +58,22 @@ const User = ({ data }) => (
               <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
             </div>
           </div>
-          {/* <div className="row ">
-            <div className="col-12 text-left m-b-20">
-              <h4>我的成就</h4>
-            </div>
-            <div className="col-12 col-md-4">
-              <div className="card p-b-10 achieve">
-                <img className="card-img-top" src="/static/images/index2.jpg" alt="神经网络与深度学习" />
-                <div className="card-body">
-                  <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
-                  <h5 className="card-title">神经网络与深度学习</h5>
-                  <h6 className="card-title">老师评分： <span className="text-success">A+</span></h6>
-                  <p className="card-text">
-                    2019年6月24日学期结束
-                  </p>
-                  <Link to="/classroom" className="btn bntlook">查看评语 </Link>
+          <div className="row">
+            {data.filter(c => c.progress_status).map(course => (
+              <div key={course.id} className="col-12 col-md-4">
+                <div className="card p-b-10 achieve">
+                  <img className="card-img-top" src={get(course, 'thumb.thumbnail')} alt={course.title} />
+                  <div className="card-body">
+                    <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
+                    <h5 className="card-title">{course.title}</h5>
+                    <h6 className="card-title">老师评分： <span className="text-success">{get(consts.scores, course.score, '暂无评分')}</span></h6>
+                    <p className="card-text">{moment(course.endTime).format('YYYY年MM月DD日')}学期结束</p>
+                    <Link to={`/classroom?id=${course.id}`} className="btn bntlook">查看评语 </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div> */}
+            ))}
+          </div>
         </div>
       </Tab.Item>
     </Tab>
