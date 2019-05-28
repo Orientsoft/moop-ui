@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Tab from '@/components/Tab';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
+import merge from 'lodash-es/merge';
 import queryString from 'query-string';
 import { publication as publicationAPI } from '@/utils/api';
 import ProjectTeam from './ProjectTeam';
@@ -13,12 +14,14 @@ import ItemAdvantage from './ItemAdvantage';
 import ServicePlan from './ServicePlan';
 
 export default ({ location }) => {
-  const [publication, setPublication] = useState({});
+  const [publication, setPublication] = useState({
+    image: '/static/images/slide0.jpg',
+  });
   const classId = get(queryString.parse(location.search), 'id');
 
   useEffect(() => {
     publicationAPI.select({}, { classroomId: classId }).then(({ data }) => {
-      setPublication(data);
+      setPublication({ ...merge(publication, data) });
     });
 
     return () => sessionStorage.removeItem('PUBLICATION');
@@ -26,7 +29,7 @@ export default ({ location }) => {
 
   return (
     <Fragment>
-      <div className="bg-conttop bg-detail p-t-60 p-b-60">
+      <div className="bg-conttop bg-detail p-t-60 p-b-60" style={{ backgroundImage: `url(${publication.image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center' }}>
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-7 m-b-30">
