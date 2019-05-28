@@ -6,7 +6,7 @@ import { publication } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
-export default ({ classroom, data = {} }) => {
+export default ({ classroom, data = {}, history }) => {
   const [contents, setContents] = useState({});
   const onSubmit = () => {
     const postData = {};
@@ -30,6 +30,7 @@ export default ({ classroom, data = {} }) => {
     }
     publication.update({ data: postData }, { classroomId: get(data, 'classroom', classroom) }).then(() => {
       Message.success('保存成功');
+      setTimeout(() => history.push(`/classroomdetail?id=${classroom}`), 600);
     });
   };
 

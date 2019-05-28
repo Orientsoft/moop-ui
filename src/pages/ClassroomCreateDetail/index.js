@@ -104,7 +104,7 @@ export default ({ history }) => {
         <EurekaForm values={state} style={{ margin: '40px 0', minHeight: 160 }} items={items} submitProps={{ onClick: onSubmit, label: '保存' }} />
       ) : (
         <div className="row">
-          <MaterialEdit classroom={queryParams.id} data={state} />
+          <MaterialEdit history={history} classroom={queryParams.id} data={state} />
         </div>
       )}
     </Fragment>
