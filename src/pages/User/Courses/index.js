@@ -51,29 +51,32 @@ const User = ({ data }) => (
       </Tab.Item>
       <Tab.Item title="我的成就" className="bg-white m-t-20 p-b-60">
         <div className="container p-b-60 ">
-          <div className="row p-t-60">
-            <div className="col text-center">
-              <h4>你还没有完成专题课程</h4>
-              <p>目前您没有任何激活的专题。</p>
-              <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
-            </div>
-          </div>
-          <div className="row">
-            {data.filter(c => c.progress_status).map(course => (
-              <div key={course.id} className="col-12 col-md-4">
-                <div className="card p-b-10 achieve">
-                  <img className="card-img-top" src={get(course, 'thumb.thumbnail')} alt={course.title} />
-                  <div className="card-body">
-                    <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
-                    <h5 className="card-title">{course.title}</h5>
-                    <h6 className="card-title">老师评分： <span className="text-success">{get(consts.scores, course.score, '暂无评分')}</span></h6>
-                    <p className="card-text">{moment(course.endTime).format('YYYY年MM月DD日')}学期结束</p>
-                    <Link to={`/classroom?id=${course.id}`} className="btn bntlook">查看评语 </Link>
+          {data.filter(c => c.progress_status).length ? (
+            <div className="row">
+              {data.filter(c => c.progress_status).map(course => (
+                <div key={course.id} className="col-12 col-md-4">
+                  <div className="card p-b-10 achieve">
+                    <img className="card-img-top" src={get(course, 'thumb.thumbnail')} alt={course.title} />
+                    <div className="card-body">
+                      <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
+                      <h5 className="card-title">{course.title}</h5>
+                      <h6 className="card-title">老师评分： <span className="text-success">{get(consts.scores, course.score, '暂无评分')}</span></h6>
+                      <p className="card-text">{moment(course.endTime).format('YYYY年MM月DD日')}学期结束</p>
+                      <Link to={`/classroom?id=${course.id}`} className="btn bntlook">查看评语 </Link>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div className="row p-t-60">
+              <div className="col text-center">
+                <h4>你还没有完成专题课程</h4>
+                <p>目前您没有任何激活的专题。</p>
+                <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </Tab.Item>
     </Tab>
