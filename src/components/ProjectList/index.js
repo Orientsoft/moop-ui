@@ -57,7 +57,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
             setIsRunning({ ...isRunning, [id]: true });
             setCurrentRunning(false);
             onStarted(id);
-          });
+          }).catch(() => setCurrentRunning(false));
         },
       });
     }
