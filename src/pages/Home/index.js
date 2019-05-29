@@ -60,24 +60,24 @@ export default () => (
       </div>
        <div className="bgbottom"></div>
     </div>
-    <div className=" bg-bottom p-t-80 p-b-60">
+    <div className=" bg-bottom p-t-80 p-b-60 main-container">
       <div className="container p-b-60 text-center">
         <h2 className="large">我们欢迎你的加入</h2>
         <p className="m-t-20"> 你可以作为以下三种角色使用实验室。</p>
         <div className="row p-t-60">
-          <div className="col-12 col-md-4 text-left">
+          <div className="col-12 col-md-4 text-left m-t-20">
             <img src="/static/images/newbbie1.png" alt="..." style={{ width: 300 }} />
             <h5 className="m-t-20"> Project Contributer</h5>
             <br />
             你可以提供精心编排的数据科学项目，帮助新手参考学习。
           </div>
-          <div className="col-12 col-md-4 text-left">
+          <div className="col-12 col-md-4 text-left m-t-20">
             <img src="/static/images/newbbie2.png" alt="..." style={{ width: 300 }} />
             <h5 className="m-t-20">Subject  Mentor</h5>
             <br />
             你可以从一个有趣的数据分析课题出发，组装不同的实验项目，使用自己的数据，组队完成课题目标。
           </div>
-          <div className="col-12 col-md-4 text-left">
+          <div className="col-12 col-md-4 text-left m-t-20">
             <img src="/static/images/newbbie3.png" alt="..." style={{ width: 300 }} />
             <h5 className="m-t-20">Newbbie</h5>
             <br />
@@ -85,6 +85,78 @@ export default () => (
           </div>
         </div>
       </div>
+      <div className="bgbottom"></div>
+    </div>
+    <div className="p-t-80 p-b-120 main-container">
+      <div className="container p-b-120  p-t-80  text-center">
+        <h2 className="large">订阅计划</h2>
+        <p className="m-t-20">我们担供以下三种服务，总有适合你的选择。</p>
+        <div className="row p-t-60">
+          <div className="col-12 col-md-4 text-left m-t-20">
+            <div className="price-box">
+              <div className="price-header">
+                <h1><span className="dolor"></span>免费</h1>
+                <h4>学生</h4>
+              </div>
+              <ul className="list-unstyled price-features">
+                <li>低CPU优先级</li>
+                <li>1 GB RAM</li>
+                <li>1 GB存储</li>
+                <li>有限支持</li>
+                <li>需要.edu电子邮件</li>
+              </ul>
+              {/* <div className="price-footer">
+                <a href="https://beta.gryd.us" className="btn btn-lg startbtn">注册</a>
+              </div> */}
+            </div>
+          </div>
+          <div className="col-12 col-md-4 text-left m-t-20">
+            <div className="price-box best-plan">
+              <div className="price-header">
+                <h1>
+                  <span className="dolor">¥</span> 100
+                  <span className="className">/月</span>
+                </h1>
+                <h4>专业版</h4>
+              </div>
+              <ul className="list-unstyled price-features">
+                <li>高CPU优先级</li>
+                <li>2 GB RAM</li>
+                <li>3 GB存储</li>
+                <li>可定制Jupyter镜像</li>
+                <li>专业支持</li>
+              </ul>
+              {/* <div className="price-footer">
+                <a href="https://beta.gryd.us" className="btn btn-lg startbtn">注册</a>
+              </div> */}
+            </div>
+          </div>
+          <div className="col-12 col-md-4 text-left m-t-20">
+            <div className="price-box">
+              <div className="price-header">
+                <h1>定制版</h1>
+                <h4>教师</h4>
+              </div>
+              <ul className="list-unstyled price-features">
+                <li>作业管理</li>
+                <li>GPU环境支持</li>
+                <li>自定义环境</li>
+                <li>专业人员账户</li>
+                <li>适合大型课程</li>
+              </ul>
+              {/* <div className="price-footer">
+                <a href="/contact/" className="btn btn-lg startbtn">联系我们</a>
+              </div> */}
+            </div>
+          </div>
+          {/* <div className="row">
+            <a href="https://jupyter.org/index.html" target="_blank" >
+              <img className="navbar-logo" src="/static/images/jupyter_logo.svg" alt="Jupyter logo" />
+            </a>
+          </div> */}
+        </div>
+      </div>
+      <div className="ftbgbottom"></div>
     </div>
   </Fragment>
 );
