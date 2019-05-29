@@ -59,7 +59,7 @@ export default ({ getClassroom, labelSpan, wrapperSpan, history }) => {
         <Row justify="center">
           <Col span={labelSpan + wrapperSpan}>
             <Button type="primary" disabled={!get(getClassroom(), 'status', 0)} onClick={() => setVisible(true)}>导入学生列表</Button>
-            <span style={{ marginLeft: 10 }}>{get(getClassroom(), 'status', 0) ? '' : '已发布的专题才能添加学生'}</span>
+            <span style={{ marginLeft: 10 }}>{get(getClassroom(), 'status', 0) ? '' : '已发布的课题才能添加学生'}</span>
             {students ? null : <div className="m-t-20">你还没有添加学生，请添加学生</div>}
           </Col>
         </Row>

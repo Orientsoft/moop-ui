@@ -8,16 +8,16 @@ import Step5 from './Step5';
 import Step6 from './Step6';
 
 const steps = [{
-  title: '专题描述',
+  title: '课题描述',
   render: props => <Step1 {...props} />,
 }, {
   title: '实验项目',
   render: props => <Step2 {...props} />,
 }, {
-  title: '提交专题',
+  title: '提交课题',
   render: props => <Step3 {...props} />,
 }, {
-  title: '发布专题',
+  title: '发布课题',
   render: props => <Step4 {...props} />,
 }, {
   title: '添加数据',

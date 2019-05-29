@@ -8,12 +8,12 @@ export default () => (
       <div className="container">
         <div className="row p-b-120">
           <div className="col  m-t-60  p-b-60 text-center">
-            <h1 className="large p-t-60">数据科学在线实验室</h1>
+            <h1 className="large p-t-60">数据科学开放实验室</h1>
             <h4 className="lead m-t-40 "><br />
               我们提供数据科学所需的实验环境，提供从入门到精深的课程，从数据分析师<br /><br />
               的训练到复杂的行业精益分析都可以在此完成。<br />
             </h4>
-            <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多专题</Link>
+            <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多课题</Link>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default () => (
             <div className="feature ">
               <img src="/static/images/icno1.png" />
               <h5 className="mb8 uppercase bold p-b-10">数据保护</h5>
-              <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验专题成员之间能够通过授权进行数据交换。 </p>
+              <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验课题成员之间能够通过授权进行数据交换。 </p>
             </div>
           </div>
           <div className="col-12 col-md-4 ">

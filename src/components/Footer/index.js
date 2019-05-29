@@ -26,9 +26,9 @@ export default () => (
             <h6 className="title">合作伙伴</h6>
             <hr />
             <ul className="list-unstyled">
-              <li><Link to="/">西南财经大学</Link></li>
-              <li><Link to="/">电子科技大学</Link></li>
-              <li><Link to="/">四川大学</Link></li>
+              <li><Link to="https://www.swufe.edu.cn/" target="_blank">西南财经大学</Link></li>
+              <li><Link to="https://www.uestc.edu.cn/" target="_blank">电子科技大学</Link></li>
+              <li><Link to="http://www.scu.edu.cn/" target="_blank">四川大学</Link></li>
             </ul>
           </div>
         </div>

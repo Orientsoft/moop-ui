@@ -32,7 +32,7 @@ export default class Step3 extends React.Component {
 
         setData({ ...restValues, startTime: timeRange[0], endTime: timeRange[1] });
         Dialog.confirm({
-          title: '创建专题',
+          title: '创建课题',
           content: '确定创建？',
           onOk: () => classroom.create({ data: getPostData() }).then(({ data }) => {
             setClassroom(data);
@@ -60,7 +60,7 @@ export default class Step3 extends React.Component {
             <Checkbox.Group name="tags" dataSource={tags} />
           </Form.Item>
           <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-            <Form.Submit type="primary"  onClick={this.onSubmit} className="serverbtn">创建专题</Form.Submit>
+            <Form.Submit type="primary"  onClick={this.onSubmit} className="serverbtn">创建课题</Form.Submit>
           </Form.Item>
         </Form>
       </div>
