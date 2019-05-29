@@ -16,7 +16,7 @@ export default ({ history }) => {
     if (key !== password) {
       Message.error('两次密码输入不一致');
     } else if (mobile && code && key) {
-      user.login({ data: { mobile, code, key } }).then(({ data }) => {
+      user.resetPassword({ data: { mobile, code, key } }).then(({ data }) => {
         if (!data.gender) {
           data.gender = consts.sex.MALE;
         }

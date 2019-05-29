@@ -41,6 +41,7 @@ export const user = {
   selectAll: GET('/users'),
   sendVerifyCode: POST('/verifycode'),
   updateMobile: POST('/users/phone'),
+  resetPassword: POST('/reset/pwd'),
 };
 
 export const tenant = {
