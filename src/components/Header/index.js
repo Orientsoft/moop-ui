@@ -31,7 +31,7 @@ export default ({ onLogout, history }) => {
                 <div className="dropdown usertop">
                   <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <Link className="dropdown-item" to="/users/courses">我的专题</Link>
+                    <Link className="dropdown-item" to="/users/courses">我的课题</Link>
                     <Link className="dropdown-item" to="/users/profile">设置</Link>
                     <a className="dropdown-item" onClick={onLogout}>退出</a>
                   </div>

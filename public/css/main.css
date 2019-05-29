@@ -166,7 +166,7 @@ height: 34px;
 /* background: url(../images/helloworld.jpg),#2b3137; */
 /* background: url(../images/obbg.jpg),#2b3137; */
 background: url(../images/loginbg.png),#4760de;
-background-position: center 35%;
+background-position: 0 0;
 background-repeat: no-repeat;
 background-size: cover;
 /* color: hsla(0,0%,100%,.6); */
@@ -174,7 +174,7 @@ padding-bottom: 64px; position: relative;}
 
 .bglog{
   background: url(../images/loginbg.png),#4760de;
-  background-position: center 10%;
+  background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
   color: hsla(0,0%,100%,.6);
@@ -306,8 +306,9 @@ padding-bottom: 64px;
 
 }
 .bg-black{
-background: url(../images/simple.svg),#2b3137;
+/* background: url(../images/simple.svg),#2b3137; */
 /* background: url(../images/bgschool.jpg),#2b3137; */
+background: #000;
 background-position: center 10%;
 background-size: cover;
 
@@ -324,12 +325,18 @@ background-size: cover;
 color: #fff;
 background: #4760de url(../images/settingui.png);
 background-repeat: no-repeat;
-background-size: 14%;
-background-position: 55% bottom;
-/* background-image: -moz-linear-gradient(90deg, #032f62, #024794);
-background-image: -webkit-linear-gradient(90deg, #032f62, #024794);
-background-image: linear-gradient(90deg, #032f62, #024794); */
-    /* background: linear-gradient(130deg, #400446 30%, #2bdada 100%); */
+background-size: 18%;
+background-position: 80% bottom;
+}
+.bg-mainconttop{
+background-position: center 10%;
+background-size: cover;
+color: #fff;
+background: #4760de url(../images/settingui.png);
+background-repeat: no-repeat;
+background-size: 22%;
+background-position: 46% bottom;
+
 }
 .main-container{ position: relative; }
 .mainproico{margin-bottom: 0;
@@ -344,10 +351,20 @@ background-image: linear-gradient(90deg, #032f62, #024794); */
 .bg-bottom{background-color: rgb(245, 245, 245)}
 .bgbottom{ z-index: 2;
     position: absolute;
-    bottom: -94px;
+    bottom: -84px;
     background: rgb(245, 245, 245);
     width: 100%;
-    height: 15%;
+    height: 11%;
+    -webkit-transform: skewY(-2.5deg);
+    transform: skewY(-2.5deg);
+    -webkit-transform-origin: bottom left;
+    transform-origin: bottom left;}
+    .ftbgbottom{ z-index: 2;
+    position: absolute;
+    bottom: -84px;
+    background: #000;
+    width: 100%;
+    height: 11%;
     -webkit-transform: skewY(-2.5deg);
     transform: skewY(-2.5deg);
     -webkit-transform-origin: bottom left;
@@ -642,7 +659,7 @@ display: inline-block;}
     background: #eee !important;
     color: #666!important;}
     .list-group-flush a{ font-weight: bold;}
-    .modaltop{ top: 10%;}
+    .modaltop{ top: 30%;}
     /* .course li:hover{ background: #f8f8f8;}
     .course li a.cbtn{background: #f8f8f8; margin-right: 10px;float: right; color: #666; text-decoration: none;border: 1px #ddd solid; width: 30px; height: 30px; text-align: center; line-height: 30px;border-radius: 50%; display: inline-block;}
 .course li a.cbtn.cclose span{ line-height: 24px; font-size: 1.2rem;} */
@@ -671,6 +688,11 @@ a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
 a.noico,a.noico:hover{background: #fff; border: solid 1px #ccc;color: #aaa !important;}
 a.deleico{position: absolute; cursor: pointer; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 20px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
 a.deleico:hover{ text-decoration: none;color: #00ce72; background: #fff; text-decoration: none}
+
+
+.listiconright{ float:right;  width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 18px;  padding-left: 3px;border: solid 1px #00ce72; color: #00ce72;}
+.listiconrightno{float:right;  width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 18px;  padding-left: 3px;border: solid 1px #ccc; color: #aaa;}
+
 
 
 a.rightico{ position: absolute; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 22px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
@@ -722,31 +744,32 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
  .modal-dialogloading{    display: block;
     margin: auto;
     max-width: 530px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-shadow: rgba(0, 0, 0, 0.8) 0px 20px 70px;
     clear: both;
     overflow: hidden;    transition: all 0.5s ease-out;}
 .loadingmodal-header{
-  padding: 5px 0;
+  padding: 8px 0 8px 15px;
   font-family: "Lucida Grande", sans-serif;
-  font-size: 0.75em;
-  text-align: center;
-  text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
-  background-color: #f8f8f8;
-  background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc); height: 26px;
-  box-shadow: inset rgba(255, 255, 255, 0.7) 0px 1px 1px;
-  border-bottom: #6a6a6a 1px solid;}
-.modalloading{ background-color: rgba(0, 0, 0, 0.85);
-    padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  /* font-weight: bold; */
+  background-color: #000;
+  color: #fff;
+}
+.modalloading{ 
+    /* background-color: rgba(0, 0, 0, 0.85); */
+    background-color:#000;
+    padding:10px  20px 20px;
     color: #f0f0f0;
     text-shadow: #000 0px 1px 0px;
     font-family: "Consolas", "Courier New", "Courier";
     font-size: 1.45em;
     line-height: 1.40em;
-    font-weight: 500;
+    font-weight:200;
     text-align: left;
     overflow: hidden;
-    color: #fff;
+    color: #00ff21;
       transition: all 0.5s ease-out;}
 .css-typing{ position: relative;}
       .css-typing p {
@@ -994,3 +1017,49 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
     border-radius: 3px;
     font-size: 14px;}
     .procont img{ width: 80%; margin: 40px 0 50px}
+
+.price-box {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+  .price-box .price-header {
+    background: #000;
+    color: #fff;
+    padding: 30px 15px; }
+    .price-box .price-header h1, .price-box .price-header h4 {
+      color: #fff; }
+    .price-box .price-header h1 {
+      font-size: 36px;
+      font-weight: normal;
+      text-transform: uppercase; }
+      .price-box .price-header h1 span {
+        font-size: 12px;
+        opacity: 0.8;
+        display: inline-block; }
+    .price-box .price-header h4 {
+      font-weight: normal;
+      font-size: 14px;
+      opacity: 0.8;
+      margin: 0px; }
+  .price-box.best-plan .price-header, .price-box.best-plan .price-footer {
+    background: #4760de; }
+
+.price-features {
+  margin: 0;
+  padding: 15px 0; }
+  .price-features li {
+    line-height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0px 15px; }
+    .price-features li:last-child {
+      border-bottom: 0px; }
+
+.price-footer {
+  background: #f5f5f5;
+  padding: 25px 15px; }
+
+  .list-unstyled {
+    font-size: 14px;
+    padding-left: 0;
+    list-style: none;
+    line-height: 30px;
+}

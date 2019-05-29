@@ -11,6 +11,8 @@ import StudentReport from '@/pages/StudentReport';
 import StudentReportEdit from '@/pages/StudentReportEdit';
 import TeacherIntroduction from '@/pages/TeacherIntroduction';
 import Help from '@/pages/Help';
+import About from '@/pages/About';
+import ContactUs from '@/pages/ContactUs';
 
 const routerConfig = [
   {
@@ -65,6 +67,13 @@ const routerConfig = [
     path: '/help',
     component: Help,
   },
-];
-
+  {
+    path: '/about',
+    component: About,
+  },
+  {
+    path: '/contactus',
+    component: ContactUs,
+  } 
+]
 export default routerConfig;

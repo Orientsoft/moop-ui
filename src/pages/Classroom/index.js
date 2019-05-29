@@ -116,7 +116,7 @@ export default ({ history }) => {
       } else if (course.owner.id === user.id) {
         buttons.push(
           <Link to={{ pathname: '/classroomdetail', search: `?id=${course.id}`, state: course }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>,
-          <Link to={{ pathname: '/editclassroom', state: course }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑专题</Link>
+          <Link to={{ pathname: '/editclassroom', state: course }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑课题</Link>
         );
         setActionButtons(buttons);
       }
@@ -125,7 +125,7 @@ export default ({ history }) => {
 
   return course ? (
     <Fragment>
-      <div className="bg-conttop p-t-60 p-b-60">
+      <div className="bg-mainconttop p-t-60 p-b-60">
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-7 m-b-30">

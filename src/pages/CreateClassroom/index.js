@@ -8,7 +8,7 @@ export default (props) => {
       <EurekaBanner>
         <div className="row">
           <div className="col-12 col-md-7">
-            <h2 className="large">创建专题</h2>
+            <h2 className="large">创建课题</h2>
           </div>
         </div>
       </EurekaBanner>

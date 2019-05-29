@@ -75,17 +75,17 @@ export default class Step1 extends React.Component {
 
     return (
       <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
-        <Form.Item label="专题名称：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="课题名称：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input name="title" />
         </Form.Item>
-        <Form.Item label="专题封面：" className="coursesimg" requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="课题封面：" className="coursesimg" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Upload onSuccess={({ response }) => this.setState({ thumb: response })} listType="card" action={IMAGE_UPLOAD_URL} limit={1} >
             {thumb && thumb.url ? <img src={thumb.url} alt="" width={300} height={180} className="m-r-10" /> : <img src="/static/images/coursesimg.png" alt="" width={300} height={180} className="m-r-10" />}
             <Button>上传图片</Button>
-            <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为专题封面。</div>
+            <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为课题封面。</div>
           </Upload>
         </Form.Item>
-        <Form.Item label="专题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input.TextArea name="description" className="textareaheight180" rows="8" />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
@@ -109,14 +109,14 @@ export default class Step1 extends React.Component {
             </Row>
           )))}
         </Form.Item>
-        <Form.Item label="专题特点：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="课题特点：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Input trim value={characteristic[0]} onChange={e => this.setCharacteristic(0, e)} placeholder="特点一(选填)" />
           <Input trim value={characteristic[1]} onChange={e => this.setCharacteristic(1, e)} className="m-t-10" placeholder="特点二(选填)" />
           <Input trim value={characteristic[2]} onChange={e => this.setCharacteristic(2, e)} className="m-t-10" placeholder="特点三(选填)" />
           <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
         </Form.Item>
         <Form.Item label="是否公开：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本专题的学生开放)', value: 0 }]} />
+          <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本课题的学生开放)', value: 0 }]} />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
           <Form.Submit type="primary" onClick={this.onSubmit} className="serverbtn"> 下一步</Form.Submit>

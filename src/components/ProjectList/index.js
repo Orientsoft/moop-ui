@@ -124,12 +124,12 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
                 {isRunning[project.id] || project.running ? (
                   <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
                     {lab.name}
-                    {lab.finish && <span style={{ float: 'right', color: 'green' }}>已完成</span>}
+                    {lab.finish && <span className="listiconright">✔</span>}
                   </a>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">
                     {lab.name}
-                    {lab.finish && <span style={{ float: 'right', color: 'green' }}>已完成</span>}
+                    {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
                   </a>
                 )}
               </div>
@@ -139,7 +139,7 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       ))}
       <div className="modal modaltop" style={{ display: currentRunning ? 'block' : 'none' }}>
         <div className="modal-dialog modal-dialogloading">
-          <div className="loadingmodal-header" />
+          <div className="loadingmodal-header" > 启动实验环境 </div>
           <div className="modalloading">
             <div className="css-typing">
               <p className="starttime ">开始启动实验环境...</p>

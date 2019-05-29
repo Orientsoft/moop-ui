@@ -20,7 +20,7 @@ const User = ({ data }) => (
       </div>
     </EurekaBanner>
     <Tab>
-      <Tab.Item title="实验专题" className="bg-white m-t-20 p-b-60">
+      <Tab.Item title="实验课题" className="bg-white m-t-20 p-b-60">
         <div className="container p-b-60">
           {data.length ? (
             <Fragment>
@@ -40,9 +40,9 @@ const User = ({ data }) => (
           ) : (
             <div className="row">
               <div className="col-12 text-center">
-                <h4>您还没有激活专题</h4>
-                <p>目前您没有任何激活的专题。</p>
-                <p><Link to="/courses" className="btn btn-primary addcouse">浏览专题</Link></p>
+                <h4>您还没有激活课题</h4>
+                <p>目前您没有任何激活的课题。</p>
+                <p><Link to="/courses" className="btn btn-primary addcouse">浏览课题</Link></p>
                 <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
               </div>
             </div>
@@ -71,8 +71,8 @@ const User = ({ data }) => (
           ) : (
             <div className="row p-t-60">
               <div className="col text-center">
-                <h4>你还没有完成专题课程</h4>
-                <p>目前您没有任何激活的专题。</p>
+                <h4>你还没有完成课题课程</h4>
+                <p>目前您没有任何激活的课题。</p>
                 <p><img width="92" className="catalog-img" src="/static/images/lc_w.png" alt="浏览" /></p>
               </div>
             </div>
@@ -88,10 +88,10 @@ const Teacher = ({ user, data }) => (
       <div className="row">
         <div className="col-6 col-md-6">
           <h2 className="large">Hi, {user.realname}</h2>
-          <p className=" text-warning card-text">您有 {data.length} 个专题</p>
+          <p className=" text-warning card-text">您有 {data.length} 个课题</p>
         </div>
         <div className="col-6 col-md-6 text-right">
-          <Link to="/createclassroom" className="btn btn-primary addcouse">创建专题<span className="link-add">+</span></Link>
+          <Link to="/createclassroom" className="btn btn-primary addcouse">创建课题<span className="link-add">+</span></Link>
         </div>
       </div>
     </EurekaBanner>
@@ -108,8 +108,8 @@ const Teacher = ({ user, data }) => (
           ) : (
             <div className="col-12">
               <div className="text-center">
-                <h4>最后激活专题</h4>
-                <p>目前您没有任何激活的专题。</p>
+                <h4>最后激活课题</h4>
+                <p>目前您没有任何激活的课题。</p>
                 <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
               </div>
         </div>

@@ -42,7 +42,7 @@ export default ({ history }) => {
         <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>M</i><span>oopLab</span></Link></h2>
         <div className="row justify-content-center">
           <div className="col-5">
-            <div className=" card-box m-t-40">
+            <div className=" card-box m-t-20">
               <h3 className="text-center uppercase">登录</h3>
               <div className="panel-body">
                 <div className="form-horizontal m-t-30">
