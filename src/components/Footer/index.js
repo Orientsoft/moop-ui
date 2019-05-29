@@ -14,10 +14,10 @@ export default () => (
             <h6 className="title">关于</h6>
             <hr />
             <ul className="list-unstyled">
-              <li><Link to="/help">关于我们</Link></li>
-              <li><Link to="/help">联系我们</Link></li>
+              <li><Link to="/about">关于我们</Link></li>
+              {/* <li><Link to="/help">联系我们</Link></li> */}
               <li><Link to="/help">服务协议</Link></li>
-              <li><Link to="/help">常见问题</Link></li>
+              {/* <li><Link to="/help">常见问题</Link></li> */}
             </ul>
           </div>
         </div>
