@@ -37,14 +37,14 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
       const postData = { project: id };
       let content = '是否确定启动？';
 
-      if (course.container) {
-        content = (
-          <span>
-            已经启动实验：<a href={`/classroom?id=${course.container.classroom}`}>{course.container.classroom_name}</a>，是否强制关闭并启动当前实验？
-          </span>
-        );
-      }
       if (course) {
+        if (course.container) {
+          content = (
+            <span>
+              已经启动实验：<a href={`/classroom?id=${course.container.classroom}`}>{course.container.classroom_name}</a>，是否强制关闭并启动当前实验？
+            </span>
+          );
+        }
         postData.classroom = course.id;
       }
       Dialog.alert({
