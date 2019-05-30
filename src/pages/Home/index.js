@@ -21,7 +21,12 @@ export default () => (
     </div>
     <div className="bg-eee p-t-80 p-b-60">
       <div className="container p-b-60 text-center">
-        <h2 className="large">Jupyter 创始团队支持，与Jupyter社区同步演进</h2>
+        <h2 >
+          <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
+            <img height="60" src="/static/images/jupter-b.png" alt="Jupyter logo" />
+          </a>
+        </h2>
+        <h2 className="large m-t-40">Jupyter 创始团队支持，与Jupyter社区同步演进</h2>
         <p className="m-t-20 p-b-30"> Jupyter Notebook 支持可视化交互编程，把文档、程序、报告融为一体，是数据科学家最常用的工具。</p>
         <CourseList size={3} />
         <h4 className="m-t-40"><Link to="/courses" className="btn btn-lg startbtn ">查看更多 <span className="link-symbol">→</span></Link></h4>

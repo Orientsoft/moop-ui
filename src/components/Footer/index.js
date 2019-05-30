@@ -45,12 +45,13 @@ export default () => (
         </div>
       </div>
       <p className="text-center m-t-20">
-        <a className="m-r-15" href="https://jupyter.org/index.html" target="_blank" >
-          <img height="40" src="/static/images/jupyter_logo.svg" alt="Jupyter logo" />
+        <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
+          <img height="45" src="/static/images/jupter-l.png" alt="Jupyter logo" />
         </a>
         <a className="m-l-15" href="https://github.com/moop-china" target="_blank"><img height="50" src="/static/images/github.png" /></a></p>
-      <p className="m-t-20">
-        <span className="fade-half">© 版权所有 2019 MoopLab</span>
+      <p className="m-t-20 text-center">
+        <span className="fade-half">
+          Copyright ©2019 MoopLab all right reserved. <br />成都源动数据科技有限公司提供技术支持 - 蜀ICP备15010143号-3 </span>
       </p>
     </div>
   </footer>
