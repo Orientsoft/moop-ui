@@ -45,7 +45,10 @@ export default () => (
         </div>
       </div>
       <p className="text-center m-t-20">
-        <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
+        <a className="m-r-15" href="http://www.jupyterchina.org" target="_blank" >
+          <img height="40" src="/static/images/jupyterchina_l.png" alt="Jupyter logo" />
+        </a>
+        <a className="m-l-15" href="https://jupyter.org" target="_blank" >
           <img height="45" src="/static/images/jupter-l.png" alt="Jupyter logo" />
         </a>
         <a className="m-l-15" href="https://github.com/moop-china" target="_blank"><img height="50" src="/static/images/github.png" /></a></p>

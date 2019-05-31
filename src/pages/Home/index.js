@@ -22,7 +22,7 @@ export default () => (
     <div className="bg-eee p-t-80 p-b-60">
       <div className="container p-b-60 text-center">
         <h2 >
-          <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
+          <a className="m-r-15" href="https://jupyter.org" target="_blank" >
             <img height="60" src="/static/images/jupter-b.png" alt="Jupyter logo" />
           </a>
         </h2>
