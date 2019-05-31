@@ -21,6 +21,7 @@
     "@icedesign/layout": "^1.x",
     "@icedesign/theme": "^1.x",
     "@pixcai/make-api": "^0.0.3",
+    "bizcharts": "^3.5.3",
     "braft-editor": "^2.2.9",
     "braft-extensions": "^0.0.18",
     "classnames": "^2.2.6",

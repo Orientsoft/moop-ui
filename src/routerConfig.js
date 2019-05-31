@@ -13,6 +13,34 @@ import TeacherIntroduction from '@/pages/TeacherIntroduction';
 import Help from '@/pages/Help';
 import About from '@/pages/About';
 import ContactUs from '@/pages/ContactUs';
+import TenantDashboard from '@/tenant/pages/Dashboard';
+import TenantProject from '@/tenant/pages/Project';
+import TenantTenant from '@/tenant/pages/Tenant';
+import TenantTeacher from '@/tenant/pages/Teacher';
+import TenantStudent from '@/tenant/pages/Student';
+
+export const tenantRoutes = [
+  {
+    path: '/tenant/dashboard',
+    component: TenantDashboard,
+  },
+  {
+    path: '/tenant/project',
+    component: TenantProject,
+  },
+  {
+    path: '/tenant/tenant',
+    component: TenantTenant,
+  },
+  {
+    path: '/tenant/teacher',
+    component: TenantTeacher,
+  },
+  {
+    path: '/tenant/student',
+    component: TenantStudent,
+  },
+];
 
 const routerConfig = [
   {
@@ -74,6 +102,8 @@ const routerConfig = [
   {
     path: '/contactus',
     component: ContactUs,
-  } 
-]
+  },
+  ...tenantRoutes,
+];
+
 export default routerConfig;

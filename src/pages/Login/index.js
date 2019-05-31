@@ -23,7 +23,11 @@ export default ({ history }) => {
           }
         }
         setCurrentUser(data);
-        history.push(data.check ? '/' : '/users/profile');
+        if (data.role === consts.user.CONTRIBUTOR) {
+          history.push('/tenant');
+        } else {
+          history.push(data.check ? '/' : '/users/profile');
+        }
       });
     } else {
       Message.error('必填项不能为空');
