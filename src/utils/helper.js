@@ -1,3 +1,4 @@
+import get from 'lodash-es/get';
 import consts from './consts';
 
 const KEY_USER = 'user';
@@ -52,4 +53,20 @@ export const download = (data, filename = '下载') => {
   downloadElement.download = filename;
   downloadElement.click();
   window.URL.revokeObjectURL(href);
+};
+
+export const getCourseCover = (course) => {
+  let thumb = get(course, 'thumb.thumbnail');
+
+  if (!thumb) {
+    let index = 0;
+
+    if (course) {
+      const last = parseInt(course.id.split('').reverse()[0], 16) || 0;
+      index = last % 3;
+    }
+    thumb = `/static/images/course-cover.${index}.png`;
+  }
+
+  return thumb;
 };

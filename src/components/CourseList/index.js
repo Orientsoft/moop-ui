@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
-import get from 'lodash-es/get';
+import { getCourseCover } from '@/utils/helper';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
@@ -22,10 +22,10 @@ export default ({ size = 99, tag, owner }) => {
 
   return (
     <div className="row m-t-40">
-      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running }) => (
+      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running }, i, allCourses) => (
         <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">
-            <div className="post"><Link to={`/classroom?id=${id}`} ><img className="card-img-top" src={get(thumb, 'thumbnail') ? thumb.thumbnail : '/static/images/index1.jpg'} alt={title} /></Link></div>
+            <div className="post"><Link to={`/classroom?id=${id}`} ><img className="card-img-top" src={getCourseCover(allCourses[i])} alt={title} /></Link></div>
             <div className="card-body text-left">
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
               <p className="card-text">{description}</p>

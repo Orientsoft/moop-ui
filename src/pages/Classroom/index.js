@@ -6,8 +6,7 @@ import moment from 'moment';
 import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI, report as reportAPI } from '@/utils/api';
 import consts from '@/utils/consts';
-import { getCurrentUser, openURL } from '@/utils/helper';
-import get from 'lodash-es/get';
+import { getCurrentUser, getCourseCover, openURL } from '@/utils/helper';
 import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
 import TeacherList from '@/components/TeacherList';
@@ -141,7 +140,7 @@ export default ({ history }) => {
             </div>
             <div className="col-12 col-md-5 m-b-30">
               <figure className="figure">
-                <img src={get(course, 'thumb.thumbnail', '/static/images/coursesimg.png')} className="figure-img img-fluid" alt={course.title} />
+                <img src={getCourseCover(course)} className="figure-img img-fluid" alt={course.title} />
               </figure>
             </div>
           </div>
