@@ -231,7 +231,7 @@ export default ({ history }) => {
                         <th width="140">评分</th>
                         <th width="200">操作</th>
                       </tr>
-                      {students.map(({ participant, progress, score = 'N/A' }) => {
+                      {students.map(({ participant, progress, report: showReport, score = 'N/A' }) => {
                         const { id, certification, realname } = participant;
                         const percent = parseInt(progress * 100, 10);
                         return (
@@ -244,7 +244,7 @@ export default ({ history }) => {
                               </div>
                             </td>
                             <td>{score}</td>
-                            <td>{percent >= 100 && <Link to={`/studentreport?id=${id}&classroom=${course.id}&tab=${activeTab}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
+                            <td>{showReport && <Link to={`/studentreport?id=${id}&classroom=${course.id}&tab=${activeTab}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
                           </tr>
                         );
                       })}
