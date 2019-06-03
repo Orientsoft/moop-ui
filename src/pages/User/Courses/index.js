@@ -20,7 +20,7 @@ const User = ({ data }) => (
       </div>
     </EurekaBanner>
     <Tab>
-      <Tab.Item title="实验课题" className="bg-white m-t-20 p-b-60">
+      <Tab.Item title="实验课题" className="bg-white p-t-30 p-b-60">
         <div className="container p-b-60">
           {data.length ? (
             <Fragment>
@@ -49,7 +49,7 @@ const User = ({ data }) => (
             )}
         </div>
       </Tab.Item>
-      <Tab.Item title="我的成就" className="bg-white m-t-20 p-b-60">
+      <Tab.Item title="我的成就" className="bg-white p-t-30 p-b-60">
         <div className="container p-b-60 ">
           {data.filter(c => c.progress_status).length ? (
             <div className="row">

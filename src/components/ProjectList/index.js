@@ -6,7 +6,7 @@ import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
-export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
+export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
   const [isRunning, setIsRunning] = useState({});
   const [containers, setContainers] = useState({});
   const [currentRunning, setCurrentRunning] = useState(false);
@@ -23,6 +23,11 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
         message: { lab: labId },
       },
     });
+  };
+  const onRefresh = () => {
+    if (onVisited) {
+      onVisited();
+    }
   };
   const onStart = (id, isStarted, e) => {
     if (Array.from(e.target.classList).indexOf('noico') !== -1) {
@@ -122,10 +127,12 @@ export default ({ course, data = [], onStarted, onStoped, onMoveUp, onMoveDown, 
             {get(project, 'labs', []).map(lab => (
               <div key={lab.id} className="list-group">
                 {isRunning[project.id] || project.running ? (
-                  <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
-                    {lab.name}
-                    {lab.finish && <span className="listiconright">✔</span>}
-                  </a>
+                  <div onClick={onRefresh}>
+                    <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
+                      {lab.name}
+                      {lab.finish && <span className="listiconright">✔</span>}
+                    </a>
+                  </div>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">
                     {lab.name}
