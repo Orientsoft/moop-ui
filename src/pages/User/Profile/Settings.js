@@ -92,7 +92,7 @@ export default (props) => {
   }];
   const itemAfter = [{
     label: <span className="col-sm-2 col-form-label">常用邮箱：</span>,
-    pattern: /^\w+@\w+(?:\.\w+)+$/,
+    pattern: /^[\w.-]+@\w+(?:\.\w+)+$/,
     render: () => <Input name="email" style={{ width: '100%' }} className="form-check col-sm-8" />,
   }];
   const items = isTeacher(props.user) ? itemBefore.concat({
