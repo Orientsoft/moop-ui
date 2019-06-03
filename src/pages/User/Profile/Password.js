@@ -36,7 +36,7 @@ export default (props) => {
             onClose: () => location.href = '/login',
             onCancel: () => location.href = '/login',
           });
-        }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
+        });
       }
     });
   };

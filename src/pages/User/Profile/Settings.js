@@ -35,7 +35,7 @@ export default (props) => {
           content: '更新成功',
           onOk: () => location.reload(),
         });
-      }).catch(err => Message.error(get(err, 'response.data.msg', err.message)));
+      });
     });
   };
   const certificationField = {
