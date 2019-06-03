@@ -14,14 +14,14 @@ export default class Step1 extends React.Component {
     this.field.setValues(this.props.getData());
   }
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     const values = nextProps.getData();
 
     if (values) {
       return {
-        thumb: { id: values.thumb },
-        material: values.material,
-        characteristic: values.characteristic,
+        thumb: prevState.thumb || { id: values.thumb },
+        material: prevState.material.length ? prevState.material : values.material,
+        characteristic: prevState.characteristic.length ? prevState.characteristic : values.characteristic,
       };
     }
     return null;
@@ -35,14 +35,14 @@ export default class Step1 extends React.Component {
     const { material } = this.state;
 
     material.splice(index, 1);
-    this.setState([...material]);
+    this.setState({ material: [...material] });
   };
 
   modifyMaterial = (index, value) => {
     const { material } = this.state;
 
     material[index] = { ...material[index], ...value };
-    this.setState([...material]);
+    this.setState({ material: [...material] });
   };
 
   setCharacteristic = (index, value) => {
@@ -86,16 +86,16 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="description" className="textareaheight180" rows="8" />
+          <Input.TextArea name="description" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="requirement" className="textareaheight180" rows="8" />
+          <Input.TextArea name="requirement" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="testPoint" className="textareaheight180" rows="8" />
+          <Input.TextArea name="testPoint" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          {material.concat({}).map((({ name, href }, i, self) => (
+          {material.concat({}).map((({ name = '', href = '' }, i, self) => (
             <Row key={i} className={classnames({ 'm-t-10': i !== 0 })}>
               <Col span={11}>
                 <Input trim value={name} onChange={e => this.modifyMaterial(i, { name: e })} style={{ width: '98%' }} placeholder="资料名称" />
