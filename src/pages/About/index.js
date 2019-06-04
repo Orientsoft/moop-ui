@@ -36,7 +36,7 @@ export default () => {
               <p>&nbsp;&nbsp;&nbsp;&nbsp;* 我们与加州伯克利成立了第一家jupyter国际联合实验室</p><br />
               <p>&nbsp;&nbsp;&nbsp;&nbsp;* 我们发起了MOOP-China项目</p><br />
               <p>&nbsp;&nbsp;&nbsp;&nbsp; * 我们将成为Fernando新成立的CIC（Center of Interactive Computing）的第一位获邀发起成员。</p><br />
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;成都源动数据科技有限公司，网址 datadynamic.io，，于2018年成立，是以软件开发和数据分析为主要业务的科技公司。</p><br />
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;成都源动数据科技有限公司，网址 datadynamic.io，于2018年成立，是以软件开发和数据分析为主要业务的科技公司。</p><br />
             </div>
           </div>
         </div>
