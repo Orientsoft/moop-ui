@@ -21,6 +21,7 @@ import TenantStudent from '@/tenant/pages/Student';
 import TenantContributor from '@/tenant/pages/Contributor';
 import ContributorDashboard from '@/contributor/pages/Dashboard';
 import ContributorCreate from '@/contributor/pages/Create';
+import ContributorResetPassword from '@/contributor/pages/ResetPassword';
 
 export const tenantRoutes = [
   {
@@ -57,6 +58,10 @@ export const contributorRoutes = [
   {
     path: '/contributor/create',
     component: ContributorCreate,
+  },
+  {
+    path: '/contributor/password',
+    component: ContributorResetPassword,
   },
 ];
 

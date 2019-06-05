@@ -19,6 +19,14 @@ export const student = {
 export const tenant = {
   select: GET('/tenant?embed=1'),
   update: PATCH('/tenants/:tenantId/custom'),
+  resetPassword: GET('/management/reset'),
+};
+
+export const contributor = {
+  select: GET('/management/contributor'),
+  create: POST('/management/contributor'),
+  delete: DELETE('/management/contributor'),
+  resetPassword: GET('/management/reset'),
 };
 
 export const login = POST('/login');

@@ -5,7 +5,7 @@ import merge from 'lodash-es/merge';
 import debounce from 'lodash-es/debounce';
 import Table from './components/Table';
 import AddDialog from './components/AddDialog';
-import { teacher } from '../../api';
+import { contributor } from '../../api';
 
 export default () => {
   const [payload, setPayload] = useState({});
@@ -19,13 +19,13 @@ export default () => {
     setLoading(true);
     setPayload(lastPayload);
 
-    return teacher.select(lastPayload).then(({ data }) => {
+    return contributor.select(lastPayload).then(({ data }) => {
       setTeachers(data);
       setLoading(false);
     }).catch(() => setLoading(false));
   };
   const onAddOk = (data) => {
-    return teacher.create({ data }).then(() => {
+    return contributor.create({ data }).then(() => {
       setVisible(false);
       Message.success('添加贡献者成功');
       onQuery();
@@ -35,7 +35,7 @@ export default () => {
     Dialog.alert({
       title: '删除',
       content: <span>确定删除贡献者  {record.realname}?</span>,
-      onOk: () => teacher.delete({ params: { id: record.id } }).then(onQuery),
+      onOk: () => contributor.delete({ params: { id: record.id } }).then(onQuery),
     });
   };
   const onDeleteBatches = () => {
@@ -43,7 +43,7 @@ export default () => {
       Dialog.confirm({
         title: '删除',
         content: '确认删除?',
-        onOk: () => Promise.all(selected.map(t => teacher.delete({ params: { id: t.id } }))).then(() => {
+        onOk: () => Promise.all(selected.map(t => contributor.delete({ params: { id: t.id } }))).then(() => {
           setSelected([]);
           onQuery();
         }),
@@ -62,7 +62,7 @@ export default () => {
 
   return (
     <Container>
-      <Input placeholder="按真实姓名查询" onChange={debounce(search => onQuery({ params: { page: 1, search } }), 600)} />
+      <Input placeholder="按用户名查询" onChange={debounce(search => onQuery({ params: { page: 1, search } }), 600)} />
       <Button style={{ marginLeft: 15 }} type="primary" onClick={() => setVisible(true)}>添加</Button>
       <Button style={{ marginLeft: 15 }} type="normal" warning onClick={onDeleteBatches}>删除</Button>
       <Table dataSource={teachers} loading={loading} onQuery={onQuery} onDelete={onDelete} onSelect={records => setSelected(records)} />

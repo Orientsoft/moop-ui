@@ -35,11 +35,11 @@ const asideMenuConfig = [
     path: '/tenant/student',
     icon: 'fans2',
   },
-  // {
-  //   name: '贡献者账号管理',
-  //   path: '/tenant/contributor',
-  //   icon: 'yonghu',
-  // },
+  {
+    name: '贡献者账号管理',
+    path: '/tenant/contributor',
+    icon: 'yonghu',
+  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
