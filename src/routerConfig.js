@@ -18,6 +18,9 @@ import TenantProject from '@/tenant/pages/Project';
 import TenantTenant from '@/tenant/pages/Tenant';
 import TenantTeacher from '@/tenant/pages/Teacher';
 import TenantStudent from '@/tenant/pages/Student';
+import TenantContributor from '@/tenant/pages/Contributor';
+import ContributorDashboard from '@/contributor/pages/Dashboard';
+import ContributorCreate from '@/contributor/pages/Create';
 
 export const tenantRoutes = [
   {
@@ -39,6 +42,21 @@ export const tenantRoutes = [
   {
     path: '/tenant/student',
     component: TenantStudent,
+  },
+  {
+    path: '/tenant/contributor',
+    component: TenantContributor,
+  },
+];
+
+export const contributorRoutes = [
+  {
+    path: '/contributor/dashboard',
+    component: ContributorDashboard,
+  },
+  {
+    path: '/contributor/create',
+    component: ContributorCreate,
   },
 ];
 
@@ -104,6 +122,7 @@ const routerConfig = [
     component: ContactUs,
   },
   ...tenantRoutes,
+  ...contributorRoutes,
 ];
 
 export default routerConfig;

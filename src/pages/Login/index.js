@@ -25,6 +25,8 @@ export default ({ history }) => {
         setCurrentUser(data);
         if (data.role === consts.user.CONTRIBUTOR) {
           history.push('/tenant');
+        } else if (data.role === consts.user.SUPER) {
+          history.push('/contributor');
         } else {
           history.push(data.check ? '/' : '/users/profile');
         }

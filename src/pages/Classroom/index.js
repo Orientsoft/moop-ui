@@ -76,6 +76,7 @@ export default ({ history }) => {
           naver.current.style.left = `${naver.current.parentNode.offsetLeft + 15}px`;
           naver.current.style.top = '90px';
           naver.current.style.width = '255px';
+          naver.current.style.zIndex = 1;
         } else {
           naver.current.style.position = 'relative';
           naver.current.style.left = 0;

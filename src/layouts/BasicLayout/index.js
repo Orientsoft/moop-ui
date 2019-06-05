@@ -17,7 +17,7 @@ export default class BasicLayout extends Component {
 
   render() {
     return (
-      <Layout fixable>
+      <div>
         <Header onLogout={this.onLogout} history={this.props.history} />
         <Layout.Section>
           <Layout.Main scrollable>
@@ -30,7 +30,7 @@ export default class BasicLayout extends Component {
             <Footer />
           </Layout.Main>
         </Layout.Section>
-      </Layout>
+      </div>
     );
   }
 }

@@ -1,12 +1,12 @@
 const headerMenuConfig = [
-  {
-    path: '/',
-    name: '首页',
-  },
-  {
-    path: '/courses',
-    name: '课题',
-  },
+  // {
+  //   path: '/',
+  //   name: '首页',
+  // },
+  // {
+  //   path: '/courses',
+  //   name: '课题',
+  // },
 ];
 
 const asideMenuConfig = [
@@ -35,6 +35,11 @@ const asideMenuConfig = [
     path: '/tenant/student',
     icon: 'fans2',
   },
+  // {
+  //   name: '贡献者账号管理',
+  //   path: '/tenant/contributor',
+  //   icon: 'yonghu',
+  // },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
