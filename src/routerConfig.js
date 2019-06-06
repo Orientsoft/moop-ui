@@ -15,6 +15,7 @@ import About from '@/pages/About';
 import ContactUs from '@/pages/ContactUs';
 import TenantDashboard from '@/tenant/pages/Dashboard';
 import TenantProject from '@/tenant/pages/Project';
+import TenantTags from '@/tenant/pages/Tag';
 import TenantTenant from '@/tenant/pages/Tenant';
 import TenantTeacher from '@/tenant/pages/Teacher';
 import TenantStudent from '@/tenant/pages/Student';
@@ -31,6 +32,10 @@ export const tenantRoutes = [
   {
     path: '/tenant/project',
     component: TenantProject,
+  },
+  {
+    path: '/tenant/tags',
+    component: TenantTags,
   },
   {
     path: '/tenant/tenant',

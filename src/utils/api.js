@@ -108,6 +108,7 @@ export const report = {
 
 export const tag = {
   selectAll: GET('/tag'),
+  create: POST('/tag'),
 };
 
 export const publication = {

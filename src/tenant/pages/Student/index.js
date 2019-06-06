@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@icedesign/container';
-import { Button, Input, Upload, Dialog, Message } from '@alifd/next';
+import { Button, Input, Upload, Dialog, Message, Checkbox } from '@alifd/next';
 import merge from 'lodash-es/merge';
 import debounce from 'lodash-es/debounce';
 import Table from './components/Table';
@@ -8,6 +8,7 @@ import { student } from '../../api';
 
 export default () => {
   const [payload, setPayload] = useState({});
+  const [create, setCreate] = useState(false);
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(false);
   const [students, setStudents] = useState(null);
@@ -61,10 +62,11 @@ export default () => {
   return (
     <Container>
       <Input placeholder="按真实姓名查询" onChange={debounce(search => onQuery({ params: { page: 1, search } }), 600)} />
-      <Upload action={student.UPLOAD_URL} onSuccess={onImportOk} onError={onImportError} accept=".csv" style={{ display: 'inline-block' }}>
+      <Upload action={`${student.UPLOAD_URL}?create=${Number(create)}`} onSuccess={onImportOk} onError={onImportError} accept=".csv" style={{ display: 'inline-block' }}>
         <Button style={{ marginLeft: 15 }} type="primary">导入</Button>
       </Upload>
       <Button style={{ marginLeft: 15 }} type="normal" warning onClick={onDeleteBatches}>删除</Button>
+      <Checkbox checked={create} style={{ marginLeft: 15 }} onChange={value => setCreate(value)}>导入时创建学生</Checkbox>
       <Table dataSource={students} loading={loading} onQuery={onQuery} onDelete={onDelete} onSelect={records => setSelected(records)} />
     </Container>
   );
