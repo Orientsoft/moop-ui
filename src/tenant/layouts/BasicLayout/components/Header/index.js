@@ -22,7 +22,7 @@ export default class Header extends Component {
             defaultSelectedKeys={[pathname]}
             direction="hoz"
           >
-            {headerMenuConfig &&
+            {false &&
               headerMenuConfig.length > 0 &&
               headerMenuConfig.map((nav, index) => {
                 if (nav.children && nav.children.length > 0) {

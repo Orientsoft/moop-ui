@@ -9,7 +9,7 @@ export default () => {
   const [tag, setTag] = useState(null);
 
   useEffect(() => {
-    tagAPI.selectAll().then(({ data }) => setTags(data));
+    tagAPI.selectAll().then(({ data }) => setTags(data.data));
   }, []);
 
   return (
