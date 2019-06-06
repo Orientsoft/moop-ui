@@ -37,10 +37,16 @@ export default class Step1 extends Component {
     });
     contributor.selectImages().then(({ data }) => {
       this.setState({
-        images: data.map(image => ({ label: image.desc, value: image.id })),
+        images: data.map(image => ({
+          value: image.id,
+          label: image.desc,
+          package: image.package,
+        })),
       });
     });
   }
+
+  renderImage = image => <div>{image.label}<span style={{ float: 'right', fontSize: 14, color: 'grey' }}>{image.package.length ? image.package.join('，') : '空'}</span></div>;
 
   onSubmit = (values, error) => {
     if (!error) {
@@ -79,7 +85,7 @@ export default class Step1 extends Component {
           <Input.TextArea name="reference" />
         </FormItem>
         <FormItem label="镜像：" required requiredMessage="镜像不能为空">
-          <Select name="image" style={{ width: '100%' }} dataSource={images} />
+          <Select name="image" style={{ width: '100%' }} dataSource={images} itemRender={this.renderImage} />
         </FormItem>
         <FormItem label="实验标签：" required requiredMessage="实验标签不能为空">
           <TreeSelect name="tag" style={{ width: '100%' }} dataSource={tags} />
