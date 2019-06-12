@@ -2,6 +2,7 @@ import get from 'lodash-es/get';
 import consts from './consts';
 
 const KEY_USER = 'user';
+const KEY_TENANT = '__tenant__';
 
 export const setCurrentUser = (user) => {
   if (!user.thumb) {
@@ -70,3 +71,20 @@ export const getCourseCover = (course) => {
 
   return thumb;
 };
+
+export const getCurrentTenant = () => {
+  let tenantData = sessionStorage.getItem(KEY_TENANT);
+  try {
+    tenantData = JSON.parse(tenantData);
+  } catch (error) {
+    tenantData = null;
+  }
+
+  return tenantData;
+};
+
+export const setCurrentTenant = (tenantData) => {
+  sessionStorage.setItem(KEY_TENANT, JSON.stringify(tenantData));
+};
+
+export const removeCurrentTenant = () => sessionStorage.removeItem(KEY_TENANT);

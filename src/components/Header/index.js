@@ -1,18 +1,22 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import get from 'lodash-es/get';
 import { headerMenuConfig } from '@/menuConfig';
-import { getCurrentUser } from '@/utils/helper';
+import { getCurrentUser, getCurrentTenant } from '@/utils/helper';
 
 export default ({ onLogout, history }) => {
   const user = getCurrentUser();
+  const tenant = getCurrentTenant();
   const { pathname } = history.location;
 
   return (
     <header className="bd-navbar">
       <div className="container ">
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
-          <Link className="navbar-brand logo" to="/"><i>M</i><span>oopLab</span></Link>
+          <Link className="navbar-brand logo" to="/">
+            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
+          </Link>
           {/* <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
             <img height="35" src="/static/images/jupter-l.png" alt="Jupyter logo" />
           </a> */}

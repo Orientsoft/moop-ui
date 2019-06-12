@@ -1,14 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import get from 'lodash-es/get';
 import CourseList from '@/components/CourseList';
-import { tenant as tenantAPI } from '@/utils/api';
+import { getCurrentTenant } from '@/utils/helper';
 
 export default () => {
-  const [tenant, setTenant] = useState(null);
-
-  useEffect(() => {
-    tenantAPI.current().then(({ data }) => setTenant(data));
-  }, []);
+  const tenant = getCurrentTenant();
 
   return (
     <Fragment>
@@ -16,10 +13,11 @@ export default () => {
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
-              <h1 className="large p-t-60">数据科学开放实验室</h1>
-              <h4 className="lead m-t-40 "><br />
-                我们提供数据科学所需的实验环境，提供从入门到精深的课程，从数据分析师<br /><br />
-                的训练到复杂的行业精益分析都可以在此完成。<br />
+              <h1 className="large p-t-60">{get(tenant, 'name', '')}</h1>
+              <h4 className="lead m-t-40 ">
+                <br />
+                {get(tenant, 'remark', '')}
+                <br />
               </h4>
               <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多课题</Link>
             </div>
@@ -77,25 +75,15 @@ export default () => {
         <div className="container p-b-60 text-center">
           <h2 className="large">我们欢迎你的加入</h2>
           <p className="m-t-20"> 你可以作为以下三种角色使用实验室。</p>
-          <div className="row p-t-60">
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img src="/static/images/newbbie1.png" alt="..." style={{ width: 300 }} />
-              <h5 className="m-t-20"> Project Contributer</h5>
-              <br />
-              你可以提供精心编排的数据科学项目，帮助新手参考学习。
-            </div>
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img src="/static/images/newbbie2.png" alt="..." style={{ width: 300 }} />
-              <h5 className="m-t-20">Subject  Mentor</h5>
-              <br />
-              你可以从一个有趣的数据分析课题出发，组装不同的实验项目，使用自己的数据，组队完成课题目标。
-            </div>
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img src="/static/images/newbbie3.png" alt="..." style={{ width: 300 }} />
-              <h5 className="m-t-20">Newbbie</h5>
-              <br />
-              你可以从基础课程项目开始学习，根据自己的进展加入不同的课题小组，获得分析能力的提升。
-            </div>
+          <div className="row p-t-60" style={{ display: get(tenant, 'introduction', []).length ? '' : 'none' }}>
+            {get(tenant, 'introduction', []).map(({ realname, remark, profession, thumb }, i) => (
+              <div key={i} className="col-12 col-md-4 text-left m-t-20">
+                <img src={thumb} alt="..." style={{ width: 300 }} />
+                <h5 className="m-t-20">{realname}<span>{profession}</span></h5>
+                <br />
+                {remark}
+              </div>
+            ))}
           </div>
         </div>
         <div className="bgbottom" />

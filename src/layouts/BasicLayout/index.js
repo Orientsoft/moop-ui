@@ -4,14 +4,24 @@ import Layout from '@icedesign/layout';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NotFound from '@/components/NotFound';
-import { removeCurrentUser } from '@/utils/helper';
-import { user } from '@/utils/api';
+import { removeCurrentUser, removeCurrentTenant, setCurrentTenant, getCurrentTenant } from '@/utils/helper';
+import { user, tenant } from '@/utils/api';
 import routerData from '@/routerConfig';
 
 export default class BasicLayout extends Component {
+  componentDidMount() {
+    if (!getCurrentTenant()) {
+      tenant.current().then(({ data }) => {
+        setCurrentTenant(data);
+        this.forceUpdate();
+      });
+    }
+  }
+
   onLogout = () => {
     user.logout();
     removeCurrentUser();
+    removeCurrentTenant();
     location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
   };
 

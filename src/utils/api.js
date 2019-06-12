@@ -1,6 +1,6 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 import { Message } from '@alifd/next';
-import { getCurrentUser, removeCurrentUser } from './helper';
+import { getCurrentUser, removeCurrentUser, removeCurrentTenant } from './helper';
 
 API.request.defaults.timeout = 600000;
 API.request.defaults.baseURL = '/api/v1';
@@ -15,6 +15,7 @@ API.request.interceptors.response.use(response => response, (error) => {
         user.logout();
       }
       removeCurrentUser();
+      removeCurrentTenant();
       location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
     } else {
       Message.error(error.response.data);
@@ -53,7 +54,7 @@ export const tenant = {
   update: PATCH('/tenants/:tenantId'),
   delete: DELETE('/tenants/:tenantId'),
   selectAll: GET('/tenants'),
-  current: GET('/tenant/custom'),
+  current: GET('/tenant'),
 };
 
 export const project = {
