@@ -27,8 +27,20 @@ export default ({ history }) => {
           history.push('/tenant');
         } else if (data.role === consts.user.SUPER) {
           history.push('/contributor');
+        } else if (data.check) {
+          const from = location.search.match(/[?&]from=([^?&#]+)/);
+          let redirectTo = '/';
+
+          if (from) {
+            const decodedFrom = decodeURIComponent(from[1]);
+
+            if (decodedFrom[0] === '/') {
+              redirectTo = decodedFrom;
+            }
+          }
+          history.push(redirectTo);
         } else {
-          history.push(data.check ? '/' : '/users/profile');
+          history.push('/users/profile');
         }
       });
     } else {

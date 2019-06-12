@@ -1,6 +1,6 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 import { Message } from '@alifd/next';
-import { removeCurrentUser } from './helper';
+import { getCurrentUser, removeCurrentUser } from './helper';
 
 API.request.defaults.timeout = 600000;
 API.request.defaults.baseURL = '/api/v1';
@@ -11,8 +11,11 @@ API.request.interceptors.response.use(response => response, (error) => {
     Message.error('内部错误，请联系网站管理员');
   } else if (error.response) {
     if (error.response.status === 403) {
+      if (getCurrentUser()) {
+        user.logout();
+      }
       removeCurrentUser();
-      user.logout().then(() => location.href = '/login').catch(() => location.href = '/login');
+      location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
     } else {
       Message.error(error.response.data);
     }

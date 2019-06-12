@@ -12,7 +12,7 @@ export default class BasicLayout extends Component {
   onLogout = () => {
     user.logout();
     removeCurrentUser();
-    this.props.history.replace('/login');
+    location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
   };
 
   render() {
