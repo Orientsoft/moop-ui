@@ -73,10 +73,11 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         setSelected([...selected, p]);
       }
     } else {
-      const index = selected.findIndex(old => old === p);
+      const index = selected.findIndex(old => old.id === p.id);
+
       if (index !== -1) {
         selected.splice(index, 1);
-        setSelected(selected);
+        setSelected([...selected]);
       }
     }
   };
@@ -142,20 +143,20 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
           </Tag.Group> */}
           <Tag.Group>
             {categories.map((cat, i) => (
-              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { if (currentTag0 === i) return; setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
             ))}
           </Tag.Group>
           {currentTag0 !== null ? (
             <Tag.Group className="m-t-20">
               {categories[currentTag0].type.map(cat => (
-                <Tag.Selectable checked={currentTag === cat.id} key={cat.id} onChange={() => onChange(cat.id)} title={`${cat.name}(${cat.count})`}>{cat.name}({cat.count})</Tag.Selectable>
+                <Tag.Selectable checked={currentTag === cat.id} key={cat.id} onChange={() => { if (currentTag === cat.id) return; onChange(cat.id); }} title={`${cat.name}(${cat.count})`}>{cat.name}({cat.count})</Tag.Selectable>
               ))}
             </Tag.Group>
           ) : null}
           <Row className="m-t-20" wrap>
             {projects.map(project => (
               <Col span={12} key={project.id}>
-                <Checkbox disabled={!project.purchase} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
+                <Checkbox disabled={!project.purchase} checked={selected.find(s => s.id === project.id) !== null} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
               </Col>
             ))}
           </Row>
