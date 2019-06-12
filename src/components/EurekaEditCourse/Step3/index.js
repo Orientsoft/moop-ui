@@ -20,7 +20,7 @@ export default class Step3 extends React.Component {
       });
     }
     tagAPI.selectAll().then(({ data }) => this.setState({
-      tags: data.map(item => ({ label: item.name, value: item.id })),
+      tags: data.data.map(item => ({ label: item.name, value: item.id })),
     }));
   }
 
