@@ -12,4 +12,10 @@ export default {
   },
   titles: ['助教', '讲师', '教授'],
   scores: { 4.33: 'A+', 4: 'A', 3: 'B', 2: 'C', 1: 'D' },
+  status: [
+    { label: '未发布', value: 0 },
+    { label: '已发布', value: 1 },
+    { label: '正在进行', value: 2 },
+    { label: '已结束', value: 3 },
+  ],
 };

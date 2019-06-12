@@ -105,7 +105,7 @@ export default class EurekaCreateCourse extends React.Component {
         <div className="setbox">
           <Step current={current} shape="arrow">
             {steps.map((step, i) => (
-              <Step.Item disabled={false} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+              <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
             ))}
           </Step>
         </div>

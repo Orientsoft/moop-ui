@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, Field, Checkbox, DatePicker, Dialog, Message } from '@alifd/next';
+import { Form, Field, Checkbox, DatePicker, Radio, Dialog, Message } from '@alifd/next';
 import moment from 'moment';
 import { tag as tagAPI, classroom } from '@/utils/api';
+import consts from '@/utils/consts';
 
 export default class Step3 extends React.Component {
   state = { tags: [] };
@@ -29,13 +30,14 @@ export default class Step3 extends React.Component {
 
     this.field.validate((error, values) => {
       if (!error) {
-        const { timeRange, tags, ...restValues } = values;
-        const postData = { tags, startTime: timeRange[0], endTime: timeRange[1] };
+        const { timeRange, tags, status, ...restValues } = values;
+        const postData = { tags, startTime: timeRange[0], endTime: timeRange[1], status };
 
         setData({ ...restValues, ...postData });
         classroom.update({ data: postData, params: { embed: 1 } }, { classroomId: getClassroom().id }).then(({ data }) => {
           setClassroom(data);
           setData({
+            status: data.status,
             tags: data.tags,
             startTime: data.startTime,
             endTime: data.endTime,
@@ -60,6 +62,9 @@ export default class Step3 extends React.Component {
         </Form.Item>
         <Form.Item label="添加标签：" required>
           <Checkbox.Group name="tags" dataSource={tags} />
+        </Form.Item>
+        <Form.Item label="课题状态：" required>
+          <Radio.Group name="status" dataSource={consts.status} />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
           <Form.Submit type="primary" onClick={this.onSubmit} className="serverbtn">保存</Form.Submit>
