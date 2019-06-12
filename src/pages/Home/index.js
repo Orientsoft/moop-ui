@@ -9,7 +9,7 @@ export default () => {
 
   return (
     <Fragment>
-      <div className="mainbg">
+      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/static/images/loginbg.png')})` }}>
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
@@ -76,7 +76,7 @@ export default () => {
           <h2 className="large">我们欢迎你的加入</h2>
           <p className="m-t-20"> 你可以作为以下三种角色使用实验室。</p>
           <div className="row p-t-60" style={{ display: get(tenant, 'introduction', []).length ? '' : 'none' }}>
-            {get(tenant, 'introduction', []).map(({ realname, remark, profession, thumb }, i) => (
+            {get(tenant, 'introduction', []).map(({ realname, remark, profession, thumb = '/static/images/loginbg.png' }, i) => (
               <div key={i} className="col-12 col-md-4 text-left m-t-20">
                 <img src={thumb} alt="..." style={{ width: 300 }} />
                 <h5 className="m-t-20">{realname}<span>{profession}</span></h5>
