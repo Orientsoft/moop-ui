@@ -22,10 +22,15 @@ export default ({ size = 99, tag, owner }) => {
 
   return (
     <div className="row m-t-40">
-      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running }, i, allCourses) => (
+      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running, public: isPublic }, i, allCourses) => (
         <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">
-            <div className="post"><Link to={`/classroom?id=${id}`} ><img className="card-img-top" src={getCourseCover(allCourses[i])} alt={title} /></Link></div>
+            <div className="post">
+              <Link to={`/classroom?id=${id}`}>
+                <img className="card-img-top" src={getCourseCover(allCourses[i])} alt={title} />
+                {!isPublic && <div style={privateCourse}>私有课程</div>}
+              </Link>
+            </div>
             <div className="card-body text-left">
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
               <p className="card-text">{description}</p>
@@ -46,4 +51,18 @@ export default ({ size = 99, tag, owner }) => {
       )}
     </div>
   );
+};
+
+const privateCourse = {
+  position: 'absolute',
+  right: '-50%',
+  top: 0,
+  lineHeight: '40px',
+  width: '100%',
+  height: '40px',
+  textIndent: '-1.5em',
+  color: 'white',
+  background: 'salmon',
+  boxShadow: '0px 0px 4px salmon',
+  transform: 'rotate(45deg) translateY(40px)',
 };
