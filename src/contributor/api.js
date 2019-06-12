@@ -3,8 +3,8 @@ import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 export const contributor = {
   create: POST('/projects'),
   select: GET('/projects/mine'),
-  update: PATCH(''),
-  delete: DELETE(''),
+  update: PATCH('/projects/:projectId'),
+  delete: DELETE('/projects/:projectId'),
   selectTags: GET('/projects/tag'),
   selectImages: GET('/projects/image'),
   test: POST('/management/test'),

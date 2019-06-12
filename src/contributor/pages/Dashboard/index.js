@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Container from '@icedesign/container';
 import merge from 'lodash-es/merge';
 import Table from './components/Table';
+import Edit from '../Edit';
 import { contributor } from '../../api';
 
 export default () => {
+  const [editing, setEditing] = useState(null);
   const [payload, setPayload] = useState({});
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState(null);
@@ -26,7 +28,8 @@ export default () => {
 
   return (
     <Container>
-      <Table dataSource={dataSource} loading={loading} onQuery={onQuery} />
+      <Table style={{ display: editing ? 'none' : '' }} dataSource={dataSource} loading={loading} onQuery={onQuery} setEditing={setEditing} />
+      {editing && <Edit dataSource={editing} onBack={() => { setEditing(null); onQuery(); }} />}
     </Container>
   );
 };
