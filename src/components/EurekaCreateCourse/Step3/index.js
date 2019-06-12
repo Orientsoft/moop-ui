@@ -60,7 +60,7 @@ export default class Step3 extends React.Component {
             <Checkbox.Group name="tags" dataSource={tags} />
           </Form.Item>
           <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
-            <Form.Submit type="primary"  onClick={this.onSubmit} className="serverbtn">创建课题</Form.Submit>
+            <Form.Submit type="primary" onClick={this.onSubmit} className="serverbtn">创建课题</Form.Submit>
           </Form.Item>
         </Form>
       </div>

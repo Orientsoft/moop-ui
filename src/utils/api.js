@@ -53,6 +53,7 @@ export const tenant = {
   update: PATCH('/tenants/:tenantId'),
   delete: DELETE('/tenants/:tenantId'),
   selectAll: GET('/tenants'),
+  current: GET('/tenant/custom'),
 };
 
 export const project = {

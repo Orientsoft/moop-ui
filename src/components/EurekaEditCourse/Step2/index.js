@@ -156,7 +156,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
           <Row className="m-t-20" wrap>
             {projects.map(project => (
               <Col span={12} key={project.id}>
-                <Checkbox disabled={!project.purchase} checked={selected.find(s => s.id === project.id) !== null} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
+                <Checkbox disabled={!project.purchase} checked={Boolean(selected.length && selected.find(s => s.id === project.id))} onChange={isSelected => onSelect(isSelected, project)}>{project.title}</Checkbox>
               </Col>
             ))}
           </Row>
