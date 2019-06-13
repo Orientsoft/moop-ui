@@ -119,7 +119,7 @@ export default class Step1 extends Component {
           <TreeSelect name="tag" style={{ width: '100%' }} dataSource={tags} />
         </FormItem>
         <FormItem label="Github地址：" format="url" pattern={/\.git$/i} patternMessage="无效的Github地址" formatMessage="无效的Github地址" required requiredMessage="Github地址不能为空">
-          <Input name="spec" placeholder="示例：https://example.com/demo.git" />
+          <Input name="spec" disabled placeholder="示例：https://example.com/demo.git" />
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>
