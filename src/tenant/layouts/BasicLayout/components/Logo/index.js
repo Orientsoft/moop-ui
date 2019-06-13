@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class Logo extends PureComponent {
   render() {
     return (
-      <Link to="/" style={{ ...styles.logoStyle, ...this.props.style }}>
+      <Link to="/tenant" style={{ ...styles.logoStyle, ...this.props.style }}>
         <span style={styles.firstChar}>M</span>oopLab
       </Link>
     );

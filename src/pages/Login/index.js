@@ -34,8 +34,10 @@ export default ({ history }) => {
           if (from) {
             const decodedFrom = decodeURIComponent(from[1]);
 
-            if (decodedFrom[0] === '/') {
-              redirectTo = decodedFrom;
+            if (!/^\/(contributor|tenant)\/?/.test(decodedFrom)) {
+              if (decodedFrom[0] === '/') {
+                redirectTo = decodedFrom;
+              }
             }
           }
           history.push(redirectTo);
