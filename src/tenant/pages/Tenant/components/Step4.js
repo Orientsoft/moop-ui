@@ -10,7 +10,7 @@ export default class Step4 extends Component {
 
     if (tenantData) {
       tenant.update({ data: tenantData }, { tenantId: get(value, 'tenant.id') }).then(() => {
-        Message.success('租户创建成功');
+        Message.success('更新成功');
         removeTenant();
         setStep(0);
       });

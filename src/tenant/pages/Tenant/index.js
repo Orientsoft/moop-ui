@@ -13,7 +13,7 @@ const { Item } = Step;
 
 const steps = [
   { label: '填写基本信息', render: props => <Step1 {...props} /> },
-  { label: '宣传教师资料', render: props => <Step2 {...props} /> },
+  { label: '宣传资料', render: props => <Step2 {...props} /> },
   { label: '学校广告语', render: props => <Step3 {...props} /> },
   { label: '确认提交', render: props => <Step4 {...props} /> },
 ];
