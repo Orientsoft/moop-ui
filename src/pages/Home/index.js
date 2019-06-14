@@ -76,10 +76,10 @@ export default () => {
           <h2 className="large">我们欢迎你的加入</h2>
           <p className="m-t-20"> 你可以作为以下三种角色使用实验室。</p>
           <div className="row p-t-60" style={{ display: get(tenant, 'introduction', []).length ? '' : 'none' }}>
-            {get(tenant, 'introduction', []).map(({ realname, remark, profession, thumb = '/static/images/loginbg.png' }, i) => (
+            {get(tenant, 'introduction', []).map(({ profession, remark, thumb }, i) => (
               <div key={i} className="col-12 col-md-4 text-left m-t-20">
-                <img src={thumb} alt="..." style={{ width: 300 }} />
-                <h5 className="m-t-20">{realname}<span>{profession}</span></h5>
+                <img src={thumb} alt="" style={{ width: 300, height: 300 }} />
+                <h5 className="m-t-20">{profession}</h5>
                 <br />
                 {remark}
               </div>
