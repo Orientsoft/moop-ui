@@ -8,6 +8,7 @@ const { Row, Col } = Grid;
 
 export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getClassroom }) => {
   const [visible, setVisible] = useState(false);
+  const [homework, setHomework] = useState(get(getData(), 'homework', false));
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
   const [currentTag0, setCurrentTag0] = useState(null);
@@ -84,6 +85,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
   const onSubmit = () => {
     classroomAPI.update({
       data: {
+        homework,
         projects: selected.map(p => p.id),
       },
       params: { embed: 1 },
@@ -123,6 +125,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         <Row justify="center">
           <Col span={labelSpan + wrapperSpan}>
             <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
+            <Checkbox style={{ marginLeft: 16 }} checked={homework} onChange={v => setHomework(v)}>是否包含作业</Checkbox>
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
