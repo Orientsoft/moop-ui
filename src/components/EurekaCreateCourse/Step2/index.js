@@ -8,6 +8,7 @@ const { Row, Col } = Grid;
 
 export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   const [visible, setVisible] = useState(false);
+  const [homework, setHomework] = useState(get(getData(), 'homework', false));
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
   const [pagination, setPagination] = useState({ pageSize: 10, current: 1, total: 0 });
@@ -16,7 +17,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
   const [currentTag, setCurrentTag] = useState(null);
   const onCancel = () => setVisible(false);
   const onOk = () => {
-    setData({ projects: [...selected] });
+    setData({ projects: [...selected], homework });
     onCancel();
   };
   const onStarted = (id) => {
@@ -106,6 +107,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
         <Row justify="center">
           <Col span={labelSpan + wrapperSpan}>
             <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
+            <Checkbox style={{ marginLeft: 16 }} checked={homework} onChange={v => setHomework(v)}>是否包含作业</Checkbox>
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
@@ -115,7 +117,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary" onClick={toNext} className="serverbtn">下一步</Button>
+            <Button type="primary" onClick={() => { setData({ projects: [...selected], homework }); toNext(); }} className="serverbtn">下一步</Button>
           </Col>
         </Row>
         <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>

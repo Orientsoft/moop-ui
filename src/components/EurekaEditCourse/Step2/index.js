@@ -17,7 +17,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
   const [currentTag, setCurrentTag] = useState(null);
   const onCancel = () => setVisible(false);
   const onOk = () => {
-    setData({ projects: [...selected] });
+    setData({ projects: [...selected], homework });
     onCancel();
   };
   const onStarted = (id) => {

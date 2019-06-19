@@ -31,8 +31,13 @@ export default class EurekaEditCourse extends React.Component {
 
   constructor(props) {
     super(props);
-
     const classroom = props.location.state;
+
+    this.disbaledStep = [];
+    // 未开始、进行中
+    if (classroom.status === 1 || classroom.status === 2) {
+      this.disbaledStep.push(1, 2);
+    }
     this.setData(0, {
       title: classroom.title,
       thumb: classroom.thumb,
@@ -120,7 +125,7 @@ export default class EurekaEditCourse extends React.Component {
         <div className="setbox">
           <Step current={current} shape="arrow">
             {steps.map((step, i) => (
-              <Step.Item key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+              <Step.Item key={i} disabled={this.disbaledStep.indexOf(i) !== -1} title={step.title} onClick={() => this.setState({ current: i })} />
             ))}
           </Step>
         </div>
