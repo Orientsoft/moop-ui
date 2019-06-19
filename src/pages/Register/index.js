@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Message, Button, Dialog } from '@alifd/next';
+import { Message, Button, Dialog, Checkbox } from '@alifd/next';
 import { user, captcha as captchaAPI } from '@/utils/api';
 import { startCounter } from '@/utils/helper';
 import consts from '@/utils/consts';
@@ -10,6 +10,8 @@ export default ({ history }) => {
   const [counter, setCounter] = useState(null);
   const [visible, setVisible] = useState(false);
   const [captchaUrl, setCaptchaUrl] = useState('#');
+  const [closeTip, setCloseTip] = useState(false);
+
   const onSubmit = () => {
     const { name, key, password, code, mobile, invitation } = values;
 
@@ -47,8 +49,13 @@ export default ({ history }) => {
   return (
     // <div className="bglog" style={{ height: '100vh' }}>
     <div className="bglog" style={{ height: '100vh' }}>
-      <div className="container p-t-60">
+      <div className="container p-t-60 povr">
         <h2 className="text-center"><a className="navbar-brand logo" href="/"><i>M</i><span>oopLab</span></a></h2>
+        <div className="reg_tipbox" style={{ display: closeTip ? 'none' : ''}}>
+          <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a>
+          <h4>成为贡献者或老师</h4>
+          <div className="reg_tipinfo">请您联系我们：<br />邮箱：<span>wangzheng@orientsoft.cn</span><br />电话：<span>028-84118076</span></div>
+        </div>
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-20">
@@ -88,12 +95,16 @@ export default ({ history }) => {
                       <input className="form-control" onChange={setField('invitation')} required placeholder="邀请码" />
                     </div>
                   </div>
-                  <div className="form-group text-center m-t-40">
-                    <div className="col-12">
+                  <div className="form-group m-t-10">
+                    <div className="col-sm-12 text-left fs14">
+                      <Checkbox >我同意</Checkbox><Link to="/help">《服务协议》</Link>
+                    </div>
+                    <div className="col-12  m-t-10 text-center ">
                       <button className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
                     </div>
                   </div>
-                  <div className="form-group m-t-30 m-b-0">
+                  <div className="form-group m-t-10 m-b-0">
+                 
                     <div className="col-sm-12">
                       已有帐号？<Link to="/login">登录</Link>
                     </div>
