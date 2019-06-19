@@ -39,6 +39,11 @@ export default ({ history }) => {
                 redirectTo = decodedFrom;
               }
             }
+            if (data.role === consts.user.STUDENT) {
+              if (!/^\/(courses|classroom|users)/.test(decodedFrom)) {
+                redirectTo = '/';
+              }
+            }
           }
           history.push(redirectTo);
         } else {
