@@ -138,7 +138,7 @@ font-size: 32px;
 font-weight: 600;
 margin-right: 20px;
 /* letter-spacing: .05em; */
-line-height: 60px;
+/* line-height: 60px; */
 cursor: pointer;
 }
 a.logo:hover{ text-decoration: none}
@@ -227,6 +227,7 @@ border-radius: 0 !important;
 .card-box .text-white{ opacity: .8}
 /* .bg-white .card-text{ max-height: 80px; font-size: 14px;  color: #666;overflow: hidden; } */
 .fs12{ font-size: 12px;}
+.fs14{ font-size: 14px;}
 /* .bg-white, .btn-primary{  position: relative;  background-color: #eee;
 border-color: rgba(18,119,235,.5);
 color: #1277eb;} */
@@ -709,7 +710,7 @@ a.rightico:hover{ text-decoration: none;color: #fff; background: #00ce72}
 /* .regbnt a,.regbnt a:hover{ color: #fff; margin: 0 10px;    font-size: 14px; padding: 0 20px;} */
 .regbnt a.toploginbtn{ color: #fff; font-size: 14px; background-color: #00ce72; border-radius: 2px; padding: 8px 30px; text-decoration: none; height: 20px; }
 
-.endcard .card{ color: #666}
+.endcard .card,.corol6{ color: #666}
 .endcard .card-img-top{ opacity: .6; background: #000}
 
 .achieve{ background-color: #e6fff6}
@@ -1063,3 +1064,9 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
     list-style: none;
     line-height: 30px;
 }
+
+.reg_tipbox{ background: url(../images/indexregbox.png) no-repeat left top; width: 332px; height: 228px; z-index: 1; position: absolute; top:200px; right: 38px;}
+.reg_tipbox h4{color: #fff; padding-top: 50px; height:80px;  font-size: 20px; text-align: center; overflow: hidden;} 
+.reg_tipbox .reg_tipinfo{ color: #666;  padding: 36px 20px 0 50px; overflow: hidden; font-size: 14px; line-height: 26px; }
+.reg_tipbox .reg_tipinfo span{ color: #000;}
+.reg_tipbox .closebnt{ float: right; width: 35px; height: 30px; }
