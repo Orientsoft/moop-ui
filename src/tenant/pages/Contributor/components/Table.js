@@ -12,7 +12,7 @@ export default ({ dataSource, onDelete, onQuery, onSelect, ...tableProps }) => {
   const onResetPassword = (record) => {
     Dialog.confirm({
       title: '重置密码',
-      content: '重新生成随机密码并发送到用户手机号上？',
+      content: '确认重置密码？',
       onOk: () => contributor.resetPassword({ params: { id: record.id } }),
     });
   };
