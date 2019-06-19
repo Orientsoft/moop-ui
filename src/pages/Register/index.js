@@ -9,6 +9,7 @@ export default ({ history }) => {
   const [values, setValues] = useState({});
   const [counter, setCounter] = useState(null);
   const [visible, setVisible] = useState(false);
+  const [agree, setAgree] = useState(false);
   const [captchaUrl, setCaptchaUrl] = useState('#');
   const [closeTip, setCloseTip] = useState(false);
 
@@ -45,14 +46,19 @@ export default ({ history }) => {
       startCounter(60, n => setCounter(n));
     });
   };
+  const onAgree = (agree) => {
+    if (!agree) {
+
+    }
+  };
 
   return (
     // <div className="bglog" style={{ height: '100vh' }}>
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60 povr">
         <h2 className="text-center"><a className="navbar-brand logo" href="/"><i>M</i><span>oopLab</span></a></h2>
-        <div className="reg_tipbox" style={{ display: closeTip ? 'none' : ''}}>
-          <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a>
+        <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
+          <a href="#" className="closebnt" onClick={() => setCloseTip(true)} />
           <h4>成为贡献者或老师</h4>
           <div className="reg_tipinfo">请您联系我们：<br />邮箱：<span>wangzheng@orientsoft.cn</span><br />电话：<span>028-84118076</span></div>
         </div>
@@ -97,10 +103,10 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group m-t-10">
                     <div className="col-sm-12 text-left fs14">
-                      <Checkbox >我同意</Checkbox><Link to="/help">《服务协议》</Link>
+                      <Checkbox onChange={v => setAgree(v)}>我同意</Checkbox><Link to="/help">《服务协议》</Link>
                     </div>
                     <div className="col-12  m-t-10 text-center ">
-                      <button className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
+                      <button disabled={!agree} className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
                     </div>
                   </div>
                   <div className="form-group m-t-10 m-b-0">
