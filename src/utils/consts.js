@@ -15,7 +15,5 @@ export default {
   status: [
     { label: '未发布', value: 0 },
     { label: '已发布', value: 1 },
-    { label: '正在进行', value: 2 },
-    { label: '已结束', value: 3 },
   ],
 };
