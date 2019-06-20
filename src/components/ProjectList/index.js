@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import get from 'lodash-es/get';
 import classnames from 'classnames';
 import { Dialog, Button, Message } from '@alifd/next';
+import Ellipsis from '@icedesign/ellipsis';
 import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
 export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
   const [isRunning, setIsRunning] = useState({});
+  const [isCommit, setIsCommit] = useState(false);
   const [containers, setContainers] = useState({});
   const [currentRunning, setCurrentRunning] = useState(false);
   const onClick = () => Dialog.alert({
@@ -29,9 +31,17 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
       onVisited();
     }
   };
-  const onCommitHomework = (p) => {
+  const onCommitHomework = (e, p) => {
+    e.stopPropagation();
+    setIsCommit(true);
     container.commitHomework({ data: { classroom: course.id, project: p.id } })
-      .then(() => Message.success('作业已提交'));
+      .then(() => {
+        setIsCommit(false);
+        Message.success('作业已提交');
+        if (onVisited) {
+          onVisited();
+        }
+      }).catch(() => setIsCommit(false));
   };
   const onStart = (id, isStarted, e) => {
     if (Array.from(e.target.classList).indexOf('noico') !== -1) {
@@ -111,7 +121,6 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 {project.title}
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
-              {user && user.role === consts.user.STUDENT && course.join && course.homework && <Button onClick={() => onCommitHomework(project)} style={{ position: 'absolute', top: 3, right: 105 }}>提交作业</Button>}
               {/* eslint-disable */}
               {onMoveUp && (
                 <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '100px' }}>↑</a>
@@ -134,13 +143,15 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 {isRunning[project.id] || project.running ? (
                   <div onClick={onRefresh}>
                     <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
-                      {lab.name}
+                      <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
+                      {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60 }}>提交作业</Button>}
                       {lab.finish && <span className="listiconright">✔</span>}
                     </a>
                   </div>
                 ) : (
                   <a onClick={onClick} className="list-group-item list-group-item-action">
-                    {lab.name}
+                    <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60 }}>提交作业</Button>}
                     {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
                   </a>
                 )}
