@@ -131,8 +131,11 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               {onDelete && (
                 <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '170px' }}>×</a>
               )}
-              <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} title="启动实验环境">▶</a>
-              <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
+              {isRunning[project.id] || project.running ? (
+                <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">▪</a>
+              ) : (
+                <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} style={{ right: 34 }} title="启动实验环境">▶</a>
+              )}
               <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">≡</a>
               {/* eslint-enable */}
             </h5>
