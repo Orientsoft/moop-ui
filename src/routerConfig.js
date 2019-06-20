@@ -4,6 +4,7 @@ import Classroom from '@/pages/Classroom';
 import UserProfile from '@/pages/User/Profile';
 import UserCourses from '@/pages/User/Courses';
 import ClassroomDetail from '@/pages/ClassroomDetail';
+import ClassroomLab from '@/pages/ClassroomLab';
 import ClassroomCreateDetail from '@/pages/ClassroomCreateDetail';
 import CreateClassroom from '@/pages/CreateClassroom';
 import EditClassroom from '@/pages/EditClassroom';
@@ -94,6 +95,10 @@ const routerConfig = [
   {
     path: '/classroomdetail',
     component: ClassroomDetail,
+  },
+  {
+    path: '/classroomlab',
+    component: ClassroomLab,
   },
   {
     path: '/classroomcreatedetail',
