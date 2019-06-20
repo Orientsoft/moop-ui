@@ -1,14 +1,24 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Dialog } from '@alifd/next';
 import get from 'lodash-es/get';
 import moment from 'moment';
+import { classroom } from '@/utils/api';
 
 export default ({ data }) => {
   const onDelete = () => {
-
+    Dialog.confirm({
+      title: '删除课程',
+      content: '确认删除？',
+      onOk: () => classroom.delete({}, { classroomId: data.id }).then(() => location.reload()),
+    });
   };
   const onRestart = () => {
-
+    Dialog.confirm({
+      title: '重新开始',
+      content: '确认重新开启课程？',
+      onOk: () => classroom.restart({ id: data.id }).then(() => location.reload()),
+    });
   };
 
   return (
@@ -21,8 +31,8 @@ export default ({ data }) => {
             开课时间：<span className="font-italic text-secondary"> {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}</span>
           </p>
           {data.status !== 3 && <Link to={{ pathname: '/editclassroom', state: data }} className="btn btn-outline-secondary btn-sm">✎ 编辑课题</Link>}
-          {data.stutus === 0 && <a style={{ marginLeft: 10 }} href="javascript:;" onClick={onDelete} className="btn btn-outline-secondary btn-sm">删除课题</a>}
-          {data.stutus === 3 && <a style={{ marginLeft: 10 }} href="javascript:;" onClick={onRestart} className="btn btn-outline-secondary btn-sm">重新开始</a>}
+          {data.status === 0 && <a style={{ marginLeft: 10 }} href="javascript:;" onClick={onDelete} className="btn btn-outline-secondary btn-sm">删除课题</a>}
+          {data.status === 3 && <a style={{ marginLeft: 10 }} href="javascript:;" onClick={onRestart} className="btn btn-outline-secondary btn-sm">重新开始</a>}
         </div>
       </div>
     </Fragment>
