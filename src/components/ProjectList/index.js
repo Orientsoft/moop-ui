@@ -111,7 +111,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 {project.title}
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
-              {user && user.role === consts.user.STUDENT && course.join && <Button onClick={() => onCommitHomework(project)} style={{ position: 'absolute', top: 3, right: 105 }}>提交作业</Button>}
+              {user && user.role === consts.user.STUDENT && course.join && course.homework && <Button onClick={() => onCommitHomework(project)} style={{ position: 'absolute', top: 3, right: 105 }}>提交作业</Button>}
               {/* eslint-disable */}
               {onMoveUp && (
                 <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '100px' }}>↑</a>
