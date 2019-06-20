@@ -17,7 +17,7 @@ export default ({ data }) => {
     Dialog.confirm({
       title: '重新开始',
       content: '确认重新开启课程？',
-      onOk: () => classroom.restart({ id: data.id }).then(() => location.reload()),
+      onOk: () => classroom.restart({ data: { id: data.id } }).then(() => location.reload()),
     });
   };
 
