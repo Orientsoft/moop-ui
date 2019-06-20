@@ -6,6 +6,7 @@ import { startCounter } from '@/utils/helper';
 import consts from '@/utils/consts';
 
 export default ({ history }) => {
+  const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
   const [counter, setCounter] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -14,24 +15,67 @@ export default ({ history }) => {
   const [closeTip, setCloseTip] = useState(false);
 
   const onSubmit = () => {
-    const { name, key, password, code, mobile, invitation } = values;
+    const { name, key, code, password, mobile, invitation } = values;
 
-    if (key !== password) {
-      Message.error('两次密码输入不一致');
-    } else if (!(/[0-9]+/.test(key) && /[a-zA-Z]+/.test(key) && key.length >= 8)) {
-      Message.error('密码格式错误，必须是8位以上的数字和字母组合');
-    } else if (name && key && code && mobile && key === password && invitation) {
-      user.create({
-        data: { name, key, code, mobile, invitation, role: consts.user.STUDENT },
-      }).then(() => {
-        Message.success('注册成功');
-        setTimeout(() => history.push('/login'), 1000);
-      });
-    } else {
-      Message.error('必填项不能为空');
+    if (!(name && key && password && mobile && code && invitation)) {
+      Message.error('数据不能为空');
+      return;
     }
+    if (key !== password) {
+      Message.error('两次输入密码不一致');
+      return;
+    }
+    if (Object.values(errors).find(error => error)) {
+      Message.error('数据格式错误');
+      return;
+    }
+    user.create({
+      data: { name, key, code, mobile, invitation, role: consts.user.STUDENT },
+    }).then(() => {
+      Message.success('注册成功');
+      setTimeout(() => history.push('/login'), 1000);
+    });
   };
-  const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
+  const setField = name => (e) => {
+    const value = e.target.value.trim();
+
+    if (!value) {
+      setErrors({ ...errors, [name]: false });
+      return;
+    }
+    if (name === 'name') {
+      if (!/^[a-z0-9]+$/.test(value)) {
+        setErrors({ ...errors, [name]: '用户名格式不正确' });
+      } else {
+        setErrors({ ...errors, [name]: false });
+      }
+    } else if (name === 'key' || name === 'password') {
+      if (name === 'password') {
+        if (value !== values.key) {
+          setErrors({ ...errors, [name]: '两次输入密码不一致' });
+        } else {
+          setErrors({ ...errors, [name]: errors.key });
+        }
+      } else if (/^[a-zA-Z0-9]{8,}$/.test(value)) {
+        if (!/[a-zA-Z]+/.test(value)) {
+          setErrors({ ...errors, [name]: '密码必须包含字母' });
+        } else if (!/[0-9]+/.test(value)) {
+          setErrors({ ...errors, [name]: '密码必须包含数字' });
+        } else {
+          setErrors({ ...errors, [name]: false });
+        }
+      } else {
+        setErrors({ ...errors, [name]: '密码格式不正确' });
+      }
+    } else if (name === 'mobile') {
+      if (!/^1[0-9]{10}$/.test(value)) {
+        setErrors({ ...errors, [name]: '手机号格式不正确' });
+      } else {
+        setErrors({ ...errors, [name]: false });
+      }
+    }
+    setValues({ ...values, [name]: value });
+  };
   const refreshCaptcha = () => captchaAPI.refresh().then(({ data }) => setCaptchaUrl(data));
   const onSendCode = () => {
     if (counter > 0) return;
@@ -45,11 +89,6 @@ export default ({ history }) => {
     user.sendVerifyCode({ data: { mobile, captcha } }).then(() => {
       startCounter(60, n => setCounter(n));
     });
-  };
-  const onAgree = (agree) => {
-    if (!agree) {
-
-    }
   };
 
   return (
@@ -70,22 +109,26 @@ export default ({ history }) => {
                 <div className="form-horizontal m-t-30">
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
+                      <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名，小写字母或数字" />
+                      <span style={{ position: 'absolute', color: 'red', fontSize: 12 }}>{errors.name}</span>
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-12">
-                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码, 8位以上的数字和字母组合" />
+                      <input className="form-control" onChange={setField('key')} type="password" required placeholder="密码，8位以上的数字和字母组合" />
+                      <span style={{ position: 'absolute', color: 'red', fontSize: 12 }}>{errors.key}</span>
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('password')} type="password" required placeholder="再次输入密码" />
+                      <span style={{ position: 'absolute', color: 'red', fontSize: 12 }}>{errors.password}</span>
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('mobile')} type="text" required placeholder="手机号" />
+                      <span style={{ position: 'absolute', color: 'red', fontSize: 12 }}>{errors.mobile}</span>
                     </div>
                   </div>
                   <div className="form-group form-inline">
