@@ -24,7 +24,12 @@ export default ({ data }) => {
   return (
     <Fragment>
       <div className="card p-b-10">
-        <div className="post"> <Link to={`/classroom?id=${data.id}`} ><img className="card-img-top" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} /></Link></div>
+        <div className="post">
+          <Link to={`/classroom?id=${data.id}`}>
+            <img className="card-img-top" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
+            {data.status !== 0 && <div style={data.status !== 3 ? publishedCourse : endedCourse}>{data.status !== 3 ? '已发布' : '已结束'}</div>}
+          </Link>
+        </div>
         <div className="card-body text-left">
           <h5 className="card-title">  <Link to={`/classroom?id=${data.id}`} >{data.title}</Link></h5>
           <p className="card-text">已加入：<span className="text-danger font-weight-bold">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
@@ -37,4 +42,34 @@ export default ({ data }) => {
       </div>
     </Fragment>
   );
+};
+
+const publishedCourse = {
+  position: 'absolute',
+  right: '-50%',
+  top: 0,
+  lineHeight: '40px',
+  width: '100%',
+  height: '40px',
+  textIndent: '-1.5em',
+  textAlign: 'center',
+  color: 'white',
+  background: 'salmon',
+  boxShadow: '0px 0px 4px salmon',
+  transform: 'rotate(45deg) translateY(40px)',
+};
+
+const endedCourse = {
+  position: 'absolute',
+  right: '-50%',
+  top: 0,
+  lineHeight: '40px',
+  width: '100%',
+  height: '40px',
+  textIndent: '-1.5em',
+  textAlign: 'center',
+  color: 'white',
+  background: 'lightgrey',
+  boxShadow: '0px 0px 4px lightgrey',
+  transform: 'rotate(45deg) translateY(40px)',
 };
