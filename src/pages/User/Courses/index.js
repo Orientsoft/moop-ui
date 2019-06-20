@@ -52,9 +52,9 @@ const User = ({ data }) => (
       <Tab.Item title="我的成就" className="bg-white p-t-30 p-b-60">
         <div className="container p-b-60 ">
           {data.filter(c => c.progress_status).length ? (
-            <div className="row">
+            <div className="row courseslist">
               {data.filter(c => c.progress_status).map(course => (
-                <div key={course.id} className="col-12 col-md-4">
+                <div key={course.id} className="col-12 col-md-4 m-b-30">
                   <div className="card p-b-10 achieve">
                     <img className="card-img-top" src={get(course, 'thumb.thumbnail')} alt={course.title} />
                     <div className="card-body">
