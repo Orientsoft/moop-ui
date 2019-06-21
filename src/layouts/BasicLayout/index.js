@@ -4,11 +4,29 @@ import Layout from '@icedesign/layout';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NotFound from '@/components/NotFound';
-import { removeCurrentUser, removeCurrentTenant, setCurrentTenant, getCurrentTenant } from '@/utils/helper';
+import { getCurrentUser, removeCurrentUser, removeCurrentTenant, setCurrentTenant, getCurrentTenant } from '@/utils/helper';
 import { user, tenant } from '@/utils/api';
+import consts from '@/utils/consts';
 import routerData from '@/routerConfig';
 
 export default class BasicLayout extends Component {
+  constructor(props) {
+    super(props);
+
+    const current = getCurrentUser();
+
+    this.hasPermission = true;
+    if (current) {
+      if (current.role === consts.user.CONTRIBUTOR) {
+        props.history.push('/tenant');
+        this.hasPermission = false;
+      } else if (current.role === consts.user.SUPER) {
+        props.history.push('/contributor');
+        this.hasPermission = false;
+      }
+    }
+  }
+
   componentDidMount() {
     if (!getCurrentTenant()) {
       tenant.current().then(({ data }) => {
@@ -26,7 +44,7 @@ export default class BasicLayout extends Component {
   };
 
   render() {
-    return (
+    return this.hasPermission && (
       <div>
         <Header onLogout={this.onLogout} history={this.props.history} />
         <Layout.Section>
