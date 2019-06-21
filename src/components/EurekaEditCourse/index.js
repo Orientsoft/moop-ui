@@ -31,9 +31,15 @@ export default class EurekaEditCourse extends React.Component {
 
   constructor(props) {
     super(props);
-    const classroom = props.location.state;
 
-    this.disbaledStep = [];
+    const classroom = props.location.state;
+    const disbaledSteps = sessionStorage.getItem('__DISABLED_STEP__');
+
+    try {
+      this.disbaledStep = JSON.parse(disbaledSteps) || [];
+    } catch (error) {
+      this.disbaledStep = [];
+    }
     // 未开始、进行中
     if (classroom.status === 1 || classroom.status === 2) {
       this.disbaledStep.push(1, 2);
@@ -91,9 +97,9 @@ export default class EurekaEditCourse extends React.Component {
     return {
       ...item0,
       projects: item1.projects.map(p => p.id),
+      homework: item1.homework,
       ...item2,
       invited: item0.public,
-      status: 0,
     };
   };
 
@@ -115,6 +121,7 @@ export default class EurekaEditCourse extends React.Component {
   componentWillUnmount() {
     sessionStorage.removeItem(FORM_SESSION);
     sessionStorage.removeItem(CLASSROOM_SESSION);
+    sessionStorage.removeItem('__DISABLED_STEP__');
   }
 
   render() {
@@ -140,6 +147,11 @@ export default class EurekaEditCourse extends React.Component {
             getClassroom: this.getClassroom,
             labelSpan: 6,
             wrapperSpan: 12,
+            disableStep: (..._steps) => {
+              this.disbaledStep.push(..._steps);
+              sessionStorage.setItem('__DISABLED_STEP__', JSON.stringify(this.disbaledStep));
+              this.setState({ current: 0 });
+            },
           })}
         </div>
       </Fragment>

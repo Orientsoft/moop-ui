@@ -42,6 +42,9 @@ export default class Step3 extends React.Component {
             startTime: data.startTime,
             endTime: data.endTime,
           });
+          if (data.status !== 0) {
+            this.props.disableStep(1, 2);
+          }
           Message.success('更新成功');
         }).catch(e => Dialog.alert({
           title: '保存失败',

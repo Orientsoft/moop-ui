@@ -89,13 +89,13 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="description" className="textareaheight180" rows="8" />
+          <Input.TextArea name="description" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="requirement" className="textareaheight180" rows="8" />
+          <Input.TextArea name="requirement" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="testPoint" className="textareaheight180" rows="8" />
+          <Input.TextArea name="testPoint" className="textareaheight180" rows={8} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           {material.concat({}).map((({ name, href }, i, self) => (

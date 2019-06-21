@@ -997,7 +997,10 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
     overflow: hidden;
     height: 64px;
 }
-.card-title{ font-weight: bold}
+.card-title{ overflow: hidden;
+  height: 30px;
+  font-weight: bold;
+  line-height: 30px}
 .coursesimg .next-upload-list-card .next-upload-list-item-wrapper{    
     width: 300px !important;
     height: 180px !important;}

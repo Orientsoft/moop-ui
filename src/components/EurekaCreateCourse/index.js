@@ -71,6 +71,7 @@ export default class EurekaCreateCourse extends React.Component {
     return {
       ...item0,
       projects: item1 ? item1.projects.map(p => p.id) : [],
+      homework: item1 ? item1.homework : false,
       ...item2,
       invited: item0.public,
       status: 0,
