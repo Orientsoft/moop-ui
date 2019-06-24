@@ -11,7 +11,7 @@ export default ({ onLogout, history }) => {
   const { pathname } = history.location;
 
   return (
-    <header className="bd-navbar">
+    <header className={classnames({ 'bd-navbar': true, 'bd-index': pathname === '/' })}>
       <div className="container ">
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <Link className="navbar-brand logo" to="/">
