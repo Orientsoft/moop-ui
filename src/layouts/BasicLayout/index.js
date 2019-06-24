@@ -28,7 +28,12 @@ export default class BasicLayout extends Component {
   }
 
   componentDidMount() {
-    if (!getCurrentTenant()) {
+    if (this.props.location.pathname === '/') {
+      tenant.current().then(({ data }) => {
+        setCurrentTenant(data);
+        this.forceUpdate();
+      });
+    } else if (!getCurrentTenant()) {
       tenant.current().then(({ data }) => {
         setCurrentTenant(data);
         this.forceUpdate();
