@@ -6,6 +6,7 @@ import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
 import Step4 from './components/Step4';
+import Step5 from './components/Step5';
 import { tenant as tenantAPI } from '../../api';
 
 const TENANT_KEY = 'MOOP_TENANT';
@@ -13,9 +14,10 @@ const { Item } = Step;
 
 const steps = [
   { label: '填写基本信息', render: props => <Step1 {...props} /> },
-  { label: '宣传资料', render: props => <Step2 {...props} /> },
-  { label: '学校广告语', render: props => <Step3 {...props} /> },
-  { label: '确认提交', render: props => <Step4 {...props} /> },
+  { label: '宣传特色', render: props => <Step2 {...props} /> },
+  { label: '宣传资料', render: props => <Step3 {...props} /> },
+  { label: '学校广告语', render: props => <Step4 {...props} /> },
+  { label: '确认提交', render: props => <Step5 {...props} /> },
 ];
 
 export default () => {

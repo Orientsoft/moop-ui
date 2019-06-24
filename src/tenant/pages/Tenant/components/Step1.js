@@ -20,19 +20,38 @@ export default class Step1 extends Component {
     super(props);
     this.field = new Field(this, {
       values: {
-        name: get(props.value, 'name') || '',
-        url: get(props.value, 'url') || '',
-        teacher: get(props.value, 'teacher') || '',
-        mobile: get(props.value, 'mobile') || '',
-        email: get(props.value, 'email') || '',
-        address: get(props.value, 'address') || '',
+        name: get(props.value, 'name', ''),
+        url: get(props.value, 'url', ''),
+        teacher: get(props.value, 'teacher', ''),
+        mobile: get(props.value, 'mobile', ''),
+        email: get(props.value, 'email', ''),
+        address: get(props.value, 'address', ''),
+        about: get(props.value, 'about', ''),
+        license: get(props.value, 'license', ''),
+        company1: get(props.value, 'companys.0', ''),
+        company2: get(props.value, 'companys.1', ''),
+        company3: get(props.value, 'companys.2', ''),
+        company4: get(props.value, 'companys.3', ''),
       },
     });
   }
 
   onSubmit = (values, error) => {
     const { setStep, setTenant } = this.props;
-    const { name, url, teacher, mobile, email, address } = values;
+    const {
+      name,
+      url,
+      teacher,
+      mobile,
+      email,
+      address,
+      about,
+      license,
+      company1,
+      company2,
+      company3,
+      company4,
+    } = values;
 
     if (!error) {
       setTenant({
@@ -42,6 +61,9 @@ export default class Step1 extends Component {
         url,
         address,
         teacher,
+        about,
+        license,
+        companys: [company1, company2, company3, company4].filter(c => c.trim()),
       });
       setStep(1);
     }
@@ -58,7 +80,7 @@ export default class Step1 extends Component {
           <Input name="name" placeholder="中文名称不多于20个文字" />
         </FormItem>
         <FormItem label="学校官网：" required requiredMessage="网址不能为空">
-          <Input name="url" placeholder="官网网址" />
+          <Input name="url" placeholder="官网网址，例如：https://www.exapmle.com" />
         </FormItem>
         <FormItem label="学校LOGO：">
           <ImageUploader onSuccess={this.onUploadSuccess} value={get(this.props.value, 'logo.0')} />
@@ -74,6 +96,18 @@ export default class Step1 extends Component {
         </FormItem>
         <FormItem label="学校联系地址：" required requiredMessage="联系地址不能为空">
           <Input name="address" />
+        </FormItem>
+        <FormItem label="关于我们：">
+          <Input name="about" placeholder="例如：https://www.exapmle.com" />
+        </FormItem>
+        <FormItem label="服务协议：">
+          <Input name="license" placeholder="例如：https://www.exapmle.com" />
+        </FormItem>
+        <FormItem label="合作伙伴：">
+          <Input name="company1" placeholder="名称+网址，例如：数据科学实验室+http://www.example.com" />
+          <Input style={{ marginTop: 10 }} name="company2" />
+          <Input style={{ marginTop: 10 }} name="company3" />
+          <Input style={{ marginTop: 10 }} name="company4" />
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>

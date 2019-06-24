@@ -1,36 +1,63 @@
 import React, { Component } from 'react';
-import { Button, Message } from '@alifd/next';
+import { Form, Input, Field, Grid } from '@alifd/next';
 import get from 'lodash-es/get';
-import { tenant } from '../../../api';
+import ImageUploader from '../../../components/ImageUploader';
 
-export default class Step4 extends Component {
-  onSubmit = () => {
-    const { value, setStep, getTenant, removeTenant } = this.props;
-    const tenantData = getTenant();
+const { Item: FormItem } = Form;
+const { Col } = Grid;
 
-    if (tenantData) {
-      tenant.update({ data: tenantData }, { tenantId: get(value, 'tenant.id') }).then(() => {
-        Message.success('更新成功');
-        removeTenant();
-        setStep(0);
-      });
-    } else {
-      Message.warning('请完善租户信息');
+const formItemLayout = {
+  labelCol: {
+    span: 6,
+  },
+  wrapperCol: {
+    span: 14,
+  },
+};
+
+export default class Step3 extends Component {
+  constructor(props) {
+    super(props);
+    this.field = new Field(this, {
+      values: {
+        remark: get(props.value, 'remark') || '',
+        description: get(props.value, 'description') || '',
+      },
+    });
+  }
+
+  onSubmit = (values, error) => {
+    const { setStep, setTenant } = this.props;
+    const { remark, description } = values;
+
+    if (!error) {
+      setTenant({ remark, description });
+      setStep(4);
     }
   };
 
-  onBack = () => this.props.setStep(0);
+  onUploadSuccess = (image) => {
+    this.props.setTenant({ background: image.id });
+  };
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
-        <h2>确认提交？</h2>
-        <p>提交之后修改会立即显示在首页，是否提交？</p>
-        <div style={{ margin: '30px 0' }}>
-          <Button type="primary" onClick={this.onSubmit}>确认提交</Button>
-          <Button style={{ marginLeft: 10 }} onClick={this.onBack}>返回修改</Button>
-        </div>
-      </div>
+      <Form {...formItemLayout} field={this.field}>
+        <FormItem label="学校广告语：" required requiredMessage="广告语不能为空">
+          <Input name="remark" placeholder="一句话概括，少于120字" />
+        </FormItem>
+        <FormItem label="学校介绍：" required requiredMessage="介绍不能为空">
+          <Input.TextArea name="description" />
+        </FormItem>
+        <FormItem label="学校首页头图：">
+          <ImageUploader onSuccess={this.onUploadSuccess} value={get(this.props.value, 'background')} />
+        </FormItem>
+        <FormItem wrapperCol={{ span: 24 }}>
+          <Col offset={6}>
+            <Form.Submit validate type="primary" onClick={this.onSubmit}>下一步</Form.Submit>
+          </Col>
+        </FormItem>
+      </Form>
     );
   }
 }
