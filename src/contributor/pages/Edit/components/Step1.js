@@ -44,6 +44,7 @@ export default class Step1 extends Component {
     this.state = {
       tags: [],
       images: [],
+      posting: false,
     };
   }
 
@@ -78,10 +79,12 @@ export default class Step1 extends Component {
 
   onSubmit = (values, error) => {
     if (!error && this.props.dataSource) {
+      this.setState({ posting: true });
       contributor.update({ data: values }, { projectId: this.props.dataSource.id }).then(() => {
         Message.success('更新实验成功');
+        this.setState({ posting: false });
         this.props.onBack();
-      });
+      }).catch(() => this.setState({ posting: false }));
     }
   };
 
@@ -90,7 +93,7 @@ export default class Step1 extends Component {
   };
 
   render() {
-    const { tags, images } = this.state;
+    const { tags, images, posting } = this.state;
 
     return (
       <Form {...formItemLayout} field={this.field}>
@@ -123,7 +126,7 @@ export default class Step1 extends Component {
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>
-            <Form.Submit validate type="primary" onClick={this.onSubmit}>更新实验</Form.Submit>
+            <Form.Submit validate type="primary" disabled={posting} onClick={this.onSubmit}>更新实验</Form.Submit>
             <Button style={{ marginLeft: 15 }} onClick={this.props.onBack}>返回实验列表</Button>
           </Col>
         </FormItem>

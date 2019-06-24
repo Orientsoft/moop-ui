@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '@icedesign/layout';
-import { getCurrentUser } from '@/utils/helper';
+import { getCurrentUser, removeCurrentUser, removeCurrentTenant } from '@/utils/helper';
 import consts from '@/utils/consts';
 import { logout } from '../../api';
 import Header from './components/Header';
@@ -15,6 +15,8 @@ export default class BasicLayout extends Component {
   }
 
   onLogout = () => {
+    removeCurrentUser();
+    removeCurrentTenant();
     logout();
     this.props.history.push('/login');
   };
