@@ -13,10 +13,10 @@ export default () => {
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
-              <h1 className="large p-t-60">{get(tenant, 'name', '')}</h1>
+              <h1 className="large p-t-60">{get(tenant, 'remark', '')}</h1>
               <h4 className="lead m-t-40 ">
                 <br />
-                {get(tenant, 'remark', '')}
+                {get(tenant, 'description', '')}
                 <br />
               </h4>
               <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多课题</Link>
