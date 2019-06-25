@@ -21,10 +21,12 @@ export default () => {
               <h6 className="title">关于</h6>
               <hr />
               <ul className="list-unstyled">
-                <li><Link to="/about">关于我们</Link></li>
-                {/* <li><Link to="/help">联系我们</Link></li> */}
-                <li><Link to="/help">服务协议</Link></li>
-                {/* <li><Link to="/help">常见问题</Link></li> */}
+                <li>
+                  {get(tenant, 'about') ? <a href={get(tenant, 'about')} rel="noopener noreferrer" target="_blank">关于我们</a> : <Link to="/about">关于我们</Link>}
+                </li>
+                <li>
+                  {get(tenant, 'license') ? <a href={get(tenant, 'license')} rel="noopener noreferrer" target="_blank">服务协议</a> : <Link to="/help">服务协议</Link>}
+                </li>
               </ul>
             </div>
           </div>
@@ -33,9 +35,18 @@ export default () => {
               <h6 className="title">合作伙伴</h6>
               <hr />
               <ul className="list-unstyled">
-                <li><a href="https://www.swufe.edu.cn/" target="_blank">西南财经大学</a></li>
-                <li><a href="https://www.uestc.edu.cn/" target="_blank">电子科技大学</a></li>
-                <li><a href="http://www.scu.edu.cn/" target="_blank">四川大学</a></li>
+                {get(tenant, 'companys', []).map((company, i) => {
+                  const sep = company.indexOf('+');
+                  return (
+                    <li key={i}>
+                      {sep === -1 ? (
+                        <a href="#" rel="noopener noreferrer" target="_blank">{company}</a>
+                      ) : (
+                        <a href={company.substring(sep + 1)} rel="noopener noreferrer" target="_blank">{company.substring(0, sep)}</a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
