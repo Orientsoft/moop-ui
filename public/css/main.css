@@ -124,6 +124,8 @@ html,body{ padding:0 ; margin: 0;overflow-x: hidden;    font-family: Helvetica N
     background: #4760de;
     border-bottom: solid 1px #7c8ee8;
 }
+.bd-navbar.bd-index{ position: absolute; top: 0; left: 0; z-index: 111; width: 100%; background-color: rgba(0, 0, 0, 0.4);border-bottom: solid 1px rgba(0, 0, 0, 0.4);}
+.bd-navbar.bd-index .bg-dark{ background-color: rgba(0, 0, 0, 0) !important;}
 .bd-navbar .bg-dark {
 padding: 0;
 background-color: #4760de!important;

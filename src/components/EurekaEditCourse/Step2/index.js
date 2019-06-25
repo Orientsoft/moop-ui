@@ -8,6 +8,7 @@ const { Row, Col } = Grid;
 
 export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getClassroom }) => {
   const [visible, setVisible] = useState(false);
+  const [posting, setPosting] = useState(false);
   const [homework, setHomework] = useState(get(getData(), 'homework', false));
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -83,6 +84,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
     }
   };
   const onSubmit = () => {
+    setPosting(true);
     classroomAPI.update({
       data: {
         homework,
@@ -90,15 +92,19 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
       },
       params: { embed: 1 },
     }, { classroomId: getClassroom().id }).then(({ data }) => {
+      setPosting(false);
       setClassroom(data);
       setData({
         projects: data.projects,
       });
       Message.success('更新成功');
-    }).catch(e => Dialog.alert({
-      title: '保存失败',
-      content: e.message,
-    }));
+    }).catch((e) => {
+      setPosting(false);
+      Dialog.alert({
+        title: '保存失败',
+        content: e.message,
+      });
+    });
   };
 
   useEffect(() => {
@@ -135,7 +141,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary" onClick={onSubmit} className="serverbtn">保存</Button>
+            <Button type="primary" disabled={posting} onClick={onSubmit} className="serverbtn">保存</Button>
           </Col>
         </Row>
         <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>

@@ -9,6 +9,7 @@ import { student } from '../../api';
 export default () => {
   const [payload, setPayload] = useState({});
   const [create, setCreate] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(false);
   const [students, setStudents] = useState(null);
@@ -48,10 +49,12 @@ export default () => {
     }
   };
   const onImportOk = ({ response }) => {
+    setIsImporting(false);
     Message.success(`成功导入 ${response.create.length} 条，重复 ${response.repeat.length} 条`);
     onQuery();
   };
   const onImportError = (res) => {
+    setIsImporting(false);
     Message.error(res.response);
   };
 
@@ -62,11 +65,12 @@ export default () => {
   return (
     <Container>
       <Input placeholder="按真实姓名查询" onChange={debounce(search => onQuery({ params: { page: 1, search } }), 600)} />
-      <Upload action={`${student.UPLOAD_URL}?create=${Number(create)}`} onSuccess={onImportOk} onError={onImportError} accept=".csv" style={{ display: 'inline-block' }}>
-        <Button style={{ marginLeft: 15 }} type="primary">导入</Button>
+      <Upload action={`${student.UPLOAD_URL}?create=${Number(create)}`} beforeUpload={() => setIsImporting(true)} onSuccess={onImportOk} onError={onImportError} accept=".csv" style={{ display: 'inline-block' }}>
+        <Button loading={isImporting} style={{ marginLeft: 15 }} type="primary">导入</Button>
       </Upload>
       <Button style={{ marginLeft: 15 }} type="normal" warning onClick={onDeleteBatches}>删除</Button>
       <Checkbox checked={create} style={{ marginLeft: 15 }} onChange={value => setCreate(value)}>导入时创建学生</Checkbox>
+      <a style={{ fontSize: 14, textDecoration: 'underline', marginLeft: 15 }} target="_blank" rel="noopenner noreferer" href="/static/import_students.csv">下载导入模版</a>
       <Table dataSource={students} loading={loading} onQuery={onQuery} onDelete={onDelete} onSelect={records => setSelected(records)} />
     </Container>
   );

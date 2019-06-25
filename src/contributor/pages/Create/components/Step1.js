@@ -21,6 +21,7 @@ export default class Step1 extends Component {
     this.state = {
       tags: [],
       images: [],
+      posting: false,
     };
   }
 
@@ -50,10 +51,12 @@ export default class Step1 extends Component {
 
   onSubmit = (values, error) => {
     if (!error) {
+      this.setState({ posting: true });
       contributor.create({ data: values }).then(() => {
         Message.success('创建实验成功');
+        this.setState({ posting: false });
         this.field.reset();
-      });
+      }).catch(() => this.setState({ posting: false }));
     }
   };
 
@@ -62,7 +65,7 @@ export default class Step1 extends Component {
   };
 
   render() {
-    const { tags, images } = this.state;
+    const { tags, images, posting } = this.state;
 
     return (
       <Form {...formItemLayout} field={this.field}>
@@ -96,7 +99,7 @@ export default class Step1 extends Component {
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>
-            <Form.Submit validate type="primary" onClick={this.onSubmit}>创建实验</Form.Submit>
+            <Form.Submit validate type="primary" disabled={posting} onClick={this.onSubmit}>创建实验</Form.Submit>
           </Col>
         </FormItem>
       </Form>
