@@ -115,6 +115,9 @@ export default class Step1 extends React.Component {
           <Input trim value={characteristic[2]} onChange={e => this.setCharacteristic(2, e)} className="m-t-10" placeholder="特点三(选填)" />
           <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
         </Form.Item>
+        <Form.Item label="课题人数限制：">
+          <Input htmlType="number" name="limit" placeholder="默认：50" />
+        </Form.Item>
         <Form.Item label="是否公开：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本课题的学生开放)', value: 0 }]} />
         </Form.Item>
