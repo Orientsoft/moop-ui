@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
 import { headerMenuConfig } from '@/menuConfig';
 import { getCurrentUser, getCurrentTenant } from '@/utils/helper';
+import consts from '@/utils/consts';
 
 export default ({ onLogout, history }) => {
   const user = getCurrentUser();
@@ -36,6 +37,7 @@ export default ({ onLogout, history }) => {
             {user ? (
               <div className="my-2 my-lg-0">
                 <div className="dropdown usertop">
+                  <span style={{ color: 'lightgrey', fontSize: 17, marginRight: 10, verticalAlign: 'middle' }}>{user.role === consts.user.TEACHER ? '教师' : '学生'}</span>
                   <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <Link className="dropdown-item" to="/users/courses">我的课题</Link>
