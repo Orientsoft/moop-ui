@@ -147,16 +147,18 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                   <div onClick={onRefresh}>
                     <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
                       <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
-                      {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60 }}>提交作业</Button>}
                       {lab.finish && <span className="listiconright">✔</span>}
                     </a>
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
                   </div>
                 ) : (
-                  <a onClick={onClick} className="list-group-item list-group-item-action">
-                    <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60 }}>提交作业</Button>}
-                    {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
-                  </a>
+                  <div onClick={onRefresh}>
+                    <a onClick={onClick} className="list-group-item list-group-item-action">
+                      <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
+                      {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
+                    </a>
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
+                  </div>
                 )}
               </div>
             ))}
