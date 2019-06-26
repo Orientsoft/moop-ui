@@ -98,13 +98,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         projects: data.projects,
       });
       Message.success('更新成功');
-    }).catch((e) => {
-      setPosting(false);
-      Dialog.alert({
-        title: '保存失败',
-        content: e.message,
-      });
-    });
+    }).catch(() => setPosting(false));
   };
 
   useEffect(() => {

@@ -64,10 +64,7 @@ export default class Step1 extends React.Component {
         classroomAPI.update({ data: values, params: { embed: 1 } }, { classroomId: getClassroom().id }).then(({ data }) => {
           setClassroom(data);
           Message.success('更新成功');
-        }).catch(e => Dialog.alert({
-          title: '保存失败',
-          content: e.message,
-        }));
+        });
       }
     });
   };

@@ -45,7 +45,7 @@ export default ({ getClassroom, labelSpan, wrapperSpan }) => {
     invitation.delete({}, { invitationId: student.id }).then(() => {
       Message.success('删除成功');
       getStudents();
-    }).catch(() => Message.success('删除失败'));
+    });
   };
   const onPagination = current => setPagination({ ...pagination, current });
 
