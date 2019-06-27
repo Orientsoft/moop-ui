@@ -53,6 +53,7 @@ export default class EurekaEditCourse extends React.Component {
       material: classroom.material,
       characteristic: classroom.characteristic,
       public: classroom.public,
+      limit: classroom.limit,
     });
     this.setData(1, classroom);
     this.setData(2, classroom);

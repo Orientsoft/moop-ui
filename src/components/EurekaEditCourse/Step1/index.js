@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field, Dialog, Grid, Input, Button, Upload, Radio, Message } from '@alifd/next';
+import { Form, Field, Grid, Input, Button, Upload, Radio, Message } from '@alifd/next';
 import classnames from 'classnames';
 import { IMAGE_UPLOAD_URL, classroom as classroomAPI } from '@/utils/api';
 

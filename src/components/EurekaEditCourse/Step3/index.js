@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field, Checkbox, DatePicker, Radio, Dialog, Message } from '@alifd/next';
+import { Form, Field, Checkbox, DatePicker, Radio, Message } from '@alifd/next';
 import moment from 'moment';
 import { tag as tagAPI, classroom } from '@/utils/api';
 import consts from '@/utils/consts';
