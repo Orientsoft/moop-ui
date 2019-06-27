@@ -39,7 +39,7 @@ export default ({ labelSpan, wrapperSpan, getClassroom, toNext }) => {
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary"  onClick={toNext} className="serverbtn">下一步</Button>
+            <Button type="primary" onClick={toNext} className="serverbtn">下一步</Button>
           </Col>
         </Row>
       </Fragment>

@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Input, Button, Radio, Upload, Select, Message, Dialog } from '@alifd/next';
-import get from 'lodash-es/get';
+import { Input, Button, Radio, Upload, Select, Dialog } from '@alifd/next';
 import EurekaForm from '@/components/EurekaForm';
 import { user, IMAGE_UPLOAD_URL } from '@/utils/api';
 import { setCurrentUser } from '@/utils/helper';
@@ -37,17 +36,6 @@ export default (props) => {
         });
       });
     });
-  };
-  const certificationField = {
-    label: <span className="col-sm-2 col-form-label">学号</span>,
-    render: () => (
-      <div className="form-check col-sm-8 ">
-        <Fragment>
-          <Input trim disabled={props.user.certificated} value={certification} onChange={e => setCertification(e)} style={{ width: '100%' }} />
-          <div className="text-muted fontsw m-t-10">请填写你的真实学号</div>
-        </Fragment>
-      </div>
-    ),
   };
   const itemBefore = [{
     label: <span className="col-sm-2 col-form-label">用户名：</span>,
@@ -106,7 +94,7 @@ export default (props) => {
   }, {
     label: <span className="col-sm-2 col-form-label">链接：</span>,
     render: () => <Input name="site" style={{ width: '100%' }} className="form-check col-sm-8" />,
-  }, itemAfter) : itemBefore.concat(certificationField, ...itemAfter);
+  }, itemAfter) : itemBefore.concat(...itemAfter);
 
   return <EurekaForm items={items} values={props.user} submitProps={{ onClick }} />;
 };
