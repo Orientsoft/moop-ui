@@ -80,10 +80,6 @@ export default ({ history }) => {
                     <div className="fonts2 col-sm-10 ">{student.realname}</div>
                   </div>
                   <div className="form-group row">
-                    <label className="col-sm-2 ">学生身份信息：</label>
-                    <div className="fonts2 col-sm-10">{student.certification}</div>
-                  </div>
-                  <div className="form-group row">
                     <label className="col-sm-2 ">实验报告名称：</label>
                     <div className="fonts2 col-sm-10">{get(report, 'title', '')}</div>
                   </div>

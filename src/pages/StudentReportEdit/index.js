@@ -52,10 +52,6 @@ export default ({ history, location }) => {
                   <div className="fonts2 col-sm-10 ">{get(user, 'realname')}</div>
                 </div>
                 <div className="form-group row">
-                  <label className="col-sm-2 ">学生身份信息：</label>
-                  <div className="fonts2 col-sm-10">{get(user, 'certification')}</div>
-                </div>
-                <div className="form-group row">
                   <label className="col-sm-2 ">实验报告内容：</label>
                   <div className="col-sm-10">
                     <BraftEditor value={feedback} onChange={setFeedback} style={{ border: '1px solid #C4C6CF ' }} />

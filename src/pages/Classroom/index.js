@@ -240,11 +240,10 @@ export default ({ history }) => {
                         <th width="200">操作</th>
                       </tr>
                       {students.map(({ participant, progress, report: showReport, score = 'N/A' }) => {
-                        const { id, certification, realname } = participant;
+                        const { id, realname } = participant;
                         const percent = parseInt(progress * 100, 10);
                         return (
                           <tr key={id}>
-                            <td>{certification}</td>
                             <td>{realname}</td>
                             <td>
                               <div className="progress m-t-5">

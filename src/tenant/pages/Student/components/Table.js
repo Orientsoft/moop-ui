@@ -41,8 +41,7 @@ export default ({ dataSource, onDelete, onQuery, onSelect, ...tableProps }) => {
       {visible && <EditDialog title="编辑" data={visible} onResetPassword={onResetPassword} onOk={onUpdate} onCancel={() => setVisible(false)} onClose={() => setVisible(false)} />}
       <Table dataSource={get(dataSource, 'data', [])} rowSelection={{ onSelect: onSelectRow, onSelectAll }} hasBorder={false} {...tableProps}>
         <Column title="用户名" dataIndex="name" />
-        <Column title="学号" dataIndex="certification" />
-        <Column title="真实姓名" dataIndex="realname" />
+        <Column title="真实姓名" dataIndex="realname" width={160} />
         <Column title="性别" dataIndex="gender" width={100} cell={gender => get(['男', '女'], gender || 0)} />
         <Column title="备注" dataIndex="remark" />
         <Column title="操作" dataIndex="action" width={160} cell={renderAction} />

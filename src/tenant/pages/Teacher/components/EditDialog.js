@@ -28,7 +28,7 @@ export default class EditDialog extends Component {
       <Dialog visible {...this.props} onOk={this.onOk}>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 14 }} style={{ width: 600 }} field={this.field}>
           <Item label="用户名" required requiredMessage="用户名不能为空">
-            <Input name="name" />
+            <Input disabled name="name" />
           </Item>
           <Item label="手机号" required requiredMessage="手机号不能为空">
             <Input name="mobile" />

@@ -9,7 +9,6 @@ import consts from '@/utils/consts';
 export default (props) => {
   const [thumb, setThumb] = useState(null);
   const [realname, setRealname] = useState(props.user.realname || '');
-  const [certification, setCertification] = useState(props.user.certification || '');
   const onClick = (values, form) => {
     form.field.validate((error) => {
       let postData = {};
@@ -20,13 +19,12 @@ export default (props) => {
       delete values.thumb;
       // Thumb must is a uuid, not a url
       if (thumb && thumb.indexOf('.') === -1) {
-        postData = { ...values, thumb, realname, certification };
+        postData = { ...values, thumb, realname };
       } else {
-        postData = { ...values, realname, certification };
+        postData = { ...values, realname };
       }
       if (props.user.certificated) {
         delete postData.certificated;
-        delete postData.certification;
       }
       user.update({ data: postData }, { userId: props.user.id }).then(({ data }) => {
         setCurrentUser(data);

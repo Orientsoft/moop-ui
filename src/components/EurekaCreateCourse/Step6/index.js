@@ -33,7 +33,7 @@ export default ({ getClassroom, labelSpan, wrapperSpan, history }) => {
     invitation.createBatch({
       data: {
         classroom: classroom.id,
-        certifications: certifications.split(/\s/).map(c => c.trim()).filter(c => c),
+        name: certifications.split(/\s/).map(c => c.trim()).filter(c => c),
       },
     }).then(() => {
       setCertifications('');
@@ -66,7 +66,6 @@ export default ({ getClassroom, labelSpan, wrapperSpan, history }) => {
         <Row justify="center" className="m-t-20">
           <Col span={labelSpan + wrapperSpan}>
             <Table loading={isLoading} dataSource={students}>
-              <Table.Column dataIndex="invitee.certification" title="学生身份信息" />
               <Table.Column dataIndex="invitee.realname" title="姓名" />
               <Table.Column width={120} cell={(_, i, student) => <Button type="normal" warning onClick={() => onDelete(student)}>删除</Button>} title="操作" />
             </Table>

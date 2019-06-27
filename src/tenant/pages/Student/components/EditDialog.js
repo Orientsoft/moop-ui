@@ -8,10 +8,10 @@ export default class EditDialog extends Component {
   constructor(props) {
     super(props);
 
-    const { certification, realname, gender, remark } = props.data;
+    const { realname, gender, remark } = props.data;
 
     this.field = new Field(this, {
-      values: { certification, realname, gender, remark },
+      values: { realname, gender, remark },
     });
   }
 
@@ -28,12 +28,6 @@ export default class EditDialog extends Component {
     return (
       <Dialog visible {...props} onOk={this.onOk}>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 14 }} style={{ width: 600 }} field={this.field}>
-          <Item label="学号" required requiredMessage="学号不能为空">
-            <Input name="certification" />
-          </Item>
-          <Item label="密码">
-            <Button onClick={onResetPassword}>重置密码</Button>
-          </Item>
           <Item label="真实姓名" required requiredMessage="真实姓名不能为空">
             <Input name="realname" />
           </Item>
@@ -42,6 +36,9 @@ export default class EditDialog extends Component {
               <Radio value={0}>男</Radio>
               <Radio value={1}>女</Radio>
             </RadioGroup>
+          </Item>
+          <Item label="密码">
+            <Button onClick={onResetPassword}>重置密码</Button>
           </Item>
           <Item label="备注">
             <Input.TextArea name="remark" />
