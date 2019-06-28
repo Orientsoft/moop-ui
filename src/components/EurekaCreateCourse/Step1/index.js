@@ -70,8 +70,15 @@ export default class Step1 extends React.Component {
   };
 
   render() {
-    const { labelSpan, wrapperSpan } = this.props;
+    const { labelSpan, wrapperSpan, getData } = this.props;
     const { thumb, material, characteristic } = this.state;
+    const data = getData();
+    const disabled = { limit: false, isPublic: false };
+
+    if (data && 'status' in data && data.status !== 0) {
+      disabled.limit = true;
+      disabled.isPublic = true;
+    }
 
     return (
       <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
@@ -116,10 +123,10 @@ export default class Step1 extends React.Component {
           <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
         </Form.Item>
         <Form.Item label="课题人数限制：">
-          <Input htmlType="number" name="limit" placeholder="默认：50" />
+          <Input disabled={disabled.limit} htmlType="number" name="limit" placeholder="默认：50" />
         </Form.Item>
         <Form.Item label="是否公开：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Radio.Group defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本课题的学生开放)', value: 0 }]} />
+          <Radio.Group disabled={disabled.isPublic} defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本课题的学生开放)', value: 0 }]} />
         </Form.Item>
         <Form.Item wrapperCol={{ span: 4, offset: 10 }}>
           <Form.Submit type="primary" onClick={this.onSubmit} className="serverbtn"> 下一步</Form.Submit>
