@@ -26,7 +26,7 @@ export default class Step3 extends React.Component {
   }
 
   onSubmit = () => {
-    const { setData, setClassroom, getClassroom } = this.props;
+    const { setData, setClassroom, getClassroom, disableStep } = this.props;
 
     this.field.validate((error, values) => {
       if (!error) {
@@ -43,7 +43,7 @@ export default class Step3 extends React.Component {
             endTime: data.endTime,
           });
           if (data.status !== 0) {
-            this.props.disableStep(1, 2);
+            disableStep(1, 2);
           }
           Message.success('更新成功');
         });

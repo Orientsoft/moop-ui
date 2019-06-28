@@ -33,6 +33,18 @@ const CLASSROOM_SESSION = 'CREATECLASSROOM';
 export default class EurekaCreateCourse extends React.Component {
   state = { current: 0 };
 
+  constructor(props) {
+    super(props);
+
+    const disbaledSteps = sessionStorage.getItem('__DISABLED_STEP__');
+
+    try {
+      this.disbaledStep = JSON.parse(disbaledSteps) || [];
+    } catch (error) {
+      this.disbaledStep = [];
+    }
+  }
+
   setData = (key, data) => {
     let savedItem = sessionStorage.getItem(FORM_SESSION);
 
@@ -96,6 +108,7 @@ export default class EurekaCreateCourse extends React.Component {
   componentWillUnmount() {
     sessionStorage.removeItem(FORM_SESSION);
     sessionStorage.removeItem(CLASSROOM_SESSION);
+    sessionStorage.removeItem('__DISABLED_STEP__');
   }
 
   render() {
@@ -106,7 +119,7 @@ export default class EurekaCreateCourse extends React.Component {
         <div className="setbox">
           <Step current={current} shape="arrow">
             {steps.map((step, i) => (
-              <Step.Item disabled={i > current} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
+              <Step.Item disabled={this.disbaledStep.indexOf(i) !== -1 || i > current} key={i} title={step.title} onClick={() => this.setState({ current: i })} />
             ))}
           </Step>
         </div>
@@ -115,12 +128,25 @@ export default class EurekaCreateCourse extends React.Component {
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),
             getPostData: this.getPostData,
-            toNext: () => this.setState({ current: current + 1 }),
+            toNext: () => {
+              if (this.disbaledStep.length) {
+                const last = Math.max(...this.disbaledStep);
+                if (last < steps.length - 1) {
+                  this.setState({ current: last + 1 });
+                }
+              } else {
+                this.setState({ current: current + 1 });
+              }
+            },
             history: this.props.history,
             setClassroom: this.setClassroom,
             getClassroom: this.getClassroom,
             labelSpan: 6,
             wrapperSpan: 12,
+            disableStep: (..._steps) => {
+              this.disbaledStep.push(..._steps);
+              sessionStorage.setItem('__DISABLED_STEP__', JSON.stringify(this.disbaledStep));
+            },
           })}
         </div>
       </Fragment>

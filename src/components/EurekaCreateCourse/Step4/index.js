@@ -4,7 +4,7 @@ import { classroom as classroomAPI } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
-export default ({ getClassroom, setClassroom, getPostData, toNext }) => {
+export default ({ getClassroom, disableStep, setClassroom, getPostData, toNext }) => {
   const onOk = () => {
     Dialog.confirm({
       title: '创建课题',
@@ -23,6 +23,7 @@ export default ({ getClassroom, setClassroom, getPostData, toNext }) => {
       onOk: () => classroomAPI.update({ data: { status: 1 } }, { classroomId: classroom.id })
         .then(({ data }) => {
           setClassroom(data);
+          disableStep(1, 2, 3);
           toNext();
         }),
     });
