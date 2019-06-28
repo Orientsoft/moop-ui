@@ -1,5 +1,7 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
+export const dashboard = GET('/dashboard/classroom');
+
 export const teacher = {
   create: POST('/management/teacher'),
   select: GET('/management/teacher'),

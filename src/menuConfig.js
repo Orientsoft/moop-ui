@@ -21,6 +21,11 @@ const asideMenuConfig = [
     icon: 'shezhi',
   },
   {
+    name: '课程统计',
+    path: '/tenant/courses',
+    icon: 'material',
+  },
+  {
     name: '专题分类管理',
     path: '/tenant/tags',
     icon: 'shezhi',
