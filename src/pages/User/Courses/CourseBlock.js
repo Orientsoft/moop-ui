@@ -32,7 +32,7 @@ export default ({ data }) => {
         </div>
         <div className="card-body text-left">
           <h5 className="card-title">  <Link to={`/classroom?id=${data.id}`} >{data.title}</Link></h5>
-          <p className="card-text">已加入：<span className="text-danger font-weight-bold">{get(data, 'confirm.confirmed', 0)}</span> 人 / 总共 {get(data, 'confirm.total', 0)} 人<br />
+          <p className="card-text">已加入 <span className="text-danger font-weight-bold">{get(data, 'confirm.confirmed', 0)}</span> 人 / 共邀请 {get(data, 'confirm.total', 0)} 人 / 人数上限 {get(data, 'limit') || 0} 人<br />
             开课时间：<span className="font-italic text-secondary"> {moment(data.startTime).format('YYYY年MM月DD日')} ~ {moment(data.endTime).format('YYYY年MM月DD日')}</span>
           </p>
           {data.status !== 3 && <Link to={{ pathname: '/editclassroom', state: data }} className="btn btn-outline-secondary btn-sm">✎ 编辑课题</Link>}

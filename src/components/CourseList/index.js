@@ -22,7 +22,7 @@ export default ({ size = 99, tag, owner }) => {
 
   return (
     <div className="row m-t-40">
-      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running, public: isPublic }, i, allCourses) => (
+      {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running, public: isPublic, confirm, limit }, i, allCourses) => (
         <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">
             <div className="post">
@@ -34,8 +34,11 @@ export default ({ size = 99, tag, owner }) => {
             <div className="card-body text-left">
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
               <p className="card-text">{description}</p>
-              <span className="text-secondary fs12">学时安排：{timeConsume}</span>
-                {list_running ? <span className="couserun">正在学习</span> : ''}
+              <div className="text-secondary fs12" style={{ position: 'relative' }}>
+                <span>学时安排：{timeConsume}</span>
+                <span style={{ position: 'absolute', right: 0 }}>已加入 <span style={{ color: 'green' }}>{confirm ? confirm.confirmed : 0}</span> 人 ／ 人数上限 {limit || 0} 人</span>
+              </div>
+              {list_running ? <span className="couserun">正在学习</span> : ''}
             </div>
           </div>
         </div>
