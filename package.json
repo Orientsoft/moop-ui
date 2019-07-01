@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "ice dev",
-    "build": "ice build",
+    "build": "ice build --hash",
     "lint": "eslint . --ext '.js,.jsx' --fix"
   },
   "proxyConfig": {
