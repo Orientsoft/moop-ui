@@ -132,7 +132,11 @@ export default class EurekaCreateCourse extends React.Component {
               if (this.disbaledStep.length) {
                 const last = Math.max(...this.disbaledStep);
                 if (last < steps.length - 1) {
-                  this.setState({ current: last + 1 });
+                  if (current >= last) {
+                    this.setState({ current: current + 1 });
+                  } else {
+                    this.setState({ current: last + 1 });
+                  }
                 }
               } else {
                 this.setState({ current: current + 1 });
