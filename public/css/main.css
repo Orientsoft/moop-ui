@@ -682,14 +682,19 @@ display: inline-block;}
 
 /* ------ */
 .card-header h5{ position: relative;}
-a.palyico{ position: absolute; right: 68px; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 14px; background: #1277eb; padding-left: 3px;border: solid 1px #1277eb; color: #fff;}
+
+a.palyico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius:4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #1277eb; border: solid 1px #1277eb; color: #fff;}
 a.palyico:hover{ text-decoration: none;color: #1277eb; background: #fff}
-a.stopico{ position: absolute; right: 34px; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 22px;font-size: 34px; background: #f44336; padding-left: 1px;border: solid 1px #f44336; color: #fff;}
+
+a.stopico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
 a.stopico:hover{ text-decoration: none;color: #f44336; background: #fff}
-a.dataico{ position: absolute; cursor: pointer; right: 0; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 24px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
+
+a.dataico{ position: absolute; cursor: pointer; right: 0; width: 96px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #00ce72; border: solid 1px #00ce72; color: #fff;}
 a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
+
 a.noico,a.noico:hover{background: #fff; border: solid 1px #ccc;color: #aaa !important;}
-a.deleico{position: absolute; cursor: pointer; width: 26px; height: 26px; border-radius: 50%; top:5px; text-align: center; line-height: 24px;font-size: 20px; background: #00ce72; padding-left: 1px;border: solid 1px #00ce72; color: #fff;}
+a.stopico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
+a.deleico{position: absolute; cursor: pointer; width: 66px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #00ce72; border: solid 1px #00ce72; color: #fff;}
 a.deleico:hover{ text-decoration: none;color: #00ce72; background: #fff; text-decoration: none}
 
 

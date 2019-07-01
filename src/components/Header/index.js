@@ -32,6 +32,9 @@ export default ({ onLogout, history }) => {
                   <Link className="nav-link" to={menu.path}>{menu.name}</Link>
                 </li>
               ))}
+              <li  className='nav-item'>
+                <a className="nav-link" href="https://docs.mooplab.com" target="_blank">用户文档</a>
+              </li>
             </ul>
             {/* eslint-enable */}
             {user ? (
