@@ -22,7 +22,7 @@ export default ({ dataSource, onDelete, onQuery, onSelect, ...tableProps }) => {
     <div style={{ marginTop: 15 }}>
       <Table onSort={onSort} dataSource={data} hasBorder={false} {...tableProps}>
         <Column title="课程名称" dataIndex="title" width={200} />
-        <Column sortable title="课程状态" dataIndex="status" cell={value => get({ 0: '未发布', 1: <span style={{ color: 'green' }}>已发布</span>, 2: <span style={{ color: 'orange' }}>已开始</span>, 3: <span style={{ color: 'red' }}>已结束</span> }, value, '')} />
+        <Column sortable title="课程状态" dataIndex="status" cell={value => get({ 0: '未发布', 1: <span style={{ color: 'green' }}>已发布</span>, 2: <span style={{ color: 'orange' }}>进行中</span>, 3: <span style={{ color: 'red' }}>已结束</span> }, value, '')} />
         <Column title="发布者" dataIndex="owner.realname" />
         <Column sortable title="课程人数上限" dataIndex="limit" />
       </Table>
