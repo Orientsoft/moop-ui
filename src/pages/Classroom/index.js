@@ -233,7 +233,6 @@ export default ({ history }) => {
                   <table className="table table-bordered">
                     <tbody>
                       <tr>
-                        <th width="200">学生身份信息</th>
                         <th width="140">姓名</th>
                         <th>进度</th>
                         <th width="140">评分</th>
