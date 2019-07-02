@@ -11,7 +11,7 @@ const { Option } = Select;
 export default () => {
   const [payload, setPayload] = useState({});
   const [loading, setLoading] = useState(false);
-  const [courses, setCourses] = useState(null);
+  const [courses, setCourses] = useState({});
   const onQuery = (_payload) => {
     const lastPayload = merge(payload, _payload);
 
@@ -44,6 +44,11 @@ export default () => {
         <Option value="2">进行中</Option>
         <Option value="3">已结束</Option>
       </Select>
+      <div style={{ float: 'right', fontSize: 14, marginTop: 5 }}>
+        <span>当前活跃人数: <strong style={{ color: 'green' }}>{courses.active || 0}</strong></span>
+        <span style={{ marginLeft: 20 }}>课程总配额: <strong style={{ color: 'green' }}>{courses.tenant_limit || 0}</strong></span>
+        <span style={{ marginLeft: 20 }}>已用配额: <strong style={{ color: 'green' }}>{courses.used_limit || 0}</strong></span>
+      </div>
       <Table dataSource={courses} loading={loading} onQuery={onQuery} onDelete={onDelete} />
     </Container>
   );
