@@ -18,44 +18,44 @@ steps:
 #   #   branch:
 #   #   - dev
 
-- name: rsync-to-web-server
-  image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: rsync_key
-    RSYNC_USER:
-      from_secret: rsync_user
-  settings:
-    hosts:
-      - 192.168.0.31
-    source: ./build/*
-    target: /opt/ui-root
-
-# - name: rsync-to-mooplab-web-server
+# - name: rsync-to-web-server
 #   image: drillster/drone-rsync
 #   environment:
 #     RSYNC_KEY:
-#       from_secret: rsync_key_mooplab
+#       from_secret: rsync_key
 #     RSYNC_USER:
-#       from_secret: rsync_user_mooplab
+#       from_secret: rsync_user
 #   settings:
 #     hosts:
-#       - www.mooplab.com
+#       - 192.168.0.31
 #     source: ./build/*
 #     target: /opt/ui-root
 
-- name: rsync-to-sctel-web-server
+- name: rsync-to-mooplab-web-server
   image: drillster/drone-rsync
   environment:
     RSYNC_KEY:
-      from_secret: rsync_key_sctel
+      from_secret: rsync_key_mooplab
     RSYNC_USER:
-      from_secret: rsync_user_sctel
+      from_secret: rsync_user_mooplab
   settings:
     hosts:
-      - sctel.mooplab.com
+      - www.mooplab.com
     source: ./build/*
-    target: /storage/moop/ui-root
+    target: /opt/ui-root
+
+# - name: rsync-to-sctel-web-server
+#   image: drillster/drone-rsync
+#   environment:
+#     RSYNC_KEY:
+#       from_secret: rsync_key_sctel
+#     RSYNC_USER:
+#       from_secret: rsync_user_sctel
+#   settings:
+#     hosts:
+#       - sctel.mooplab.com
+#     source: ./build/*
+#     target: /storage/moop/ui-root
 
 trigger:
   branch:
