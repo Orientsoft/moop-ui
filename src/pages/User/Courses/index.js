@@ -56,7 +56,7 @@ const User = ({ data }) => (
               {data.filter(c => c.progress_status).map(course => (
                 <div key={course.id} className="col-12 col-md-4 m-b-30">
                   <div className="card p-b-10 achieve">
-                    <img className="card-img-top" src={get(course, 'thumb.thumbnail')} alt={course.title} />
+                    <img className="card-img-top" src={get(course, 'thumb.thumbnail') ? course.thumb.thumbnail : '/static/images/index1.jpg'} alt={course.title} />
                     <div className="card-body">
                       <img className="card-imgico" src="/static/images/lc_c.png" alt="" />
                       <h5 className="card-title">{course.title}</h5>
