@@ -127,9 +127,13 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
             ))), [])}
           </Tag.Group> */}
           <Tag.Group>
-            {categories.map((cat, i) => (
-              <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { if (currentTag0 === i) return; setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${cat.type.reduce((n, c) => n + c.count, 0)})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
-            ))}
+            {categories.map((cat, i) => {
+              const total = cat.type.reduce((n, c) => n + c.count, 0);
+
+              return total ? (
+                <Tag.Selectable checked={currentTag0 === i} key={i} onChange={() => { if (currentTag0 === i) return; setProjects([]); setCurrentTag0(i); }} title={`${cat.category}(${total})`}>{cat.category}({cat.type.reduce((n, c) => n + c.count, 0)})</Tag.Selectable>
+              ) : null;
+            })}
           </Tag.Group>
           {currentTag0 !== null ? (
             <Tag.Group className="m-t-20">
