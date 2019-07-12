@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Form, Input, Field, Grid, TreeSelect, Message, Select } from '@alifd/next';
+import React, { Fragment, Component } from 'react';
+import { Form, Input, Field, Grid, TreeSelect, Message, Select, Radio } from '@alifd/next';
 import { contributor } from '../../../api';
 
 const { Item: FormItem } = Form;
@@ -66,6 +66,7 @@ export default class Step1 extends Component {
 
   render() {
     const { tags, images, posting } = this.state;
+    const display = this.field.getValue('private') ? '' : 'none';
 
     return (
       <Form {...formItemLayout} field={this.field}>
@@ -96,6 +97,18 @@ export default class Step1 extends Component {
         </FormItem>
         <FormItem label="Github地址：" format="url" pattern={/\.git$/i} patternMessage="无效的Github地址" formatMessage="无效的Github地址" required requiredMessage="Github地址不能为空">
           <Input name="spec" placeholder="示例：https://example.com/demo.git" />
+        </FormItem>
+        <FormItem label="私有项目：">
+          <Radio.Group name="private" defaultValue={0}>
+            <Radio value={1}>是</Radio>
+            <Radio value={0}>否</Radio>
+          </Radio.Group>
+        </FormItem>
+        <FormItem label="账号：" style={{ display }} required={!display} requiredMessage="账号不能为空">
+          <Input name="username" />
+        </FormItem>
+        <FormItem label="密码：" style={{ display }} required={!display} requiredMessage="密码不能为空">
+          <Input name="password" htmlType="password" />
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>
