@@ -6,6 +6,7 @@ import ForgotPassword from '@/pages/Login/ForgotPassword';
 import Register from '@/pages/Register';
 import TenantLayout from '@/tenant/layouts/BasicLayout';
 import ContributorLayout from '@/contributor/layouts/BasicLayout';
+import ShareClassroom from '@/pages/ShareClassroom';
 
 export default (
   <Router>
@@ -15,6 +16,7 @@ export default (
       <Route path="/register" component={Register} />
       <Route path="/tenant" component={TenantLayout} />
       <Route path="/contributor" component={ContributorLayout} />
+      <Route path="/share_classroom" component={ShareClassroom} />
       <Route path="/" component={BasicLayout} />
     </Switch>
   </Router>
