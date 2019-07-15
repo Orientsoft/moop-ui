@@ -156,7 +156,7 @@ export default ({ history }) => {
         </div>
       </div>
       <Tab navStyle={{ padding: '0 10%' }} activeKey={activeTab} onChange={key => setActiveTab(key)} contentStyle={{ padding: '30px 0' }}>
-        <Tab.Item title="详情">
+        <Tab.Item title={user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? '详情' : ''}>
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
               <div className="col-12 col-md-8 m-b-30">
