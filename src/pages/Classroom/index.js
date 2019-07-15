@@ -69,13 +69,12 @@ export default ({ history }) => {
 
   useEffect(() => {
     const url = queryString.parse(history.location.search);
-    const container = document.querySelector('.ice-layout-scrollable');
     const fixedNaver = (e) => {
       if (naver && naver.current) {
-        if (e.target.scrollTop >= 424) {
+        if (e.target.scrollingElement.scrollTop >= 520) {
           naver.current.style.position = 'fixed';
           naver.current.style.left = `${naver.current.parentNode.offsetLeft + 15}px`;
-          naver.current.style.top = '90px';
+          naver.current.style.top = '20px';
           naver.current.style.width = '255px';
           naver.current.style.zIndex = 1;
         } else {
@@ -102,8 +101,8 @@ export default ({ history }) => {
           progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
         }
       });
-    container.addEventListener('scroll', fixedNaver);
-    return () => container.removeEventListener('scroll', fixedNaver);
+    document.addEventListener('scroll', fixedNaver);
+    return () => document.removeEventListener('scroll', fixedNaver);
   }, [history.location.search]);
   useEffect(() => {
     const buttons = [];
