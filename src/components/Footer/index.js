@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
+import trim from 'lodash-es/trim';
 import { getCurrentTenant } from '@/utils/helper';
 
 export default () => {
@@ -45,8 +46,7 @@ export default () => {
               <ul className="list-unstyled">
                 <li>地址：{get(tenant, 'address', '')}</li>
                 <li>邮箱：{get(tenant, 'email', '')}</li>
-                <li>电话：{get(tenant, 'mobile', '')}</li>
-                {/* <li>github：<a href="https://github.com/moop-china" target="_blank"><img height="20" src="http://pngimg.com/uploads/github/github_PNG15.png" /></a></li> */}
+                {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null}
               </ul>
             </div>
           </div>

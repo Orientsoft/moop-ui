@@ -90,7 +90,7 @@ export default class Step1 extends Component {
         </FormItem>
         <FormItem label="镜像：" required requiredMessage="镜像不能为空">
           <Select name="image" style={{ width: '100%' }} dataSource={images} itemRender={this.renderImage} />
-          <span className="fs12 corol6">没有找到合适的实验环境？请联系邮箱：wangbilin@orientsoft.cn，电话：028-84118076</span>
+          <span className="fs12 corol6">没有找到合适的实验环境？请联系邮箱：support@mooplab.com</span>
         </FormItem>
         <FormItem label="实验标签：" required requiredMessage="实验标签不能为空">
           <TreeSelect name="tag" style={{ width: '100%' }} dataSource={tags} />

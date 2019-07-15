@@ -99,7 +99,7 @@ export default ({ history }) => {
         <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
           <a href="#" className="closebnt" onClick={() => setCloseTip(true)} />
           <h4>成为贡献者或老师</h4>
-          <div className="reg_tipinfo">请您联系我们：<br />邮箱：<span>wangzheng@orientsoft.cn</span><br />电话：<span>028-84118076</span></div>
+          <div className="reg_tipinfo">请您联系我们：<br />邮箱：<span>support@mooplab.com</span></div>
         </div>
         <div className="row justify-content-center">
           <div className="col-5">
