@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, Grid, Input, Button, Upload, Radio } from '@alifd/next';
 import classnames from 'classnames';
+import BraftEditor from 'braft-editor';
 import { IMAGE_UPLOAD_URL } from '@/utils/api';
 
 const { Row, Col } = Grid;
@@ -61,6 +62,9 @@ export default class Step1 extends React.Component {
         if (thumb) {
           values.thumb = thumb.id;
         }
+        values.description = values.description.toHTML();
+        values.requirement = values.requirement.toHTML();
+        values.testPoint = values.testPoint.toHTML();
         values.material = material.filter(m => m.name);
         values.characteristic = characteristic.filter(c => c);
         setData(values);
@@ -93,13 +97,13 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="description" className="textareaheight180" rows={8} />
+          <BraftEditor name="description" value={BraftEditor.createEditorState(data && data.description)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="requirement" className="textareaheight180" rows={8} />
+          <BraftEditor name="requirement" value={BraftEditor.createEditorState(data && data.requirement)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="testPoint" className="textareaheight180" rows={8} />
+          <BraftEditor name="testPoint" value={BraftEditor.createEditorState(data && data.testPoint)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           {material.concat({}).map((({ name = '', href = '' }, i, self) => (
@@ -123,7 +127,7 @@ export default class Step1 extends React.Component {
           <Input trim value={characteristic[3]} onChange={e => this.setCharacteristic(3, e)} className="m-t-10" placeholder="特点四(选填)" />
         </Form.Item>
         <Form.Item label="课题人数限制：" required requiredMessage="必填项不能为空">
-          <Input disabled={disabled.limit} htmlType="number" name="limit" placeholder="例如：50" />
+          <Input disabled={disabled.limit} defaultValue={50} htmlType="number" name="limit" placeholder="例如：50" />
         </Form.Item>
         <Form.Item label="是否公开：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <Radio.Group disabled={disabled.isPublic} defaultValue={1} name="public" dataSource={[{ label: '公开(对所有学生开放)', value: 1 }, { label: '私有(只对本课题的学生开放)', value: 0 }]} />

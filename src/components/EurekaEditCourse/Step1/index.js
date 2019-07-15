@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, Grid, Input, Button, Upload, Radio, Message } from '@alifd/next';
 import classnames from 'classnames';
+import BraftEditor from 'braft-editor';
 import { IMAGE_UPLOAD_URL, classroom as classroomAPI } from '@/utils/api';
 
 const { Row, Col } = Grid;
@@ -58,6 +59,9 @@ export default class Step1 extends React.Component {
         if (thumb) {
           values.thumb = thumb.id;
         }
+        values.description = values.description.toHTML();
+        values.requirement = values.requirement.toHTML();
+        values.testPoint = values.testPoint.toHTML();
         values.material = material.filter(m => m.name);
         values.characteristic = characteristic.filter(c => c);
         setData(values);
@@ -72,6 +76,7 @@ export default class Step1 extends React.Component {
   render() {
     const { labelSpan, wrapperSpan } = this.props;
     const { thumb, material, characteristic } = this.state;
+    const data = this.field.getValues();
 
     return (
       <Form labelCol={{ span: labelSpan }} wrapperCol={{ span: wrapperSpan }} field={this.field}>
@@ -86,13 +91,13 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="description" className="textareaheight180" rows={8} />
+          <BraftEditor name="description" value={BraftEditor.createEditorState(data && data.description)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="requirement" className="textareaheight180" rows={8} />
+          <BraftEditor name="requirement" value={BraftEditor.createEditorState(data && data.requirement)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <Input.TextArea name="testPoint" className="textareaheight180" rows={8} />
+          <BraftEditor name="testPoint" value={BraftEditor.createEditorState(data && data.testPoint)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           {material.concat({}).map((({ name, href }, i, self) => (
