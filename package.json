@@ -20,6 +20,7 @@
     "@icedesign/foundation-symbol": "^1.x",
     "@icedesign/img": "^1.x",
     "@icedesign/layout": "^1.x",
+    "@icedesign/notification": "^1.0.5",
     "@icedesign/theme": "^1.x",
     "@pixcai/make-api": "^0.0.3",
     "bizcharts": "^3.5.3",

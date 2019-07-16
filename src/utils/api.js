@@ -1,5 +1,5 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
-import { Message } from '@alifd/next';
+import Notification from '@icedesign/notification';
 import { getCurrentUser, removeCurrentUser, removeCurrentTenant } from './helper';
 
 API.request.defaults.timeout = 600000;
@@ -8,7 +8,10 @@ API.request.defaults.withCredentials = true;
 
 API.request.interceptors.response.use(response => response, (error) => {
   if (error.status >= 500) {
-    Message.error('内部错误，请联系网站管理员');
+    Notification.error({
+      message: '内部错误',
+      description: '请联系网站管理员',
+    });
   } else if (error.response) {
     if (error.response.status === 403) {
       if (getCurrentUser()) {
@@ -18,7 +21,10 @@ API.request.interceptors.response.use(response => response, (error) => {
       removeCurrentTenant();
       location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
     } else {
-      Message.error(error.response.data);
+      Notification.error({
+        message: '错误',
+        description: error.response.data,
+      });
     }
   }
   return Promise.reject(error);
