@@ -97,13 +97,13 @@ export default class Step1 extends React.Component {
           </Upload>
         </Form.Item>
         <Form.Item label="课题描述：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <BraftEditor name="description" value={BraftEditor.createEditorState(data && data.description)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
+          <BraftEditor name="description" defaultValue={BraftEditor.createEditorState(data ? data.description : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
         <Form.Item label="预备知识：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <BraftEditor name="requirement" value={BraftEditor.createEditorState(data && data.requirement)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
+          <BraftEditor name="requirement" defaultValue={BraftEditor.createEditorState(data ? data.requirement : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
         <Form.Item label="考核内容：" required requiredMessage="必填项不能为空" patternMessage="格式不正确">
-          <BraftEditor name="testPoint" value={BraftEditor.createEditorState(data && data.testPoint)} style={{ height: 400, border: '1px solid #C4C6CF' }} />
+          <BraftEditor name="testPoint" defaultValue={BraftEditor.createEditorState(data ? data.testPoint : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">
           {material.concat({}).map((({ name = '', href = '' }, i, self) => (
