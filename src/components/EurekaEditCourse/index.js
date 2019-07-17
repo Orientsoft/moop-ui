@@ -10,7 +10,7 @@ const steps = [{
   title: '课题描述',
   render: props => <Step1 {...props} />,
 }, {
-  title: '实验项目',
+  title: '添加模版',
   render: props => <Step2 {...props} />,
 }, {
   title: '提交课题',

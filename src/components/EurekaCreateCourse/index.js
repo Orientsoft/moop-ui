@@ -6,16 +6,20 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
 import Step6 from './Step6';
+import Step7 from './Step7';
 
 const steps = [{
   title: '课题描述',
   render: props => <Step1 {...props} />,
 }, {
-  title: '实验项目',
+  title: '添加模版',
   render: props => <Step2 {...props} />,
 }, {
   title: '提交课题',
   render: props => <Step3 {...props} />,
+}, {
+  title: '编辑模版',
+  render: props => <Step7 {...props} />,
 }, {
   title: '发布课题',
   render: props => <Step4 {...props} />,
@@ -31,7 +35,7 @@ const FORM_SESSION = 'CREATEFORM';
 const CLASSROOM_SESSION = 'CREATECLASSROOM';
 
 export default class EurekaCreateCourse extends React.Component {
-  state = { current: 0 };
+  state = { current: 3 };
 
   constructor(props) {
     super(props);
@@ -128,6 +132,7 @@ export default class EurekaCreateCourse extends React.Component {
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),
             getPostData: this.getPostData,
+            getLocalData: this.getData,
             toNext: () => {
               if (this.disbaledStep.length) {
                 const last = Math.max(...this.disbaledStep);

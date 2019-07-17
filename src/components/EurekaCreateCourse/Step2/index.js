@@ -120,7 +120,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
             <Button type="primary" onClick={() => { setData({ projects: [...selected], homework }); toNext(); }} className="serverbtn">下一步</Button>
           </Col>
         </Row>
-        <Dialog title="选择实验模版" shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
+        <Dialog title={<div>选择实验模版 - <span style={{ fontSize: 14, color: 'red' }}>若无法勾选模版，请联系管理员授权</span></div>} shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
           {/* <Tag.Group>
             {categories.reduce((all, { type }) => all.concat(type.map(({ id, name, count }) => (
               <Tag.Selectable checked={currentTag === id} key={id} onChange={() => onChange(id)} title={`${name}(${count})`}>{name}({count})</Tag.Selectable>

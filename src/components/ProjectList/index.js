@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import get from 'lodash-es/get';
 import classnames from 'classnames';
 import { Dialog, Button, Message } from '@alifd/next';
@@ -116,8 +116,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
       {data.map((project, i) => (
         <div key={project.id} className="card">
           <div className="card-header">
-            <h5 className="mb-0">
-              <button className="btn" data-toggle="collapse" data-target={`#courses${i}`} aria-expanded="true" aria-controls="courses">
+            <h5 className="mb-0" title={project.title}>
+              <button className="btn" data-toggle="collapse" data-target={`#courses${i}`} aria-expanded="true" aria-controls="courses" style={{ paddingRight: isRunning[project.id] || project.running ? 310 : 104, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
                 {project.title}
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
@@ -134,9 +134,14 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               {isRunning[project.id] || project.running ? (
                 <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">停止实验环境</a>
               ) : (
-                  <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} style={{ right: 104 }} title="启动实验环境">启动实验环境</a>
+                  <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
               )}
-              <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">查看实验数据</a>
+              {isRunning[project.id] || project.running ? (
+                <Fragment>
+                  <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">查看实验数据</a>
+                  <a href={project.projectURL || '#'} target="_blank" className={classnames({ dirico: true, noico: !project.running })} title="进入实验目录">进入实验目录</a>
+                </Fragment>
+              ) : null}
               {/* eslint-enable */}
             </h5>
           </div>
