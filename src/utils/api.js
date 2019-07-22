@@ -22,6 +22,7 @@ API.request.interceptors.response.use(response => response, (error) => {
       location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
     } else {
       Notification.error({
+        duration: 2.5,
         message: '错误',
         description: error.response.data,
       });

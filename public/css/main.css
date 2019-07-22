@@ -1083,3 +1083,8 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
 .reg_tipbox .reg_tipinfo{ color: #666;  padding: 36px 20px 0 50px; overflow: hidden; font-size: 14px; line-height: 26px; }
 .reg_tipbox .reg_tipinfo span{ color: #000;}
 .reg_tipbox .closebnt{ float: right; width: 35px; height: 30px; }
+.ice-notification {
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+/* .ice-notification-notice { animation: none !important; } */
