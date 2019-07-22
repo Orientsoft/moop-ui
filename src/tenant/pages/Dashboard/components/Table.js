@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Select, Input, Button, Pagination } from '@alifd/next';
 import get from 'lodash-es/get';
+import { dashboard } from '../../../api';
 
 const { Column } = Table;
 const { Option } = Select;
@@ -8,7 +9,11 @@ const { Option } = Select;
 export default (props) => {
   const [dataSource, setDataSource] = useState({});
   const [condition, setCondition] = useState('owner');
-  const onQuery = (payload) => {};
+  const onQuery = (payload) => {
+    dashboard.projectList(payload).then(setDataSource);
+  };
+
+  // useEffect(() => onQuery(), []);
 
   return (
     <div>
@@ -17,7 +22,7 @@ export default (props) => {
           <Option value="owner">建立者</Option>
         </Select>
         <Input style={{ margin: '0 15px' }} />
-        <Button>查询</Button>
+        <Button onClick={onQuery}>查询</Button>
       </div>
       <Table dataSource={get(dataSource, 'data', [])} hasBorder={false} {...props}>
         <Column title="编号" dataIndex="name" />

@@ -18,7 +18,7 @@ export default () => {
     setLoading(true);
     setPayload(lastPayload);
 
-    return dashboard(lastPayload).then(({ data }) => {
+    return dashboard.classroom(lastPayload).then(({ data }) => {
       setCourses(data);
       setLoading(false);
     }).catch(() => setLoading(false));

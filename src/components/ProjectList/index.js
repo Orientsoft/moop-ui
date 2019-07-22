@@ -7,7 +7,7 @@ import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
-export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete }) => {
+export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, startArgs }) => {
   const [isRunning, setIsRunning] = useState({});
   const [isCommit, setIsCommit] = useState(false);
   const [containers, setContainers] = useState({});
@@ -71,7 +71,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
         content,
         onOk: () => {
           setCurrentRunning(true);
-          container.start({ data: postData }).then(({ data: { callback } }) => {
+          container.start({ data: startArgs != null ? { ...postData, ...startArgs } : postData }).then(({ data: { callback } }) => {
             setContainers({ ...containers, [id]: callback });
             setIsRunning({ ...isRunning, [id]: true });
             setCurrentRunning(false);
@@ -122,13 +122,13 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
-              {onMoveUp && (
+              {onMoveUp && canMove && (
                 <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '206px' }}>向上</a>
               )}
-              {onMoveDown && (
+              {onMoveDown && canMove && (
                 <a href="javascript:void(0);" onClick={() => onMoveDown(project)} className="deleico" style={{ right: '280px' }}>向下</a>
               )}
-              {onDelete && (
+              {onDelete && canDelete && (
                 <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '354px' }}>删除</a>
               )}
               {isRunning[project.id] || project.running ? (
@@ -146,12 +146,12 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
             </h5>
           </div>
           <div id={`courses${i}`} className={classnames({ collapse: true, show: project.running })}>
-            {get(project, 'labs', []).map(lab => (
-              <div key={lab.id} className="list-group">
+            {get(project, 'labs', []).map((lab, n, labs) => (
+              <div key={lab.id || n} className="list-group">
                 {isRunning[project.id] || project.running ? (
                   <div onClick={onRefresh}>
                     <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
-                      <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
+                      {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {lab.finish && <span className="listiconright">✔</span>}
                     </a>
                     {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
@@ -159,7 +159,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 ) : (
                   <div onClick={onRefresh}>
                     <a onClick={onClick} className="list-group-item list-group-item-action">
-                      <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />
+                      {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
                     </a>
                     {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}

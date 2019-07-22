@@ -70,6 +70,7 @@ export const project = {
   delete: DELETE('/projects/:projectId'),
   selectAll: GET('/projects'),
   categories: GET('/projects/tag'),
+  rename: PATCH('/classroom/update_project'),
 };
 
 export const purchase = {

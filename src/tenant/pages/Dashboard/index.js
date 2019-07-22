@@ -4,6 +4,7 @@ import Container from '@icedesign/container';
 import Table from './components/Table';
 import Card from './components/Card';
 import Chart from './components/Chart';
+// import { dashboard } from '../../api';
 
 const { Row, Col } = Grid;
 
@@ -18,6 +19,10 @@ export default class Dashboard extends Component {
     disk: '30%',
     containers: 129,
   };
+
+  componentDidMount() {
+
+  }
 
   render() {
     const { students, teachers, courses, projects, cpu, memory, disk, containers } = this.state;
