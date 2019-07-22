@@ -686,14 +686,17 @@ display: inline-block;}
 a.palyico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius:4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #1277eb; border: solid 1px #1277eb; color: #fff;}
 a.palyico:hover{ text-decoration: none;color: #1277eb; background: #fff}
 
-a.stopico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
+a.stopico{ position: absolute; right: 208px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
 a.stopico:hover{ text-decoration: none;color: #f44336; background: #fff}
 
-a.dataico{ position: absolute; cursor: pointer; right: 0; width: 96px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #00ce72; border: solid 1px #00ce72; color: #fff;}
+a.dataico{ position: absolute; cursor: pointer; right: 104px; width: 96px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #00ce72; border: solid 1px #00ce72; color: #fff;}
 a.dataico:hover{ text-decoration: none;color: #00ce72; background: #fff}
 
+a.dirico{ position: absolute; cursor: pointer; right: 0; width: 96px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #1277eb; border: solid 1px #1277eb; color: #fff;}
+a.dirico:hover{ text-decoration: none;color: #1277eb; background: #fff}
+
 a.noico,a.noico:hover{background: #fff; border: solid 1px #ccc;color: #aaa !important;}
-a.stopico{ position: absolute; right: 104px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
+a.stopico{ position: absolute; right: 208px; width: 96px; height: 26px; border-radius: 4px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #f44336; border: solid 1px #f44336; color: #fff;}
 a.deleico{position: absolute; cursor: pointer; width: 66px; height: 26px; border-radius: 5px; top:5px; text-align: center; line-height: 24px;font-size: 12px; background: #00ce72; border: solid 1px #00ce72; color: #fff;}
 a.deleico:hover{ text-decoration: none;color: #00ce72; background: #fff; text-decoration: none}
 
