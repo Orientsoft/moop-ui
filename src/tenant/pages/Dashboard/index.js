@@ -1,19 +1,20 @@
+/* eslint camelcase: 0 */
 import React, { Fragment, Component } from 'react';
 import { Grid } from '@alifd/next';
 import Container from '@icedesign/container';
 import Table from './components/Table';
 import Card from './components/Card';
 import Chart from './components/Chart';
-// import { dashboard } from '../../api';
+import { dashboard } from '../../api';
 
 const { Row, Col } = Grid;
 
 export default class Dashboard extends Component {
   state = {
-    students: 309,
-    teachers: 12,
-    courses: 123,
-    projects: 983,
+    student: 0,
+    teacher: 0,
+    teaching_classroom: 0,
+    total_classroom: 0,
     cpu: '89%',
     memory: '72%',
     disk: '30%',
@@ -21,27 +22,29 @@ export default class Dashboard extends Component {
   };
 
   componentDidMount() {
-
+    dashboard.count().then(({ data }) => {
+      this.setState(data);
+    });
   }
 
   render() {
-    const { students, teachers, courses, projects, cpu, memory, disk, containers } = this.state;
+    const { student, teacher, teaching_classroom, total_classroom, cpu, memory, disk, containers } = this.state;
 
     return (
       <Fragment>
         <div style={{ marginBottom: 15, fontWeight: 'bold' }}>数据统计</div>
         <Row gutter={20}>
           <Col span={6}>
-            <Card.Cyan value={students} label="注册学生用户数" />
+            <Card.Cyan value={student} label="注册学生用户数" />
           </Col>
           <Col span={6}>
-            <Card.Purple value={teachers} label="注册教师用户数" />
+            <Card.Purple value={teacher} label="注册教师用户数" />
           </Col>
           <Col span={6}>
-            <Card.Blue value={courses} label="正在教学的专题数" />
+            <Card.Blue value={teaching_classroom} label="正在教学的专题数" />
           </Col>
           <Col span={6}>
-            <Card.Orange value={projects} label="总的专题数" />
+            <Card.Orange value={total_classroom} label="总的专题数" />
           </Col>
         </Row>
         <div style={{ marginTop: 25, marginBottom: 15, fontWeight: 'bold' }}>实时计数</div>

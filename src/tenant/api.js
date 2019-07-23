@@ -4,8 +4,7 @@ export const dashboard = {
   classroom: GET('/dashboard/classroom'),
   total: GET(' /dashboard/classroom/total'),
   teaching: GET('/dashboard/classroom/teaching'),
-  teacher: GET('/dashboard/user/teacher'),
-  student: GET('/dashboard/user/student'),
+  count: GET('/dashboard/count'),
   projectList: GET('/dashboard/project_list'),
 };
 
