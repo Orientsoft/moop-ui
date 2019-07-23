@@ -123,13 +123,13 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               </button>
               {/* eslint-disable */}
               {onMoveUp && canMove && (
-                <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '206px' }}>向上</a>
+                <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '312px' }}>向上</a>
               )}
               {onMoveDown && canMove && (
-                <a href="javascript:void(0);" onClick={() => onMoveDown(project)} className="deleico" style={{ right: '280px' }}>向下</a>
+                <a href="javascript:void(0);" onClick={() => onMoveDown(project)} className="deleico" style={{ right: '383px' }}>向下</a>
               )}
               {onDelete && canDelete && (
-                <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '354px' }}>删除</a>
+                <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
               )}
               {isRunning[project.id] || project.running ? (
                 <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">停止实验环境</a>
@@ -138,7 +138,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               )}
               {isRunning[project.id] || project.running ? (
                 <Fragment>
-                  <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">查看实验数据</a>
+                  <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} style={{ color: 'white' }} title="查看实验数据">查看实验数据</a>
                   <a href={project.projectURL || '#'} target="_blank" className={classnames({ dirico: true, noico: !project.running })} title="进入实验目录">进入实验目录</a>
                 </Fragment>
               ) : null}
