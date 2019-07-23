@@ -5,6 +5,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
+import Step7 from './Step7';
 
 const steps = [{
   title: '课题描述',
@@ -15,6 +16,9 @@ const steps = [{
 }, {
   title: '提交课题',
   render: props => <Step3 {...props} />,
+}, {
+  title: '编辑模版',
+  render: props => <Step7 {...props} />,
 }, {
   title: '添加学生',
   render: props => <Step4 {...props} />,
@@ -42,7 +46,7 @@ export default class EurekaEditCourse extends React.Component {
     }
     // 未开始、进行中
     if (classroom.status === 1 || classroom.status === 2) {
-      this.disbaledStep.push(1, 2);
+      this.disbaledStep.push(1, 2, 3);
     }
     this.setData(0, {
       title: classroom.title,
@@ -141,6 +145,7 @@ export default class EurekaEditCourse extends React.Component {
           {steps[current].render({
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),
+            getLocalData: this.getData,
             getPostData: this.getPostData,
             toNext: () => this.setState({ current: current + 1 }),
             history: this.props.history,
