@@ -57,11 +57,13 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
   };
   const onEditLab = (e, lab, n, i) => {
     e.stopPropagation();
+    e.preventDefault();
     setCurrent([i, n]);
     setVisible(lab);
   };
   const onDeleteLab = (e, lab, n, labs) => {
     e.stopPropagation();
+    e.preventDefault();
     Dialog.confirm({
       title: '删除',
       content: `确认删除实验：${lab.name}?`,
@@ -73,6 +75,7 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
   };
   const onAddLab = (e, i) => {
     e.stopPropagation();
+    e.preventDefault();
     setIsAdd(true);
     setCurrent([i]);
     setVisible({ name: '', filename: '' });

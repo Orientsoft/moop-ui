@@ -35,7 +35,7 @@ const FORM_SESSION = 'CREATEFORM';
 const CLASSROOM_SESSION = 'CREATECLASSROOM';
 
 export default class EurekaCreateCourse extends React.Component {
-  state = { current: 0 };
+  state = { current: 3 };
 
   constructor(props) {
     super(props);
