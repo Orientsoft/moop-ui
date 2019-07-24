@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Field, Grid, Button, TreeSelect, Message, Select } from '@alifd/next';
+import { Form, Input, Field, Grid, Radio, Button, TreeSelect, Message, Select } from '@alifd/next';
 import { contributor } from '../../../api';
 
 const { Item: FormItem } = Form;
@@ -27,18 +27,23 @@ export default class Step1 extends Component {
       reference,
       tag,
       spec,
+      username,
+      password,
     } = props.dataSource;
 
     this.field = new Field(this, {
       values: {
         title,
-        description,
-        requirement,
+        description: description || '',
+        requirement: requirement || '',
         timeConsume: parseFloat(timeConsume) || 0,
-        material,
-        reference,
+        material: material || '',
+        reference: reference || '',
         tag: tag.id,
         spec,
+        private: props.dataSource.private || 0,
+        username,
+        password,
       },
     });
     this.state = {
@@ -94,6 +99,7 @@ export default class Step1 extends Component {
 
   render() {
     const { tags, images, posting } = this.state;
+    const display = this.field.getValue('private') ? '' : 'none';
 
     return (
       <Form {...formItemLayout} field={this.field}>
@@ -122,7 +128,19 @@ export default class Step1 extends Component {
           <TreeSelect name="tag" style={{ width: '100%' }} dataSource={tags} />
         </FormItem>
         <FormItem label="Github地址：" format="url" pattern={/\.git$/i} patternMessage="无效的Github地址" formatMessage="无效的Github地址" required requiredMessage="Github地址不能为空">
-          <Input name="spec" disabled placeholder="示例：https://example.com/demo.git" />
+          <Input name="spec" placeholder="示例：https://example.com/demo.git" />
+        </FormItem>
+        <FormItem label="私有项目：">
+          <Radio.Group name="private" defaultValue={0}>
+            <Radio value={1}>是</Radio>
+            <Radio value={0}>否</Radio>
+          </Radio.Group>
+        </FormItem>
+        <FormItem label="账号：" style={{ display }} required={!display} requiredMessage="账号不能为空">
+          <Input name="username" />
+        </FormItem>
+        <FormItem label="密码：" style={{ display }} required={!display} requiredMessage="密码不能为空">
+          <Input name="password" htmlType="password" />
         </FormItem>
         <FormItem wrapperCol={{ span: 24 }}>
           <Col offset={6}>

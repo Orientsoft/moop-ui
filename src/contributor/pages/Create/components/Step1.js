@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Form, Input, Field, Grid, TreeSelect, Message, Select, Radio } from '@alifd/next';
 import { contributor } from '../../../api';
 
