@@ -2,7 +2,7 @@ import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import { Dialog } from '@alifd/next';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 import moment from 'moment';
 import Tab from '@/components/Tab';
 import { classroom, invitation, progress as progressAPI, report as reportAPI } from '@/utils/api';
@@ -183,15 +183,15 @@ export default ({ history }) => {
 
                 <h2 className="m-b-20 m-t-40" id="t-description">实验项目描述</h2>
                 <div className="text-secondary">
-                  <ReactMarkdown source={course.description} />
+                  <ReactMarkdown source={course.description} escapeHtml={false} />
                 </div>
                 <h2 className="m-b-20 m-t-40" id="t-testpoint">预备知识</h2>
                 <div className="text-secondary">
-                  <ReactMarkdown source={course.requirement} />
+                  <ReactMarkdown source={course.requirement} escapeHtml={false} />
                 </div>
                 <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
                 <div className="text-secondary">
-                  <ReactMarkdown source={course.testPoint} />
+                  <ReactMarkdown source={course.testPoint} escapeHtml={false} />
                 </div>
                 <h2 className="m-b-20 m-t-40" id="t-material">参考资料</h2>
                 <div className="text-secondary">
