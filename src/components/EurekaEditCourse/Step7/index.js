@@ -12,6 +12,7 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
   const [current, setCurrent] = useState(null);
   const [isAdd, setIsAdd] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const room = getClassroom();
   const onStarted = (id) => {
     const project = selected.find(p => p.id === id);
 
@@ -105,8 +106,6 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
     );
   };
   const onFinished = () => {
-    const room = getClassroom();
-
     if (room) {
       setIsLoading(true);
       projectAPI.rename({
@@ -127,7 +126,7 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
     <div className="centminheight">
       <Row justify="center" className="m-t-20">
         <Col span={labelSpan + wrapperSpan}>
-          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canMove={false} canDelete={false} startArgs={{ edit: true }} />
+          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canMove={false} canDelete={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
         </Col>
       </Row>
       <Row justify="center" className="m-t-20">
