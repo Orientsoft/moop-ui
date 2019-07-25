@@ -6,7 +6,7 @@ import { project as projectAPI } from '@/utils/api';
 
 const { Row, Col } = Grid;
 
-export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, toNext }) => {
+export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, getClassroom, toNext }) => {
   const [selected, setSelected] = useState(get(getLocalData(1), 'projects', []));
   const [visible, setVisible] = useState(null);
   const [current, setCurrent] = useState(null);
@@ -113,7 +113,8 @@ export default ({ labelSpan, wrapperSpan, setData, getLocalData, getClassroom, t
           classroom: room.id,
           project: selected.map(s => ({ id: s.id, lab_list: s.labs })),
         },
-      }).then(() => {
+      }).then(({ data }) => {
+        setLocalData(1, { projects: data.projects });
         setIsLoading(false);
         toNext();
       }).catch(() => setIsLoading(false));

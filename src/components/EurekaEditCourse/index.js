@@ -146,6 +146,7 @@ export default class EurekaEditCourse extends React.Component {
             setData: data => this.setData(current, data),
             getData: () => this.getData(current),
             getLocalData: this.getData,
+            setLocalData: this.setData,
             getPostData: this.getPostData,
             toNext: () => this.setState({ current: current + 1 }),
             history: this.props.history,

@@ -138,8 +138,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               )}
               {isRunning[project.id] || project.running ? (
                 <Fragment>
-                  <a href={project.dataURL} target="_blank" className={classnames({ dataico: true, noico: !project.running })} style={{ color: 'white' }} title="查看实验数据">查看实验数据</a>
-                  <a href={project.projectURL || '#'} target="_blank" className={classnames({ dirico: true, noico: !project.running })} title="进入实验目录">进入实验目录</a>
+                  <a href={get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">查看实验数据</a>
+                  <a href={get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: !project.running })} title="进入实验目录">进入实验目录</a>
                 </Fragment>
               ) : null}
               {/* eslint-enable */}

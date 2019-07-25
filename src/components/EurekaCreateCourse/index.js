@@ -133,6 +133,7 @@ export default class EurekaCreateCourse extends React.Component {
             getData: () => this.getData(current),
             getPostData: this.getPostData,
             getLocalData: this.getData,
+            setLocalData: this.setData,
             toNext: () => {
               if (this.disbaledStep.length) {
                 const last = Math.max(...this.disbaledStep);
