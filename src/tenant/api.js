@@ -2,8 +2,7 @@ import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
 
 export const dashboard = {
   classroom: GET('/dashboard/classroom'),
-  total: GET(' /dashboard/classroom/total'),
-  teaching: GET('/dashboard/classroom/teaching'),
+  container: GET('/dashboard/container'),
   count: GET('/dashboard/count'),
   projectList: GET('/dashboard/project_list'),
 };

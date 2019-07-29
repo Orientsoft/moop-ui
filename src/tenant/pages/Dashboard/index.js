@@ -25,6 +25,7 @@ export default class Dashboard extends Component {
     dashboard.count().then(({ data }) => {
       this.setState(data);
     });
+    dashboard.container();
   }
 
   render() {
