@@ -16,7 +16,7 @@ export default ({ onLogout, history }) => {
       <div className="container ">
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <Link className="navbar-brand logo" to="/">
-            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
+            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" height="60" /> : <span><i>M</i>oopLab</span>}
           </Link>
           {/* <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
             <img height="35" src="/static/images/jupter-l.png" alt="Jupyter logo" />
@@ -32,9 +32,9 @@ export default ({ onLogout, history }) => {
                   <Link className="nav-link" to={menu.path}>{menu.name}</Link>
                 </li>
               ))}
-              <li  className='nav-item'>
+              {/* <li  className='nav-item'>
                 <a className="nav-link" href="https://docs.mooplab.com" target="_blank">用户文档</a>
-              </li>
+              </li> */}
             </ul>
             {/* eslint-enable */}
             {user ? (
