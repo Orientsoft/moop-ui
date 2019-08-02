@@ -3,7 +3,7 @@ import Container from '@icedesign/container';
 import Step1 from './components/Step1';
 
 const steps = [
-  { label: '填写实验信息', render: props => <Step1 {...props} /> },
+  { label: '填写实验模版信息', render: props => <Step1 {...props} /> },
 ];
 
 export default () => {

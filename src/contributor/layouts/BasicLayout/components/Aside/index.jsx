@@ -15,7 +15,7 @@ const asideMenuConfig = [
     icon: 'home',
   },
   {
-    name: '创建实验',
+    name: '创建实验模版',
     path: '/contributor/create',
     icon: 'shezhi',
   },
