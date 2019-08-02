@@ -24,7 +24,7 @@ export default class Step3 extends React.Component {
   }
 
   onSubmit = () => {
-    const { toNext, setData, getPostData, setClassroom } = this.props;
+    const { toNext, setData, getPostData, setClassroom, disableStep } = this.props;
 
     this.field.validate((error, values) => {
       if (!error) {
@@ -36,6 +36,7 @@ export default class Step3 extends React.Component {
           content: '确定创建？',
           onOk: () => classroom.create({ data: getPostData() }).then(({ data }) => {
             setClassroom(data);
+            disableStep(0, 1, 2);
             toNext();
           }).catch(e => Dialog.alert({
             title: '创建失败',
