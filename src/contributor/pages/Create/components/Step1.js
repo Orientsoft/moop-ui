@@ -77,18 +77,18 @@ export default class Step1 extends Component {
           <FormItem label="实验描述：" required requiredMessage="实验描述不能为空">
             <Input.TextArea name="description" />
           </FormItem>
-          <FormItem label="实验要求：" required requiredMessage="实验要求不能为空">
+          {/* <FormItem label="实验要求：" required requiredMessage="实验要求不能为空">
             <Input name="requirement" />
-          </FormItem>
+          </FormItem> */}
           <FormItem label="预计时间：" required requiredMessage="预计时间不能为空">
             <Input name="timeConsume" htmlType="number" placeholder="学时" />
           </FormItem>
-          <FormItem label="实验材料：">
+          {/* <FormItem label="实验材料：">
             <Input.TextArea name="material" />
           </FormItem>
           <FormItem label="参考资料：">
             <Input.TextArea name="reference" />
-          </FormItem>
+          </FormItem> */}
           <FormItem label="镜像：" required requiredMessage="镜像不能为空">
             <Select name="image" style={{ width: '100%' }} dataSource={images} itemRender={this.renderImage} />
             <span className="fs12 corol6">没有找到合适的实验环境？请联系邮箱：support@mooplab.com</span>

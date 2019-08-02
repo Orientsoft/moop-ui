@@ -47,6 +47,12 @@ export default class EurekaCreateCourse extends React.Component {
     } catch (error) {
       this.disbaledStep = [];
     }
+    for (let i = 0; i < steps.length; i += 1) {
+      if (this.disbaledStep.indexOf(i) === -1) {
+        this.state.current = i;
+        break;
+      }
+    }
   }
 
   setData = (key, data) => {

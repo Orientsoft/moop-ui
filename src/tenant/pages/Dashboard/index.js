@@ -19,17 +19,20 @@ export default class Dashboard extends Component {
     memory: '72%',
     disk: '30%',
     containers: 129,
+    data: [],
   };
 
   componentDidMount() {
     dashboard.count().then(({ data }) => {
       this.setState(data);
     });
-    dashboard.container();
+    dashboard.container().then(({ data }) => this.setState({
+      data: data.map(({ count, date }) => ({ year: date.split('-').slice(1).join('-'), value: count })),
+    }));
   }
 
   render() {
-    const { student, teacher, teaching_classroom, total_classroom, cpu, memory, disk, containers } = this.state;
+    const { student, teacher, teaching_classroom, total_classroom, cpu, memory, disk, containers, data } = this.state;
 
     return (
       <Fragment>
@@ -51,16 +54,16 @@ export default class Dashboard extends Component {
         <div style={{ marginTop: 25, marginBottom: 15, fontWeight: 'bold' }}>实时计数</div>
         <Row gutter={20}>
           <Col span={6}>
-            <Chart.Green value={cpu} label="CPU占用率" />
+            <Chart.Green value={cpu} label="CPU占用率" dataSource={data} />
           </Col>
           <Col span={6}>
-            <Chart.Orange value={memory} label="内存占用率" />
+            <Chart.Orange value={memory} label="内存占用率" dataSource={data} />
           </Col>
           <Col span={6}>
-            <Chart.Red value={disk} label="存储占用率" />
+            <Chart.Red value={disk} label="存储占用率" dataSource={data} />
           </Col>
           <Col span={6}>
-            <Chart.Blue value={containers} label="正在运行的容器数量" />
+            <Chart.Blue value={containers} label="正在运行的容器数量" dataSource={data} />
           </Col>
         </Row>
         <div style={{ marginTop: 25, marginBottom: 15, fontWeight: 'bold' }}>实验列表</div>

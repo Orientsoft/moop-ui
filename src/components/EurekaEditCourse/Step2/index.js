@@ -130,7 +130,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, setClassroom, getCla
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={labelSpan + wrapperSpan}>
-            <ProjectList course={getClassroom()} data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
+            <ProjectList course={getClassroom()} data={selected} showFinishedIcon={false} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">

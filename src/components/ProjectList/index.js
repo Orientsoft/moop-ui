@@ -7,7 +7,7 @@ import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
-export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, startArgs }) => {
+export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, showFinishedIcon = true, renderAddons, startArgs }) => {
   const [isRunning, setIsRunning] = useState({});
   const [isCommit, setIsCommit] = useState(false);
   const [containers, setContainers] = useState({});
@@ -152,7 +152,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                   <div onClick={onRefresh}>
                     <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
-                      {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
+                      {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
                     {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
                     {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
@@ -161,7 +161,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                   <div onClick={onRefresh}>
                     <a onClick={onClick} className="list-group-item list-group-item-action">
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
-                      {lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>}
+                      {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
                     {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
                     {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
@@ -169,6 +169,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 )}
               </div>
             ))}
+            {renderAddons && renderAddons(i)}
           </div>
         </div>
       ))}
