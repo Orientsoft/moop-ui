@@ -7,7 +7,7 @@ import { container, progress } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
-export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, showFinishedIcon = true, startArgs }) => {
+export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, showFinishedIcon = true, renderAddons, startArgs }) => {
   const [isRunning, setIsRunning] = useState({});
   const [isCommit, setIsCommit] = useState(false);
   const [containers, setContainers] = useState({});
@@ -169,6 +169,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 )}
               </div>
             ))}
+            {renderAddons && renderAddons(i)}
           </div>
         </div>
       ))}

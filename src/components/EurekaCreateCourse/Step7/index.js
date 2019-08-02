@@ -13,6 +13,11 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
   const [isAdd, setIsAdd] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const room = getClassroom();
+  const renderAddons = i => (
+    <div style={{ textAlign: 'center', borderTop: '1px solid #ddd', padding: 10 }}>
+      <Button type="primary" text onClick={e => onAddLab(e, i)}>添加实验</Button>
+    </div>
+  );
   const onStarted = (id) => {
     const project = selected.find(p => p.id === id);
 
@@ -98,7 +103,6 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
       <div style={{ position: 'relative', display: 'inline-block', width: '94%' }}>
         <div>{item}</div>
         <div style={{ position: 'absolute', top: 0, right: 0 }}>
-          <Button type="primary" text onClick={e => onAddLab(e, i)}>添加</Button>
           <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onEditLab(e, lab, n, i)}>编辑</Button>
           <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onDeleteLab(e, lab, n, labs, i)}>删除</Button>
         </div>
@@ -127,7 +131,7 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
     <div className="centminheight">
       <Row justify="center" className="m-t-20">
         <Col span={labelSpan + wrapperSpan}>
-          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canDelete={false} showFinishedIcon={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
+          <ProjectList renderAddons={renderAddons} data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canDelete={false} showFinishedIcon={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
         </Col>
       </Row>
       <Row justify="center" className="m-t-20">
