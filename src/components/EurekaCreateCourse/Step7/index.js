@@ -127,7 +127,7 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
     <div className="centminheight">
       <Row justify="center" className="m-t-20">
         <Col span={labelSpan + wrapperSpan}>
-          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canMove={false} canDelete={false} showFinishedIcon={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
+          <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canDelete={false} showFinishedIcon={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
         </Col>
       </Row>
       <Row justify="center" className="m-t-20">
