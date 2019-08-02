@@ -106,13 +106,13 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
       <Fragment>
         <Row justify="center">
           <Col span={labelSpan + wrapperSpan}>
-            <Button type="primary" onClick={() => setVisible(true)}>添加实验模板</Button>
+            <Button type="primary" onClick={() => setVisible(true)}>添加实验模版</Button>
             <Checkbox style={{ marginLeft: 16 }} checked={homework} onChange={v => setHomework(v)}>是否包含作业</Checkbox>
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={labelSpan + wrapperSpan}>
-            <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} />
+            <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} showFinishedIcon={false} />
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
