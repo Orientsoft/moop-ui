@@ -286,7 +286,7 @@ color: #1277eb;} */
 	box-shadow: 0 5px 21px 0 rgba(0, 0, 0, 0.1);
 }
 .courseslist .card-img-top{     height: 208px;}
-.card-text{ font-size:14px;}
+.card-text * { font-size:14px;}
 .indexbtn{ border: 1px solid #2ebc4f; font-size: 14px; color: #00a95d }
 .courseslist .card .card-title a{ color: #333; text-decoration: none}
 .courseslist .card .card-title a:hover{ color: #2ebc4f; text-decoration: none}

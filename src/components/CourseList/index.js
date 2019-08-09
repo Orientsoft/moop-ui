@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown/with-html';
 import { getCourseCover } from '@/utils/helper';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
@@ -33,7 +34,9 @@ export default ({ size = 99, tag, owner }) => {
             </div>
             <div className="card-body text-left">
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
-              <p className="card-text">{description}</p>
+              <div className="card-text">
+                <ReactMarkdown source={description} escapeHtml={false} />
+              </div>
               <div className="text-secondary fs12" style={{ position: 'relative' }}>
                 <span>学时安排：{timeConsume}</span>
                 <span style={{ position: 'absolute', right: 0 }}>已加入 <span style={{ color: 'green' }}>{confirm ? confirm.confirmed : 0}</span> 人 ／ 人数上限 {limit || 0} 人</span>
