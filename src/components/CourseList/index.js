@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
 export default ({ size = 99, tag, owner }) => {
-  const [courses, setCourses] = useState([{id: '', title: 'aaa', description: '<h1>哦多少</h1><p>毛孔堵塞构建复古风阿迪设计规范阿斯顿撒阿十分大方阿斯顿发的</p>'}]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const config = { params: {} };
@@ -18,7 +18,7 @@ export default ({ size = 99, tag, owner }) => {
       config.params.owner = owner;
       config.params.all = 1;
     }
-    // classroom.selectAll(config).then(({ data }) => setCourses(data.data));
+    classroom.selectAll(config).then(({ data }) => setCourses(data.data));
   }, [size, tag]);
 
   return (
