@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
-import CourseList from '@/components/CourseList';
 import { getCurrentTenant } from '@/utils/helper';
 
 export default () => {
@@ -52,13 +51,13 @@ export default () => {
               <h3>实验项目描述</h3>
               <p className="font24 p-t-30">公司的内在价值到底是多少？这是一个包括风险投资和投资银行在内的广大投资者共同关心的问题，也是公司投融资能否获得成功的关键所在。本实验项目旨在指导学生掌握公司估值最重要的一种方法——贴现现金流法（Discounted  Cash Flow Method, DCF），这也是理解公司内在价值最重要的一把标尺。</p>
             </div>
-            <div className="col-md-1 text-left"></div>
+            <div className="col-md-1 text-left" />
             <div className="col-md-5 text-left">
               <img src="/static/images/course-cove.png" alt="" width="320" />
               <h5 className="p-t-10">预备知识</h5>
               <p>公司金融学关于现金流和贴现率的估计方法、Python编程基础</p>
               {/* <img src="/static/images/logo-3.png" alt="" width="220" /> */}
-              <h5 classNamem="m-t-40">考核内容</h5>
+              <h5 className="m-t-40">考核内容</h5>
               <p>完成本实验项目中嵌入的阶段性检测题</p>
               <h5>参考资料</h5>
               <p>国家级在线开放课程——《公司金融学》：<a href="https://www.icourse163.org/course/SWUFE-1001651001"> https://www.icourse163.org/course/SWUFE-1001651001</a></p>
