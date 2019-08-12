@@ -34,7 +34,7 @@ export default ({ size = 99, tag, owner }) => {
             </div>
             <div className="card-body text-left">
               <h5 className="card-title"><Link to={`/classroom?id=${id}`} >{title}</Link></h5>
-              <div className="card-text">
+              <div className="card-text card-overflow">
                 <ReactMarkdown source={description} escapeHtml={false} />
               </div>
               <div className="text-secondary fs12" style={{ position: 'relative' }}>

@@ -256,6 +256,12 @@ color: #1277eb;} */
 }
 .courseslist .card-img-top{     height: 208px;}
 .card-text * { font-size:14px;}
+.card-overflow :first-child {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .indexbtn{ border: 1px solid #2ebc4f; font-size: 14px; color: #00a95d }
 .courseslist .card .card-title a{ color: #333; text-decoration: none}
 .courseslist .card .card-title a:hover{ color: #2ebc4f; text-decoration: none}
