@@ -287,6 +287,7 @@ color: #1277eb;} */
 }
 .courseslist .card-img-top{     height: 208px;}
 .card-text * { font-size:14px;}
+.card-overflow * { display: none; }
 .card-overflow :first-child {
   display: block;
   overflow: hidden;
