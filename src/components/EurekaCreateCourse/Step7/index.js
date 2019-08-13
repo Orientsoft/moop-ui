@@ -61,6 +61,24 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
       setData({ projects: [...selected] });
     }
   };
+  const onMoveItemUp = (e, lab, n, i) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (n > 0) {
+      selected[i].labs[n] = selected[i].labs[n - 1];
+      selected[i].labs[n - 1] = lab;
+      setSelected([...selected]);
+    }
+  };
+  const onMoveItemDown = (e, lab, n, i) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (n < selected[i].labs.length - 1) {
+      selected[i].labs[n] = selected[i].labs[n + 1];
+      selected[i].labs[n + 1] = lab;
+      setSelected([...selected]);
+    }
+  };
   const onEditLab = (e, lab, n, i) => {
     e.stopPropagation();
     e.preventDefault();
@@ -103,6 +121,8 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
       <div style={{ position: 'relative', display: 'inline-block', width: '94%' }}>
         <div>{item}</div>
         <div style={{ position: 'absolute', top: 0, right: 0 }}>
+          <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onMoveItemUp(e, lab, n, i)}>上移</Button>
+          <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onMoveItemDown(e, lab, n, i)}>下移</Button>
           <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onEditLab(e, lab, n, i)}>编辑</Button>
           <Button type="primary" text style={{ marginLeft: 10 }} onClick={e => onDeleteLab(e, lab, n, labs, i)}>删除</Button>
         </div>
