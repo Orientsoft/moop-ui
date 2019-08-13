@@ -111,6 +111,11 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
           </Col>
         </Row>
         <Row justify="center" className="m-t-20">
+          <Col span={10}>
+            <span className="text-danger">* 注意：该步骤可添加实验模板，并调整实验模板顺序</span>
+          </Col>
+        </Row>
+        <Row justify="center" className="m-t-20">
           <Col span={labelSpan + wrapperSpan}>
             <ProjectList data={selected} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} showFinishedIcon={false} />
           </Col>

@@ -130,6 +130,11 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
   return (
     <div className="centminheight">
       <Row justify="center" className="m-t-20">
+        <Col span={10}>
+          <span className="text-danger">* 注意：该步骤可编辑实验项目名称、调整实验项目顺序，启动实验环境后可编辑实验内容</span>
+        </Col>
+      </Row>
+      <Row justify="center" className="m-t-20">
         <Col span={labelSpan + wrapperSpan}>
           <ProjectList data={selected} renderAddons={renderAddons} showFinishedIcon={false} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canDelete={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
         </Col>

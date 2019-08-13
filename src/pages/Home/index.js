@@ -1,10 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
 import { getCurrentTenant } from '@/utils/helper';
 
 export default () => {
   const tenant = getCurrentTenant();
+  const [visited, setVisited] = useState(2019);
+
+  useEffect(() => {
+    let value = localStorage.getItem('MOOP_VISITED');
+    if (value) {
+      value = parseInt(value, 10) + 1;
+      setVisited(value);
+    }
+    localStorage.setItem('MOOP_VISITED', value);
+  }, []);
 
   return (
     <Fragment>
@@ -25,7 +35,7 @@ export default () => {
       </div>
       <div className="main-container  p-b-120">
         <div className="container p-t-60 text-center ">
-          <h2 className="large m-t-60 p-t-120">WIND估值预测模型功能模块说明</h2>
+          <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row  m-t-60" >
             <div className="col-md-12 text-center">
               <img src="/static/images/table.png" alt="WIND估值预测模型功能模块说明" />
@@ -72,15 +82,15 @@ export default () => {
           <div className="row  m-t-60" >
             <div className="col-md-4 text-center">
               <p>访问次数</p>
-              <h2>10891</h2>
+              <h2>{visited}</h2>
             </div>
             <div className="col-md-4 text-center">
               <p>学生数量</p>
-              <h2>2801</h2>
+              <h2>771</h2>
             </div>
             <div className="col-md-4 text-center">
-              <p>评论数</p>
-              <h2>2899</h2>
+              <p>实验报告数</p>
+              <h2>199</h2>
             </div>
           </div>
           <h4 className="m-t-60 text-center"><a className="btn btn-lg startbtn " href="/courses">进入实验 <span className="link-symbol">→</span></a></h4>
