@@ -121,8 +121,8 @@ export default ({ history }) => {
         }
         setActionButtons(buttons);
       } else if (course.owner.id === user.id) {
+        // <Link to={{ pathname: '/classroomdetail', search: `?id=${course.id}`, state: course }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>,
         buttons.push(
-          <Link to={{ pathname: '/classroomdetail', search: `?id=${course.id}`, state: course }} className="btn btn-primary btn-lg startbtn m-t-20 m-l-15">项目申报</Link>,
           <Link to={{ pathname: '/editclassroom', state: course }} className="btn btn-primary btn-lg whitebtn m-t-20 m-l-15">编辑课题</Link>
         );
         setActionButtons(buttons);
