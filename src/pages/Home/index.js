@@ -10,7 +10,7 @@ export default () => {
   useEffect(() => {
     let value = localStorage.getItem('MOOP_VISITED');
     if (value) {
-      value = (parseInt(value, 10) || 0) + 2019;
+      value = (parseInt(value, 10) || 2219) + 1;
       setVisited(value);
     }
     localStorage.setItem('MOOP_VISITED', value);
