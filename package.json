@@ -32,7 +32,6 @@
     "prop-types": "^15.5.8",
     "query-string": "^6.4.2",
     "react": "^16.4.1",
-    "react-beautiful-dnd": "^11.0.5",
     "react-dom": "^16.4.1",
     "react-markdown": "^4.0.8",
     "react-router-dom": "^4.2.2"
