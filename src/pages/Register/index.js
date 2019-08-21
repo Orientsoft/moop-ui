@@ -95,7 +95,7 @@ export default ({ history }) => {
     // <div className="bglog" style={{ height: '100vh' }}>
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60 povr">
-        <h2 className="text-center"><a className="navbar-brand logo" href="/"><i>M</i><span>oopLab</span></a></h2>
+        <h2 className="text-center"><a className="navbar-brand logo" href="/"><img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" /></a></h2>
         {/* <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
           <a href="#" className="closebnt" onClick={() => setCloseTip(true)} />
           <h4>成为贡献者或老师</h4>
@@ -145,9 +145,9 @@ export default ({ history }) => {
                     </div>
                   </div>
                   <div className="form-group m-t-10">
-                    <div className="col-sm-12 text-left fs14">
+                    {/* <div className="col-sm-12 text-left fs14">
                       <Checkbox onChange={v => setAgree(v)}>我同意</Checkbox><Link to="/help">《服务协议》</Link>
-                    </div>
+                    </div> */}
                     <div className="col-12  m-t-10 text-center ">
                       <button disabled={!agree} className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
                     </div>
@@ -177,7 +177,7 @@ export default ({ history }) => {
         </Dialog>
       </div>
       <div className="container text-center p-30">
-        <span className="fade-half">© 版权所有 MoopLab</span>
+        <span className="fade-half">© 版权所有 西南财经大学</span>
       </div>
     </div>
   );

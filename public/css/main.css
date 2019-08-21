@@ -1116,11 +1116,11 @@ a.reportbtn{ text-decoration: none;position: absolute;right: 20px; top: 9px; fon
     line-height: 30px;
 }
 
-.reg_tipbox{ background: url(../images/indexregbox.png) no-repeat left top; width: 332px; height: 228px; z-index: 1; position: absolute; top:200px; right: 38px;}
+.reg_tipbox{ background: url(../images/indexregbox.png) no-repeat left top; width: 332px; height: 228px; z-index: 1; position: absolute; top:200px; right: 30px;}
 .reg_tipbox h4{color: #fff; padding-top: 50px; height:80px;  font-size: 20px; text-align: center; overflow: hidden;} 
 .reg_tipbox .reg_tipinfo{ color: #666;  padding: 36px 20px 0 50px; overflow: hidden; font-size: 14px; line-height: 26px; }
 .reg_tipbox .reg_tipinfo span{ color: #000;}
-.reg_tipbox .closebnt{ float: right; width: 35px; height: 30px; }
+.reg_tipbox .closebnt{ float: right; width: 35px; height: 30px;cursor: pointer; }
 .ice-notification {
   left: 50%;
   transform: translate(-50%, 0%);

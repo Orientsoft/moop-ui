@@ -7,6 +7,7 @@ import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
+  const [closeTip, setCloseTip] = useState(false);
   const onSubmit = () => {
     const { name, key } = values;
 
@@ -63,8 +64,17 @@ export default ({ history }) => {
 
   return (
     <div className="bglog" style={{ height: '100vh' }}>
-      <div className="container p-t-60">
-        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>M</i><span>oopLab</span></Link></h2>
+      <div className="container p-t-60 povr">
+        <h2 className="text-center"><Link className="navbar-brand logo" to="/">
+        {/* <i>M</i><span>oopLab</span> */}
+          <img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" />
+        </Link></h2>
+        <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
+          {/* <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a> */}
+          <h4>评审专家登录</h4>
+          <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>zhuanjia</span><br/>密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>abc12345</span></div>
+        </div>
+
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-20">
@@ -101,7 +111,7 @@ export default ({ history }) => {
         </div>
       </div>
       <div className="container text-center p-30">
-        <span className="fade-half">© 版权所有 MoopLab</span>
+        <span className="fade-half">© 版权所有 西南财经大学</span>
       </div>
     </div>
   );
