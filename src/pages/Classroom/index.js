@@ -94,7 +94,7 @@ export default ({ history }) => {
     }
     reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
 
-    classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+    classroom.select({ params: { embed: 1, token: url.token } }, { classroomId: url.id })
       .then(({ data }) => {
         setCourse(data);
         if (user && isTeacher(user)) {
