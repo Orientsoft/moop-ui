@@ -93,7 +93,7 @@ export default ({ history }) => {
 
   return (
     // <div className="bglog" style={{ height: '100vh' }}>
-    <div className="bglog" style={{ height: '100vh' }}>
+    <div className="bglog" style={{ minHeight: '100vh' }}>
       <div className="container p-t-60 povr">
         <h2 className="text-center"><a className="navbar-brand logo" href="/"><img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" /></a></h2>
         {/* <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
@@ -149,7 +149,7 @@ export default ({ history }) => {
                       <Checkbox onChange={v => setAgree(v)}>我同意</Checkbox><Link to="/help">《服务协议》</Link>
                     </div> */}
                     <div className="col-12  m-t-10 text-center ">
-                      <button disabled={!agree} className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
+                      <button className="btn loginbnt btn-block" onClick={onSubmit}>注册</button>
                     </div>
                   </div>
                   <div className="form-group m-t-10 m-b-0">
