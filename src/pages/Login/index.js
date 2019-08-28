@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Message } from '@alifd/next';
 import { user } from '@/utils/api';
@@ -62,17 +62,39 @@ export default ({ history }) => {
   };
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
 
+  useEffect(() => {
+    const { token } = history.location.state;
+
+    if (token) {
+      user.login({ data: { token } }).then(({ data }) => {
+        if (!data.gender) {
+          data.gender = consts.sex.MALE;
+        }
+        if (!data.thumb) {
+          if (data.gender === consts.sex.MALE) {
+            data.thumb = '/static/images/headerboy.png';
+          } else {
+            data.thumb = '/static/images/headgirl.png';
+          }
+        }
+        setCurrentUser(data);
+        history.push(`/classroom?id=${data.classroom}`);
+      });
+    }
+  }, []);
+
   return (
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60 povr">
-        <h2 className="text-center"><Link className="navbar-brand logo" to="/">
-        {/* <i>M</i><span>oopLab</span> */}
-          <img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" />
-        </Link></h2>
+        <h2 className="text-center">
+          <Link className="navbar-brand logo" to="/">
+            <img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" />
+          </Link>
+        </h2>
         <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
           {/* <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a> */}
           <h4>评审专家登录</h4>
-          <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>zhuanjia</span><br/>密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>abc12345</span></div>
+          <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>zhuanjia</span><br />密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>abc12345</span></div>
         </div>
 
         <div className="row justify-content-center">

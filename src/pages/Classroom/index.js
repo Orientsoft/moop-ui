@@ -85,6 +85,13 @@ export default ({ history }) => {
       }
     };
 
+    if (!user && url.token) {
+      history.push('/login', {
+        token: url.token,
+      });
+      return;
+    }
+
     if (url.tab) {
       const key = parseInt(url.tab, 10);
 
