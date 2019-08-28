@@ -63,10 +63,10 @@ export default ({ history }) => {
   const setField = name => e => setValues({ ...values, [name]: e.target.value.trim() });
 
   useEffect(() => {
-    const { token } = history.location.state;
+    const { state } = history.location;
 
-    if (token) {
-      user.login({ data: { token } }).then(({ data }) => {
+    if (state && state.token) {
+      user.login({ data: { token: state.token } }).then(({ data }) => {
         if (!data.gender) {
           data.gender = consts.sex.MALE;
         }
