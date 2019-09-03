@@ -94,7 +94,7 @@ export default ({ history }) => {
         <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
           {/* <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a> */}
           <h4>评审专家登录</h4>
-          <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>zhuanjia</span><br />密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>abc12345</span></div>
+          <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>test01</span><br />密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>moopjinrong</span></div>
         </div>
 
         <div className="row justify-content-center">
