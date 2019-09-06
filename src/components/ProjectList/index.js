@@ -23,7 +23,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
     progress.create({
       data: {
         participant: user.id,
-        classroom: course.id,
+        classroom: isEdit && editProject ? editProject.classroom : course.id,
         message: { lab: labId },
       },
     });
@@ -58,7 +58,15 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
       const postData = { project: id };
       let content = '是否确定启动？';
 
-      if (course) {
+      if (isEdit) {
+        if (editProject) {
+          content = (
+            <span>
+              已经启动实验：<a href={`/classroom?id=${editProject.classroom}`}>{editProject.classroom_name}</a>，是否强制关闭并启动当前实验？
+            </span>
+          );
+        }
+      } else if (course) {
         if (course.container) {
           content = (
             <span>
@@ -115,10 +123,12 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
 
   useEffect(() => {
     if (startArgs && startArgs.edit) {
-      classroom.getStatus({ params: { classroom: course.id } }).then((response) => {
-        if (response.data && response.data.edit) {
-          setEditProject(response.data);
-          setIsRunning({ ...isRunning, [response.data.project]: true });
+      classroom.getStatus({ params: { classroom: startArgs.classroom } }).then((response) => {
+        if (response.data && response.data.data && response.data.data.project) {
+          setEditProject(response.data.data);
+          setIsRunning({ ...isRunning, [response.data.data.project]: true });
+        } else {
+          setEditProject(null);
         }
       });
     }
@@ -144,15 +154,15 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               {onDelete && canDelete && (
                 <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
               )}
-              {(isEdit ? editProject : (isRunning[project.id] || project.running)) ? (
-                <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: !project.running })} title="停止实验环境">停止实验环境</a>
+              {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
+                <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止实验环境</a>
               ) : (
-                  <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: project.running || shouldDisabled })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
+                  <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
               )}
-              {(isEdit ? editProject : (isRunning[project.id] || project.running)) ? (
+              {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
                 <Fragment>
-                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: !project.running })} title="查看实验数据">查看实验数据</a>
-                  <a href={editProject ? editProject.labURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: !project.running })} title="进入实验目录">进入实验目录</a>
+                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="查看实验数据">查看实验数据</a>
+                  <a href={editProject ? editProject.projectURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="进入实验目录">进入实验目录</a>
                 </Fragment>
               ) : null}
               {/* eslint-enable */}
@@ -161,9 +171,9 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
           <div id={`courses${i}`} className={classnames({ collapse: true, show: project.running })}>
             {get(project, 'labs', []).map((lab, n, labs) => (
               <div key={lab.id || n} className="list-group">
-                {(isEdit ? editProject : (isRunning[project.id] || project.running)) ? (
+                {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
                   <div onClick={onRefresh}>
-                    <a href={get(project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
+                    <a href={get(isEdit ? editProject : project, `labURL.${lab.id}`, get(containers[project.id], `labURL.${lab.id}`))} onClick={() => onLearn(lab.id)} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
