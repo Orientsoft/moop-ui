@@ -91,6 +91,7 @@ export const classroom = {
   selectMine: GET('/classrooms/mine?embed=1'),
   selectPublic: GET('/classrooms/public'),
   restart: POST('/classrooms/restart'),
+  getStatus: GET('/edit_status'),
 };
 
 export const invitation = {
