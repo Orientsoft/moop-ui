@@ -49,7 +49,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
     if (Array.from(e.target.classList).indexOf('noico') !== -1) {
       return;
     }
-    if (isRunning[id] || isStarted) {
+    if (isEdit ? (editProject && editProject.project === id) : (isRunning[id] || isStarted)) {
       Dialog.alert({
         title: '启动',
         content: '项目已经启动',
@@ -95,7 +95,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
     if (Array.from(e.target.classList).indexOf('noico') !== -1) {
       return;
     }
-    if (isRunning[id] || isStarted) {
+    if (isEdit ? (editProject && editProject.project === id) : (isRunning[id] || isStarted)) {
       Dialog.alert({
         title: '停止',
         content: '是否确认停止？',
