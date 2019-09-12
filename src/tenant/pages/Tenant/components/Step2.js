@@ -68,7 +68,7 @@ export default class Step2 extends Component {
     return (
       <Form {...formItemLayout} field={this.field}>
         <FormItem label="角色：">
-          <Input name="profession1" readOnly value="老师" style={{ width: '100%', borderColor: 'transparent' }} />
+          <Input name="profession1" readOnly value="开发工程师" style={{ width: '100%', borderColor: 'transparent' }} />
         </FormItem>
         <FormItem label="角色照片：">
           <ImageUploader onSuccess={image => this.onUploadSuccess(image, 0)} value={get(this.props.value, 'introduction.0.thumb')} />
@@ -77,7 +77,7 @@ export default class Step2 extends Component {
           <Input.TextArea name="remark1" />
         </FormItem>
         <FormItem label="角色：">
-          <Input name="profession2" readOnly value="学生" style={{ width: '100%', borderColor: 'transparent' }} />
+          <Input name="profession2" readOnly value="算法工程师" style={{ width: '100%', borderColor: 'transparent' }} />
         </FormItem>
         <FormItem label="角色照片：">
           <ImageUploader onSuccess={image => this.onUploadSuccess(image, 1)} value={get(this.props.value, 'introduction.1.thumb')} />

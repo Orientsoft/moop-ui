@@ -16,7 +16,7 @@ export default ({ onLogout, history }) => {
       <div className="container ">
         <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
           <Link className="navbar-brand logo" to="/">
-            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
+            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" /> : <span><i>M</i>oopLab</span>}
           </Link>
           {/* <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
             <img height="35" src="/static/images/jupter-l.png" alt="Jupyter logo" />

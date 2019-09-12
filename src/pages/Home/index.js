@@ -9,7 +9,7 @@ export default () => {
 
   return (
     <Fragment>
-      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/static/images/loginbg.png')})` }}>
+      <div className="mainbg" style={{ backgroundPosition: 'center 10%', backgroundImage: `url(${get(tenant, 'background', '/static/images/loginbg.png')})` }}>
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
@@ -23,7 +23,7 @@ export default () => {
             </div>
           </div>
         </div>
-        <div className="headerbottom" />
+
       </div>
       <div className="bg-eee p-t-80 p-b-60">
         <div className="container p-b-60 text-center">
