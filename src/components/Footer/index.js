@@ -17,8 +17,10 @@ export default () => {
             </Link>
             {/* <p>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！</p> */}
           </div>
-          <div className="col-md-6 col-sm-6 p-t-30">
-            <p>地址：{get(tenant, 'address', '')}&nbsp;&nbsp;&nbsp;&nbsp;邮箱：{get(tenant, 'email', '')}&nbsp;&nbsp;&nbsp;&nbsp;电话：{get(tenant, 'mobile')}</p>
+          <div className="col-md-6 col-sm-6 p-t-20">
+            <p> <br /> 地址：{get(tenant, 'address', '')}&nbsp;&nbsp;&nbsp;&nbsp;邮箱：{get(tenant, 'email', '')}&nbsp;&nbsp;&nbsp;&nbsp;电话：{get(tenant, 'mobile')}
+                <br /> <br />  技术支持：北京百智享科技有限公司
+            </p>
           </div>
         </div>
         <p className="m-t-20 text-center">
