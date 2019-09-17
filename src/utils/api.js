@@ -6,7 +6,18 @@ API.request.defaults.timeout = 600000;
 API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
-API.request.interceptors.response.use(response => response, (error) => {
+API.request.interceptors.response.use((response) => {
+  if (response.headers.login_status === 'False') {
+    if (getCurrentUser()) {
+      user.logout();
+      removeCurrentUser();
+      removeCurrentTenant();
+      location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
+      return Promise.reject();
+    }
+  }
+  return response;
+}, (error) => {
   if (error.status >= 500) {
     Notification.error({
       message: '内部错误',
