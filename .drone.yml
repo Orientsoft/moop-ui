@@ -59,7 +59,7 @@ steps:
 
 trigger:
   branch:
-  - dev
+  - sctel
   # event:
   # - push
 
