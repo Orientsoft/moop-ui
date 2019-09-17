@@ -43,7 +43,7 @@ export default ({ onLogout, history }) => {
                   <span style={{ color: 'lightgrey', fontSize: 17, marginRight: 10, verticalAlign: 'middle' }}>{user.role === consts.user.TEACHER ? '教师' : '学生'}</span>
                   <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <Link className="dropdown-item" to="/users/courses">我的课题</Link>
+                    <Link className="dropdown-item" to="/users/courses">我的实验</Link>
                     <Link className="dropdown-item" to="/users/profile">设置</Link>
                     <a className="dropdown-item" onClick={onLogout}>退出</a>
                   </div>

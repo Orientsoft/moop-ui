@@ -5,7 +5,7 @@ const headerMenuConfig = [
   },
   {
     path: '/courses',
-    name: '课题',
+    name: '实验',
   },
 ];
 
