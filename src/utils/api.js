@@ -8,15 +8,13 @@ API.request.defaults.baseURL = '/api/v1';
 API.request.defaults.withCredentials = true;
 
 API.request.interceptors.response.use((response) => {
-  if (response.data && isPlainObject(response.data)) {
+  if (response.headers.login_status === 'False') {
     if (getCurrentUser()) {
-      if (!response.data.login_status) {
-        user.logout();
-        removeCurrentUser();
-        removeCurrentTenant();
-        location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
-        return Promise.reject();
-      }
+      user.logout();
+      removeCurrentUser();
+      removeCurrentTenant();
+      location.href = `/login?from=${encodeURIComponent(location.href.replace(location.origin, ''))}`;
+      return Promise.reject();
     }
   }
   return response;
