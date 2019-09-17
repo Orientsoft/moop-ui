@@ -18,31 +18,31 @@ steps:
 #   #   branch:
 #   #   - dev
 
-- name: rsync-to-web-server
-  image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: rsync_key
-    RSYNC_USER:
-      from_secret: rsync_user
-  settings:
-    hosts:
-      - 192.168.0.31
-    source: ./build/*
-    target: /opt/ui-root
+# - name: rsync-to-web-server
+#   image: drillster/drone-rsync
+#   environment:
+#     RSYNC_KEY:
+#       from_secret: rsync_key
+#     RSYNC_USER:
+#       from_secret: rsync_user
+#   settings:
+#     hosts:
+#       - 192.168.0.31
+#     source: ./build/*
+#     target: /opt/ui-root
 
-- name: rsync-to-mooplab-web-server
-  image: drillster/drone-rsync
-  environment:
-    RSYNC_KEY:
-      from_secret: rsync_key_mooplab
-    RSYNC_USER:
-      from_secret: rsync_user_mooplab
-  settings:
-    hosts:
-      - www.mooplab.com
-    source: ./build/*
-    target: /opt/ui-root
+# - name: rsync-to-mooplab-web-server
+#   image: drillster/drone-rsync
+#   environment:
+#     RSYNC_KEY:
+#       from_secret: rsync_key_mooplab
+#     RSYNC_USER:
+#       from_secret: rsync_user_mooplab
+#   settings:
+#     hosts:
+#       - www.mooplab.com
+#     source: ./build/*
+#     target: /opt/ui-root
 
 - name: rsync-to-sctel-web-server
   image: drillster/drone-rsync
