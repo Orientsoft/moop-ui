@@ -16,17 +16,7 @@ export default ({ history }) => {
     if (key !== password) {
       Message.error('两次密码输入不一致');
     } else if (mobile && code && key) {
-      user.resetPassword({ data: { mobile, code, key } }).then(({ data }) => {
-        if (!data.gender) {
-          data.gender = consts.sex.MALE;
-        }
-        if (!data.thumb) {
-          if (data.gender === consts.sex.MALE) {
-            data.thumb = '/static/images/headerboy.png';
-          } else {
-            data.thumb = '/static/images/headgirl.png';
-          }
-        }
+      user.resetPassword({ data: { mobile, code, key } }).then(() => {
         Message.success('更新成功');
         setTimeout(() => history.push('/login'), 1000);
       });
