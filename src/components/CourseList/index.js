@@ -22,7 +22,7 @@ export default ({ size = 99, tag, owner, sort }) => {
       config.params.sort = sort;
     }
     classroom.selectAll(config).then(({ data }) => setCourses(data.data));
-  }, [size, tag]);
+  }, [size, tag, sort]);
 
   return (
     <div className="row">
