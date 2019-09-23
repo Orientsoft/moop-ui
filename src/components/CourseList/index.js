@@ -5,7 +5,7 @@ import { getCourseCover } from '@/utils/helper';
 import { Link } from 'react-router-dom';
 import { classroom } from '@/utils/api';
 
-export default ({ size = 99, tag, owner }) => {
+export default ({ size = 99, tag, owner, sort }) => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -18,11 +18,14 @@ export default ({ size = 99, tag, owner }) => {
       config.params.owner = owner;
       config.params.all = 1;
     }
+    if (sort) {
+      config.params.sort = sort;
+    }
     classroom.selectAll(config).then(({ data }) => setCourses(data.data));
-  }, [size, tag]);
+  }, [size, tag, sort]);
 
   return (
-    <div className="row m-t-40">
+    <div className="row">
       {courses.length ? courses.slice(0, size).map(({ id, title, description, thumb, timeConsume, list_running, public: isPublic, confirm, limit }, i, allCourses) => (
         <div key={id} className="col-12 courseslist  col-md-4 m-b-30">
           <div className="card p-b-10">

@@ -3,7 +3,6 @@ import { Message, Button, Dialog } from '@alifd/next';
 import { Link } from 'react-router-dom';
 import { user, captcha as captchaAPI } from '@/utils/api';
 import { startCounter } from '@/utils/helper';
-import consts from '@/utils/consts';
 
 export default ({ history }) => {
   const [values, setValues] = useState({});
