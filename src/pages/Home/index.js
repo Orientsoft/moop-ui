@@ -36,11 +36,68 @@ export default () => {
       <div className="main-container  p-b-120">
         <div className="container p-t-60 text-center ">
           <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
-          <div className="row  m-t-60" >
-            <div className="col-md-12 text-center">
-              <img src="/static/images/table.png" alt="WIND估值预测模型功能模块说明" />
+          <div className="row-warp" >
+            <div className="row  m-t-60 ">
+              <div className="col-md-1 width"></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <a href="#">01（历史）财务报表</a> <br />
+                  <span>⇩</span><br />
+                  <a href="#">02（简化）财务报表</a> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"> <span>⇨</span></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <a href="#">12 敏感性分析</a> <br />
+                  <span>⇩</span>
+                  <a href="#">11 绝对估值</a> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"> <span>⇨</span></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <a href="#">13 杜邦分析</a> <br />
+                  <span>⇩</span><br />
+                  <a href="#">14 输出报表</a> <br />
+                </div>
+              </div>
             </div>
-           
+            <div className="row  m-t-60 bntcont2">
+              <div className="col-md-1 width"></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <em>03 收入</em> <br />
+                  <span></span><br />
+                  <em>04 投资 </em> <br />
+                  <span></span><br />
+                  <em>05 筹资 </em> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <em>06 预测IS</em> <br />
+                  <span></span><br />
+                  <em>07 预测BS </em> <br />
+                  <span></span><br />
+                  <em>08 预测CS </em> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro">
+                  <em>09 财务分析</em> <br />
+                  <span></span><br />
+                  <em>10 预测合理性检验 </em> <br />
+                </div>
+              </div>
+
+            </div>
+
+            {/* <div className="col-md-12 text-center">
+              <img src="/static/images/table.png" alt="WIND估值预测模型功能模块说明" />
+            </div> */}
           </div>
         </div>
       </div>
