@@ -33,74 +33,266 @@ export default () => {
           </div>
         </div>
       </div>
-      <div className="main-container  p-b-120">
+      <div className="main-container  p-b-120 displaynone">
         <div className="container p-t-60 text-center ">
           <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
               <div className="col-md-1 width"></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <a href="#">01（历史）财务报表</a> <br />
-                  <span>⇩</span><br />
-                  <a href="#">02（简化）财务报表</a> <br />
+                <div className="bindex-pro bd999 bdgreen">
+                  <a href="#" className="bggreen">01（历史）财务报表</a> <br />
+                  <span className="color999 colorgreen">⇩</span><br />
+                  <a href="#" className=" bggreen">02（简化）财务报表</a> <br />
+                  <p className="notep color999">模块一：历史报表</p>
                 </div>
               </div>
-              <div className="col-md-1 width"> <span>⇨</span></div>
+              <div className="col-md-1 width"> <span></span></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <a href="#">12 敏感性分析</a> <br />
-                  <span>⇩</span>
-                  <a href="#">11 绝对估值</a> <br />
+                <div className="bindex-pro bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen">12 敏感性分析</a> <br />
+                  <span className="color999 colorgreen">⇧</span>
+                  <a href="#" className=" nocolor bggreen">11 绝对估值</a> <br />
+                  <p className="notep color999">模块三：估值计算</p>
                 </div>
               </div>
-              <div className="col-md-1 width"> <span>⇨</span></div>
+              <div className="col-md-1 width"> <span className="color999 colorgreen">⇨</span></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <a href="#">13 杜邦分析</a> <br />
-                  <span>⇩</span><br />
-                  <a href="#">14 输出报表</a> <br />
+                <div className="bindex-pro bd999 bdgreen">
+                  <a href="#" className="nocolor bggreen">13 杜邦分析</a> <br />
+                  <span className="color999 colorgreen">⇩</span><br />
+                  <a href="#" className="nocolor bggreen">14 输出报表</a> <br />
+                  <p className="notep color999">模块四：输出报告</p>
                 </div>
               </div>
             </div>
-            <div className="row  m-t-60 bntcont2">
+            <div className="row lineiocn">
               <div className="col-md-1 width"></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <em>03 收入</em> <br />
-                  <span></span><br />
-                  <em>04 投资 </em> <br />
-                  <span></span><br />
-                  <em>05 筹资 </em> <br />
-                </div>
+                <span className="color999 colorgreen">⇩</span>
               </div>
-              <div className="col-md-1 width"></div>
+              <div className="col-md-1 width"> <span></span></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <em>06 预测IS</em> <br />
-                  <span></span><br />
-                  <em>07 预测BS </em> <br />
-                  <span></span><br />
-                  <em>08 预测CS </em> <br />
-                </div>
+                <span className=" color999 colorgreen">⇧</span>
               </div>
-              <div className="col-md-1 width"></div>
+              <div className="col-md-1 width"><span></span></div>
               <div className="col-md-3 width">
-                <div className="bindex-pro">
-                  <em>09 财务分析</em> <br />
-                  <span></span><br />
-                  <em>10 预测合理性检验 </em> <br />
-                </div>
+                <span className="color999 colorblue">⇧</span>
               </div>
-
             </div>
-
-            {/* <div className="col-md-12 text-center">
-              <img src="/static/images/table.png" alt="WIND估值预测模型功能模块说明" />
-            </div> */}
+            <div className="row   bntcont2">
+              <div className="col-md-1 width "></div>
+              <div className="col-md-3 width">
+                <div className="bindex-pro bd999 bdblue">
+                  <a href="#" className=" bgblue">03 收入</a> <br />
+                  <span></span><br />
+                  <a href="#" className=" bgblue">04 投资 </a> <br />
+                  <span></span><br />
+                  <a href="#" className=" bgblue">05 筹资 </a> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"><span className="color999 colorblue">⇨</span></div>
+              <div className="col-md-3 width ">
+                <div className="bindex-pro bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen">06 预测IS</a> <br />
+                  <span></span><br />
+                  <a href="#" className=" nocolor bggreen">07 预测BS </a> <br />
+                  <span></span><br />
+                  <a href="#" className=" nocolor bggreen">08 预测CS </a> <br />
+                </div>
+              </div>
+              <div className="col-md-1 width"><span className="color999 colorgreen">⇨</span></div>
+              <div className="col-md-3 width mg50">
+                <div className="bindex-pro bd999 bdblue">
+                  <a href="#" className=" nocolor bggreen">09 财务分析</a> <br />
+                  <span></span><br />
+                  <a href="#" className=" nocolor bgblue">10 预测合理性检验 </a> <br />
+                </div>
+              </div>
+              <p className="notep color999  "><span >模块二：报表预测</span></p>
+            </div>
           </div>
         </div>
       </div>
+      <div className="main-container p-b-120">
+        <div className="container p-t-60 text-center ">
+          <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
+          <div className="row-warp" >
+            <div className="row  m-t-60 ">
+              <div  className="col-md-4">
+                <div className="bindex-pro bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen">01（历史）财务报表</a> <br /><br />
+                  <span className="font32 color999 colorgreen">↓</span><br /><br />
+                  <a href="#" className=" nocolor bggreen">02（简化）资产负债表 </a> <br /><br />
+                  <span className="font32 color999 colorgreen">↓</span><br /><br />
+                  <a href="#" className=" nocolor bggreen">03（简化）利润表 </a> <br />
+                  <p className=" font14 color999 ">模块一：历史报表</p>
+                </div>
+              </div>
+           
+              <div className="col-md-1 right pt200"><span className="font32 color999 colorgreen ">⇨</span></div>
+              <div className="col-md-7 right">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="row">
+                      <div className="col-md-5">
+                        <div className="bindex-pro bd999 bdgreen">
+                          <a href="#" className=" nocolor bggreen">08 绝对估值</a> <br /><br />
+                          <span className="font32 color999 colorgreen">↑</span><br /><br />
+                          <a href="#" className=" nocolor bggreen">07 敏感性分析 </a> <br />
+              
+                          <p className=" font14 color999 ">模块三：估值计算</p>
+                        </div>
+                      </div>
+                      <span className="font32 color999 colorgreen pt100">⇨</span>
+                      <div className="col-md-6 fr">
+                        <div className="bindex-pro bd999 bdgreen">
+                          <a href="#" className=" nocolor bggreen">09财务分析</a> <br />
+                          <span className="font18 color999 colorgreen">↓</span><br />
+                          <a href="#" className=" nocolor bggreen">10杜邦分析 </a> <br />
+                          <span className="font18 color999 colorgreen">↓</span><br />
+                          <a href="#" className=" nocolor bggreen">11输出报告 </a> <br />
+                          <p className=" font14 color999 "> 模块四：报告输出</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absol-upbtn">
+                    <span className="font32 color999 colorgreen pl100">⇧</span>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="absol-pro2 width28 bd999 bdgreen">
+                      <a href="#" className=" nocolor bggreen">04 预测利润表</a>
+                      <span className="font18 color999 colorgreen">→</span>
+                      <a href="#" className=" nocolor bggreen">05 预测资产负债表</a>
+                      <span className="font18 color999 colorgreen">→</span>
+                      <a href="#" className=" nocolor bggreen">06 预测现金流量表</a>
+                      <p className=" font14 color999 "> 模块二：报表预测</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+        </div>
+      </div>    
+      <div className="main-container p-b-120">
+        <div className="container p-t-60 text-center ">
+          <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
+          <div className="row-warp" >
+            <div className="row  m-t-60 ">
+              <div className="col-md-12">
+                <div className="absol-pro width30 bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen"><span>无风险利率Rf</span><br></br><span>和β系数预设项</span></a>
+                  <a href="#" className=" nocolor bggreen"><span>权益风险溢价</span><br></br><span>ERP预设项</span></a>
+                  <a href="#" className=" nocolor bggreen"><span>规模溢价</span><br></br><span>Si预设项</span></a>
+                </div>
+                <div className="absol-upbtn">
+                  <span className="font32 color999 colorgreen">⇩</span>
+                </div>
+                <div className="absol-pro bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen"><span>债务资本比重</span><br></br><span>Wd预设项</span></a>
+                  <a href="#" className=" nocolor bggreen"><span>股权资本成本Re</span><br></br><span>=Rf+β × ERP+Si</span></a>
+                  <a href="#" className=" nocolor bggreen"><span>债务资本成本</span><br></br><span>Rd预设项</span></a>
+                  <a href="#" className=" nocolor bggreen"><span>有效税率t</span><br></br><span>预设项</span></a>
+                </div>
+                <div className="absol-upbtn row">
+                  <div className="col-1" ></div>
+                  <div className="col-5 ">
+                    <span className="font32 color999 colorgreen">⇩</span><br></br>
+                    <em className=" font18 color999 colorgreen"> r_WACC=(1-W_d)*r_E+W_d*r_d*(1-t)</em><br></br>
+                    <em className=" font14 color999 ">现值系数</em><br></br>
+                    <span className="font32 color999 colorgreen">⇩</span><br></br>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-5">
+                    <div className="absol-pro2 width50 bd999 bdblue">
+                      <a href="#" className=" nocolor bgblue">FCFF</a>
+                      <span>×</span>
+                      <a href="#" className=" nocolor bgblue">rWACC现值系数</a>
+                      <p className=" font14 color999 "> 预测期、过渡期</p>
+                    </div>
+                    <div className="absol-upbtn">
+                      <span className="font32 color999 colorgreen">⇩</span>
+                    </div>
+                    {/* <div className="absol-pro2 width100 bd999 bdgreen">
+                      <a href="#" className=" nocolor bggreen">∑过渡期FCFF现值</a>
+                    </div> */}
+                  </div>
+                  <div className="col-7">
+                    <div className="absol-pro2 width30 bd999 bdblue">
+                      <a href="#" className=" nocolor bgblue">FCFF</a>
+                      <span>×</span>
+                      <a href="#" className=" nocolor bgblue">rWACC现值系数</a>
+                      <span>÷</span>
+                      <a href="#" className=" nocolor bggreen">1-g</a>
+                      <p className=" font14 color999 "> 永续期</p>
+                    </div>
+                    <div className="absol-upbtn">
+                      <span className="font32 color999 colorgreen">⇩</span>
+                    </div>
+                    {/* <div className="absol-pro2 width100 bd999 bdgreen">
+                      <a href="#" className=" nocolor bggreen">永续价值（残值）现值</a>
+                    </div> */}
+                  </div>
+                </div>
+                <div className="absol-pro2 width50 bd999 bdgreen">
+                  <div className="row">
+                    <div className="col-5"><a href="#" className=" nocolor bggreen">∑过渡期FCFF</a></div>
+                    <div className="col-7"> <a href="#" className=" nocolor bggreen">永续价值（残值）现值</a></div>
+                  </div>
+                </div>
+                <div className="absol-upbtn">
+                  <div className="col-4"> <span className="font32 color999 colorgreen">⇩</span></div>
+                </div>
+                <div className="absol-pro2 width25 bd999 bdgreen">
+                  <a href="#" className=" nocolor bggreen">企业价值</a>
+                  <span>+</span>
+                  <a href="#" className=" nocolor bggreen">非核心资产</a>
+                  <span>-</span>
+                  <a href="#" className=" nocolor bggreen">带息债务（账面价值）</a>
+                  <span>-</span>
+                  <a href="#" className=" nocolor bggreen">少数股东权益</a>
+                </div>
+                <div className="absol-upbtn">
+                  <div className="col-4"> <span className="font32 color999 colorgreen">⇩</span></div>
+                </div>
+                <div className="absol-pro2 width100 bd999 bdgreen">
+                  <div className="row">
+                    <div className="col-5">
+                      <a href="#" className=" nocolor bggreen">股权价值</a>
+                    </div>
+                    <div className="col-2">
+                      <p className="p-t-20 f14">÷</p>
+                    </div>
+                    <div className="col-5">
+                      <a href="#" className=" nocolor bggreen">总股本</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absol-upbtn">
+                  <span className="font32 color999 colorgreen">⇩</span>
+                </div>
+                <div className="row">
+                  <div className="col-4"></div>
+                  <div className="col-4">
+                    <div className="absol-pro2 width100 bd999 bdgreen">
+                      <a href="#" className=" nocolor bggreen">每股价值</a>
+                    </div>
+                  </div>
+                  <div className="col-4"></div>
+                </div>
+              </div>
+              {/* col-md-12 end */}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
       <div className="main-container main_teachbg whitefont">
         <div className="container p-t-60 text-center  ">
           <img src="/static/images/xz.jpg" alt="许志" className="xzpro" />

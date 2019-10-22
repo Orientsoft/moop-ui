@@ -34,6 +34,10 @@
   padding-bottom: 10px !important;
 }
 
+.p-t-20 {
+  padding-top: 20px !important;
+}
+
 .p-t-30 {
   padding-top: 30px !important;
 }
@@ -1872,12 +1876,13 @@ a.reportbtn {
 }
 
 .bindex-pro {
-  border: #00a95d 1px dashed;
+  /* border: #00a95d 1px dashed; */
   border-radius: 10px;
   padding: 20px;
 }
 
 .bindex-pro a {
+  overflow: hidden;
   width: 100%;
   border-radius: 6px;
   display: inline-block;
@@ -1885,17 +1890,17 @@ a.reportbtn {
   line-height: 50px;
   color: #fff;
   font-size: 16px;
-  background-color: #15b73a;
 }
 
 .bindex-pro a:hover {
   text-decoration: none;
-  background-color: #2ebc4f;
+  /* background-color: #2ebc4f; */
 }
 
 .bindex-pro span {
   font-size: 32px;
-  color: #15b73a;
+  /* color: #15b73a; */
+  /* color: #999; */
 }
 
 .col-md-1.width {
@@ -1906,29 +1911,45 @@ a.reportbtn {
 }
 
 .col-md-3.width {
-  max-width: 28.333333%;
+  max-width: 29.333333%;
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 28.333333%;
-  flex: 0 0 28.333333%;
+  -ms-flex: 0 0 29.333333%;
+  flex: 0 0 29.333333%;
+}
+
+.col-md-1.right {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 4.333333%;
+  flex: 0 0 4.333333%;
+  max-width: 4.333333%;
+}
+
+.col-md-7.right {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 63.333333%;
+  flex: 0 0 63.333333%;
+  max-width: 63.333333%;
+}
+
+.col-md-7.right {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 63.333333%;
+  flex: 0 0 63.333333%;
+  max-width: 63.333333%;
 }
 
 .bntcont2 .bindex-pro span {
   font-size: 12px;
-  color: #15b73a;
 }
 
-.border2 {
-  border: #00a95d 1px dashed;
+.bntcont2 {
+  padding: 10px 0;
+  border: #999 1px dashed;
   border-radius: 10px;
 }
 
-.bntcont2 .bindex-pro {
-  border: none;
-  padding: 20px;
-}
-
 .bntcont2 .bindex-pro em {
-  background-color: #446fc4;
+  /* background-color: #999; */
   width: 100%;
   border-radius: 6px;
   display: inline-block;
@@ -1941,6 +1962,196 @@ a.reportbtn {
 
 .col-md-1.width {
   font-size: 32px;
-  padding-top: 60px;
+  padding-top: 70px;
+  margin-left: -15px;
+  margin-right: 15px;
+}
+
+.btomimg {
+  background: url(../images/btimg.jpg) center;
+}
+
+.col-md-3.width.mg50 {
+  margin-top: 40px;
+}
+
+.bntcont2 .col-md-1.width {
+  padding-top: 100px;
+}
+
+.lineiocn {
+  margin-top: -10px;
+}
+
+.lineiocn .col-md-3.width {
+  font-size: 32px;
+  padding: 20px 0 10px;
+  margin-left: 0;
+}
+
+/* span.cblue {
+  color: #446fc4;
+} */
+
+/* .colorgreen .bindex-pro {
+  border: #00a95d 1px dashed;
+} */
+
+/* .colorgreen .bindex-pro em {
+  background-color: #15b73a;
+} */
+
+.notep {
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  padding-top: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.nocolor {
+  background-color: #999;
+  pointer-events: none;
+}
+
+/* .bntcont2 hr {
+  margin: 5px 5%;
+} */
+
+.color999 {
+  color: #999;
+}
+
+.colorgreen {
   color: #15b73a;
+}
+
+.bggreen {
+  background-color: #15b73a;
+  pointer-events: auto;
+}
+
+.colorblue {
+  color: #446fc4;
+}
+
+.bgblue {
+  background-color: #446fc4;
+  pointer-events: none;
+}
+
+.bd999 {
+  border: #999 1px dashed;
+}
+
+.bdgreen {
+  border: #00a95d 1px dashed;
+}
+
+.bdblue {
+  border: #446fc4 1px dashed;
+}
+
+.absol-pro {
+  border-radius: 10px;
+  padding: 0 1%;
+}
+
+.font32 {
+  font-size: 32px;
+}
+
+.absol-pro.width30 a {
+  width: 30%;
+}
+
+.absol-pro a {
+  border-radius: 6px;
+  display: inline-table;
+  width: 23%;
+  height: 70px;
+  padding-top: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  margin: 10px 1%;
+}
+
+.absol-pro a:hover, .absol-pro2 a:hover {
+  text-decoration: none;
+}
+
+.font18 {
+  font-size: 18px!important;
+  font-style: normal;
+}
+
+.font14 {
+  font-size: 14px !important;
+  font-style: normal;
+}
+
+.absol-pro2 {
+  border-radius: 10px;
+  padding: 0 1%;
+}
+
+.absol-pro2 a {
+  padding-top: 13px;
+  line-height: 150%;
+  border-radius: 6px;
+  display: inline-table;
+  width: 30%;
+  height: 50px;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  margin: 10px 1%
+}
+
+.absol-pro2.width50 a {
+  width: 45%;
+}
+
+.absol-pro2.width100 a {
+  width: 90%;
+}
+
+.absol-pro2.width25 a {
+  width: 21%;
+}
+
+.absol-pro2 p, .row-warp p {
+  margin-bottom: 5px;
+}
+
+.noupbtn {
+  color: #fff;
+}
+
+.displaynone {
+  display: none;
+}
+
+.absol-pro2.width28 a {
+  width: 28%;
+  overflow: hidden;
+}
+
+.pt200 {
+  padding-top: 360px;
+  margin-left: -20px;
+}
+
+.pl100 {
+  padding-left: 130px;
+}
+
+.pt100 {
+  padding-top: 120px;
+}
+
+.col-md-6.fr {
+  padding-right: 0;
 }
