@@ -1,5 +1,4 @@
 import API, { GET, POST, PATCH, DELETE } from '@pixcai/make-api';
-import isPlainObject from 'lodash-es/isPlainObject';
 import Notification from '@icedesign/notification';
 import { getCurrentUser, removeCurrentUser, removeCurrentTenant } from './helper';
 
@@ -150,4 +149,8 @@ export const container = {
   stop: DELETE('/container'),
   getDataFiles: GET('/data/list'),
   commitHomework: POST('/homework'),
+};
+
+export const flow = {
+  select: GET('/flow'),
 };

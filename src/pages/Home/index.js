@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
 import { getCurrentTenant } from '@/utils/helper';
+import { flow } from '@/utils/api';
 
 export default () => {
   const tenant = getCurrentTenant();
@@ -14,6 +15,9 @@ export default () => {
       setVisited(value);
     }
     localStorage.setItem('MOOP_VISITED', value);
+    flow.select().then((data) => {
+      
+    });
   }, []);
 
   return (
@@ -29,87 +33,6 @@ export default () => {
                 <br />
               </h4>
               <Link to="/courses" className="btn btn-lg startbtn m-t-40">进入实验</Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="main-container  p-b-120 displaynone">
-        <div className="container p-t-60 text-center ">
-          <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
-          <div className="row-warp" >
-            <div className="row  m-t-60 ">
-              <div className="col-md-1 width"></div>
-              <div className="col-md-3 width">
-                <div className="bindex-pro bd999 bdgreen">
-                  <a href="#" className="bggreen">01（历史）财务报表</a> <br />
-                  <span className="color999 colorgreen">⇩</span><br />
-                  <a href="#" className=" bggreen">02（简化）财务报表</a> <br />
-                  <p className="notep color999">模块一：历史报表</p>
-                </div>
-              </div>
-              <div className="col-md-1 width"> <span></span></div>
-              <div className="col-md-3 width">
-                <div className="bindex-pro bd999 bdgreen">
-                  <a href="#" className=" nocolor bggreen">12 敏感性分析</a> <br />
-                  <span className="color999 colorgreen">⇧</span>
-                  <a href="#" className=" nocolor bggreen">11 绝对估值</a> <br />
-                  <p className="notep color999">模块三：估值计算</p>
-                </div>
-              </div>
-              <div className="col-md-1 width"> <span className="color999 colorgreen">⇨</span></div>
-              <div className="col-md-3 width">
-                <div className="bindex-pro bd999 bdgreen">
-                  <a href="#" className="nocolor bggreen">13 杜邦分析</a> <br />
-                  <span className="color999 colorgreen">⇩</span><br />
-                  <a href="#" className="nocolor bggreen">14 输出报表</a> <br />
-                  <p className="notep color999">模块四：输出报告</p>
-                </div>
-              </div>
-            </div>
-            <div className="row lineiocn">
-              <div className="col-md-1 width"></div>
-              <div className="col-md-3 width">
-                <span className="color999 colorgreen">⇩</span>
-              </div>
-              <div className="col-md-1 width"> <span></span></div>
-              <div className="col-md-3 width">
-                <span className=" color999 colorgreen">⇧</span>
-              </div>
-              <div className="col-md-1 width"><span></span></div>
-              <div className="col-md-3 width">
-                <span className="color999 colorblue">⇧</span>
-              </div>
-            </div>
-            <div className="row   bntcont2">
-              <div className="col-md-1 width "></div>
-              <div className="col-md-3 width">
-                <div className="bindex-pro bd999 bdblue">
-                  <a href="#" className=" bgblue">03 收入</a> <br />
-                  <span></span><br />
-                  <a href="#" className=" bgblue">04 投资 </a> <br />
-                  <span></span><br />
-                  <a href="#" className=" bgblue">05 筹资 </a> <br />
-                </div>
-              </div>
-              <div className="col-md-1 width"><span className="color999 colorblue">⇨</span></div>
-              <div className="col-md-3 width ">
-                <div className="bindex-pro bd999 bdgreen">
-                  <a href="#" className=" nocolor bggreen">06 预测IS</a> <br />
-                  <span></span><br />
-                  <a href="#" className=" nocolor bggreen">07 预测BS </a> <br />
-                  <span></span><br />
-                  <a href="#" className=" nocolor bggreen">08 预测CS </a> <br />
-                </div>
-              </div>
-              <div className="col-md-1 width"><span className="color999 colorgreen">⇨</span></div>
-              <div className="col-md-3 width mg50">
-                <div className="bindex-pro bd999 bdblue">
-                  <a href="#" className=" nocolor bggreen">09 财务分析</a> <br />
-                  <span></span><br />
-                  <a href="#" className=" nocolor bgblue">10 预测合理性检验 </a> <br />
-                </div>
-              </div>
-              <p className="notep color999  "><span >模块二：报表预测</span></p>
             </div>
           </div>
         </div>
@@ -162,7 +85,7 @@ export default () => {
                   </div>
                   <div className="col-md-12">
                     <div className="absol-pro2 width28 bd999 bdgreen">
-                      <a href="#" className=" nocolor bggreen">04 预测利润表</a>
+                      <a href="#" className=" nocolor">04 预测利润表</a>
                       <span className="font18 color999 colorgreen">→</span>
                       <a href="#" className=" nocolor bggreen">05 预测资产负债表</a>
                       <span className="font18 color999 colorgreen">→</span>
@@ -176,7 +99,7 @@ export default () => {
           </div>    
         </div>
       </div>    
-      <div className="main-container p-b-120">
+      <div className="main-container p-b-120" style={{ display: 'none' }}>
         <div className="container p-t-60 text-center ">
           <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row-warp" >

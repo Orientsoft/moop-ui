@@ -2155,3 +2155,8 @@ a.reportbtn {
 .col-md-6.fr {
   padding-right: 0;
 }
+
+/* MathJax */
+mjx-container[jax="CHTML"][display="true"] {
+  margin: 0 !important;
+}

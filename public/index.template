@@ -12,8 +12,14 @@
 
   <body>
     <div id="ice-container"></div>
-    <script src="/static/js/jquery.slim.min.js" ></script>
-    <script src="/static/js/popper.min.js" ></script>
-    <script src="/static/js/bootstrap.min.js" ></script>
+    <script src="/static/js/jquery.slim.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script id="MathJax-script" async src="/static/js/tex-chtml.min.js"></script>
+    <script>
+      MathJax = {
+        tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+      };
+    </script>
   </body>
 </html>
