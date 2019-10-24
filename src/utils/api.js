@@ -153,4 +153,5 @@ export const container = {
 
 export const flow = {
   select: GET('/flow'),
+  start: POST('/flow'),
 };

@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
 import { getCurrentTenant } from '@/utils/helper';
-import { flow } from '@/utils/api';
 
 export default () => {
   const tenant = getCurrentTenant();
@@ -15,9 +14,6 @@ export default () => {
       setVisited(value);
     }
     localStorage.setItem('MOOP_VISITED', value);
-    flow.select().then((data) => {
-      
-    });
   }, []);
 
   return (
@@ -32,7 +28,7 @@ export default () => {
                 {get(tenant, 'description', '')}
                 <br />
               </h4>
-              <Link to="/courses" className="btn btn-lg startbtn m-t-40">进入实验</Link>
+              <Link to="/flow" className="btn btn-lg startbtn m-t-40">进入实验</Link>
             </div>
           </div>
         </div>

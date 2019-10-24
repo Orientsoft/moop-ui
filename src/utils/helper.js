@@ -62,7 +62,7 @@ export const getCourseCover = (course) => {
   if (!thumb) {
     let index = 0;
 
-    if (course) {
+    if (course && course.id) {
       const last = parseInt(course.id.split('').reverse()[0], 16) || 0;
       index = last % 3;
     }
