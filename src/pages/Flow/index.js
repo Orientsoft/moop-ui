@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Dialog } from '@alifd/next';
 import classnames from 'classnames';
 import moment from 'moment';
@@ -8,6 +8,7 @@ import { container, flow, progress } from '@/utils/api';
 
 export default () => {
   const elem = useRef();
+  const sub = useRef();
   const [course, setCourse] = useState({});
   const [showNext, setShowNext] = useState(false);
   const getStep = i => get(course, `projects.0.labs.${i}`, {});
@@ -61,7 +62,17 @@ export default () => {
     }
     if (course.running && !elem.current.getAttribute('data-ok')) {
       const links = elem.current.querySelectorAll('a.nocolor');
+      const subLinks = sub.current.querySelectorAll('a.nocolor');
 
+      subLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          progress.create({
+            data: {
+              message: { lab: link.getAttribute('data-id') },
+            },
+          }).then(refetch);
+        });
+      });
       for (let i = 0; i < links.length; i += 1) {
         const labId = links[i].getAttribute('data-id');
 
@@ -90,7 +101,7 @@ export default () => {
   }, [course]);
 
   return (
-    <Fragment>
+    <div>
       <div className="bg-mainconttop p-t-60 p-b-60">
         <div className="container  text-left">
           <div className="row">
@@ -139,7 +150,7 @@ export default () => {
                     <div className="row">
                       <div className="col-md-5">
                         <div className="bindex-pro bd999 bdgreen">
-                          <a href="#theNext" id="next" className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br /><br />
+                          <a href="#theNext" id="next" data-id={getStep(7).id} className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br /><br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(6).finish }])}>↑</span><br /><br />
                           <a target="_blank" rel="noopener noreferrer" data-id={getStep(6).id} href={getURL(getStep(6).id)} className={classnames({ nocolor: true, bggreen: getStep(6).finish })}>{getStep(6).name}</a> <br />
                           <p className=" font14 color999 ">模块三：估值计算</p>
@@ -148,7 +159,7 @@ export default () => {
                       <span className={classnames(['font32', 'color999', 'pt100', { colorgreen: course.running && getStep(7).finish }])}>⇨</span>
                       <div className="col-md-6 fr">
                         <div className="bindex-pro bd999 bdgreen">
-                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(8).id} href={getURL(getStep(8).id)} className={classnames({ nocolor: true, bggreen: getChild(21).finish })}>{getStep(8).name}</a> <br />
+                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(8).id} href={getURL(getStep(8).id)} className={classnames({ nocolor: true, bggreen: getStep(8).finish })}>{getStep(8).name}</a> <br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(8).finish }])}>↓</span><br />
                           <a target="_blank" rel="noopener noreferrer" data-id={getStep(9).id} href={getURL(getStep(9).id)} className={classnames({ nocolor: true, bggreen: getStep(9).finish })}>{getStep(9).name}</a> <br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(9).finish }])}>↓</span><br />
@@ -177,7 +188,7 @@ export default () => {
           </div>
         </div>
       </div>
-      <div className="main-container p-b-120" style={{ display: showNext ? 'block' : 'none' }}>
+      <div ref={sub} className="main-container p-b-120" style={{ display: showNext ? 'block' : 'none' }}>
         <div className="container p-t-60 text-center ">
           <h2 id="theNext" className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row-warp" >
@@ -185,17 +196,17 @@ export default () => {
               <div className="col-md-12">
                 <div className="absol-pro width30 bd999 bdgreen">
                   <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(0).id)} className={classnames(['nocolor', { bggreen: getChild(0).finish }])} data-math={getChild(0).name} />
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(1).id)} className={classnames(['nocolor', { bggreen: getChild(1).finish }])} data-math={getChild(1).name} />
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(2).id)} className={classnames(['nocolor', { bggreen: getChild(2).finish }])} data-math={getChild(2).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(1).id} href={getURL(getChild(1).id)} className={classnames(['nocolor', { bggreen: getChild(1).finish }])} data-math={getChild(1).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(2).id} href={getURL(getChild(2).id)} className={classnames(['nocolor', { bggreen: getChild(2).finish }])} data-math={getChild(2).name} />
                 </div>
                 <div className="absol-upbtn">
                   <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(2).finish }])}>⇩</span>
                 </div>
                 <div className="absol-pro bd999 bdgreen">
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(3).id)} className={classnames(['nocolor', { bggreen: getChild(3).finish }])} data-math={getChild(3).name} />
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(4).id)} className={classnames(['nocolor', { bggreen: getChild(4).finish }])} data-math={getChild(4).name} />
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(5).id)} className={classnames(['nocolor', { bggreen: getChild(5).finish }])} data-math={getChild(5).name} />
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(6).id)} className={classnames(['nocolor', { bggreen: getChild(6).finish }])} data-math={getChild(6).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(3).id} href={getURL(getChild(3).id)} className={classnames(['nocolor', { bggreen: getChild(3).finish }])} data-math={getChild(3).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(4).id} href={getURL(getChild(4).id)} className={classnames(['nocolor', { bggreen: getChild(4).finish }])} data-math={getChild(4).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(5).id} href={getURL(getChild(5).id)} className={classnames(['nocolor', { bggreen: getChild(5).finish }])} data-math={getChild(5).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(6).id} href={getURL(getChild(6).id)} className={classnames(['nocolor', { bggreen: getChild(6).finish }])} data-math={getChild(6).name} />
                 </div>
                 <div className="absol-upbtn row">
                   <div className="col-1" />
@@ -209,9 +220,9 @@ export default () => {
                 <div className="row">
                   <div className="col-5">
                     <div className="absol-pro2 width50 bd999 bdblue">
-                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(8).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(8).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(8).name} />
                       <span>×</span>
-                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(9).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(9).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(9).name} />
                       <p className=" font14 color999 "> 预测期、过渡期</p>
                     </div>
                     <div className="absol-upbtn">
@@ -220,11 +231,11 @@ export default () => {
                   </div>
                   <div className="col-7">
                     <div className="absol-pro2 width30 bd999 bdblue">
-                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(10).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(10).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(10).name} />
                       <span>×</span>
-                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(11).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(11).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(11).name} />
                       <span>÷</span>
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(12).id)} className={classnames(['nocolor', { bggreen: getChild(12).finish }])} data-math={getChild(12).name} />
+                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(12).id} href={getURL(getChild(12).id)} className={classnames(['nocolor', { bggreen: getChild(12).finish }])} data-math={getChild(12).name} />
                       <p className=" font14 color999 "> 永续期</p>
                     </div>
                     <div className="absol-upbtn">
@@ -234,21 +245,21 @@ export default () => {
                 </div>
                 <div className="absol-pro2 width50 bd999 bdgreen">
                   <div className="row">
-                    <div className="col-5"><a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(13).id)} className={classnames(['nocolor', { bggreen: getChild(13).finish }])} data-math={getChild(13).name} /></div>
-                    <div className="col-7"> <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(14).id)} className={classnames(['nocolor', { bggreen: getChild(14).finish }])} data-math={getChild(14).name} /></div>
+                    <div className="col-5"><a target="_blank" rel="noopener noreferrer" data-id={getChild(13).id} href={getURL(getChild(13).id)} className={classnames(['nocolor', { bggreen: getChild(13).finish }])} data-math={getChild(13).name} /></div>
+                    <div className="col-7"> <a target="_blank" rel="noopener noreferrer" data-id={getChild(14).id} href={getURL(getChild(14).id)} className={classnames(['nocolor', { bggreen: getChild(14).finish }])} data-math={getChild(14).name} /></div>
                   </div>
                 </div>
                 <div className="absol-upbtn">
                   <div className="col-4"> <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(14).finish }])}>⇩</span></div>
                 </div>
                 <div className="absol-pro2 width25 bd999 bdgreen">
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(15).id)} className={classnames(['nocolor', { bggreen: getChild(15).finish }])} data-math={getChild(15).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(15).id} href={getURL(getChild(15).id)} className={classnames(['nocolor', { bggreen: getChild(15).finish }])} data-math={getChild(15).name} />
                   <span>+</span>
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(16).id)} className={classnames(['nocolor', { bggreen: getChild(16).finish }])} data-math={getChild(16).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(16).id} href={getURL(getChild(16).id)} className={classnames(['nocolor', { bggreen: getChild(16).finish }])} data-math={getChild(16).name} />
                   <span>-</span>
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(17).id)} className={classnames(['nocolor', { bggreen: getChild(17).finish }])} data-math={getChild(17).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(17).id} href={getURL(getChild(17).id)} className={classnames(['nocolor', { bggreen: getChild(17).finish }])} data-math={getChild(17).name} />
                   <span>-</span>
-                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(18).id)} className={classnames(['nocolor', { bggreen: getChild(18).finish }])} data-math={getChild(18).name} />
+                  <a target="_blank" rel="noopener noreferrer" data-id={getChild(18).id} href={getURL(getChild(18).id)} className={classnames(['nocolor', { bggreen: getChild(18).finish }])} data-math={getChild(18).name} />
                 </div>
                 <div className="absol-upbtn">
                   <div className="col-4"> <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(18).finish }])}>⇩</span></div>
@@ -256,13 +267,13 @@ export default () => {
                 <div className="absol-pro2 width100 bd999 bdgreen">
                   <div className="row">
                     <div className="col-5">
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(19).id)} className={classnames(['nocolor', { bggreen: getChild(19).finish }])} data-math={getChild(19).name} />
+                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(19).id} href={getURL(getChild(19).id)} className={classnames(['nocolor', { bggreen: getChild(19).finish }])} data-math={getChild(19).name} />
                     </div>
                     <div className="col-2">
                       <p className="p-t-20 f14">÷</p>
                     </div>
                     <div className="col-5">
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(20).id)} className={classnames(['nocolor', { bggreen: getChild(20).finish }])} data-math={getChild(20).name} />
+                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(20).id} href={getURL(getChild(20).id)} className={classnames(['nocolor', { bggreen: getChild(20).finish }])} data-math={getChild(20).name} />
                     </div>
                   </div>
                 </div>
@@ -273,7 +284,7 @@ export default () => {
                   <div className="col-4" />
                   <div className="col-4">
                     <div className="absol-pro2 width100 bd999 bdgreen">
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(21).id)} className={classnames(['nocolor', { bggreen: getChild(21).finish }])} data-math={getChild(21).name} />
+                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(21).id} href={getURL(getChild(21).id)} className={classnames(['nocolor', { bggreen: getChild(21).finish }])} data-math={getChild(21).name} />
                     </div>
                   </div>
                   <div className="col-4" />
@@ -283,6 +294,6 @@ export default () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
