@@ -150,9 +150,9 @@ export default () => {
                     <div className="row">
                       <div className="col-md-5">
                         <div className="bindex-pro bd999 bdgreen">
-                          <a href="#theNext" id="next" data-id={getStep(7).id} className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br /><br />
+                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(7).id} href={getURL(getStep(7).id)} className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(6).finish }])}>↑</span><br /><br />
-                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(6).id} href={getURL(getStep(6).id)} className={classnames({ nocolor: true, bggreen: getStep(6).finish })}>{getStep(6).name}</a> <br />
+                          <a href="#theNext" id="next" data-id={getStep(6).id} className={classnames({ nocolor: true, bggreen: getStep(6).finish })}>{getStep(6).name}</a> <br /><br />
                           <p className=" font14 color999 ">模块三：估值计算</p>
                         </div>
                       </div>
