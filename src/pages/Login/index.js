@@ -78,7 +78,8 @@ export default ({ history }) => {
           }
         }
         setCurrentUser(data);
-        history.push(`/classroom?id=${data.classroom}`);
+        // history.push(`/classroom?id=${data.classroom}`);
+        history.push('/flow');
       });
     }
   }, []);
