@@ -48,7 +48,8 @@ export default ({ history }) => {
           }
           history.push(redirectTo);
         } else {
-          history.push('/users/profile');
+          // history.push('/users/profile');
+          history.push('/');
         }
       });
     } else {
