@@ -59,7 +59,7 @@ export default () => {
       window.MathJax.startup.document.clear();
       window.MathJax.startup.document.updateDocument();
     }
-    if (course.running) {
+    if (course.running && !elem.current.getAttribute('data-ok')) {
       const links = elem.current.querySelectorAll('a.nocolor');
 
       for (let i = 0; i < links.length; i += 1) {
@@ -85,6 +85,7 @@ export default () => {
           });
         }
       }
+      elem.current.setAttribute('data-ok', true);
     }
   }, [course]);
 
