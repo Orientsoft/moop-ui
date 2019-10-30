@@ -209,9 +209,9 @@ export default () => {
                 <div className="row">
                   <div className="col-5">
                     <div className="absol-pro2 width50 bd999 bdblue">
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(8).id)} className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(8).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(8).name} />
                       <span>×</span>
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(9).id)} className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(9).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(9).name} />
                       <p className=" font14 color999 "> 预测期、过渡期</p>
                     </div>
                     <div className="absol-upbtn">
@@ -220,9 +220,9 @@ export default () => {
                   </div>
                   <div className="col-7">
                     <div className="absol-pro2 width30 bd999 bdblue">
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(10).id)} className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(10).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(10).name} />
                       <span>×</span>
-                      <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(11).id)} className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(11).name} />
+                      <a rel="noopener noreferrer" data-id={getChild(0).id} href="#/" className={classnames(['nocolor', { bgblue: getChild(6).finish }])} data-math={getChild(11).name} />
                       <span>÷</span>
                       <a target="_blank" rel="noopener noreferrer" data-id={getChild(0).id} href={getURL(getChild(12).id)} className={classnames(['nocolor', { bggreen: getChild(12).finish }])} data-math={getChild(12).name} />
                       <p className=" font14 color999 "> 永续期</p>
