@@ -13,7 +13,7 @@ export default () => {
   const [showNext, setShowNext] = useState(false);
   const getStep = i => get(course, `projects.0.labs.${i}`, {});
   const getURL = id => get(course, `projects.0.labURL.${id}`, '#/');
-  const getChild = i => get(course, `projects.0.labs.7.child.${i}`, {});
+  const getChild = i => get(course, `projects.0.labs.6.child.${i}`, {});
   const onLearn = () => {
     Dialog.alert({
       title: '启动实验',
@@ -43,7 +43,8 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    if (window.MathJax) {
+    // 根据是否有texReset判断tex2html是否加载完
+    if (window.MathJax && window.MathJax.texReset) {
       const maths = document.querySelectorAll('[data-math]');
 
       window.MathJax.texReset();
@@ -150,7 +151,7 @@ export default () => {
                     <div className="row">
                       <div className="col-md-5">
                         <div className="bindex-pro bd999 bdgreen">
-                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(7).id} href={getURL(getStep(7).id)} className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br />
+                          <a target="_blank" rel="noopener noreferrer" href={getURL(getStep(7).id)} data-id={getStep(7).id} className={classnames({ nocolor: true, bggreen: getStep(7).finish })}>{getStep(7).name}</a> <br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(6).finish }])}>↑</span><br /><br />
                           <a href="#theNext" id="next" data-id={getStep(6).id} className={classnames({ nocolor: true, bggreen: getStep(6).finish })}>{getStep(6).name}</a> <br /><br />
                           <p className=" font14 color999 ">模块三：估值计算</p>
@@ -163,7 +164,7 @@ export default () => {
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(8).finish }])}>↓</span><br />
                           <a target="_blank" rel="noopener noreferrer" data-id={getStep(9).id} href={getURL(getStep(9).id)} className={classnames({ nocolor: true, bggreen: getStep(9).finish })}>{getStep(9).name}</a> <br />
                           <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(9).finish }])}>↓</span><br />
-                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(20).id} href={getURL(getStep(10).id)} className={classnames({ nocolor: true, bggreen: getStep(10).finish })}>{getStep(10).name}</a> <br />
+                          <a target="_blank" rel="noopener noreferrer" data-id={getStep(10).id} href={getURL(getStep(10).id)} className={classnames({ nocolor: true, bggreen: getStep(10).finish })}>{getStep(10).name}</a> <br />
                           <p className=" font14 color999 "> 模块四：报告输出</p>
                         </div>
                       </div>
