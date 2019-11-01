@@ -18,7 +18,7 @@ export default () => {
 
   return (
     <Fragment>
-      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/static/images/loginbg.png')})` }}>
+      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/images/loginbg.png')})` }}>
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60  p-t-60 text-center">
@@ -214,7 +214,7 @@ export default () => {
 
       <div className="main-container main_teachbg whitefont">
         <div className="container p-t-60 text-center  ">
-          <img src="/static/images/xz.jpg" alt="许志" className="xzpro" />
+          <img src="/images/xz.jpg" alt="许志" className="xzpro" />
           <p className="p-t-60">“经济学博士，副教授，西南财经大学金融学院金融双语教学中心主任、投资估值研究中心主任。国家级精品在线开放课程《公司金融学》主持者，该课同时上线“学习强国”平台。”</p>
           <div className="attribution">
             <h5>许志</h5>
@@ -231,10 +231,10 @@ export default () => {
             </div>
             <div className="col-md-1 text-left" />
             <div className="col-md-5 text-left">
-              <img src="/static/images/course-cove.png" alt="" width="320" />
+              <img src="/images/course-cove.png" alt="" width="320" />
               <h5 className="p-t-10">预备知识</h5>
               <p>公司金融学关于现金流和贴现率的估计方法、Python编程基础</p>
-              {/* <img src="/static/images/logo-3.png" alt="" width="220" /> */}
+              {/* <img src="/images/logo-3.png" alt="" width="220" /> */}
               <h5 className="m-t-40">考核内容</h5>
               <p>完成本实验项目中嵌入的阶段性检测题</p>
               <h5>参考资料</h5>

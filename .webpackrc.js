@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 
-const template = fs.readFileSync(path.join('public/index.template')).toString();
+const template = fs.readFileSync('index.template').toString();
 
 fs.writeFileSync(path.join('public/index.html'), template.replace(/{{\s*t\s*}}/g, Date.now()));
 
@@ -14,12 +13,5 @@ module.exports = context => ({
   },
   devServer: {
     historyApiFallback: true,
-  },
-  plugins: [
-    new CopyPlugin([{
-      from: 'public',
-      to: 'static',
-      ignore: ['index.html', 'index.template', 'favicon.png'],
-    }]),
-  ],
+  }
 });

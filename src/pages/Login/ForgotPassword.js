@@ -45,7 +45,7 @@ export default ({ history }) => {
       <div className="container p-t-60">
         <h2 className="text-center">
           <Link className="navbar-brand logo" to="/">
-             <img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" />
+             <img height="70" src="/images/logo.jpg" alt="西南财经大学 金融学院" />
           </Link></h2>
         <div className="row justify-content-center">
           <div className="col-5">
