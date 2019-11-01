@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Layout from '@icedesign/layout';
+import queryString from 'query-string';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NotFound from '@/components/NotFound';
@@ -28,16 +29,22 @@ export default class BasicLayout extends Component {
   }
 
   componentDidMount() {
-    if (this.props.location.pathname === '/') {
-      tenant.current().then(({ data }) => {
-        setCurrentTenant(data);
-        this.forceUpdate();
-      });
-    } else if (!getCurrentTenant()) {
-      tenant.current().then(({ data }) => {
-        setCurrentTenant(data);
-        this.forceUpdate();
-      });
+    const { location } = this.props;
+    const url = queryString.parse(location.search);
+
+    // 从第三方页面跳转过来时不需要取租户，避免多次重定向到登录页
+    if (!url.token) {
+      if (location.pathname === '/') {
+        tenant.current().then(({ data }) => {
+          setCurrentTenant(data);
+          this.forceUpdate();
+        });
+      } else if (!getCurrentTenant()) {
+        tenant.current().then(({ data }) => {
+          setCurrentTenant(data);
+          this.forceUpdate();
+        });
+      }
     }
   }
 
