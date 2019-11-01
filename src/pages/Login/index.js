@@ -18,9 +18,9 @@ export default ({ history }) => {
         }
         if (!data.thumb) {
           if (data.gender === consts.sex.MALE) {
-            data.thumb = '/static/images/headerboy.png';
+            data.thumb = '/images/headerboy.png';
           } else {
-            data.thumb = '/static/images/headgirl.png';
+            data.thumb = '/images/headgirl.png';
           }
         }
         setCurrentUser(data);
@@ -72,9 +72,9 @@ export default ({ history }) => {
         }
         if (!data.thumb) {
           if (data.gender === consts.sex.MALE) {
-            data.thumb = '/static/images/headerboy.png';
+            data.thumb = '/images/headerboy.png';
           } else {
-            data.thumb = '/static/images/headgirl.png';
+            data.thumb = '/images/headgirl.png';
           }
         }
         setCurrentUser(data);
@@ -88,7 +88,7 @@ export default ({ history }) => {
       <div className="container p-t-60 povr">
         <h2 className="text-center">
           <Link className="navbar-brand logo" to="/">
-            <img height="70" src="/static/images/logo.jpg" alt="西南财经大学 金融学院" />
+            <img height="70" src="/images/logo.jpg" alt="西南财经大学 金融学院" />
           </Link>
         </h2>
         <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>

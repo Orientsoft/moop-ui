@@ -15,7 +15,7 @@ import ServicePlan from './ServicePlan';
 
 export default ({ location }) => {
   const [publication, setPublication] = useState({
-    image: '/static/images/slide0.jpg',
+    image: '/images/slide0.jpg',
   });
   const classId = get(queryString.parse(location.search), 'id');
 
