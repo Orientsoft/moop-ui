@@ -224,7 +224,7 @@ export default () => {
                   <div className="col-5 ">
                     <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(6).readonly }])}>⇩</span><br />
                     <em className=" font18 color999 colorgreen" data-math={getChild(7).name} />
-                    <em className=" font14 color999 ">现值系数</em><br />
+                    <div className=" font14 color999 ">现值系数</div>
                     <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(6).readonly }])}>⇩</span><br />
                   </div>
                 </div>
