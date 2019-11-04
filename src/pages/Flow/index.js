@@ -268,7 +268,7 @@ export default () => {
                   <a target="_blank" rel="noopener noreferrer" data-id={getChild(18).id} href={getURL(getChild(18).id)} className={classnames(['nocolor', { bgblue: getChild(18).readonly }])} data-math={getChild(18).name} />
                 </div>
                 <div className="absol-upbtn">
-                  <div className="col-4"> <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(18).finish }])}>⇩</span></div>
+                  <div className="col-4"> <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(18).readonly }])}>⇩</span></div>
                 </div>
                 <div className="absol-pro2 width100 bd999 bdgreen">
                   <div className="row">
