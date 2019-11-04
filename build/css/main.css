@@ -2054,6 +2054,8 @@ a.reportbtn {
 }
 
 .absol-pro {
+  display: flex;
+  justify-content: center;
   border-radius: 10px;
   padding: 0 1%;
 }
