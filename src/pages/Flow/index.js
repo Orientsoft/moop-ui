@@ -56,15 +56,15 @@ export default () => {
           maths[i].removeChild(child);
           child = maths[i].firstChild;
         }
+        const div = document.createElement('div');
+        div.style.display = 'inline-block';
         math.split('\n').filter(exp => exp.trim()).forEach((exp, j, exps) => {
-          const div = document.createElement('div');
-          div.style.display = 'inline-block';
           div.appendChild(window.MathJax.tex2chtml(exp));
           maths[i].appendChild(div);
           if (j !== exps.length - 1) {
             const br = document.createElement('br');
             br.style.display = 'none';
-            maths[i].appendChild(br);
+            div.appendChild(br);
           }
         });
       }

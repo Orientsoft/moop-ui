@@ -38,7 +38,7 @@ export default () => {
           <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
-              <div  className="col-md-4">
+              <div className="col-md-4">
                 <div className="bindex-pro bd999 bdgreen">
                   <a href="#" className=" nocolor bggreen">01（历史）财务报表</a> <br /><br />
                   <span className="font32 color999 colorgreen">↓</span><br /><br />
