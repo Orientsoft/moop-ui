@@ -57,9 +57,14 @@ export default () => {
           child = maths[i].firstChild;
         }
         math.split('\n').filter(exp => exp.trim()).forEach((exp, j, exps) => {
-          maths[i].appendChild(window.MathJax.tex2chtml(exp));
+          const div = document.createElement('div');
+          div.style.display = 'inline-block';
+          div.appendChild(window.MathJax.tex2chtml(exp));
+          maths[i].appendChild(div);
           if (j !== exps.length - 1) {
-            maths[i].appendChild(document.createElement('br'));
+            const br = document.createElement('br');
+            br.style.display = 'none';
+            maths[i].appendChild(br);
           }
         });
       }

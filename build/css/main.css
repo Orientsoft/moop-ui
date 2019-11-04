@@ -2068,7 +2068,9 @@ a.reportbtn {
 
 .absol-pro a {
   border-radius: 6px;
-  display: inline-table;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
   width: 23%;
   height: 70px;
   padding-top: 10px;

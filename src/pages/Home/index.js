@@ -56,9 +56,9 @@ export default () => {
                     <div className="row">
                       <div className="col-md-5">
                         <div className="bindex-pro bd999 bdgreen">
-                          <a href="#" className=" nocolor bggreen">08 绝对估值</a> <br /><br />
+                          <a href="#" className=" nocolor bggreen">08 敏感性分析 </a> <br />
                           <span className="font32 color999 colorgreen">↑</span><br /><br />
-                          <a href="#" className=" nocolor bggreen">07 敏感性分析 </a> <br />
+                          <a href="#" className=" nocolor bggreen">07 绝对估值</a> <br /><br />
               
                           <p className=" font14 color999 ">模块三：估值计算</p>
                         </div>
@@ -81,7 +81,7 @@ export default () => {
                   </div>
                   <div className="col-md-12">
                     <div className="absol-pro2 width28 bd999 bdgreen">
-                      <a href="#" className=" nocolor">04 预测利润表</a>
+                      <a href="#" className=" nocolor bggreen">04 预测利润表</a>
                       <span className="font18 color999 colorgreen">→</span>
                       <a href="#" className=" nocolor bggreen">05 预测资产负债表</a>
                       <span className="font18 color999 colorgreen">→</span>
