@@ -93,11 +93,11 @@ export default ({ history }) => {
             <img height="70" src="/images/logo.jpg" alt="西南财经大学 金融学院" />
           </Link>
         </h2>
-        <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
-          {/* <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a> */}
+        {/* <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
+          <a href="#" className="closebnt" onClick={() => setCloseTip(true)}></a>
           <h4>评审专家登录</h4>
           <div className="reg_tipinfo">&nbsp;评审专家用户名与密码：<br />&nbsp;用户名：<span>test01</span><br />密&nbsp;&nbsp;&nbsp;&nbsp;码：<span>moopjinrong</span></div>
-        </div>
+        </div> */}
 
         <div className="row justify-content-center">
           <div className="col-5">
