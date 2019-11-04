@@ -56,7 +56,12 @@ export default () => {
           maths[i].removeChild(child);
           child = maths[i].firstChild;
         }
-        maths[i].appendChild(window.MathJax.tex2chtml(math));
+        math.split('\n').filter(exp => exp.trim()).forEach((exp, j, exps) => {
+          maths[i].appendChild(window.MathJax.tex2chtml(exp));
+          if (j !== exps.length - 1) {
+            maths[i].appendChild(document.createElement('br'));
+          }
+        });
       }
       window.MathJax.startup.document.clear();
       window.MathJax.startup.document.updateDocument();
