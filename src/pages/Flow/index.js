@@ -9,6 +9,7 @@ import { container, flow, progress } from '@/utils/api';
 export default () => {
   const elem = useRef();
   const sub = useRef();
+  const [isStarting, setIsStarting] = useState(false);
   const [course, setCourse] = useState({});
   const [showNext, setShowNext] = useState(false);
   const getStep = i => get(course, `projects.0.labs.${i}`, {});
@@ -19,7 +20,13 @@ export default () => {
     Dialog.alert({
       title: '启动实验',
       content: '是否确定启动？',
-      onOk: () => flow.start().then(() => refetch()),
+      onOk: () => {
+        setIsStarting(true);
+        flow.start().then(() => {
+          setIsStarting(false);
+          refetch();
+        }).catch(() => setIsStarting(false));
+      },
     });
   };
   const onStop = () => {
@@ -301,6 +308,25 @@ export default () => {
                   <div className="col-4" />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="modal modaltop" style={{ display: isStarting ? 'block' : 'none' }}>
+        <div className="modal-dialog modal-dialogloading">
+          <div className="loadingmodal-header" > 启动实验环境 </div>
+          <div className="modalloading">
+            <div className="css-typing">
+              <p className="starttime ">开始启动实验环境...</p>
+              <p className="fright">✓</p>
+              <p className="starttime time2">装载实验数据...</p>
+              <p className="fright fright2">✓</p>
+              <p className="starttime time3">启动实验容器...</p>
+              <p className="fright fright3">✓</p>
+              <p className="starttime time14">授权用户...</p>
+              <p className="fright fright4">✓</p>
+              <p className="starttime time5">进入实验环境</p>
+              <p className="fright fright5">✓</p>
             </div>
           </div>
         </div>
