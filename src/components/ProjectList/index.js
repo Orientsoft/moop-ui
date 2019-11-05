@@ -7,7 +7,7 @@ import { container, progress, classroom } from '@/utils/api';
 import { getCurrentUser } from '@/utils/helper';
 import consts from '@/utils/consts';
 
-export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, canDelete = true, canMove = true, showFinishedIcon = true, renderAddons, startArgs }) => {
+export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, onMoveDown, onDelete, onRenderItem, onRenderTitleItem, canDelete = true, canMove = true, showFinishedIcon = true, renderAddons, startArgs }) => {
   const [isRunning, setIsRunning] = useState({});
   const [isCommit, setIsCommit] = useState(false);
   const [editProject, setEditProject] = useState(null);
@@ -145,19 +145,20 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
               {/* eslint-disable */}
+              {onRenderTitleItem && onRenderTitleItem(project, i)}
               {onMoveUp && canMove && (
-                <a href="javascript:void(0);" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '312px' }}>向上</a>
+                <a href="#/" onClick={() => onMoveUp(project)} className="deleico" style={{ right: '312px' }}>向上</a>
               )}
               {onMoveDown && canMove && (
-                <a href="javascript:void(0);" onClick={() => onMoveDown(project)} className="deleico" style={{ right: '383px' }}>向下</a>
+                <a href="#/" onClick={() => onMoveDown(project)} className="deleico" style={{ right: '383px' }}>向下</a>
               )}
               {onDelete && canDelete && (
-                <a href="javascript:void(0);" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
+                <a href="#/" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
-                <a href="javascript:void(0);" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止实验环境</a>
+                <a href="#/" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止实验环境</a>
               ) : (
-                  <a href="javascript:void(0);" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
+                  <a href="#/" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
                 <Fragment>

@@ -9,6 +9,7 @@ const { Row, Col } = Grid;
 export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, getClassroom, toNext }) => {
   const [selected, setSelected] = useState(get(getLocalData(1), 'projects', []));
   const [visible, setVisible] = useState(null);
+  const [visibleTitle, setVisibleTitle] = useState(null);
   const [current, setCurrent] = useState(null);
   const [isAdd, setIsAdd] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -85,6 +86,17 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
     setCurrent([i, n]);
     setVisible(lab);
   };
+  const onEditLabTitle = (e, project, i) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setVisibleTitle({ i, title: project.title });
+  };
+  const onEditTitleOk = () => {
+    const { i, title } = visibleTitle;
+    selected[i].title = title;
+    setVisibleTitle(null);
+    setSelected([...selected]);
+  };
   const onDeleteLab = (e, lab, n, labs) => {
     e.stopPropagation();
     e.preventDefault();
@@ -129,13 +141,16 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
       </div>
     );
   };
+  const onRenderTitleItem = (project, i) => {
+    return <a href="#/" onClick={e => onEditLabTitle(e, project, i)} className="palyico" style={{ right: '454px' }}>编辑标题</a>;
+  };
   const onFinished = () => {
     if (room) {
       setIsLoading(true);
       projectAPI.rename({
         data: {
           classroom: room.id,
-          project: selected.map(s => ({ id: s.id, lab_list: s.labs })),
+          project: selected.map(s => ({ id: s.id, title: s.title, lab_list: s.labs })),
         },
       }).then(({ data }) => {
         setLocalData(1, { projects: data.projects });
@@ -150,7 +165,7 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
     <div className="centminheight">
       <Row justify="center" className="m-t-20">
         <Col span={labelSpan + wrapperSpan}>
-          <ProjectList data={selected} renderAddons={renderAddons} showFinishedIcon={false} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} canDelete={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
+          <ProjectList data={selected} renderAddons={renderAddons} showFinishedIcon={false} onStarted={onStarted} onStoped={onStoped} onMoveUp={onMoveUp} onMoveDown={onMoveDown} onDelete={onDelete} onRenderItem={onRenderItem} onRenderTitleItem={onRenderTitleItem} canDelete={false} startArgs={{ edit: true, classroom: room ? room.id : '' }} />
         </Col>
       </Row>
       <Row justify="center" className="m-t-20">
@@ -173,6 +188,15 @@ export default ({ labelSpan, wrapperSpan, setData, setLocalData, getLocalData, g
             <Col span={4}>文件：</Col>
             <Col span={20}>
               <Input defaultValue={visible.filename} onChange={e => setVisible({ ...visible, filename: e })} style={{ width: '100%' }} />
+            </Col>
+          </Row>
+        </Dialog>
+      ) : null}
+      {visibleTitle !== null ? (
+        <Dialog title="编辑标题" style={{ width: 420 }} onOk={onEditTitleOk} visible closeable={false} onCancel={() => setVisibleTitle(null)}>
+          <Row align="center">
+            <Col span={24}>
+              <Input defaultValue={visibleTitle.title} onChange={e => setVisibleTitle({ ...visibleTitle, title: e.trim() })} style={{ width: '100%' }} />
             </Col>
           </Row>
         </Dialog>
