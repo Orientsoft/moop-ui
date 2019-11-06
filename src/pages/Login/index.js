@@ -17,9 +17,9 @@ export default ({ history }) => {
         }
         if (!data.thumb) {
           if (data.gender === consts.sex.MALE) {
-            data.thumb = '/static/images/headerboy.png';
+            data.thumb = '/images/headerboy.png';
           } else {
-            data.thumb = '/static/images/headgirl.png';
+            data.thumb = '/images/headgirl.png';
           }
         }
         setCurrentUser(data);
@@ -64,7 +64,7 @@ export default ({ history }) => {
   return (
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60">
-        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><i>M</i><span>oopLab</span></Link></h2>
+        <h2 className="text-center"><Link className="navbar-brand logo" to="/"><span>K</span><span style={{ color: '#01ab71' }}>@</span><span>S</span>&nbsp;<span>Lab</span></Link></h2>
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-20">
@@ -101,7 +101,7 @@ export default ({ history }) => {
         </div>
       </div>
       <div className="container text-center p-30">
-        <span className="fade-half">© 版权所有 MoopLab</span>
+        <span className="fade-half">© 版权所有 K@S Lab</span>
       </div>
     </div>
   );

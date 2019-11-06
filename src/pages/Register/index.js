@@ -95,7 +95,7 @@ export default ({ history }) => {
     // <div className="bglog" style={{ height: '100vh' }}>
     <div className="bglog" style={{ height: '100vh' }}>
       <div className="container p-t-60 povr">
-        <h2 className="text-center"><a className="navbar-brand logo" href="/"><i>M</i><span>oopLab</span></a></h2>
+        <h2 className="text-center"><a className="navbar-brand logo" href="/"><span>K</span><span style={{ color: '#01ab71' }}>@</span><span>S</span>&nbsp;<span>Lab</span></a></h2>
         {/* <div className="reg_tipbox" style={{ display: closeTip ? 'none' : '' }}>
           <a href="#" className="closebnt" onClick={() => setCloseTip(true)} />
           <h4>成为贡献者或老师</h4>

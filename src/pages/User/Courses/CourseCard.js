@@ -7,7 +7,7 @@ export default ({ data }) => {
   return (
     <div className="col-12 courseslist col-md-4 m-b-30">
       <Link to={`/classroom?id=${data.id}`} className="card p-b-10" style={{ textDecoration: 'none' }}>
-        <img className="card-img-top" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
+        <img className="card-img-top" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/images/index1.jpg'} alt={data.title} />
         <div className="card-body">
           <h5 className="card-title" style={{ color: 'black' }}>{data.title}</h5>
           <p className="card-text font-italic" style={{ height: 'auto' }}>

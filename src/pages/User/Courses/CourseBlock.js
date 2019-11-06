@@ -26,7 +26,7 @@ export default ({ data }) => {
       <div className="card p-b-10">
         <div className="post">
           <Link to={`/classroom?id=${data.id}`}>
-            <img className="card-img-top" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/static/images/index1.jpg'} alt={data.title} />
+            <img className="card-img-top" height="200" src={get(data, 'thumb.thumbnail') ? data.thumb.thumbnail : '/images/index1.jpg'} alt={data.title} />
             {data.status !== 0 && <div style={data.status !== 3 ? publishedCourse : endedCourse}>{data.status !== 3 ? '已发布' : '已结束'}</div>}
           </Link>
         </div>

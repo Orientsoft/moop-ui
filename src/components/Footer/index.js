@@ -53,19 +53,19 @@ export default () => {
         </div>
         <p className="text-center m-t-20">
           <a className="m-r-15" href="http://www.jupyterchina.org" target="_blank" >
-            <img height="40" src="/static/images/jupyterchina_l.png" alt="Jupyter logo" />
+            <img height="40" src="/images/jupyterchina_l.png" alt="Jupyter logo" />
           </a>
           <a className="m-l-15" href="https://jupyter.org" target="_blank" >
-            <img height="45" src="/static/images/jupter-l.png" alt="Jupyter logo" />
+            <img height="45" src="/images/jupter-l.png" alt="Jupyter logo" />
           </a>
           <a className="m-l-15" href="https://github.com/moop-china" target="_blank">
-            <img height="50" src="/static/images/github.png" />
+            <img height="50" src="/images/github.png" />
           </a>
         </p>
         <p className="m-t-20 text-center">
           <span className="fade-half">
-            Copyright ©2019 MoopLab all right reserved. <br />
-            四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a>
+            Copyright ©2019 K@S Lab all right reserved. <br />
+            北京百智享科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备17041490号-1</a>
           </span>
         </p>
       </div>
