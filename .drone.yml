@@ -72,7 +72,7 @@ steps:
 
 trigger:
   branch:
-  - dev
+  - bzx
   # event:
   # - push
 
