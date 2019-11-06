@@ -151,7 +151,7 @@ export default () => {
           <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
-              <div className="col-md-4">
+              <div className="col-md-4" style={{ alignSelf: 'center' }}>
                 <div className="bindex-pro bd999 bdgreen">
                   <a target="_blank" rel="noopener noreferrer" data-id={getStep(0).id} href={getURL(getStep(0).id)} className={classnames({ nocolor: true, bggreen: course.running })}>{getStep(0).name}</a> <br /><br />
                   <span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(0).finish }])}>↓</span><br /><br />
@@ -161,7 +161,7 @@ export default () => {
                   <p className=" font14 color999 ">模块一：历史报表</p>
                 </div>
               </div>
-              <div className="col-md-1 right pt200"><span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(2).finish }])}>⇨</span></div>
+              <div className="col-md-1 right pt200" style={{ paddingTop: 394 }}><span className={classnames(['font32', 'color999', { colorgreen: course.running && getStep(2).finish }])}>⇨</span></div>
               <div className="col-md-7 right">
                 <div className="row">
                   <div className="col-md-12">
@@ -218,7 +218,7 @@ export default () => {
                   <a target="_blank" rel="noopener noreferrer" data-id={getChild(2).id} href={getURL(getChild(2).id)} className={classnames(['nocolor', { bggreen: getChild(2).finish }])} data-math={getChild(2).name} />
                 </div>
                 <div className="absol-upbtn">
-                  <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(2).finish }])}>⇩</span>
+                  <span className={classnames(['font32', 'color999', { colorgreen: course.running && getChild(2).finish }])} style={{ marginLeft: '-24%' }}>⇩</span>
                 </div>
                 <div className="absol-pro bd999 bdgreen">
                   <a target="_blank" rel="noopener noreferrer" data-id={getChild(3).id} href={getURL(getChild(3).id)} className={classnames(['nocolor', { bggreen: getChild(3).finish }])} data-math={getChild(3).name} />
