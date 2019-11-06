@@ -5,7 +5,7 @@ export default class Logo extends PureComponent {
   render() {
     return (
       <Link to="/tenant" style={{ ...styles.logoStyle, ...this.props.style }}>
-        <span style={styles.firstChar}>M</span>oopLab
+        K<span style={{ color: '#03a975' }}>@</span>S Lab
       </Link>
     );
   }
