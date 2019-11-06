@@ -261,7 +261,9 @@ export default () => {
               <h2>199</h2>
             </div>
           </div>
-          <h4 className="m-t-60 text-center"><a className="btn btn-lg startbtn " href="/courses">进入实验 <span className="link-symbol">→</span></a></h4>
+          <h4 className="m-t-60 text-center">
+            <Link to="/flow" className="btn btn-lg startbtn">进入实验</Link>
+          </h4>
         </div>
       </div>
     </Fragment>
