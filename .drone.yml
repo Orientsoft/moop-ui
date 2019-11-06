@@ -61,9 +61,9 @@ steps:
   image: drillster/drone-rsync
   environment:
     RSYNC_KEY:
-      from_secret: rsync_key_ecourses
+      from_secret: rsync_key_mooplab
     RSYNC_USER:
-      from_secret: rsync_user_ecourses
+      from_secret: rsync_user_mooplab
   settings:
     hosts:
       - jupyter.e-courses.cn
