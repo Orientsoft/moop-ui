@@ -19,7 +19,7 @@ export default ({ onLogout, history }) => {
             {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
           </Link>
           {/* <a className="m-r-15" href="https://github.com/jupyter/design" target="_blank" >
-            <img height="35" src="/static/images/jupter-l.png" alt="Jupyter logo" />
+            <img height="35" src="/images/jupter-l.png" alt="Jupyter logo" />
           </a> */}
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />

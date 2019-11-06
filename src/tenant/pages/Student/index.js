@@ -68,7 +68,7 @@ export default () => {
         <Button loading={isImporting} style={{ marginLeft: 15 }} type="primary">导入</Button>
       </Upload>
       <Button style={{ marginLeft: 15 }} type="normal" warning onClick={onDeleteBatches}>删除</Button>
-      <a style={{ fontSize: 14, textDecoration: 'underline', marginLeft: 15 }} target="_blank" rel="noopenner noreferer" href="/static/import_students.csv">下载导入模版</a>
+      <a style={{ fontSize: 14, textDecoration: 'underline', marginLeft: 15 }} target="_blank" rel="noopenner noreferer" href="/import_students.csv">下载导入模版</a>
       <Table dataSource={students} loading={loading} onQuery={onQuery} onDelete={onDelete} onSelect={records => setSelected(records)} />
     </Container>
   );
