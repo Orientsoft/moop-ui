@@ -57,9 +57,22 @@ steps:
     source: ./build/*
     target: /storage/moop/ui-root
 
+- name: rsync-to-ecourses-web-server
+  image: drillster/drone-rsync
+  environment:
+    RSYNC_KEY:
+      from_secret: rsync_key_mooplab
+    RSYNC_USER:
+      from_secret: rsync_user_mooplab
+  settings:
+    hosts:
+      - jupyter.e-courses.cn
+    source: ./build/*
+    target: /opt/ui-root-ecouses
+
 trigger:
   branch:
-  - dev
+  - bzx
   # event:
   # - push
 
