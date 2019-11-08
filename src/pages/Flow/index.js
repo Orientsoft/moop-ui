@@ -1,14 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Dialog } from '@alifd/next';
+import { Dialog, Button, Slider } from '@alifd/next';
 import classnames from 'classnames';
 import moment from 'moment';
 import get from 'lodash-es/get';
 import { getCourseCover } from '@/utils/helper';
 import { container, flow, progress } from '@/utils/api';
 
+const slides = [
+  '/images/lab-slide.01.png',
+  '/images/lab-slide.02.png',
+  '/images/lab-slide.03.png',
+  '/images/lab-slide.04.png',
+  '/images/lab-slide.05.png',
+];
+
 export default () => {
   const elem = useRef();
   const sub = useRef();
+  const [showTip, setShowTip] = useState(false);
   const [isStarting, setIsStarting] = useState(false);
   const [course, setCourse] = useState({});
   const [showNext, setShowNext] = useState(false);
@@ -120,6 +129,13 @@ export default () => {
 
   return (
     <div>
+      <Dialog visible={showTip} align="cc cc" closeable="esc,mask" style={{ width: 810 }} footer={false} animation={false} onClose={() => setShowTip(false)}>
+        <Slider>
+          {slides.map((item, i) => (
+            <div key={i} style={{ height: 576, backgroundImage: `url(${item})`, backgroundSize: 'contain' }} />
+          ))}
+        </Slider>
+      </Dialog>
       <div className="bg-mainconttop p-t-60 p-b-60">
         <div className="container  text-left">
           <div className="row">
@@ -148,7 +164,10 @@ export default () => {
       </div>
       <div ref={elem} className="main-container p-b-120" style={{ display: course && course.projects ? 'block' : 'none' }}>
         <div className="container p-t-60 text-center ">
-          <h2 className="large m-t-60 p-t-120">公司估值虚拟仿真实验流程</h2>
+          <h2 className="large m-t-60 p-t-120" style={{ position: 'relative' }}>
+            <span>公司估值虚拟仿真实验流程</span>
+            <Button component="a" type="primary" text onClick={() => setShowTip(true)} style={{ position: 'absolute', top: 10, right: 70, color: 'blue', fontSize: 18 }}>查看实验流程</Button>
+          </h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
               <div className="col-md-4" style={{ alignSelf: 'center' }}>
