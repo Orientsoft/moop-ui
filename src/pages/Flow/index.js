@@ -166,7 +166,7 @@ export default () => {
         <div className="container p-t-60 text-center ">
           <h2 className="large m-t-60 p-t-120" style={{ position: 'relative' }}>
             <span>公司估值虚拟仿真实验流程</span>
-            <Button component="a" type="primary" text onClick={() => setShowTip(true)} style={{ position: 'absolute', top: 10, right: 70, color: 'blue', fontSize: 18 }}>查看实验流程</Button>
+            <Button component="a" type="primary" text onClick={() => setShowTip(true)} style={{ position: 'absolute', top: 10, right: 70, color: 'blue', fontSize: 18 }}>使用帮助</Button>
           </h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
