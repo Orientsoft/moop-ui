@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Dialog, Button, Slider } from '@alifd/next';
+import { Dialog, Button, Slider, Icon } from '@alifd/next';
 import classnames from 'classnames';
 import moment from 'moment';
 import get from 'lodash-es/get';
@@ -162,11 +162,11 @@ export default () => {
           </div>
         </div>
       </div>
-      <div ref={elem} className="main-container p-b-120" style={{ display: course && course.projects ? 'block' : 'none' }}>
+      <div ref={elem} className="main-container p-b-120" style={{ display: course && course.projects ? 'block' : 'block' }}>
         <div className="container p-t-60 text-center ">
           <h2 className="large m-t-60 p-t-120" style={{ position: 'relative' }}>
             <span>公司估值虚拟仿真实验流程</span>
-            <Button component="a" type="primary" text onClick={() => setShowTip(true)} style={{ position: 'absolute', top: 10, right: 70, color: 'blue', fontSize: 18 }}>使用帮助</Button>
+            <Button type="primary" size="large" onClick={() => setShowTip(true)} style={{ position: 'absolute', left: 60 }}><Icon type="help" />使用帮助</Button>
           </h2>
           <div className="row-warp" >
             <div className="row  m-t-60 ">
