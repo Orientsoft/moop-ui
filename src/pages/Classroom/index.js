@@ -91,6 +91,10 @@ export default ({ history }) => {
       });
       return;
     }
+    if (!user || !isTeacher(user)) {
+      history.push('/flow');
+      return;
+    }
 
     if (url.tab) {
       const key = parseInt(url.tab, 10);
