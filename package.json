@@ -1,7 +1,7 @@
 {
-  "name": "MoopLab",
+  "name": "moop-ui",
   "version": "1.0.0",
-  "description": "MoopLab",
+  "description": "MoopUI",
   "files": [
     "src/",
     "build/",
@@ -38,37 +38,23 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
-    "copy-webpack-plugin": "^5.0.2",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
-    "ice-scripts": "^1.7.1"
+    "ice-plugin-fusion": "^0.1.12",
+    "ice-scripts": "^2.0.0"
   },
   "scripts": {
-    "start": "ice dev",
-    "build": "ice build --hash",
+    "start": "ice-scripts dev",
+    "build": "ice-scripts build",
     "lint": "eslint . --ext '.js,.jsx' --fix"
-  },
-  "proxyConfig": {
-    "/api/v1": {
-      "enable": true,
-      "target": "http://192.168.0.129:7777"
-    }
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.com",
     "access": "public"
-  },
-  "buildConfig": {
-    "theme": "@icedesign/theme",
-    "entry": "src/index.js",
-    "localization": false,
-    "output": {
-      "publicPath": "/"
-    }
   },
   "engines": {
     "node": ">=8.0.0"
