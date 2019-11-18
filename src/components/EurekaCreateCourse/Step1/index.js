@@ -104,13 +104,13 @@ export default class Step1 extends React.Component {
             <div className="text-muted fontsw m-t-10">请上传尺寸宽为300px，高为180px,大小不超过1M，图片格式为jpg，png为课题封面。</div>
           </Upload>
         </Form.Item>
-        <Form.Item label="课题描述：" validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="课题描述：" autoValidate={false} validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <BraftEditor name="description" defaultValue={BraftEditor.createEditorState(data ? data.description : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
-        <Form.Item label="预备知识：" validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="预备知识：" autoValidate={false} validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <BraftEditor name="requirement" defaultValue={BraftEditor.createEditorState(data ? data.requirement : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
-        <Form.Item label="考核内容：" validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
+        <Form.Item label="考核内容：" autoValidate={false} validator={this.validator} required requiredMessage="必填项不能为空" patternMessage="格式不正确">
           <BraftEditor name="testPoint" defaultValue={BraftEditor.createEditorState(data ? data.testPoint : '')} style={{ border: '1px solid #C4C6CF' }} contentStyle={{ height: 320 }} />
         </Form.Item>
         <Form.Item label="参考资料：" requiredMessage="必填项不能为空" patternMessage="格式不正确">

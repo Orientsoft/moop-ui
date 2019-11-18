@@ -82,6 +82,19 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
       }
     }
   };
+  const onWillNext = () => {
+    const currentSelected = [...selected];
+
+    if (currentSelected.length) {
+      setData({ projects: currentSelected, homework });
+      toNext();
+    } else {
+      Dialog.alert({
+        title: '提示',
+        content: '请选择实验模版',
+      });
+    }
+  };
 
   useEffect(() => {
     projectAPI.categories().then(({ data }) => setCategories(data));
@@ -117,7 +130,7 @@ export default ({ labelSpan, wrapperSpan, setData, getData, toNext }) => {
         </Row>
         <Row justify="center" className="m-t-20">
           <Col span={4}>
-            <Button type="primary" onClick={() => { setData({ projects: [...selected], homework }); toNext(); }} className="serverbtn">下一步</Button>
+            <Button type="primary" onClick={onWillNext} className="serverbtn">下一步</Button>
           </Col>
         </Row>
         <Dialog title={<div>选择实验模版 - <span style={{ fontSize: 14, color: 'red' }}>若无法勾选模版，请联系管理员授权</span></div>} shouldUpdatePosition closeable={false} hasMask={false} visible={visible} onOk={onOk} onCancel={onCancel} style={{ width: 680 }}>
