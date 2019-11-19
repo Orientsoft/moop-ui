@@ -1,31 +1,32 @@
+import { lazy } from 'react';
 import Home from '@/pages/Home';
 import Courses from '@/pages/Courses';
 import Flow from '@/pages/Flow';
 import Classroom from '@/pages/Classroom';
-import UserProfile from '@/pages/User/Profile';
+// import UserProfile from '@/pages/User/Profile';
 import UserCourses from '@/pages/User/Courses';
-import ClassroomDetail from '@/pages/ClassroomDetail';
-import ClassroomLab from '@/pages/ClassroomLab';
-import ClassroomCreateDetail from '@/pages/ClassroomCreateDetail';
-import CreateClassroom from '@/pages/CreateClassroom';
-import EditClassroom from '@/pages/EditClassroom';
-import StudentReport from '@/pages/StudentReport';
-import StudentReportEdit from '@/pages/StudentReportEdit';
-import TeacherIntroduction from '@/pages/TeacherIntroduction';
-import Help from '@/pages/Help';
-import About from '@/pages/About';
-import ContactUs from '@/pages/ContactUs';
+// import ClassroomDetail from '@/pages/ClassroomDetail';
+// import ClassroomLab from '@/pages/ClassroomLab';
+// import ClassroomCreateDetail from '@/pages/ClassroomCreateDetail';
+// import CreateClassroom from '@/pages/CreateClassroom';
+// import EditClassroom from '@/pages/EditClassroom';
+// import StudentReport from '@/pages/StudentReport';
+// import StudentReportEdit from '@/pages/StudentReportEdit';
+// import TeacherIntroduction from '@/pages/TeacherIntroduction';
+// import Help from '@/pages/Help';
+// import About from '@/pages/About';
+// import ContactUs from '@/pages/ContactUs';
 import TenantDashboard from '@/tenant/pages/Dashboard';
-import TenantProject from '@/tenant/pages/Project';
-import TenantCourses from '@/tenant/pages/Courses';
-import TenantTags from '@/tenant/pages/Tag';
-import TenantTenant from '@/tenant/pages/Tenant';
-import TenantTeacher from '@/tenant/pages/Teacher';
-import TenantStudent from '@/tenant/pages/Student';
-import TenantContributor from '@/tenant/pages/Contributor';
+// import TenantProject from '@/tenant/pages/Project';
+// import TenantCourses from '@/tenant/pages/Courses';
+// import TenantTags from '@/tenant/pages/Tag';
+// import TenantTenant from '@/tenant/pages/Tenant';
+// import TenantTeacher from '@/tenant/pages/Teacher';
+// import TenantStudent from '@/tenant/pages/Student';
+// import TenantContributor from '@/tenant/pages/Contributor';
 import ContributorDashboard from '@/contributor/pages/Dashboard';
-import ContributorCreate from '@/contributor/pages/Create';
-import ContributorResetPassword from '@/contributor/pages/ResetPassword';
+// import ContributorCreate from '@/contributor/pages/Create';
+// import ContributorResetPassword from '@/contributor/pages/ResetPassword';
 
 export const tenantRoutes = [
   {
@@ -34,31 +35,31 @@ export const tenantRoutes = [
   },
   {
     path: '/tenant/project',
-    component: TenantProject,
+    component: lazy(() => import('@/tenant/pages/Project')),
   },
   {
     path: '/tenant/courses',
-    component: TenantCourses,
+    component: lazy(() => import('@/tenant/pages/Courses')),
   },
   {
     path: '/tenant/tags',
-    component: TenantTags,
+    component: lazy(() => import('@/tenant/pages/Tag')),
   },
   {
     path: '/tenant/tenant',
-    component: TenantTenant,
+    component: lazy(() => import('@/tenant/pages/Tenant')),
   },
   {
     path: '/tenant/teacher',
-    component: TenantTeacher,
+    component: lazy(() => import('@/tenant/pages/Teacher')),
   },
   {
     path: '/tenant/student',
-    component: TenantStudent,
+    component: lazy(() => import('@/tenant/pages/Student')),
   },
   {
     path: '/tenant/contributor',
-    component: TenantContributor,
+    component: lazy(() => import('@/tenant/pages/Contributor')),
   },
 ];
 
@@ -69,11 +70,11 @@ export const contributorRoutes = [
   },
   {
     path: '/contributor/create',
-    component: ContributorCreate,
+    component: lazy(() => import('@/contributor/pages/Create')),
   },
   {
     path: '/contributor/password',
-    component: ContributorResetPassword,
+    component: lazy(() => import('@/contributor/pages/ResetPassword')),
   },
 ];
 
@@ -96,7 +97,7 @@ const routerConfig = [
   },
   {
     path: '/users/profile',
-    component: UserProfile,
+    component: lazy(() => import('@/pages/User/Profile')),
   },
   {
     path: '/users/courses',
@@ -104,47 +105,47 @@ const routerConfig = [
   },
   {
     path: '/classroomdetail',
-    component: ClassroomDetail,
+    component: lazy(() => import('@/pages/ClassroomDetail')),
   },
   {
     path: '/classroomlab',
-    component: ClassroomLab,
+    component: lazy(() => import('@/pages/ClassroomLab')),
   },
   {
     path: '/classroomcreatedetail',
-    component: ClassroomCreateDetail,
+    component: lazy(() => import('@/pages/ClassroomCreateDetail')),
   },
   {
     path: '/createclassroom',
-    component: CreateClassroom,
+    component: lazy(() => import('@/pages/CreateClassroom')),
   },
   {
     path: '/editclassroom',
-    component: EditClassroom,
+    component: lazy(() => import('@/pages/EditClassroom')),
   },
   {
     path: '/studentreport',
-    component: StudentReport,
+    component: lazy(() => import('@/pages/StudentReport')),
   },
   {
     path: '/studentreportedit',
-    component: StudentReportEdit,
+    component: lazy(() => import('@/pages/StudentReportEdit')),
   },
   {
     path: '/teacherintroduction',
-    component: TeacherIntroduction,
+    component: lazy(() => import('@/pages/TeacherIntroduction')),
   },
   {
     path: '/help',
-    component: Help,
+    component: lazy(() => import('@/pages/Help')),
   },
   {
     path: '/about',
-    component: About,
+    component: lazy(() => import('@/pages/About')),
   },
   {
     path: '/contactus',
-    component: ContactUs,
+    component: lazy(() => import('@/pages/ContactUs')),
   },
   ...tenantRoutes,
   ...contributorRoutes,

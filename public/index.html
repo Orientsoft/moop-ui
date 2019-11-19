@@ -16,5 +16,8 @@
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script id="MathJax-script" async src="/js/tex-chtml.min.js"></script>
+    <% bundles.forEach(function (bundle) { %>
+    <script src="<%= bundle.js %>"></script>
+    <% }) %>
   </body>
 </html>

@@ -6,6 +6,8 @@
 - 构建 dist: `npm run build`
 
 ## 部署
+0、先运行`npm run dll`，生成`manifests`目录
+
 1、运行`npm run build`，生成`build`目录
 
 2、用`nginx`或`caddy`代理`build`目录

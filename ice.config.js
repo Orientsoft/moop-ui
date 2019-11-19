@@ -1,7 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
+const bundles = require('./manifests/manifest.json');
 
 module.exports = {
-  entry: 'src/index.js',
+  entry: {
+		app: './src/index.js',
+	},
   hash: true,
   outputDir: path.resolve(__dirname, 'build'),
   alias: {
@@ -26,17 +30,26 @@ module.exports = {
     config.plugin('HtmlWebpackPlugin')
       .tap(([options]) => [{
         ...options,
-        templateParameters: { t: Date.now() },
-      }]);
-    config.optimization.splitChunks({
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all',
-          minChunks: 1,
+        templateParameters: {
+          t: Date.now(),
+          bundles: Object.values(bundles),
         },
-      },
-    });
+      }]);
+    config.plugin('CoreManifest')
+      .use(webpack.DllReferencePlugin, [{
+        manifest: require('./manifests/core.json'),
+      }]);
+    config.plugin('UtilsManifest')
+      .use(webpack.DllReferencePlugin, [{
+        manifest: require('./manifests/utils.json'),
+      }]);
+    config.plugin('ChartsManifest')
+      .use(webpack.DllReferencePlugin, [{
+        manifest: require('./manifests/charts.json'),
+      }]);
+    config.plugin('EditorManifest')
+      .use(webpack.DllReferencePlugin, [{
+        manifest: require('./manifests/editor.json'),
+      }]);
   },
 };

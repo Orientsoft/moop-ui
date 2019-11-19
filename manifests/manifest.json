@@ -1,0 +1,14 @@
+{
+  "charts": {
+    "js": "/dll/charts.f0b2cc.js"
+  },
+  "core": {
+    "js": "/dll/core.f0b2cc.js"
+  },
+  "editor": {
+    "js": "/dll/editor.f0b2cc.js"
+  },
+  "utils": {
+    "js": "/dll/utils.f0b2cc.js"
+  }
+}
