@@ -153,7 +153,7 @@ export default ({ history }) => {
                     </div>
                   </div>
                   <div className="form-group m-t-10 m-b-0">
-                 
+
                     <div className="col-sm-12">
                       已有帐号？<Link to="/login">登录</Link>
                     </div>

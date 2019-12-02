@@ -21,10 +21,10 @@ export default () => {
             <p>地址：{get(tenant, 'address', '')}&nbsp;&nbsp;&nbsp;&nbsp; 邮箱：{get(tenant, 'email', '')} &nbsp;&nbsp;&nbsp;&nbsp;{trim(get(tenant, 'mobile')) ? <span>电话：{get(tenant, 'mobile')}</span> : null}</p>
             <p>Copyright ©2019 MoopLab all right reserved. </p>
             四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a>
-           
+
           </div>
         </div>
-      
+
       </div>
     </footer>
   );

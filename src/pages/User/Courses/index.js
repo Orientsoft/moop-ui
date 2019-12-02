@@ -112,10 +112,10 @@ const Teacher = ({ user, data }) => (
                 <p>目前您没有任何激活的课题。</p>
                 <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
               </div>
-        </div>
+            </div>
         )}
+        </div>
       </div>
-    </div>
     </div>
   </Fragment>
 );

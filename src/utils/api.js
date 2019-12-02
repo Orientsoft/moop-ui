@@ -53,6 +53,11 @@ export const captcha = {
   refresh: GET('/captcha'),
 };
 
+export const role = {
+  list: POST('/roles'),
+  login: POST('/role_login'),
+};
+
 export const user = {
   login: POST('/login'),
   logout: GET('/logout'),
