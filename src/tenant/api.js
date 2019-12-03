@@ -36,6 +36,13 @@ export const contributor = {
   resetPassword: GET('/management/reset'),
 };
 
+export const whitelist = {
+  list: GET('/whitelist'),
+  create: POST('/whitelist'),
+  update: PATCH('/whitelist'),
+  delete: DELETE('/whitelist'),
+};
+
 export const login = POST('/login');
 export const logout = GET('/logout');
 

@@ -50,6 +50,11 @@ const asideMenuConfig = [
     path: '/tenant/contributor',
     icon: 'yonghu',
   },
+  {
+    name: '白名单管理',
+    path: '/tenant/whitelist',
+    icon: 'shezhi',
+  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };

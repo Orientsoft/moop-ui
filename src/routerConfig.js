@@ -21,6 +21,7 @@ import TenantTags from '@/tenant/pages/Tag';
 import TenantTenant from '@/tenant/pages/Tenant';
 import TenantTeacher from '@/tenant/pages/Teacher';
 import TenantStudent from '@/tenant/pages/Student';
+import TenantWhiteList from '@/tenant/pages/WhiteList';
 import TenantContributor from '@/tenant/pages/Contributor';
 import ContributorDashboard from '@/contributor/pages/Dashboard';
 import ContributorCreate from '@/contributor/pages/Create';
@@ -58,6 +59,10 @@ export const tenantRoutes = [
   {
     path: '/tenant/contributor',
     component: TenantContributor,
+  },
+  {
+    path: '/tenant/whitelist',
+    component: TenantWhiteList,
   },
 ];
 
