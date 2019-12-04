@@ -62,7 +62,12 @@ export default class Step1 extends React.Component {
         values.description = values.description.toHTML();
         values.requirement = values.requirement.toHTML();
         values.testPoint = values.testPoint.toHTML();
-        values.material = material.filter(m => m.name);
+        values.material = material.filter(m => m.name).map((m) => {
+          if (!/^([a-zA-Z]+):\/\//.test(m.href)) {
+            m.href = `http://${m.href}`;
+          }
+          return m;
+        });
         values.characteristic = characteristic.filter(c => c);
         setData(values);
         classroomAPI.update({ data: values, params: { embed: 1 } }, { classroomId: getClassroom().id }).then(({ data }) => {
