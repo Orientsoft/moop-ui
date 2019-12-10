@@ -57,7 +57,7 @@ export default ({ dataSource, onQuery, setEditing, style, ...tableProps }) => {
         expandedRowIndent={[1, 1]}
         onRowOpen={keys => setOpenRowKeys(keys)}
         expandedRowRender={record => record.labs.map((lab, i) => {
-          const name = `${i + 1}、${lab.name}`;
+          const name = lab.name;
           const styles = { display: 'block' };
 
           if (record.running) {
