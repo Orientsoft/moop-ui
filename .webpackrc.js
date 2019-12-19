@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const template = fs.readFileSync('index.template').toString();
 
@@ -14,4 +15,11 @@ module.exports = context => ({
   devServer: {
     historyApiFallback: true,
   },
+  plugins: [
+    new CopyPlugin([{
+      from: 'public',
+      to: 'static',
+      ignore: ['index.html', 'index.template', 'favicon.png'],
+    }]),
+  ],
 });

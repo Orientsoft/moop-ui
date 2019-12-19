@@ -7,9 +7,9 @@ const KEY_TENANT = '__tenant__';
 export const setCurrentUser = (user) => {
   if (!user.thumb) {
     if (user.gender === consts.sex.MALE) {
-      user.thumb = '/images/headerboy.png';
+      user.thumb = '/static/images/headerboy.png';
     } else {
-      user.thumb = '/images/headgirl.png';
+      user.thumb = '/static/images/headgirl.png';
     }
   }
   sessionStorage.setItem(KEY_USER, JSON.stringify(user));
@@ -66,7 +66,7 @@ export const getCourseCover = (course) => {
       const last = parseInt(course.id.split('').reverse()[0], 16) || 0;
       index = last % 3;
     }
-    thumb = `/images/course-cover.${index}.png`;
+    thumb = `/static/images/course-cover.${index}.png`;
   }
 
   return thumb;

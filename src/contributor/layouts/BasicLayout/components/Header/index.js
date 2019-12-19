@@ -127,7 +127,7 @@ export default class Header extends Component {
                 <IceImg
                   height={40}
                   width={40}
-                  src={user.thumb || require('./images/avatar.png')}
+                  src={user.thumb || '/static/images/avatar.png'}
                   className="user-avatar"
                 />
                 <div className="user-profile">

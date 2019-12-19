@@ -53,7 +53,7 @@ export default ({ size = 99, tag, owner, sort }) => {
           <div className="row p-t-60">
             <div className="col text-center">
               <h4>当前分类还没有课题</h4>
-              <p><img width="160" height="160" className="catalog-img" src="/images/empty_state.png" alt="浏览" /></p>
+              <p><img width="160" height="160" className="catalog-img" src="/static/images/empty_state.png" alt="浏览" /></p>
             </div>
           </div>
         </div>

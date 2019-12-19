@@ -9,9 +9,9 @@ export default ({ data = [] }) => {
     }
     if (!teacher.thumb) {
       if (teacher.gender === consts.sex.MALE) {
-        teacher.thumb = '/images/headerboy.png';
+        teacher.thumb = '/static/images/headerboy.png';
       } else {
-        teacher.thumb = '/images/headgirl.png';
+        teacher.thumb = '/static/images/headgirl.png';
       }
     }
   });

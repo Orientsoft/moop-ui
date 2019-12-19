@@ -29,7 +29,7 @@ export default () => {
         <div className="container p-b-60 text-center">
           <h2 >
             <a className="m-r-15" href="https://jupyter.org" rel="noopener noreferrer" target="_blank" >
-              <img height="60" src="/images/jupter-b.png" alt="Jupyter logo" />
+              <img height="60" src="/static/images/jupter-b.png" alt="Jupyter logo" />
             </a>
           </h2>
           <h2 className="large m-t-40">Jupyter 创始团队支持，与Jupyter社区同步演进</h2>
@@ -48,21 +48,21 @@ export default () => {
           <div className="row m-t-60  p-b-120 procont" >
             <div className="col-12 col-md-4 ">
               <div className="feature">
-                <img src="/images/icno3.png" alt="" />
+                <img src="/static/images/icno3.png" alt="" />
                 <h5 className="mb8 uppercase bold p-b-10">一键启动 </h5>
                 <p className="fade-1-4 p-b-10">准备程序的运行环境是数据分析中相对复杂的环节，我们使用分布式容器技术，使每个实验环境都能一键启动。</p>
               </div>
             </div>
             <div className="col-12 col-md-4 ">
               <div className="feature ">
-                <img src="/images/icno1.png" alt="" />
+                <img src="/static/images/icno1.png" alt="" />
                 <h5 className="mb8 uppercase bold p-b-10">数据保护</h5>
                 <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验课题成员之间能够通过授权进行数据交换。 </p>
               </div>
             </div>
             <div className="col-12 col-md-4 ">
               <div className="feature ">
-                <img src="/images/icno2.png" alt="" />
+                <img src="/static/images/icno2.png" alt="" />
                 <h5 className="mb8 uppercase bold p-b-10">实验组装</h5>
                 <p className="fade-1-4 p-b-10">我们随时跟踪业界前沿算法和论文，并转化为实验供学员学习，课程使用先进的数据分析工具Jupyter Notebook编写。</p>
               </div>

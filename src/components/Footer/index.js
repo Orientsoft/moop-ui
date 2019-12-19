@@ -47,19 +47,20 @@ export default () => {
                 <li>地址：{get(tenant, 'address', '')}</li>
                 <li>邮箱：{get(tenant, 'email', '')}</li>
                 {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null}
+                <li>如需试用，请邮件联系</li>
               </ul>
             </div>
           </div>
         </div>
         <p className="text-center m-t-20">
           <a className="m-r-15" href="http://www.jupyterchina.org" target="_blank" >
-            <img height="40" src="/images/jupyterchina_l.png" alt="Jupyter logo" />
+            <img height="40" src="/static/images/jupyterchina_l.png" alt="Jupyter logo" />
           </a>
           <a className="m-l-15" href="https://jupyter.org" target="_blank" >
-            <img height="45" src="/images/jupter-l.png" alt="Jupyter logo" />
+            <img height="45" src="/static/images/jupter-l.png" alt="Jupyter logo" />
           </a>
           <a className="m-l-15" href="https://github.com/moop-china" target="_blank">
-            <img height="50" src="/images/github.png" />
+            <img height="50" src="/static/images/github.png" />
           </a>
         </p>
         <p className="m-t-20 text-center">

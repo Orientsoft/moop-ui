@@ -17,9 +17,9 @@ export default ({ history }) => {
         }
         if (!data.thumb) {
           if (data.gender === consts.sex.MALE) {
-            data.thumb = '/images/headerboy.png';
+            data.thumb = '/static/images/headerboy.png';
           } else {
-            data.thumb = '/images/headgirl.png';
+            data.thumb = '/static/images/headgirl.png';
           }
         }
         setCurrentUser(data);
