@@ -5,7 +5,7 @@ import EurekaBanner from '@/components/EurekaBanner';
 import { isTeacher } from '@/utils';
 import { getCurrentUser } from '@/utils/helper';
 import Settings from './Settings';
-import Password from './Password';
+// import Password from './Password';
 import Mobile from './Mobile';
 import Invitation from './Invitation';
 
@@ -27,11 +27,11 @@ export default () => {
             <Settings user={user} />
           </div>
         </Tab.Item>
-        <Tab.Item title="密码修改">
+        {/* <Tab.Item title="密码修改">
           <div className="p-t-60 p-b-60 centminheight">
             <Password user={user} />
           </div>
-        </Tab.Item>
+        </Tab.Item> */}
         <Tab.Item title="手机绑定">
           <div className="p-t-60 p-b-60 centminheight">
             <Mobile user={user} />

@@ -19,11 +19,11 @@ const asideMenuConfig = [
     path: '/contributor/create',
     icon: 'shezhi',
   },
-  {
-    name: '个人设置',
-    path: '/contributor/password',
-    icon: 'shezhi',
-  },
+  // {
+  //   name: '个人设置',
+  //   path: '/contributor/password',
+  //   icon: 'shezhi',
+  // },
 ];
 
 @withRouter

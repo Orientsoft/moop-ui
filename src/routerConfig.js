@@ -25,7 +25,7 @@ import TenantWhiteList from '@/tenant/pages/WhiteList';
 import TenantContributor from '@/tenant/pages/Contributor';
 import ContributorDashboard from '@/contributor/pages/Dashboard';
 import ContributorCreate from '@/contributor/pages/Create';
-import ContributorResetPassword from '@/contributor/pages/ResetPassword';
+// import ContributorResetPassword from '@/contributor/pages/ResetPassword';
 
 export const tenantRoutes = [
   {
@@ -75,10 +75,10 @@ export const contributorRoutes = [
     path: '/contributor/create',
     component: ContributorCreate,
   },
-  {
-    path: '/contributor/password',
-    component: ContributorResetPassword,
-  },
+  // {
+  //   path: '/contributor/password',
+  //   component: ContributorResetPassword,
+  // },
 ];
 
 const routerConfig = [

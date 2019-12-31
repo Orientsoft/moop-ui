@@ -68,9 +68,9 @@ export default ({ history }) => {
         <div className="row justify-content-center">
           <div className="col-5">
             <div className=" card-box m-t-20">
-              <h3 className="text-center uppercase">登录</h3>
+              <h3 className="text-center uppercase">提示</h3>
               <div className="panel-body">
-                <div className="form-horizontal m-t-30">
+                {/* <div className="form-horizontal m-t-30">
                   <div className="form-group">
                     <div className="col-12">
                       <input className="form-control" onChange={setField('name')} type="text" required placeholder="用户名" />
@@ -94,7 +94,8 @@ export default ({ history }) => {
                   <div className="form-group m-t-30 m-b-0">
                     <div className="col-12">没有帐号？<Link to="/register">注册</Link></div>
                   </div>
-                </div>
+                </div> */}
+                <p className="m-t-30" style={{ textAlign: 'center' }}>登录已过期，请重新登录</p>
               </div>
             </div>
           </div>
