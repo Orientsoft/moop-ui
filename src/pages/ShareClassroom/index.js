@@ -22,7 +22,7 @@ export default ({ history }) => {
   const onJoin = () => {
     if (user) {
       Dialog.alert({
-        title: '加入学习',
+        title: '加入比赛',
         content: '是否确认加入？',
         onOk: () => invitation.create({
           data: {
@@ -108,7 +108,7 @@ export default ({ history }) => {
     const buttons = [];
 
     if (course && !user) {
-      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入比赛</a>);
       setActionButtons(buttons);
       return;
     }
@@ -117,7 +117,7 @@ export default ({ history }) => {
         if (course.join) {
           buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
         } else {
-          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入比赛</a>);
         }
         setActionButtons(buttons);
       } else if (course.owner.id === user.id) {
@@ -141,8 +141,8 @@ export default ({ history }) => {
                 {course.characteristic.map((name, i) => <li key={i}>{name}</li>)}
               </ul>
               <p className="coursetext ">
-                学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
-                开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br />
+                {/* 学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
+                开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br /> */}
               </p>
               {actionButtons.map((btn, i) => <Fragment key={i}>{btn}</Fragment>)}
             </div>

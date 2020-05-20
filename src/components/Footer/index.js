@@ -13,7 +13,8 @@ export default () => {
         <div className="row m-t-20">
           <div className="col-md-4 col-sm-6">
             <Link className="navbar-brand logo" to="/">
-              {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
+              {/* {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>} */}
+              <img src="/images/logo.png" alt="" />
             </Link>
             {/* <p>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！</p> */}
           </div>
@@ -44,9 +45,12 @@ export default () => {
             <div className="widget"> <h6 className="title">联系我们</h6>
               <hr />
               <ul className="list-unstyled">
-                <li>地址：{get(tenant, 'address', '')}</li>
+                {/* <li>地址：{get(tenant, 'address', '')}</li>
                 <li>邮箱：{get(tenant, 'email', '')}</li>
-                {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null}
+                {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null} */}
+                <li>地址：成都市人民中路二段68号中铁瑞城大厦1705室</li>
+                <li>邮箱：datalab@swufe.edu.cn</li>
+                <li>电话：028-87092348</li>
               </ul>
             </div>
           </div>

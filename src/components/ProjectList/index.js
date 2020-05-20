@@ -62,7 +62,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
         if (editProject) {
           content = (
             <span>
-              已经启动实验：<a href={`/classroom?id=${editProject.classroom}`}>{editProject.classroom_name}</a>，是否强制关闭并启动当前实验？
+              已经启动比赛：<a href={`/classroom?id=${editProject.classroom}`}>{editProject.classroom_name}</a>，是否强制关闭并启动当前实验？
             </span>
           );
         }
@@ -70,7 +70,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
         if (course.container) {
           content = (
             <span>
-              已经启动实验：<a href={`/classroom?id=${course.container.classroom}`}>{course.container.classroom_name}</a>，是否强制关闭并启动当前实验？
+              已经启动比赛：<a href={`/classroom?id=${course.container.classroom}`}>{course.container.classroom_name}</a>，是否强制关闭并启动当前实验？
             </span>
           );
         }
@@ -142,7 +142,7 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
             <h5 className="mb-0" title={project.title}>
               <button className="btn" data-toggle="collapse" data-target={`#courses${i}`} aria-expanded="true" aria-controls="courses" style={{ paddingRight: isRunning[project.id] || project.running ? 310 : 104, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
                 {project.title}
-                <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
+                {/* <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span> */}
               </button>
               {/* eslint-disable */}
               {onRenderTitleItem && onRenderTitleItem(project, i)}
@@ -156,14 +156,14 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 <a href="#/" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
-                <a href="#/" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止实验环境</a>
+                <a href="#/" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止比赛环境</a>
               ) : (
-                  <a href="#/" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="启动实验环境">启动实验环境</a>
+                  <a href="#/" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="">启动比赛环境</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
                 <Fragment>
-                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="查看实验数据">查看实验数据</a>
-                  <a href={editProject ? editProject.projectURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="进入实验目录">进入实验目录</a>
+                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="查看实验数据">查看比赛数据</a>
+                  <a href={editProject ? editProject.projectURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="进入实验目录">进入比赛目录</a>
                 </Fragment>
               ) : null}
               {/* eslint-enable */}
@@ -178,8 +178,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交代码和结果</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看代码和结果</Button>}
                   </div>
                 ) : (
                   <div onClick={onRefresh}>
@@ -187,8 +187,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交代码和结果</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看代码和结果</Button>}
                   </div>
                 )}
               </div>
@@ -199,18 +199,18 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
       ))}
       <div className="modal modaltop" style={{ display: currentRunning ? 'block' : 'none' }}>
         <div className="modal-dialog modal-dialogloading">
-          <div className="loadingmodal-header" > 启动实验环境 </div>
+          <div className="loadingmodal-header" > 启动比赛环境 </div>
           <div className="modalloading">
             <div className="css-typing">
-              <p className="starttime ">开始启动实验环境...</p>
+              <p className="starttime ">开始启动比赛环境...</p>
               <p className="fright">✓</p>
-              <p className="starttime time2">装载实验数据...</p>
+              <p className="starttime time2">装载比赛数据...</p>
               <p className="fright fright2">✓</p>
-              <p className="starttime time3">启动实验容器...</p>
+              <p className="starttime time3">启动比赛容器...</p>
               <p className="fright fright3">✓</p>
               <p className="starttime time14">授权用户...</p>
               <p className="fright fright4">✓</p>
-              <p className="starttime time5">进入实验环境</p>
+              <p className="starttime time5">进入比赛环境</p>
               <p className="fright fright5">✓</p>
             </div>
           </div>

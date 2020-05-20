@@ -19,7 +19,7 @@ export default ({ dataSource, onQuery, setEditing, style, ...tableProps }) => {
       });
     } else {
       Dialog.confirm({
-        title: '启动实验',
+        title: '启动比赛',
         content: '确定启动？',
         onOk: () => contributor.test({ data: { project: record.id } })
           .then(() => {
@@ -41,7 +41,7 @@ export default ({ dataSource, onQuery, setEditing, style, ...tableProps }) => {
   };
   const renderAction = (value, i, record) => (
     <Row justify="space-between" align="center">
-      <Button disabled={record.disabled} type={record.running ? 'primary' : 'secondary'} onClick={() => onTest(record)}>{record.running ? '停止实验' : '启动实验'}</Button>
+      <Button disabled={record.disabled} type={record.running ? 'primary' : 'secondary'} onClick={() => onTest(record)}>{record.running ? '停止比赛' : '启动比赛'}</Button>
       <Button onClick={() => onEdit(record)} type="normal">编辑</Button>
       <Button onClick={() => onDelete(record)} warning>删除</Button>
     </Row>

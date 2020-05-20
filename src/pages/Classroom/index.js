@@ -22,7 +22,7 @@ export default ({ history }) => {
   const onJoin = () => {
     if (user) {
       Dialog.alert({
-        title: '加入学习',
+        title: '加入比赛',
         content: '是否确认加入？',
         onOk: () => invitation.create({
           data: {
@@ -108,7 +108,7 @@ export default ({ history }) => {
     const buttons = [];
 
     if (course && !user) {
-      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+      buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入比赛</a>);
       setActionButtons(buttons);
       return;
     }
@@ -117,7 +117,7 @@ export default ({ history }) => {
         if (course.join) {
           buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
         } else {
-          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入学习</a>);
+          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}></a>);
         }
         setActionButtons(buttons);
       } else if (course.owner.id === user.id) {
@@ -141,8 +141,8 @@ export default ({ history }) => {
                 {course.characteristic.map((name, i) => <li key={i}>{name}</li>)}
               </ul>
               <p className="coursetext ">
-                学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
-                开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br />
+                {/* 学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br /> */}
+                {/* 开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br /> */}
               </p>
               {actionButtons.map((btn, i) => <Fragment key={i}>{btn}</Fragment>)}
             </div>
@@ -158,16 +158,40 @@ export default ({ history }) => {
         <Tab.Item title={user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? '详情' : ''}>
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
-              <div className="col-12 col-md-8 m-b-30">
-                <h2 className="m-b-20" id="t-project">实验项目</h2>
+              <div className="col-12 col-md-7">
+              
+                <h2 className="m-b-20 m-t-40" id="t-description">比赛流程</h2>
+                <div className="text-secondary">
+                  <ReactMarkdown source={course.description} escapeHtml={false} />
+                </div>
+                {/* <h2 className="m-b-20 m-t-40" id="t-testpoint">预备知识</h2>
+                <div className="text-secondary">
+                  <ReactMarkdown source={course.requirement} escapeHtml={false} />
+                </div>
+                <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
+                <div className="text-secondary">
+                  <ReactMarkdown source={course.testPoint} escapeHtml={false} />
+                </div>
+                <h2 className="m-b-20 m-t-40" id="t-material">参考资料</h2>
+                <div className="text-secondary">
+                  {course.material.map(({ name, href }, i) => (
+                    <p key={i}>
+                      <a href={href} rel="noopener noreferrer" target="_blank">{name}</a>
+                    </p>
+                  ))}
+                </div> */}
+              
+              </div>
+              <div className="col-12 col-md-5 m-b-30">
+                <h2 className="m-b-20 m-t-40" id="t-project">启动比赛环境</h2>
                 <ProjectList course={course} data={course.projects} onVisited={onVisited} onStarted={onProjectStarted} onStoped={onProjectStoped} />
                 <div className="card">
-                  <div className="card-header" id="headingcourse4">
+                  {/* <div className="card-header" id="headingcourse4">
                     <h5 className="mb-0">
-                      <a className="btn btn-link editclassroombtn">实验总结报告</a>
+                      <a className="btn btn-link editclassroombtn">比赛报告</a>
                     </h5>
-                    {course.progress_status && report.isShow && <Link to={`/studentreportedit?id=${course.id}`} className="reportbtn">写实验报告</Link>}
-                  </div>
+                    {course.progress_status && report.isShow && <Link to={`/studentreportedit?id=${course.id}`} className="reportbtn">比赛报告</Link>}
+                  </div> */}
                   {course.progress_status && !report.isShow && (
                     <div className="card-body">
                       <h5 className="card-title" id="experimentitem">{report.title}</h5>
@@ -181,7 +205,7 @@ export default ({ history }) => {
                   )}
                 </div>
 
-                <h2 className="m-b-20 m-t-40" id="t-description">实验项目描述</h2>
+                {/* <h2 className="m-b-20 m-t-40" id="t-description">描述</h2>
                 <div className="text-secondary">
                   <ReactMarkdown source={course.description} escapeHtml={false} />
                 </div>
@@ -200,25 +224,16 @@ export default ({ history }) => {
                       <a href={href} rel="noopener noreferrer" target="_blank">{name}</a>
                     </p>
                   ))}
-                </div>
+                </div> */}
               </div>
-              <div className="col-12 col-md-3 ml-auto">
-                <div className="list-group " ref={naver}>
-                  <a href="#t-project" className="list-group-item ">实验项目</a>
-                  <a href="#t-description" className="list-group-item ">实验项目描述</a>
-                  <a href="#t-testpoint" className="list-group-item ">预备知识</a>
-                  <a href="#t-content" className="list-group-item ">考核内容</a>
-                  <a href="#t-material" className="list-group-item">参考资料</a>
-                  <a href="#t-assistant" className="list-group-item ">讲师</a>
-                </div>
-              </div>
+            
             </div>
           </div>
           <hr />
-          <div className="container m-t-40 p-b-120">
+          {/* <div className="container m-t-40 p-b-120">
             <h2 className="large m-t-40" id="t-assistant">讲师</h2>
             <TeacherList data={course.tutors} />
-          </div>
+          </div> */}
         </Tab.Item>
         {user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? (
           <Tab.Item title="学生">
