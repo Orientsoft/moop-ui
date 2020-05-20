@@ -117,7 +117,7 @@ export default ({ history }) => {
         if (course.join) {
           buttons.push(<a className="btn btn-lg whitebtn m-t-20">已加入</a>);
         } else {
-          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}></a>);
+          buttons.push(<a className="btn btn-primary btn-lg startbtn m-t-20" onClick={onJoin}>加入比赛</a>);
         }
         setActionButtons(buttons);
       } else if (course.owner.id === user.id) {
