@@ -94,6 +94,7 @@ export const purchase = {
 };
 
 export const classroom = {
+  selectRace: GET('/datalab'),
   select: GET('/classrooms/:classroomId'),
   create: POST('/classrooms'),
   update: PATCH('/classrooms/:classroomId'),

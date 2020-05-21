@@ -24,7 +24,7 @@ export default () => {
                 使用在线数据分析平台实践模拟解决金融前沿问题，Python、R、Matlab、SAS等你来战
                 <br />
               </h4>
-              <Link to="/courses" className="btn btn-lg startbtn m-t-40">参加比赛</Link>
+              <Link to="/classroom?id=3d333d3d3d3d3d3d3d3d3" className="btn btn-lg startbtn m-t-40">参加比赛</Link>
             </div>
           </div>
         </div>

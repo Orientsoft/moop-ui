@@ -48,7 +48,7 @@ export default () => {
                 {/* <li>地址：{get(tenant, 'address', '')}</li>
                 <li>邮箱：{get(tenant, 'email', '')}</li>
                 {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null} */}
-                <li>地址：成都市人民中路二段68号中铁瑞城大厦1705室</li>
+                <li>地址：四川省成都市温州区柳台大道555号</li>
                 <li>邮箱：datalab@swufe.edu.cn</li>
                 <li>电话：028-87092348</li>
               </ul>

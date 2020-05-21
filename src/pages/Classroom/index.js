@@ -92,9 +92,10 @@ export default ({ history }) => {
         setActiveTab(key);
       }
     }
-    reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
+    // reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
 
-    classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+    // classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+    classroom.selectRace({ }, { })
       .then(({ data }) => {
         setCourse(data);
         if (user && isTeacher(user)) {
