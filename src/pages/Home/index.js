@@ -10,6 +10,7 @@ export default () => {
   return (
     <Fragment>
       <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/images/loginbg.png')})` }}>
+      {/* <div className="mainbg" style={{ backgroundImage: `url(/images/bgpaly.jpg)` }}> */}
         <div className="container">
           <div className="row p-b-120 p-t-40">
             <div className="col  m-t-60  p-b-60 p-t-40 text-center">
@@ -61,6 +62,7 @@ export default () => {
                   教务处<br />
                   金融学院<br />
                   经济管理实验教学中心<br />
+                  统计学院<br />
                 </p>
               </div>
             </div>
@@ -81,6 +83,7 @@ export default () => {
                 <p className="fade-1-4 p-b-10"> 
                   成都农商银行<br />
                   簇桥支行<br />
+                  MathWorks <br />
                 </p>
               </div>
             </div>

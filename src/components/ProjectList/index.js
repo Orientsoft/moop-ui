@@ -156,14 +156,14 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                 <a href="#/" onClick={() => onDelete(project)} className="deleico" style={{ right: '454px' }}>删除</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
-                <a href="#/" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止比赛环境</a>
+                <a href="#/" onClick={e => onStop(project.id, project.running, e)} className={classnames({ stopico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="停止实验环境">停止环境</a>
               ) : (
-                  <a href="#/" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="">启动比赛环境</a>
+                  <a href="#/" onClick={e => onStart(project.id, project.running, e)} className={classnames({ palyico: true, noico: isEdit ? Boolean(editProject) : (project.running || shouldDisabled) })} style={{ right: 0 }} title="">启动环境</a>
               )}
               {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (
                 <Fragment>
-                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="查看实验数据">查看比赛数据</a>
-                  <a href={editProject ? editProject.projectURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="进入实验目录">进入比赛目录</a>
+                  <a href={editProject ? editProject.dataURL : get(containers[project.id], 'dataURL', project.dataURL)} target="_blank" className={classnames({ dataico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="查看实验数据">查看数据</a>
+                  <a href={editProject ? editProject.projectURL : get(containers[project.id], 'projectURL', project.projectURL)} target="_blank" className={classnames({ dirico: true, noico: isEdit ? Boolean(!editProject) : !project.running })} title="进入实验目录">进入Jupyterlab</a>
                 </Fragment>
               ) : null}
               {/* eslint-enable */}
