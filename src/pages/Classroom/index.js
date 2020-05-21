@@ -169,16 +169,19 @@ export default ({ history }) => {
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
               <div className="col-12 col-md-7">
-              
-                <h2 className="m-b-20 m-t-40" id="t-description">比赛流程</h2>
+                
+                <h2 className="m-b-20 m-t-40" id="t-description">
+                  比赛流程 
+                  <a href="#t-testpoint" style={{ float: 'right', fontSize: '16px' }}>比赛排名</a>
+                </h2>
                 <div className="text-secondary">
                   <ReactMarkdown source={course.description} escapeHtml={false} />
                 </div>
-                {/* <h2 className="m-b-20 m-t-40" id="t-testpoint">预备知识</h2>
+                <h2 className="m-b-20 m-t-40" id="t-testpoint">比赛排名</h2>
                 <div className="text-secondary">
                   <ReactMarkdown source={course.requirement} escapeHtml={false} />
                 </div>
-                <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
+                {/* <h2 className="m-b-20 m-t-40" id="t-content">考核内容</h2>
                 <div className="text-secondary">
                   <ReactMarkdown source={course.testPoint} escapeHtml={false} />
                 </div>
