@@ -92,16 +92,25 @@ export default ({ history }) => {
         setActiveTab(key);
       }
     }
-    // reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
+    if (url.id === 'race1mos2ed23f3d3d3d3s2frace') {
+      classroom.selectRace({ }, { })
+        .then(({ data }) => {
+          setCourse(data);
+          if (user && isTeacher(user)) {
+            progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+          }
+        });
+    } else {
+      reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
+      classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
+        .then(({ data }) => {
+          setCourse(data);
+          if (user && isTeacher(user)) {
+            progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+          }
+        });
+    }
 
-    // classroom.select({ params: { embed: 1 } }, { classroomId: url.id })
-    classroom.selectRace({ }, { })
-      .then(({ data }) => {
-        setCourse(data);
-        if (user && isTeacher(user)) {
-          progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
-        }
-      });
     document.addEventListener('scroll', fixedNaver);
     return () => document.removeEventListener('scroll', fixedNaver);
   }, [history.location.search]);
