@@ -15,13 +15,13 @@ export default () => {
           <div className="row p-b-120 p-t-40">
             <div className="col  m-t-60  p-b-60 p-t-40 text-center">
               {/* <h1 className="large p-t-60">{get(tenant, 'remark', '')}</h1> */}
-              <h2 className="large p-t-60">“成都农商簇桥杯” </h2>
-              <h2 className="smlarge p-t-40">2020 西南财经大学金融科技建模大赛</h2>
+              <h2 className="large p-t-60">2020西南财经大学</h2>
+              <h2 className="smlarge p-t-40">金融科技建模大赛</h2>
                
               <h4 className="lead m-t-40 ">
                 <br />
                 {/* {get(tenant, 'description', '')} */}
-                使用在线数据分析平台实践模拟解决金融前沿问题，Python、R、Matlab、SAS等你来战
+                使用在线数据分析平台实践模拟解决金融前沿问题，MATLAB、Python、R、SAS等你来战
                 <br />
               </h4>
               <Link to="/classroom?id=race1mos2ed23f3d3d3d3s2frace" className="btn btn-lg startbtn m-t-40">参加比赛</Link>
