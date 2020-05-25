@@ -34,7 +34,7 @@ export default () => {
                 <br />
               </h4>
               <Link
-                to="/classroom?id=race1mos2ed23f3d3d3d3s2frace"
+                to="/classroom?id=5ec8c2eb9d4fa492d0d51858"
                 className="btn btn-lg startbtn m-t-40"
               >
                 参加比赛
