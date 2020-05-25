@@ -169,9 +169,8 @@ export default ({ history }) => {
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
               <div className="col-12 col-md-7">
-                
                 <h2 className="m-b-20 m-t-40" id="t-description">
-                  比赛流程 
+                  比赛流程
                   <a href="#t-testpoint" style={{ float: 'right', fontSize: '16px' }}>比赛排名</a>
                 </h2>
                 <div className="text-secondary">

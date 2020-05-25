@@ -1,30 +1,44 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import get from 'lodash-es/get';
-import CourseList from '@/components/CourseList';
-import { getCurrentTenant } from '@/utils/helper';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import get from "lodash-es/get";
+import CourseList from "@/components/CourseList";
+import { getCurrentTenant } from "@/utils/helper";
 
 export default () => {
   const tenant = getCurrentTenant();
 
   return (
     <Fragment>
-      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/images/loginbg.png')})` }}>
-      {/* <div className="mainbg" style={{ backgroundImage: `url(/images/bgpaly.jpg)` }}> */}
+      <div
+        className="mainbg"
+        style={{
+          backgroundImage: `url(${get(
+            tenant,
+            "background",
+            "/images/loginbg.png"
+          )})`,
+        }}
+      >
+        {/* <div className="mainbg" style={{ backgroundImage: `url(/images/bgpaly.jpg)` }}> */}
         <div className="container">
           <div className="row p-b-120 p-t-40">
             <div className="col  m-t-60  p-b-60 p-t-40 text-center">
               {/* <h1 className="large p-t-60">{get(tenant, 'remark', '')}</h1> */}
               <h2 className="large p-t-60">2020西南财经大学</h2>
               <h2 className="smlarge p-t-40">金融科技建模大赛</h2>
-               
+
               <h4 className="lead m-t-40 ">
                 <br />
                 {/* {get(tenant, 'description', '')} */}
                 使用在线数据分析平台实践模拟解决金融前沿问题，MATLAB、Python、R、SAS等你来战
                 <br />
               </h4>
-              <Link to="/classroom?id=race1mos2ed23f3d3d3d3s2frace" className="btn btn-lg startbtn m-t-40">参加比赛</Link>
+              <Link
+                to="/classroom?id=race1mos2ed23f3d3d3d3s2frace"
+                className="btn btn-lg startbtn m-t-40"
+              >
+                参加比赛
+              </Link>
             </div>
           </div>
         </div>
@@ -32,15 +46,27 @@ export default () => {
       </div>
       <div className="bg-eee p-t-80 p-b-60">
         <div className="container p-b-60 text-center">
-          <h2 >
-            <a className="m-r-15" href="" rel="noopener noreferrer" target="_blank" >
+          <h2>
+            <a
+              className="m-r-15"
+              href=""
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <img height="160" src="/images/swufe.png" alt="Jupyter logo" />
             </a>
           </h2>
-          <h2 className="large m-t-60 p-b-30 ">2020 西南财经大学金融科技建模大赛介绍</h2>
-          <p className="m-t-20 p-b-30 text-left "> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在互联网的高速发展、云计算技术的不断成熟的社会大背景下，大数据与金融科技已引起越来越广泛的社会关注。大数据作为一个新兴产业，其应用逐渐渗透到各个领域，为社会科学、自然科学的多个领域研究提供了新的思路和新的技术。其中，金融领域更是经历了以大数据支持的金融科技和人工智能带来的变革。目前，大数据分析、数据挖掘、机器学习等数据分析方法在金融风险管理中广泛应用，并且成为了金融工作的热点和重点。在金融领域大数据化的趋势下，大数据和实体经济将会深度融合，所以大数据技术的快速普及和推广、大数据应用型人才的培养已经迫在眉睫。</p>
-          <p className="m-t-20 p-b-30 text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金融科技建模大赛以数据带来新知，驱动业务并提升风险识别和管理水平。大赛将理论与实践结合，致力于为金融大数据应用型人才的培养提供良好的平台。举办此类比赛的目的不仅是为了培养出更多金融大数据分析的精英人才，更是为广大在校大学生提供一个展示自身专业能力并获取就业机会的平台。同时激发在校学生对大数据分析的兴趣，提高建模分析的学习积极性，增强对金融风险管理的认识，创新社会治理方法，创造社会价值。</p>
-          
+          <h2 className="large m-t-60 p-b-30 ">
+            2020 西南财经大学金融科技建模大赛介绍
+          </h2>
+          <p className="m-t-20 p-b-30 text-left ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国人民银行2019年印发《金融科技发展规划（2019-2021年）》，提出金融科技是技术驱动的金融创新，加强人才队伍假设是重点任务之一。近日，成都市人民政府和人民银行共同发布《成都市金融科技发展规划(2020-2022年)》，这是全国首个由地方政府和人民银行共同发布实施的金融科技发展规划。《规划》提出要按照“坚持创新驱动、坚持科技赋能、坚持开放生态、坚持合规安全、坚持技术中立”的发展原则，构建“成都特色、全国影响、国内示范、国际同步”的金融科技创新示范体系，确立成都金融科技在中西部地区领先、全国一流的地位，形成金融科技应用先进可控、金融服务能力持续增强、金融风控水平明显提高、金融监管效能持续提升、金融科技支撑不断完善、金融科技产业繁荣发展的良性发展格局。到2022年底前，努力把成都建设成为具有国际影响力的区域金融科技中心。成都市政府与西南财经大学从2019年开始共建金融科技国际联合实验室（FIC），致力于推动金融科技创新研发。
+          </p>
+          <p className="m-t-20 p-b-30 text-left">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了适应金融科技快速发展，培养金融科技后备人才，加强学生金融建模能力、数据科学思维及其在金融科技场景中应用创新与实践，金融学院、统计学院、经济管理实验教学中心、教务处、金融科技国际联合实验室联合举办“2020年西南财经大学金融科技建模大赛”（2020
+            SWUFE-FIC Fintech Modeling Contest）。
+          </p>
+
           {/* <CourseList size={3} /> */}
           {/* <h4 className="m-t-40"><Link to="/courses" className="btn btn-lg startbtn ">查看更多 <span className="link-symbol">→</span></Link></h4> */}
         </div>
@@ -52,17 +78,17 @@ export default () => {
         <div className="container p-t-60 text-center  p-b-60 ">
           <h2 className="large m-t-60 p-t-120">支持单位</h2>
           {/* <p className="m-t-20 "> 全面的设施和教程，让您和您的团队轻松的探索数据科学。</p> */}
-          <div className="row m-t-60  p-b-120 procont" >
+          <div className="row m-t-60  p-b-120 procont">
             <div className="col-12 col-md-4 ">
               <div className="feature">
                 {/* <img src="/images/icon9.png" alt="" /> */}
                 <h5 className="mb8 uppercase bold p-b-10">主办单位 </h5>
                 <p className="fade-1-4 p-b-10">
-                  西南财经大学<br />
-                  教务处<br />
                   金融学院<br />
-                  经济管理实验教学中心<br />
                   统计学院<br />
+                  经济管理实验教学中心<br />
+                  教务处<br />
+                  金融科技国际联合实验室<br />
                 </p>
               </div>
             </div>
@@ -71,19 +97,19 @@ export default () => {
                 {/* <img src="/images/icon8.png" alt="" /> */}
                 <h5 className="mb8 uppercase bold p-b-10">承办单位</h5>
                 <p className="fade-1-4 p-b-10">
-                  西南财经大学<br />
+                  金融学院信用管理系<br />
                   金融建模协会<br />
+                  金融智能与金融工程实验室<br />
                 </p>
               </div>
             </div>
             <div className="col-12 col-md-4 ">
               <div className="feature ">
                 {/* <img src="/images/icon7.png" alt="" /> */}
-                <h5 className="mb8 uppercase bold p-b-10">合作单位</h5>
-                <p className="fade-1-4 p-b-10"> 
-                  成都农商银行<br />
-                  簇桥支行<br />
-                  MathWorks <br />
+                <h5 className="mb8 uppercase bold p-b-10">支持单位</h5>
+                <p className="fade-1-4 p-b-10">
+                  迪奥科技<br />
+                MathWorks
                 </p>
               </div>
             </div>
