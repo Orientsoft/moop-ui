@@ -39,7 +39,36 @@ export default () => {
         </div>
         <div className="headerbottom" />
       </div>
-      <div className="main-container p-b-60">
+      <div className="main-container bg-bottom   p-b-60">
+        {/* <img src="/images/main.png" className="mainproico" /> */}
+        {/* <div className="mainproico"></div> */}
+        <div className="container p-t-60 text-center  p-b-60 ">
+          <h2 className="large m-t-60 p-t-120">数据科学空间</h2>
+          <p className="m-t-20 "> 共享空间</p>
+          <div className="row m-t-60  p-b-120 procont" >
+            <div className="col-12 col-md-6 ">
+              <div className="datacont text-left">
+                <h3>应用空间</h3>
+                <img src="/images/pro10.png" alt="" />
+                &nbsp;&nbsp;&nbsp;&nbsp;图书馆提供独立的环境，可以将对数据科学感兴趣的老师和学生聚集一起，共同学习、互相协作。需要学生加入共享空间，可以参与策划“空间改造”活动，激发学生的参与热情。<br /><br />
+              </div>
+            </div>
+            <div className="col-12 col-md-6 ">
+              数据科学实验平台：实现数据科学学习、实体平台和虚拟平台联动，提供线上线下一体化服务，配备云服务环境的实操平台，我司可以提供技术平台支持。
+            </div>
+
+            {/* <div className="col-12 col-md-6 ">
+              <div className="feature ">
+                <img src="/images/icno1.png" alt="" />
+                <h5 className="mb8 uppercase bold p-b-10">数据保护</h5>
+                <p className="fade-1-4 p-b-10">我们对每个用户提供私有的数据存储并保证安全访问，在实验课题成员之间能够通过授权进行数据交换。 </p>
+              </div>
+            </div> */}
+          </div>
+        </div>
+        <div className="headerbottom headerbottom-e" />
+      </div>
+      <div className="main-container  p-b-60">
         {/* <img src="/images/main.png" className="mainproico" /> */}
         {/* <div className="mainproico"></div> */}
         <div className="container p-t-60 text-center  p-b-60 ">
