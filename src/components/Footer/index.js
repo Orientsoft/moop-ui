@@ -11,13 +11,13 @@ export default () => {
     <footer className="footer bg-black p-t-80">
       <div className="container  p-30">
         <div className="row m-t-20">
-          <div className="col-md-4 col-sm-6">
+          <div className="col-md-6 col-sm-6">
             <Link className="navbar-brand logo" to="/">
               {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="150" height="60" /> : <span><i>M</i>oopLab</span>}
             </Link>
             {/* <p>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！</p> */}
           </div>
-          <div className="col-md-2 col-sm-6">
+          <div className="col-md-3 col-sm-6">
             <div className="widget">
               <h6 className="title">关于</h6>
               <hr />
@@ -29,7 +29,7 @@ export default () => {
               </ul>
             </div>
           </div>
-          <div className="col-md-2 col-sm-6">
+          <div className="col-md-3 col-sm-6">
             <div className="widget">
               <h6 className="title">合作伙伴</h6>
               <hr />
@@ -40,7 +40,7 @@ export default () => {
               </ul>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6">
+          {/* <div className="col-md-4 col-sm-6">
             <div className="widget"> <h6 className="title">联系我们</h6>
               <hr />
               <ul className="list-unstyled">
@@ -49,7 +49,7 @@ export default () => {
                 {trim(get(tenant, 'mobile')) ? <li>电话：{get(tenant, 'mobile')}</li> : null}
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         <p className="text-center m-t-20">
           <a className="m-r-15" href="http://www.jupyterchina.org" target="_blank" >

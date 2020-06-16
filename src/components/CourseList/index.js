@@ -42,7 +42,8 @@ export default ({ size = 99, tag, owner, sort }) => {
               </div>
               <div className="text-secondary fs12" style={{ position: 'relative' }}>
                 <span>学时安排：{timeConsume}</span>
-                <span style={{ position: 'absolute', right: 0 }}>已加入 <span style={{ color: 'green' }}>{confirm ? confirm.confirmed : 0}</span> 人 ／ 人数上限 {limit || 0} 人</span>
+                <span style={{ position: 'absolute', right: 0 }}>已加入 <span style={{ color: 'green' }}>{confirm ? confirm.confirmed : 0}</span> 人 </span>
+                {/* ／ 人数上限 {limit || 0} 人 */}
               </div>
               {list_running ? <span className="couserun">正在学习</span> : ''}
             </div>

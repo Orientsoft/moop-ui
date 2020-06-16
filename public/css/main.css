@@ -376,6 +376,10 @@ color: #1277eb;} */
 .card-overflow * {
   display: none;
 }
+.card-overflow {
+  height: 27px;
+  overflow: hidden;
+}
 
 .card-overflow :first-child {
   display: block;
@@ -1815,8 +1819,13 @@ a.reportbtn {
 .datacont {
   position: relative;
   background-color: #fff;
-  padding: 30px 140px 30px 30px;
-  border: 1px solid #ccc;
+  padding: 30px 40px 20px;
+  border: 1px solid #ddd;
+}
+
+.datacont p {
+  overflow: hidden;
+  min-height: 100px;
 }
 
 .datacont:after {
@@ -1829,16 +1838,17 @@ a.reportbtn {
   background: linear-gradient(90deg, #4760de, #00ce72);
 }
 
-.datacont h3 {
+.datacont b {
+  display: inline-block;
   font-size: 20px;
   font-weight: bold;
   height: 33px;
   border-bottom: 3px #00ce72 solid;
-  width: 100px;
   color: #00ce72;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
+/* 
 .datacont img {
   width: 150px;
   left: auto;
@@ -1847,4 +1857,19 @@ a.reportbtn {
   position: absolute;
   overflow: hidden;
   z-index: 1;
+} */
+
+.bgfeature {
+  background-color: #fff;
+  padding: 30px 40px 20px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bgfeature img {
+  width: 100px;
+}
+
+.bgfeature p {
+  overflow: hidden;
+  min-height: 150px;
 }
