@@ -376,8 +376,9 @@ color: #1277eb;} */
 .card-overflow * {
   display: none;
 }
+
 .card-overflow {
-  height: 27px;
+  height: 26px;
   overflow: hidden;
 }
 
@@ -1860,6 +1861,7 @@ a.reportbtn {
 } */
 
 .bgfeature {
+  border-radius: .25rem;
   background-color: #fff;
   padding: 30px 40px 20px;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);

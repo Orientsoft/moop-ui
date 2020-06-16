@@ -32,8 +32,8 @@ export default () => {
               <img height="60" src="/images/jupter-b.png" alt="Jupyter logo" />
             </a>
           </h2>
-          <h2 className="large m-t-40">Jupyter 创始团队支持，与Jupyter社区同步演进</h2>
-          <p className="m-t-20 p-b-30"> Jupyter Notebook 支持可视化交互编程，把文档、程序、报告融为一体，是数据科学家最常用的工具。</p>
+          <h2 className="large m-t-40">课程内容</h2>
+          <p className="m-t-20 p-b-30"> 财经数据科学实战训练营正式启动！最适合财经学生的python培训课。</p>
           <CourseList size={3} />
           <h4 className="m-t-40"><Link to="/courses" className="btn btn-lg startbtn ">查看更多 <span className="link-symbol">→</span></Link></h4>
         </div>
@@ -44,8 +44,8 @@ export default () => {
         {/* <div className="mainproico"></div> */}
         <div className="container p-t-60 text-center  p-b-60 ">
           <h2 className="large m-t-60 p-t-120">数据科学空间</h2>
-          <p className="m-t-20 "> 共享空间</p>
-          <div className="row m-t-60 procont" >
+          {/* <p className="m-t-20 "> 共享空间</p> */}
+          {/* <div className="row m-t-60 procont" >
             <div className="col-12 col-md-6 ">
               <div className="datacont text-left">
                 <b>应用空间</b><br />
@@ -62,7 +62,7 @@ export default () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="row   m-t-60  p-b-120  procont" >
             <div className="col-12 col-md-4 ">
               <div className="feature  bgfeature">
@@ -74,7 +74,7 @@ export default () => {
             <div className="col-12 col-md-4 ">
               <div className="feature  bgfeature">
                 <img src="/images/sj.svg" alt="" />
-                <h5 className="mb8 uppercase bold p-b-10">数据素养培养</h5>
+                <h5 className="mb8 uppercase bold p-b-10">实战训练营</h5>
                 <p className="fade-1-4 p-b-10">学习内容包括python基础、数据采集专题、数据处理专题、数据可视化专题、数据应用案例（馆内数据资源深度挖掘、经典数据案例解析）、数据分析课程等。</p>
               </div>
             </div>
