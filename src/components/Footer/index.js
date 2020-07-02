@@ -65,7 +65,8 @@ export default () => {
         <p className="m-t-20 text-center">
           <span className="fade-half">
             Copyright ©2019 MoopLab all right reserved. <br />
-            四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a>
+              北京百智享科技有限公司市场运营<br />
+              四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a>
           </span>
         </p>
       </div>
