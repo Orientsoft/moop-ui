@@ -66,7 +66,7 @@ export default () => {
           <span className="fade-half">
             Copyright ©2019 MoopLab all right reserved. <br />
               北京百智享科技有限公司市场运营<br />
-              四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a>
+              四川欧润特软件科技有限公司提供技术支持 - <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-5</a>
           </span>
         </p>
       </div>
