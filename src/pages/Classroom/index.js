@@ -158,7 +158,8 @@ export default ({ history }) => {
         <Tab.Item title={user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? '详情' : ''}>
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
-              <div className="col-12 col-md-8 m-b-30">
+              <div className="col-12 col-md-1"></div>
+              <div className="col-12 col-md-10 m-b-30">
                 <h2 className="m-b-20" id="t-project">实验项目</h2>
                 <ProjectList course={course} data={course.projects} onVisited={onVisited} onStarted={onProjectStarted} onStoped={onProjectStoped} />
                 <div className="card">
@@ -202,7 +203,7 @@ export default ({ history }) => {
                   ))}
                 </div>
               </div>
-              <div className="col-12 col-md-3 ml-auto">
+              {/* <div className="col-12 col-md-3 ml-auto">
                 <div className="list-group " ref={naver}>
                   <a href="#t-project" className="list-group-item ">实验项目</a>
                   <a href="#t-description" className="list-group-item ">实验项目描述</a>
@@ -211,7 +212,7 @@ export default ({ history }) => {
                   <a href="#t-material" className="list-group-item">参考资料</a>
                   <a href="#t-assistant" className="list-group-item ">讲师</a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <hr />

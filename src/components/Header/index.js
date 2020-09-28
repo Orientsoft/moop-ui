@@ -36,25 +36,22 @@ export default ({ onLogout, history }) => {
                 <a className="nav-link " href="/" >首页</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="#index1" >实验目的</a>
-              </li>
-              {/* <li className='nav-item'>
-                <a className="nav-link" href="#" >在线实验</a>
-              </li> */}
-              <li className='nav-item'>
-                <a className="nav-link" href="#index2" >实验原理</a>
+                <a className="nav-link" href="/#index1" >实验目的</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="#index3" >实验仪器设备</a>
+                <a className="nav-link" href="/#index2" >实验原理</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="#index4" >实验材料</a>
+                <a className="nav-link" href="/#index3" >实验仪器设备</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="#index5" >实验教学方法</a>
+                <a className="nav-link" href="/#index4" >实验材料</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="#index6" >实验方法与步骤</a>
+                <a className="nav-link" href="/#index5" >实验教学方法</a>
+              </li>
+              <li className='nav-item'>
+                <a className="nav-link" href="/#index6" >实验方法与步骤</a>
               </li>
 
 

@@ -49,52 +49,54 @@ export default () => {
       <div className="main-container bgeee ">
         <div className="container p-t-60 text-center ">
           <div className="row" >
-            <div className="col-12 col-md-2 "></div>
-            <div className="col-12 col-md-8 ">
+            <div className="col-12 col-md-1 "></div>
+            <div className="col-12 col-md-10 ">
             <h2 className="large m-t-60 ">实验原理</h2>
             <p className="m-t-20 text-left"> 以快递末端自提网点布局这一问题为导向，分析建模所需要的数据，对于能够调研得到的数据采用真实调研的数据，对于无法调研得到或者调研有困难的数据设置一个合理的估计值，来模拟现实情况。涉及如下知识点：</p>
             </div>
-            <div className="col-12 col-md-2 "></div>
+            <div className="col-12 col-md-1 "></div>
             </div>
             <div className="row  p-t-30  p-b-120 procontsvg " >
             <div className="col-12 col-md-2 ">
               <div className="feature">
-                {/* <img src="/images/icon1.svg" alt="" /> */}
-                <h1 className="text-left">1</h1>
+                <img src="/images/syicon1.png" alt="" />
+                {/* <h1 className="text-left">1</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">在百度地图上显示某一位置：编写python程序，读取各小区经纬度数据、各便利店经纬度数据，调用百度API将其显示在百度地图中。</p>
               </div>
             </div>
             <div className="col-12 col-md-2 ">
               <div className="feature ">
-                {/* <img src="/images/icon1.svg" alt="" /> */}
-                <h1 className="text-left">2</h1>
+                <img src="/images/syicon7.png" alt="" />
+                {/* <h1 className="text-left">2</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">计算各便利店到各小区的距离，筛选出设立自提点的备选便利店：编写python程序，调用百度API计算两点间距离，将偏远的便利店从备选自提点中删除。</p>
               </div>
             </div>
             <div className="col-12 col-md-2 ">
               <div className="feature ">
-                {/* <img src="/images/icon1.svg" alt="" /> */}
-                <h1 className="text-left">3</h1>
+                <img src="/images/syicon8.png" alt="" />
+                {/* <h1 className="text-left">3</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">用户自提意愿函数估计：根据用户自提意愿调查表，编写python程序拟合自提意愿与自提距离之间的关系。</p>
               </div>
             </div>
             <div className="col-12 col-md-2 ">
               <div className="feature ">
-                {/* <img src="/images/icon1.svg" alt="" /> */}
-                <h1 className="text-left">4</h1>
+                <img src="/images/syicon4.png" alt="" />
+                {/* <h1 className="text-left">4</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">建立Gurobi整数规划模型，设置模型参数：有自提网点的固定成本、自提网点暂存的快递量、自提快件时节省的派件费用、用户自提意愿函数等。</p>
               </div>
             </div>
             <div className="col-12 col-md-2 ">
               <div className="feature ">
-                <h1 className="text-left">5</h1>
+                <img src="/images/syicon5.png" alt="" />
+                {/* <h1 className="text-left">5</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">求解整数规划模型：编写python程序求解整数规划模型。
 </p>
               </div>
             </div>
             <div className="col-12 col-md-2 ">
               <div className="feature ">
-                <h1 className="text-left">6</h1>
+                <img src="/images/syicon6.png" alt="" />
+                {/* <h1 className="text-left">6</h1> */}
                 <p className="fade-1-4 p-b-10 text-left">计算结果可视化：将求得的备选网点及其服务的小区展示在百度地图上。</p>
               </div>
             </div>
