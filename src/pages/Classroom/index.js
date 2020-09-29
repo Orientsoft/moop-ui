@@ -141,7 +141,7 @@ export default ({ history }) => {
                 {course.characteristic.map((name, i) => <li key={i}>{name}</li>)}
               </ul>
               <p className="coursetext ">
-                学时安排：<span className="text-warning font-weight-bold">{course.timeConsume}</span><br />
+                学时安排：<span className="font-weight-bold">{course.timeConsume}</span><br />
                 开课时间：<span className="font-italic text-transparent ">{moment(course.startTime).format('YYYY年MM月DD日')} ~ {moment(course.endTime).format('YYYY年MM月DD日')}</span><br />
               </p>
               {actionButtons.map((btn, i) => <Fragment key={i}>{btn}</Fragment>)}

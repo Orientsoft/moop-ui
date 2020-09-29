@@ -512,8 +512,8 @@ background: linear-gradient(45deg,#48ceae 0%,#3db4d2 100%); */
 .bg-mainconttop {
   background-position: center 10%;
   background-size: cover;
-  color: #fff;
-  background: #005bac url(../images/bwubg.png);
+  color: #000;
+  background: #cce1fa url(../images/fanchuanbg.png) no-repeat bottom;
   /* background-size: 22%;
   background-position: 46% bottom; */
 }
@@ -958,7 +958,7 @@ h1.large {
 }
 
 .text-transparent {
-  color: rgba(255, 255, 255, .8);
+  color: #333;
   font-size: 12px;
   overflow: hidden;
 }
