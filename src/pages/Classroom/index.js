@@ -217,7 +217,7 @@ export default ({ history }) => {
             </div>
           </div>
           <div className="container text-left m-t-60 p-b-60">
-            <div className="row">
+            <div className="row contclassroom">
               {/* <div className="col-12 col-md-1"></div> */}
               <div className="col-12 col-md-12 m-b-30">
                 <h2 className="m-b-20" id="t-project">实验项目</h2>

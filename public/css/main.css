@@ -166,8 +166,8 @@ html, body {
 
 .bd-navbar {
   /* background: #24292e; */
-  background: #4760de;
-  border-bottom: solid 1px #7c8ee8;
+  background: #005bac;
+  border-bottom: solid 1px #1f8cea;
 }
 
 .bd-navbar.bd-index {
@@ -186,7 +186,7 @@ html, body {
 
 .bd-navbar .bg-dark {
   padding: 0;
-  background-color: #4760de!important;
+  background-color: #005bac!important;
 }
 
 .bd-navbar li.nav-item {
@@ -239,7 +239,7 @@ a.logo:hover {
   /* background: url(../images/obbg.jpg),#2b3137; */
   background-color: #4f4f4f !important;
   background-blend-mode: multiply;
-  background: url(../images/loginbg.png), #4760de;
+  background: url(../images/loginbg.png), #005bac;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -249,7 +249,7 @@ a.logo:hover {
 }
 
 .bglog {
-  background: url(../images/loginbg.png), #4760de;
+  background: url(../images/loginbg.png), #005bac;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -503,7 +503,7 @@ background: linear-gradient(45deg,#48ceae 0%,#3db4d2 100%); */
   background-position: center 10%;
   background-size: cover;
   color: #fff;
-  background: #4760de url(../images/settingui.png);
+  background: #005bac url(../images/settingui.png);
   background-repeat: no-repeat;
   background-size: 18%;
   background-position: 80% bottom;
@@ -513,10 +513,9 @@ background: linear-gradient(45deg,#48ceae 0%,#3db4d2 100%); */
   background-position: center 10%;
   background-size: cover;
   color: #fff;
-  background: #4760de url(../images/settingui.png);
-  background-repeat: no-repeat;
-  background-size: 22%;
-  background-position: 46% bottom;
+  background: #005bac url(../images/bwubg.png);
+  /* background-size: 22%;
+  background-position: 46% bottom; */
 }
 
 .main-container {
@@ -1697,7 +1696,7 @@ a.reportbtn {
   position: absolute;
   top: 190px;
   right: 10px;
-  background: #4760de;
+  background: #005bac;
   color: #fff;
   padding: 3px 10px;
   border-radius: 3px;
@@ -1749,7 +1748,7 @@ a.reportbtn {
 }
 
 .price-box.best-plan .price-header, .price-box.best-plan .price-footer {
-  background: #4760de;
+  background: #005bac;
 }
 
 .price-features {
@@ -2184,4 +2183,16 @@ a.reportbtn {
 
 .col-md-6.fr {
   padding-right: 0;
+}
+
+.contclassroom .lead {
+  color: #6c757d!important;
+}
+
+.contclassroom .collapse {
+  display: block !important;
+}
+
+.contclassroom .collapse.show {
+  display: none !important;
 }
