@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
-import CourseList from '@/components/CourseList';
+// import CourseList from '@/components/CourseList';
 import { getCurrentTenant } from '@/utils/helper';
 
 export default () => {
@@ -9,14 +9,14 @@ export default () => {
 
   return (
     <Fragment>
-      <div className="mainbg" style={{ backgroundImage: `url(${get(tenant, 'background', '/images/loginbg.png')})` }}>
+      <div className="mainbg" >
         <div className="container">
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
               <h1 className="large p-t-60 m-t-60 p-b-10">{get(tenant, 'remark', '')}</h1>
               <div className="m-t-60">
-                <Link to="/classroom?id=5f6d7335b8000861a6fd15d2" className="btn btn-lg startbtn m-r-15">在线实验</Link>
-                <Link to="/classroom?id=5f6d7335b8000861a6fd15d2" className="btn btn-lg startbtn whitebtn">专家入口</Link>
+                <Link to="/classroom?id=5f72bb36b8000861a6fd1683" className="btn btn-lg startbtn m-r-15">在线实验</Link>
+                <Link to="/classroom?id=5f72bb36b8000861a6fd1683" className="btn btn-lg startbtn whitebtn">专家入口</Link>
               </div>
 
             </div>
@@ -39,7 +39,7 @@ export default () => {
 能够使用Python在百度地图上可视化展示快递自提网点布局结果。</p>
               </div>
             </div>
-            <div className="col-12 col-md-6 text-right">
+            <div className="col-12 col-md-6 text-right p-t-80">
               <img src="/images/buc.png" alt="" />
             </div>
           </div>
@@ -103,46 +103,6 @@ export default () => {
           </div>
         </div>
       </div>
-      <span id="index3"></span>
-      <div className="bg-eee p-t-80 p-b-60 bg-white">
-        <div className="container p-b-60 text-center">
-          <h2 className="large">实验仪器设备</h2>
-          <p className="m-t-20"> 你可以作为以下三种角色使用实验室。</p>
-          <div className="row p-t-30">
-            <div className="logo-carousel">
-              <ul className="slides">
-                <li>
-                  <a href="#"><img alt="Logo" src="/images/1.png" /> </a>
-                  <p>Python</p>
-                </li>
-                <li>
-                  <a href="#"> <img alt="Logo" src="/images/2.png" /> </a>
-                  <p>Anaconda</p>
-                </li>
-                <li>
-                  <a href="#"><img alt="Logo" src="/images/3.png" /></a>
-                  <p>Jupyter</p></li>
-                <li>
-                  <a href="#"><img alt="Logo" src="/images/4.png" /></a>
-                  <p>Pycharm</p>
-                </li>
-                <li>
-                  <a href="#"> <img alt="Logo" src="/images/5.jpg" /></a>
-                  <p>百度地图</p>
-                </li>
-                <li>
-                  <a href="#"> <img alt="Logo" src="/images/6.png" /></a>
-                  <p>Gurobi学生版</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="section p-b-120 p-t-80 height300 bg-black">
-        <div className="background-image-holder " >
-        </div>
-      </div>
       <span id="index4"></span>
       <div className=" bg-bottom p-t-80 p-b-60 main-container bg-white ">
         <div className="container ">
@@ -163,7 +123,7 @@ export default () => {
               </div>
             </div>
             <div className="col-12 col-md-7 text-right">
-              <img src="/images/pro1.gif" alt="" />
+              <img src="/images/logoicon.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -173,10 +133,10 @@ export default () => {
       <div className="bg-bottom  p-t-80 p-b-60 ">
         <div className="container ">
           <div className="row   procont" >
-            <div className="col-12 col-md-6 text-left">
-              <img src="/images/dental.jpg" alt="" />
+            <div className="col-12 col-md-7 text-left p-t-80">
+              <img src="/images/bgthool.jpg" alt="" width="90%" />
             </div>
-            <div className="col-12 col-md-6 ">
+            <div className="col-12 col-md-5 ">
               <div className="feature text-left">
                 <h2 className="large ">实验教学方法</h2>
                 <p className="fade-1-4 p-b-10 m-t-40">通过该实验，使学生掌握利用python读取数据、调用百度API计算两点间距离的方法，使学生掌握利用python建立数学模型并求解模型的方法，使学生掌握利用python与百度地图相结合可视化展示地理数据的方法。</p>
@@ -188,28 +148,6 @@ export default () => {
           </div>
         </div>
       </div>
-      {/* <div className=" bg-bottom p-t-80 p-b-60 main-container bg-white">
-        <div className="container p-b-60 text-center">
-          <h2 className="large">实验室团队</h2>
-          <p className="m-t-20">实验团队的介绍</p>
-          <div className="row p-t-60 teacherimg">
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img alt="" src="/images/newbbie1.png" />
-              <h5 className="m-t-20">老师</h5>
-              <br />你可以提供精心编排的数据科学项目，帮助新手参考学习。
-              </div>
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img alt="" src="/images/teacher1.png" />
-              <h5 className="m-t-20">学生</h5>
-              <br />你可以从一个有趣的数据分析课题出发，组装不同的实验项目，使用自己的数据，组队完成课题目标。
-              </div>
-            <div className="col-12 col-md-4 text-left m-t-20">
-              <img alt="" src="/images/teacher2.jpg" />
-              <h5 className="m-t-20">贡献者</h5><br />根据不同的数据科学项目，制作项目支持的镜像，并分发到不同的集群
-            </div>
-          </div>
-        </div>
-      </div> */}
       <span id="index6"></span>
       <div className="bg-bottom  p-t-80 p-b-60 bg-white">
         <div className="container ">

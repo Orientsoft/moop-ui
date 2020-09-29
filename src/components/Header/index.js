@@ -32,7 +32,7 @@ export default ({ onLogout, history }) => {
                   <Link className="nav-link" to={menu.path}>{menu.name}</Link>
                 </li>
               ))} */}
-              <li className='nav-item active'>
+              <li className='nav-item '>
                 <a className="nav-link " href="/" >首页</a>
               </li>
               <li className='nav-item'>
@@ -41,21 +41,18 @@ export default ({ onLogout, history }) => {
               <li className='nav-item'>
                 <a className="nav-link" href="/#index2" >实验原理</a>
               </li>
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index3" >实验仪器设备</a>
-              </li>
+              {/* <li className='nav-item'>
+                <a className="nav-link" href="/#index3" >实验材料</a>
+              </li> */}
               <li className='nav-item'>
                 <a className="nav-link" href="/#index4" >实验材料</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="/#index5" >实验教学方法</a>
+                <a className="nav-link" href="/#index5" >教学方法</a>
               </li>
               <li className='nav-item'>
-                <a className="nav-link" href="/#index6" >实验方法与步骤</a>
+                <a className="nav-link" href="/#index6" >实验步骤</a>
               </li>
-
-
-
             </ul>
             {/* eslint-enable */}
             {user ? (

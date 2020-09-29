@@ -162,12 +162,12 @@ export default ({ history }) => {
               <div className="row  m-t-60 ">
                 <div className="col-md-4">
                   <div className="bindex-pro bd999 bdgreen">
-                    <a href="#" className=" nocolor bggreen">01 课程说明</a> <br /><br />
+                    <a href="#" className=" nocolor bggreen">1 实验说明</a> <br /><br />
                     <span className="font32 color999 colorgreen">↓</span><br /><br />
-                    <a href="#" className=" nocolor bggreen">02 获取经纬度 </a> <br /><br />
+                    <a href="#" className=" nocolor bggreen">2 获取经纬度 </a> <br /><br />
                     <span className="font32 color999 colorgreen">↓</span><br /><br />
-                    <a href="#" className=" nocolor bggreen">03 可视化数据</a> <br />
-                    <p className=" font14 color999 ">模块一：历史报表</p>
+                    <a href="#" className=" nocolor bggreen">3 可视化数据</a> <br />
+                    {/* <p className=" font14 color999 ">模块一：历史报表</p> */}
                   </div>
                 </div>
 
@@ -178,22 +178,22 @@ export default ({ history }) => {
                       <div className="row">
                         <div className="col-md-5">
                           <div className="bindex-pro bd999 bdgreen">
-                            <a href="#" className=" nocolor bggreen">08 删除偏远小区或超市 </a> <br />
+                            <a href="#" className=" nocolor bggreen">8 删除偏远小区或超市 </a> <br />
                             <span className="font32 color999 colorgreen">↑</span><br /><br />
-                            <a href="#" className=" nocolor bggreen">07 用户自提意愿计算</a> <br /><br />
+                            <a href="#" className=" nocolor bggreen">7 用户自提意愿计算</a> <br /><br />
 
-                            <p className=" font14 color999 ">模块三：估值计算</p>
+                            {/* <p className=" font14 color999 ">模块三：估值计算</p> */}
                           </div>
                         </div>
                         <span className="font32 color999 colorgreen pt100">⇨</span>
                         <div className="col-md-6 fr">
                           <div className="bindex-pro bd999 bdgreen">
-                            <a href="#" className=" nocolor bggreen">09 整数规划</a> <br />
+                            <a href="#" className=" nocolor bggreen">9 整数规划</a> <br />
                             <span className="font18 color999 colorgreen">↓</span><br />
                             <a href="#" className=" nocolor bggreen">10 模型结果可视化 </a> <br />
                             <span className="font18 color999 colorgreen">↓</span><br />
                             <a href="#" className=" nocolor bggreen">11 学生考核 </a> <br />
-                            <p className=" font14 color999 "> 模块四：报告输出</p>
+                            {/* <p className=" font14 color999 "> 模块四：报告输出</p> */}
                           </div>
                         </div>
                       </div>
@@ -203,12 +203,12 @@ export default ({ history }) => {
                     </div>
                     <div className="col-md-12">
                       <div className="absol-pro2 width28 bd999 bdgreen">
-                        <a href="#" className=" nocolor bggreen">04 选择实验范围</a>
+                        <a href="#" className=" nocolor bggreen">4 选择实验范围</a>
                         <span className="font18 color999 colorgreen">→</span>
-                        <a href="#" className=" nocolor bggreen">05 计算路程</a>
+                        <a href="#" className=" nocolor bggreen">5 计算路程</a>
                         <span className="font18 color999 colorgreen">→</span>
-                        <a href="#" className=" nocolor bggreen">06 拟合用户意愿</a>
-                        <p className=" font14 color999 "> 模块二：报表预测</p>
+                        <a href="#" className=" nocolor bggreen">6 拟合用户意愿</a>
+                        {/* <p className=" font14 color999 "> 模块二：报表预测</p> */}
                       </div>
                     </div>
                   </div>
@@ -263,23 +263,9 @@ export default ({ history }) => {
                   ))}
                 </div>
               </div>
-              {/* <div className="col-12 col-md-3 ml-auto">
-                <div className="list-group " ref={naver}>
-                  <a href="#t-project" className="list-group-item ">实验项目</a>
-                  <a href="#t-description" className="list-group-item ">实验项目描述</a>
-                  <a href="#t-testpoint" className="list-group-item ">预备知识</a>
-                  <a href="#t-content" className="list-group-item ">考核内容</a>
-                  <a href="#t-material" className="list-group-item">参考资料</a>
-                  <a href="#t-assistant" className="list-group-item ">讲师</a>
-                </div>
-              </div> */}
             </div>
           </div>
-          {/* <hr /> */}
-          {/* <div className="container m-t-40 p-b-120">
-            <h2 className="large m-t-40" id="t-assistant">讲师</h2>
-            <TeacherList data={course.tutors} />
-          </div> */}
+        
         </Tab.Item>
         {user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? (
           <Tab.Item title="学生">
