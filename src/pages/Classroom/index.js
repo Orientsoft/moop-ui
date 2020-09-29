@@ -156,10 +156,70 @@ export default ({ history }) => {
       </div>
       <Tab navStyle={{ padding: '0 10%' }} activeKey={activeTab} onChange={key => setActiveTab(key)} contentStyle={{ padding: '30px 0' }}>
         <Tab.Item title={user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? '详情' : ''}>
+          <div className="container p-t-60 text-center ">
+            <h2 className="large m-t-60 p-t-120">快递自提网点布局虚拟仿真实验</h2>
+            <div className="row-warp" >
+              <div className="row  m-t-60 ">
+                <div className="col-md-4">
+                  <div className="bindex-pro bd999 bdgreen">
+                    <a href="#" className=" nocolor bggreen">01 课程说明</a> <br /><br />
+                    <span className="font32 color999 colorgreen">↓</span><br /><br />
+                    <a href="#" className=" nocolor bggreen">02 获取经纬度 </a> <br /><br />
+                    <span className="font32 color999 colorgreen">↓</span><br /><br />
+                    <a href="#" className=" nocolor bggreen">03 可视化数据</a> <br />
+                    <p className=" font14 color999 ">模块一：历史报表</p>
+                  </div>
+                </div>
+
+                <div className="col-md-1 right pt200"><span className="font32 color999 colorgreen ">⇨</span></div>
+                <div className="col-md-7 right">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="row">
+                        <div className="col-md-5">
+                          <div className="bindex-pro bd999 bdgreen">
+                            <a href="#" className=" nocolor bggreen">08 删除偏远小区或超市 </a> <br />
+                            <span className="font32 color999 colorgreen">↑</span><br /><br />
+                            <a href="#" className=" nocolor bggreen">07 用户自提意愿计算</a> <br /><br />
+
+                            <p className=" font14 color999 ">模块三：估值计算</p>
+                          </div>
+                        </div>
+                        <span className="font32 color999 colorgreen pt100">⇨</span>
+                        <div className="col-md-6 fr">
+                          <div className="bindex-pro bd999 bdgreen">
+                            <a href="#" className=" nocolor bggreen">09 整数规划</a> <br />
+                            <span className="font18 color999 colorgreen">↓</span><br />
+                            <a href="#" className=" nocolor bggreen">10 模型结果可视化 </a> <br />
+                            <span className="font18 color999 colorgreen">↓</span><br />
+                            <a href="#" className=" nocolor bggreen">11 学生考核 </a> <br />
+                            <p className=" font14 color999 "> 模块四：报告输出</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absol-upbtn">
+                      <span className="font32 color999 colorgreen pl100">⇧</span>
+                    </div>
+                    <div className="col-md-12">
+                      <div className="absol-pro2 width28 bd999 bdgreen">
+                        <a href="#" className=" nocolor bggreen">04 选择实验范围</a>
+                        <span className="font18 color999 colorgreen">→</span>
+                        <a href="#" className=" nocolor bggreen">05 计算路程</a>
+                        <span className="font18 color999 colorgreen">→</span>
+                        <a href="#" className=" nocolor bggreen">06 拟合用户意愿</a>
+                        <p className=" font14 color999 "> 模块二：报表预测</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="container text-left m-t-60 p-b-60">
             <div className="row">
-              <div className="col-12 col-md-1"></div>
-              <div className="col-12 col-md-10 m-b-30">
+              {/* <div className="col-12 col-md-1"></div> */}
+              <div className="col-12 col-md-12 m-b-30">
                 <h2 className="m-b-20" id="t-project">实验项目</h2>
                 <ProjectList course={course} data={course.projects} onVisited={onVisited} onStarted={onProjectStarted} onStoped={onProjectStoped} />
                 <div className="card">
@@ -215,11 +275,11 @@ export default ({ history }) => {
               </div> */}
             </div>
           </div>
-          <hr />
-          <div className="container m-t-40 p-b-120">
+          {/* <hr /> */}
+          {/* <div className="container m-t-40 p-b-120">
             <h2 className="large m-t-40" id="t-assistant">讲师</h2>
             <TeacherList data={course.tutors} />
-          </div>
+          </div> */}
         </Tab.Item>
         {user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? (
           <Tab.Item title="学生">
