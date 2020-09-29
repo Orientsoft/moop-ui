@@ -15,8 +15,8 @@ export default () => {
             <div className="col  m-t-60  p-b-60 text-center">
               <h1 className="large p-t-60 m-t-60 p-b-10">{get(tenant, 'remark', '')}</h1>
               <div className="m-t-60">
-                <Link to="/classroom?id=5f72bb36b8000861a6fd1683" className="btn btn-lg startbtn m-r-15">在线实验</Link>
-                <Link to="/classroom?id=5f72bb36b8000861a6fd1683" className="btn btn-lg startbtn whitebtn">专家入口</Link>
+                <Link to="/classroom?id=5f72eb6ab8000861a6fd16a0" className="btn btn-lg startbtn m-r-15">在线实验</Link>
+                <Link to="/classroom?id=5f72eb6ab8000861a6fd16a0" className="btn btn-lg startbtn whitebtn">专家入口</Link>
               </div>
 
             </div>

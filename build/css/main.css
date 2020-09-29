@@ -512,7 +512,7 @@ background: linear-gradient(45deg,#48ceae 0%,#3db4d2 100%); */
 .bg-mainconttop {
   background-position: center 10%;
   background-size: cover;
-  color: #000;
+  color: #022144;
   background: #cce1fa url(../images/fanchuanbg.png) no-repeat bottom;
   /* background-size: 22%;
   background-position: 46% bottom; */

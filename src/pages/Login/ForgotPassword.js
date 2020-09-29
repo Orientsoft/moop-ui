@@ -99,7 +99,7 @@ export default ({ history }) => {
         </Dialog>
       </div>
       <div className="container text-center p-30">
-        <span className="fade-half">© 版权所有 MoopLab</span>
+        <span className="fade-half">© 版权所有 北京物资学院</span>
       </div>
     </div>
   );

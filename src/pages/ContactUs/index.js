@@ -8,7 +8,7 @@ export default () => {
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-6">
-              <h2 className="large ">MoopLab服务协议</h2>
+              <h2 className="large ">北京物资学院服务协议</h2>
             </div>
           </div>
         </div>
