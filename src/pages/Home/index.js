@@ -40,7 +40,7 @@ export default () => {
               </div>
             </div>
             <div className="col-12 col-md-6 text-right">
-              <img src="/images/map1.gif" alt="" />
+              <img src="/images/buc.png" alt="" />
             </div>
           </div>
         </div>
