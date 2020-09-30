@@ -146,6 +146,7 @@ export default ({ history }) => {
                   </div>
                   <div className="form-group m-t-10">
                     <div className="col-sm-12 text-left fs14">
+                      <p className="text-secondary ">默认邀请码：000000</p>
                       <Checkbox onChange={v => setAgree(v)}>我同意</Checkbox><Link to="/help">《服务协议》</Link>
                     </div>
                     <div className="col-12  m-t-10 text-center ">
