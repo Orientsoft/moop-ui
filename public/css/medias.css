@@ -1,0 +1,255 @@
+@media screen and (max-width: 1400px) {
+	.container-bwz{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	.container-navbar{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	.facu-bwz-2{
+		width: 20%;
+	}
+	.facu-bwz-9{
+		width: 80%;
+	}
+	.bwz-6{
+		position: relative;
+		width: 20%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	#demo .describe-caption{
+		top: 25%;
+		right: 20%;
+		left: 20%;
+		bottom: 7%;
+		font-size:1.25rem;
+	}
+	#demo .carousel-inner img{
+		height: 100%;
+	}
+}
+@media screen and (max-width:1200px){
+	.container-bwz{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem;
+		font-size: 0.875rem;
+	}
+	.facu-bwz-2{
+		width: 30%;
+	}
+	.facu-bwz-9{
+		width: 70%;
+	}
+	.bwz-6{
+		position: relative;
+		width: 25%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.container-navbar{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	#demo .describe-caption{
+		top: 28%;
+		right: 20%;
+		left: 20%;
+		bottom: 4%;
+		font-size:0.9375rem;
+	}
+	#demo .carousel-inner img{
+		height: 100%;
+	}
+}
+@media screen and (max-width: 1050px) {
+	.container-bwz{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	.bwz-6{
+		position: relative;
+		width: 25%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.facu-bwz-2{
+		width: 100%;
+	}
+	.facu-bwz-9{
+		width: 100%;
+	}
+	.container-navbar{
+		width: 95%;
+		margin: 0rem auto;
+	}
+	#demo .describe-caption{
+		top: 18%;
+		right: 20%;
+		left: 20%;
+		bottom: 20%;
+		font-size:0.875rem;
+	}
+	#demo .carousel-caption .banner-text span{
+	    letter-spacing:0.3125rem;
+		font-size: 1.875rem;
+		font-weight: 700;
+		text-shadow: 0px 0px 2px black;
+	}
+	#demo .carousel-caption p{
+	    margin-top: 0.625rem;
+		margin-bottom:0.9375rem;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem
+	}
+	#demo .carousel-inner img{
+		height:300px;
+	}
+}
+@media screen and (max-width: 800px) {
+	.container-bwz{
+		width: 98%;
+		margin: 0rem auto;
+	}
+	.facu-bwz-2{
+		width: 100%;
+	}
+	.facu-bwz-9{
+		width: 100%;
+	}
+	.bwz-6{
+		position: relative;
+		width: 33%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.container-navbar{
+		width: 98%;
+		margin: 0rem auto;
+	}
+	#demo .describe-caption{
+		top: 15%;
+		right: 15%;
+		left: 15%;
+		bottom: 10%;
+		font-size:0.875rem;
+	}
+	#demo .carousel-caption .banner-text span{
+	    letter-spacing:0.3125rem;
+		font-size: 1.875rem;
+		font-weight: 700;
+		text-shadow: 0px 0px 2px black;
+	}
+	#demo .carousel-inner img{
+		height:200px;
+	}
+	#demo .carousel-caption p{
+	    margin-top: 0.625rem;
+		margin-bottom:0.9375rem;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem;
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (max-width: 670px) {
+	.container-bwz{
+		width: 99%;
+		margin: 0rem auto;
+	}
+	.facu-bwz-2{
+		width: 100%;
+	}
+	.facu-bwz-9{
+		width: 100%;
+	}
+	.bwz-6{
+		position: relative;
+		width: 50%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.container-navbar{
+		width: 98%;
+		margin: 0rem auto;
+	}
+	#demo .describe-caption{
+		top: 10%;
+		right: 8%;
+		left: 8%;
+		bottom: 6%;
+		font-size:0.875rem;
+	}
+	#demo .describe-caption img{
+		height: 150px;
+	}
+	#demo .carousel-caption .banner-text span{
+	    letter-spacing:0.3125rem;
+		font-size:1.125rem;
+		font-weight: 700;
+		text-shadow: 0px 0px 2px black;
+	}
+	#demo .carousel-caption p{
+	    margin-top: 0.625rem;
+		margin-bottom:0.9375rem;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem;
+		font-size: 0.75rem;
+	}
+}
+@media screen and (max-width: 600px) {
+	.container-bwz{
+		width: 99%;
+		margin: 0rem auto;
+	}
+	.facu-bwz-2{
+		width: 100%;
+	}
+	.facu-bwz-9{
+		width: 100%;
+	}
+	#demo .describe-caption img{
+		height: 9.375rem;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem;
+		font-size: 0.625rem;
+	}
+	.bwz-6{
+		position: relative;
+		width: 50%;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.container-navbar{
+		width: 98%;
+		margin: 0rem auto;
+	}
+	#demo .describe-caption{
+		top: 10%;
+		right: 5%;
+		left: 5%;
+		bottom: 10%;
+		font-size:0.75rem;
+	}
+	#demo .carousel-caption .banner-text span{
+	    letter-spacing:2px;
+		font-size:0.875rem;
+		font-weight: 700;
+		text-shadow: 0px 0px 2px black;
+	}
+	#demo .carousel-caption p{
+	    margin-top: 0.625rem;
+		margin-bottom:0.9375rem;
+	}
+	#demo .carousel-caption .btn{
+		padding: 0.3125rem 0.625rem
+	}
+}

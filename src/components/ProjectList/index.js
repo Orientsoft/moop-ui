@@ -178,8 +178,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看</Button>}
                   </div>
                 ) : (
                   <div onClick={onRefresh}>
@@ -187,8 +187,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
                       {onRenderItem ? onRenderItem(<Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />, lab, n, labs, i) : <Ellipsis showTooltip style={{ width: '92%', paddingRight: 100 }} text={lab.name} />}
                       {showFinishedIcon && (lab.finish ? <span className="listiconright">✔</span> : <span className="listiconrightno">✔</span>)}
                     </a>
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交作业</Button>}
-                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看作业</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.STUDENT && course.join && course.homework && <Button loading={isCommit} onClick={e => onCommitHomework(e, project)} style={{ position: 'absolute', top: 10, right: 60, zIndex: 1 }}>提交</Button>}
+                    {/hw$/.test(lab.id) && user && user.role === consts.user.TEACHER && project.homeworkURL && <Button component="a" href={project.homeworkURL} target="_blank" style={{ position: 'absolute', top: 12, right: 60, zIndex: 1 }}>查看</Button>}
                   </div>
                 )}
               </div>
