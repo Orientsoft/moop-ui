@@ -19,7 +19,7 @@ module.exports = context => ({
     new CopyPlugin([{
       from: 'public',
       // to: 'static',
-      ignore: ['index.html', 'index.template', 'favicon.png'],
+      ignore: ['index.html', 'index.template', 'favicon.ico'],
     }]),
   ],
 });

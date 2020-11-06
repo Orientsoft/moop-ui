@@ -2,14 +2,14 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
 // import CourseList from '@/components/CourseList';
-import { getCurrentTenant } from '@/utils/helper';
+import { getCurrentTenant, jumpClassroom } from '@/utils/helper';
 
 export default (props) => {
   const tenant = getCurrentTenant();
-  console.log(props)
+ 
   const onPush = () => {
-    props.history.push('/classroom?id=5fa3ba79b8000861a6fd18da')
-  }
+	jumpClassroom(history)
+}
 
   useEffect(() => {
     try {
@@ -86,68 +86,68 @@ export default (props) => {
 			<div className="container-bwz ul-inli">
 				<div className="row">
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					   <Link  to="/knowledge" >						
 							<div className="test-body">
 								<p>实验目的</p>
 								<img src="images/01.png" />
 							</div>
-						</a>
+						</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					   <Link  to="/knowledge" >
 							<div className="test-body">
 								<p>实验原理</p>
 								<img src="images/02.png" />
 							</div>
-						</a>
+						</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>仪器设备</p>
 								<img src="images/03.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>技术架构</p>
 								<img src="images/04.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>实验方法</p>
 								<img src="images/05.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>教学方法</p>
 								<img src="images/06.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>实施过程</p>
 								<img src="images/07.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 					<div className="col-lg-3 col-md-4 col-6">
-						<a href="knowledge.html">
+					<Link  to="/knowledge" >
 							<div className="test-body">
 								<p>实验流程</p>
 								<img src="images/08.png" />
 							</div>
-						</a>
+							</Link>
 					</div>
 				</div>
 			</div>

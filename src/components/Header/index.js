@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import get from 'lodash-es/get';
@@ -7,75 +7,85 @@ import { getCurrentUser, getCurrentTenant } from '@/utils/helper';
 import consts from '@/utils/consts';
 
 export default ({ onLogout, history }) => {
+  const [active, setActive] = React.useState('/');	
   const user = getCurrentUser();
   const tenant = getCurrentTenant();
   const { pathname } = history.location;
 
+  function onActive(k){
+	  return function(){
+		setActive(k)
+	  }
+  }
+
+  function getClassName(k){
+	  return k === active ? "nav-item active": "nav-item"
+  }
+  
+  useEffect(() => {
+	setActive(location.pathname)
+  }, [location.pathname])
+
   return (
-    <header className={classnames({ 'bd-navbar': true, 'bd-index': pathname === '/' })}>
-      <div className="p-l-r-30 ">
-        <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
-          <Link className="navbar-brand logo" to="/">
-            {get(tenant, 'logo.0') ? <img src={get(tenant, 'logo.0')} alt="" width="" height="50" /> : <span><i>M</i>oopLab</span>}
-          </Link>
-          {/* <a className="m-r-15" href="https://github.com/jupyter/design"  >
-            <img height="35" src="/images/jupter-l.png" alt="Jupyter logo" />
-          </a> */}
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {/* eslint-disable */}
-            <ul className="navbar-nav mr-auto">
-              {/* {headerMenuConfig.map((menu, i) => (
-                <li key={i} className={classnames('nav-item', { active: pathname === menu.path })}>
-                  <Link className="nav-link" to={menu.path}>{menu.name}</Link>
-                </li>
-              ))} */}
-              <li className='nav-item '>
-                <a className="nav-link " href="/" >首页</a>
-              </li>
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index1" >实验目的</a>
-              </li>
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index2" >实验原理</a>
-              </li>
-              {/* <li className='nav-item'>
-                <a className="nav-link" href="/#index3" >实验材料</a>
-              </li> */}
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index4" >实验材料</a>
-              </li>
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index5" >教学方法</a>
-              </li>
-              <li className='nav-item'>
-                <a className="nav-link" href="/#index6" >实验步骤</a>
-              </li>
-            </ul>
-            {/* eslint-enable */}
-            {user ? (
-              <div className="my-2 my-lg-0">
-                <div className="dropdown usertop">
-                  <span style={{ color: 'lightgrey', fontSize: 17, marginRight: 10, verticalAlign: 'middle' }}>{user.role === consts.user.TEACHER ? '教师' : '学生'}</span>
-                  <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
-                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {/* <Link className="dropdown-item" to="/users/courses">我的课题</Link> */}
-                    <Link className="dropdown-item" to="/users/profile">设置</Link>
-                    <a className="dropdown-item" onClick={onLogout}>退出</a>
+		<nav className="navbar navbar-expand-lg bg-white navbar-dark">
+			<div className="container-navbar">
+				<div className="row">
+					<div className="col-lg-3 col-sm-12 col-md-12 col-12">
+						<Link className="navbar-brand logo" to="/" onClick={onActive('/')}>
+									<img src="images/logo.png" />
+						</Link>
+						<button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+							<span className="navbar-toggler-icon"></span>
+						</button>
+					</div>
+					<div className="col-lg-9 col-12">
+						<div className="collapse navbar-collapse" id="collapsibleNavbar" style={{position: 'relative'}}>
+							<ul className="navbar-nav">
+								<li className={getClassName("/")}>
+									<Link className="nav-link" to="/" onClick={onActive("/")}>
+										平台首页
+									</Link>  
+								</li>
+								<li className={getClassName('/faculty')}>
+									<Link className="nav-link" to="/faculty" onClick={onActive('/faculty')}>教师团队</Link>
+								</li>
+								<li className={getClassName('/knowledge')}>
+									<Link className="nav-link" to="/knowledge" onClick={onActive('/knowledge')}>实验介绍</Link>
+								</li>
+								<li className={getClassName('/virtual')}>
+									<Link className="nav-link" to="/virtual" onClick={onActive('/virtual')}>实验界面</Link>
+								</li>  
+								<li className={getClassName('/assessment')}>
+									<Link className="nav-link" to="/assessment" onClick={onActive('/assessment')}>考核评价</Link>
+								</li>
+								<li className={getClassName('/declaration')}>
+									<Link className="nav-link" to="/declaration" onClick={onActive('/declaration')}>项目申报</Link>
+								</li>
+							</ul>
+       
+                {user ? (
+                  <div className="my-2 my-lg-0" style={{ float: 'right'}}>
+                    <div className="dropdown usertop">
+                      <span style={{ color: 'lightgrey', fontSize: 17, marginRight: 10, verticalAlign: 'middle' }}>{user.role === consts.user.TEACHER ? '教师' : '学生'}</span>
+                      <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />
+                      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {/* <Link className="dropdown-item" to="/users/courses">我的课题</Link> */}
+                        <Link className="dropdown-item" to="/users/profile">设置</Link>
+                        <a className="dropdown-item" onClick={onLogout}>退出</a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ) : (
-              <div className="my-2 my-lg-0 regbnt">
-                {/* <Link to="/register">注册</Link> */}
-                <Link to="/login" className="toploginbtn">登录</Link>
-              </div>
-            )}
-          </div>
-        </nav>
-      </div>
-    </header>
+                ) : (
+                  <div className="login-register float-right">
+                    {/* <Link to="/register">注册</Link> */}
+                    <Link to="/login" className="btn btn-success">登录</Link>
+                  </div>
+                )}
+		
+            </div>
+					</div>
+				</div>
+			</div>
+		</nav>
   );
 };

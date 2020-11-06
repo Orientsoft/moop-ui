@@ -25,6 +25,12 @@ import TenantContributor from '@/tenant/pages/Contributor';
 import ContributorDashboard from '@/contributor/pages/Dashboard';
 import ContributorCreate from '@/contributor/pages/Create';
 import ContributorResetPassword from '@/contributor/pages/ResetPassword';
+import Faculty from '@/pages/Faculty';
+import Knowledge from '@/pages/Knowledge';
+import Virtual from '@/pages/Virtual';
+import Assessment from '@/pages/Assessment';
+import Declaration from '@/pages/Declaration';
+
 
 export const tenantRoutes = [
   {
@@ -80,6 +86,26 @@ const routerConfig = [
   {
     path: '/',
     component: Home,
+  },
+  {
+    path: '/faculty',
+    component: Faculty,
+  },
+  {
+    path: '/knowledge',
+    component: Knowledge,
+  },
+  {
+    path: '/virtual',
+    component: Virtual,
+  },
+  {
+    path: '/assessment',
+    component: Assessment,
+  },
+  {
+    path: '/declaration',
+    component: Declaration,
   },
   {
     path: '/courses',

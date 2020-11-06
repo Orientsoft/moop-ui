@@ -88,3 +88,7 @@ export const setCurrentTenant = (tenantData) => {
 };
 
 export const removeCurrentTenant = () => sessionStorage.removeItem(KEY_TENANT);
+
+export function jumpClassroom(history){
+  history.push('/classroom?id=5fa3ba79b8000861a6fd18da')
+}
