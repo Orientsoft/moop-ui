@@ -23,7 +23,7 @@ export default () => {
 					</div>
 					<div className="col-lg-4">
 						<div>
-							<p> <a style={{ color: '#fff'}} href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a></p>
+							<p> <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备15010143号-6</a></p>
 						</div>
 					</div>
 				</div>
