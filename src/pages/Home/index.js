@@ -4,7 +4,7 @@ import get from 'lodash-es/get';
 // import CourseList from '@/components/CourseList';
 import { getCurrentTenant, jumpClassroom } from '@/utils/helper';
 
-export default (props) => {
+export default ({history}) => {
   const tenant = getCurrentTenant();
  
   const onPush = () => {

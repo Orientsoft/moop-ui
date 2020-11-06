@@ -64,7 +64,7 @@ export default ({ onLogout, history }) => {
 							</ul>
        
                 {user ? (
-                  <div className="my-2 my-lg-0" style={{ float: 'right'}}>
+                  <div className="login-register float-right">
                     <div className="dropdown usertop">
                       <span style={{ color: 'lightgrey', fontSize: 17, marginRight: 10, verticalAlign: 'middle' }}>{user.role === consts.user.TEACHER ? '教师' : '学生'}</span>
                       <img src={user.thumb} alt={user.name} className="rounded-circle dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" />

@@ -132,7 +132,7 @@ export default ({ history }) => {
 
   return course ? (
     <Fragment>
-      <div className="bg-mainconttop p-t-60 p-b-60">
+      <div className="bg-mainconttop p-t-80 p-b-60">
         <div className="container  text-left">
           <div className="row">
             <div className="col-12 col-md-7 m-b-30">
