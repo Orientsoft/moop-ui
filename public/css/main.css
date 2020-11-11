@@ -1060,16 +1060,16 @@ a.palyico {
   border-radius: 4px;
   top: 5px;
   text-align: center;
-  line-height: 30px;
+  line-height: 26px;
   font-size: 12px;
-  background: #38e130;
-  border: solid 1px #38e130;
+  background: #ff9541;
+  border: solid 1px #ff9541;
   color: #fff;
 }
 
 a.palyico:hover {
   text-decoration: none;
-  color: #38e130;
+  color: #ff9541;
   background: #fff
 }
 
@@ -2194,4 +2194,21 @@ a.reportbtn {
 
 .contclassroom .collapse.show {
   display: none !important;
+}
+
+.panesinfo h3 {
+  margin: 20px 0;
+}
+
+.panesinfo h5 {
+  margin: 10px 0;
+}
+
+.panesinfo p {
+  margin: 10px 0;
+}
+
+.panesinfo img {
+  margin: 10px 0;
+  /* width: 80%; */
 }

@@ -359,13 +359,77 @@ export default ({  history }) => {
 								</ul>
 								<div className="knowledge-body">
 									<div className="panes active">
-										<div className="panes-body">
-											学生指导书
+										  <div className="panes-body panesinfo">
+											  <h3 className="se-text">一、实验准备</h3>
+											  <h5>加入实验</h5>
+											  <p>登录学生账号后，点击“在线实验”进入实验界面或直接点击菜单栏的“实验界面”。</p>
+											  <img src="images/xssy/xssy1.jpg" />
+											  <p>“加入学习”并确认。一旦加入，以后无需再执行该操作</p>
+											  <img src="images/xssy/xssy2.jpg" />
+											  <h5>启动实验</h5>
+											  <p>该示意图，帮助学生了解实验步骤：从“实验说明”开始，通过一系列的实操学习，然后完成考核。</p>
+											  <img src="images/xssy/xssy3.jpg" />
+											  <p>通过示意图对实验有初步了解后，下方是实验项目具体步骤。点击“启动实验环境”启动环境</p>
+											  <img src="images/xssy/xssy4.jpg" />
+											  <p>1,阅读实验说明并安装python包</p>
+											  <p>开始实验前，阅读实验说明并安装必要的python包，以保证整个实验的顺利进行。</p>
+											  <img src="images/xssy/xssy5.jpg" />
+											  <p>可通过点击菜单栏“单元格==》运行所有”，进行快速运行整个notebook。</p>
+											  <h3 className="se-text">二、实验操作</h3>
+											  <h5>运行代码</h5>
+											  <p>可以一行一行地运行单元格(cell)，仔细阅读文字和理解代码。</p>
+											  <img src="images/xssy/xssy6.jpg" />
+											  <p>也可以批量运行代码：</p>
+											  <p>运行所有：运行全部代码。</p>
+											  <p>运行上面的代码块：鼠标所在位置，上面的所有代码。</p>
+											  <img src="images/xssy/xssy7.jpg" />
+
+
+											  <h5>修改和备注</h5>
+											  <p>你可以对notebook代码和文字进行任何修改，手动保存以防丢失。</p>
+											  <img src="images/xssy/xssy8.jpg" width="100" />
+											  <h5>练习和考核</h5>
+											  <p>每个notebook最后都设置了练习题。学生需认真完成了该步骤学习后作答。所有练习记录都会上传给老师，用于统计练习情况。</p>
+											  <img src="images/xssy/xssy9.jpg" />
+											  <p>在目录最后有个一个“提交”按钮，学生点击可将练习和考核信息提交给老师。</p>
+											  <img src="images/xssy/xssy10.jpg" />
+											  <h3 className="se-text">三、停止实验</h3>
+											  <h5>有效时间</h5>
+											  <p>为了资源的有效管理，每次实验启动后有效时间为4小时，时间一到，整个实验将自动停止。在每个notebook上面都会有倒计时提示，请在有效时间内，手动停止实验并保存已修改的notebook。以防因环境停止，修改信息丢失。</p>
+											  <img src="images/xssy/xssy11.jpg" />
+											  <h5>手动停止</h5>
+											  <p>必须点击“停止实验环境”，实验才算安全停止：系统会保存修改和回收资源。注意：如果在停止实验前关闭网页，实验并未停止，需要重新登录，手动停止实验。</p>
+											  <img src="images/xssy/xssy12.jpg" />
+											  <h3 className="se-text">四、实验报告</h3>
+											  <p>编写实验报告前，需要启动环境，勾选所有notebook后面的符号（包括"实验统计"），以确认完成所有实验操作。<br />
+											  注意：<br/>
+											  实验报告只可提交一次；<br />
+											  实验报告可在未启动实验环境的情况下也可以编写；<br />
+											  因提交后无法修改，建议学生先打好草稿在誊抄。<br />
+											  </p>
+											  <img src="images/xssy/xssy13.jpg" />
+											  <p>实验报告模板如下，非常方便编辑。报告完成后，注意调整格式，再提交(提交后不可修改）。</p>
+											  <img src="images/xssy/xssy14.jpg" />
 										</div>
 									</div>
 									<div className="panes">
-										<div className="panes-body">
-											教师指导书
+										  <div className="panes-body panesinfo">
+											  <h3 className="se-text">一、查看实验课件</h3>
+											  <img src="images/xssy/lssy1.jpg" />
+											  <p>老师启动和停止实验环境，和学生操作相似，请查看“学生指导书”。但老师不能修改课件和添加备注，也不需要完成练习和考核。相反老师可查看实验统计情况，学生试卷和实验报告。</p>
+											  <h3 className="se-text">二、查看实验统计</h3>
+											  <img src="images/xssy/lssy2.jpg" />
+											  <p>点击目录项“实验统计”可看到学生练习和考试统计情况。内容是以notebook形式呈现，方便阅读和动态生成：</p>
+											   <img src="images/xssy/lssy3.jpg" />
+											  <h3 className="se-text">三、查看实验报告</h3>
+											  <p>登录老师账号，即可以查看所有学生提交的实验报告，无需启动环境。</p>
+											   <img src="images/xssy/lssy5.jpg" />
+											  <p>点击学生即可以看到所有学生的进度和实验报告评分：</p>
+											   <img src="images/xssy/lssy6.jpg" />
+											  <p>老师可以查看学生实验报告，进行评分和添加评语（可修改）：</p>
+											   <img src="images/xssy/lssy7.jpg" />
+
+
 										</div>
 									</div>
 								</div>
