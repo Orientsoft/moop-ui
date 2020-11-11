@@ -1056,20 +1056,20 @@ a.palyico {
   position: absolute;
   right: 104px;
   width: 96px;
-  height: 26px;
+  height: 30px;
   border-radius: 4px;
   top: 5px;
   text-align: center;
-  line-height: 24px;
+  line-height: 30px;
   font-size: 12px;
-  background: #1277eb;
-  border: solid 1px #1277eb;
+  background: #38e130;
+  border: solid 1px #38e130;
   color: #fff;
 }
 
 a.palyico:hover {
   text-decoration: none;
-  color: #1277eb;
+  color: #38e130;
   background: #fff
 }
 

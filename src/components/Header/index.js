@@ -32,7 +32,7 @@ export default ({ onLogout, history }) => {
 				<div className="row">
 					<div className="col-lg-3 col-sm-12 col-md-12 col-12">
 						<Link className="navbar-brand logo" to="/" onClick={onActive('/')}>
-									<img src="images/logo.png" />
+									<img src="../images/logo.png" />
 						</Link>
 						<button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 							<span className="navbar-toggler-icon"></span>
@@ -52,12 +52,12 @@ export default ({ onLogout, history }) => {
 								<li className={getClassName('/knowledge')}>
 									<Link className="nav-link" to="/knowledge" onClick={onActive('/knowledge')}>实验介绍</Link>
 								</li>
-								<li className={getClassName('/virtual')}>
-									<Link className="nav-link" to="/virtual" onClick={onActive('/virtual')}>实验界面</Link>
+							  <li className={getClassName('/virtual')}>
+								  <a className="nav-link" href="https://bwu.mooplab.com/classroom?id=5fa3ba79b8000861a6fd18da" onClick={onActive('/ https://bwu.mooplab.com/classroom?id=5fa3ba79b8000861a6fd18da')}>实验界面</a>
 								</li>  
-								<li className={getClassName('/assessment')}>
+								{/* <li className={getClassName('/assessment')}>
 									<Link className="nav-link" to="/assessment" onClick={onActive('/assessment')}>考核评价</Link>
-								</li>
+								</li> */}
 								<li className={getClassName('/declaration')}>
 									<Link className="nav-link" to="/declaration" onClick={onActive('/declaration')}>项目申报</Link>
 								</li>

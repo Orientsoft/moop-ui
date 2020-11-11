@@ -48,16 +48,16 @@ export default ({history}) => {
 								<div><b>学校名称</b> : <span>北京物资大学</span></div>
 							</div>
 							<div className="col-lg-4 col-sm-4 col-md-6">
-								<div><b>所属分类</b> : <span>xxx</span></div>
+								  <div><b>所属分类</b> : <span>物流管理</span></div>
 							</div>
 							<div className="col-lg-4 col-sm-4 col-md-6">
-								<div><b>实验学时</b> : <span>6</span></div>
+								<div><b>实验学时</b> : <span>3</span></div>
 							</div>
 							<div className="col-lg-4 col-sm-4 col-md-6">
-								<div><b>实验项目负责人</b> : <span>xxx</span></div>
+								  <div><b>实验项目负责人</b> : <span>周丽</span></div>
 							</div>
 							<div className="col-lg-4 col-sm-4 col-md-6">
-								<div><b>实验操作步骤</b> : <span>15</span></div>
+								<div><b>实验操作步骤</b> : <span>14</span></div>
 							</div>
 						</div>
 						<div className="se-jj">
@@ -104,7 +104,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>仪器设备</p>
+								  <p>实验材料</p>
 								<img src="images/03.png" />
 							</div>
 							</Link>
@@ -112,7 +112,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>技术架构</p>
+								  <p>预备知识</p>
 								<img src="images/04.png" />
 							</div>
 							</Link>
@@ -120,7 +120,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>实验方法</p>
+								  <p>实验步骤</p>
 								<img src="images/05.png" />
 							</div>
 							</Link>
@@ -128,7 +128,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>教学方法</p>
+								  <p>考核内容</p>
 								<img src="images/06.png" />
 							</div>
 							</Link>
@@ -136,7 +136,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>实施过程</p>
+								  <p>教学方法</p>
 								<img src="images/07.png" />
 							</div>
 							</Link>
@@ -144,7 +144,7 @@ export default ({history}) => {
 					<div className="col-lg-3 col-md-4 col-6">
 					<Link  to="/knowledge" >
 							<div className="test-body">
-								<p>实验流程</p>
+								  <p>实验指导</p>
 								<img src="images/08.png" />
 							</div>
 							</Link>

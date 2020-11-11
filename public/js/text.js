@@ -1,12 +1,12 @@
 $(function() {
 	var wid=$(window).width();
 	
-	if(wid<992){
-		$(".navbar").removeClass('fixed-top');
-		$(".middle").css("margin-top","20px");
-	}else if(wid>992){
-		$(".navbar").addClass('fixed-top');
-	}
+	// if(wid<992){
+	// 	$(".navbar").removeClass('fixed-top');
+	// 	$(".middle").css("margin-top","20px");
+	// }else if(wid>992){
+	// 	$(".navbar").addClass('fixed-top');
+	// }
 	
 	$(".pane-le .pane-tab li").each(function(i){
 		if(i == i) {
