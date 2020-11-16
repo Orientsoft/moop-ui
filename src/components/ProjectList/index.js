@@ -140,7 +140,19 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
         <div key={project.id} className="card">
           <div className="card-header">
             <h5 className="mb-0" title={project.title}>
-              <button className="btn" data-toggle="collapse" data-target={`#courses${i}`} aria-expanded="true" aria-controls="courses" style={{ paddingRight: isRunning[project.id] || project.running ? 310 : 104, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+              <button 
+                className="btn" 
+                // data-toggle="collapse" 
+                data-target={`#courses${i}`} 
+                aria-expanded="true" 
+                aria-controls="courses" 
+                style={{ 
+                  paddingRight: isRunning[project.id] || project.running ? 310 : 104, 
+                  textOverflow: 'ellipsis', 
+                  overflow: 'hidden', 
+                  whiteSpace: 'nowrap' 
+                }}
+              >
                 {project.title}
                 <span style={{ fontSize: 13, marginLeft: 10 }}>(耗时：{project.timeConsume})</span>
               </button>
@@ -169,7 +181,8 @@ export default ({ course, data = [], onVisited, onStarted, onStoped, onMoveUp, o
               {/* eslint-enable */}
             </h5>
           </div>
-          <div id={`courses${i}`} className={classnames({ collapse: true, show: project.running })}>
+          {/* <div id={`courses${i}`} className={classnames({ collapse: true, show: project.running })}> */}
+          <div id={`courses${i}`} className={classnames({ collapse: false, show: true })}>  
             {get(project, 'labs', []).map((lab, n, labs) => (
               <div key={lab.id || n} className="list-group">
                 {(isEdit ? (editProject && editProject.project === project.id) : (isRunning[project.id] || project.running)) ? (

@@ -220,7 +220,7 @@ export default ({ history }) => {
             <div className="row contclassroom">
               {/* <div className="col-12 col-md-1"></div> */}
               <div className="col-12 col-md-12 m-b-30">
-                <h2 className="m-b-20" id="t-project">实验项目</h2>
+                <h2 className="m-b-20" id="t-project">进入后台目录</h2>
                 <ProjectList course={course} data={course.projects} onVisited={onVisited} onStarted={onProjectStarted} onStoped={onProjectStoped} />
                 <div className="card">
                   <div className="card-header" id="headingcourse4">
