@@ -1875,3 +1875,5 @@ a.reportbtn {
   overflow: hidden;
   min-height: 150px;
 }
+
+.tips{ width: 60%; margin: 50px auto 0; background: #fff; padding: 60px 60px; text-align: left;}

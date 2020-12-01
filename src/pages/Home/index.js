@@ -14,16 +14,17 @@ export default () => {
           <div className="row p-b-120">
             <div className="col  m-t-60  p-b-60 text-center">
               <div className="tips">
-                <b>尊敬的用户:</b><br /><br />
-                很抱歉的通知您。由于合作中出现的多种问题不能达成一致，<a href="https://www.mooplab.com/" target="_blank">Mooplab</a>与百智享将不再进行合作。我们感谢各位用户对<a href="https://www.mooplab.com/" target="_blank">Mooplab</a>的厚爱，希望这种情况不会影响到各位用户的使用。我们的主要平台<a href="https://www.mooplab.com/" target="_blank">www.mooplab.com</a>将继续为大家服务。各位在平台上开设课程的老师，我们将协助您进行课程和数据的迁移，请联系<a href="mailto:mooplab@datadynamic.io" target="_blank">mooplab@datadynamic.io</a>，我们非常愿意帮助您。其它的普通用户，请提供您的账号，我们将发放时长优惠补偿给您带来的麻烦。<br /><br />
-                百智享租户 https://jupyter.e-courses.cn 将在 <span className="text-danger">2020年12月7日</span> 正式关闭。<br /><br />
-                非常感谢各位的支持。<br /><br />
-                {/* <a href="https://www.mooplab.com/"  className="btn btn-lg startbtn ">立即前往</a> */}
+                <b>尊敬的平台用户，您好！</b><br /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很抱歉的通知您：鉴于百智享品牌和Mooplab平台方合作中出现各种问题不能及时达成一致，Mooplab平台与代理方“百智享K@S Lab”将中止合作。非常感谢各位平台用户对Mooplab的厚爱，我们希望将对各位用户的使用影响降到最低。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要平台<a href="https://www.mooplab.com/" target="_blank">www.mooplab.com</a>仍将继续为大家服务，在平台上开设课程的各位老师，请及时联系<a href="mailto:mooplab@datadynamic.io" target="_blank">mooplab@datadynamic.io</a> 我们非常愿意协助您进行课程和数据的迁移。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其它的普通用户，请提供您的账号，我们将发放<b className="text-success">“时长优惠”</b>以便补偿给您带来的影响。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百智享K@S Lab作为Mooplab的租户网站 https://jupyter.e-courses.cn 将在 <span className="text-danger ">2020年12月7日</span> 正式关闭。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位的理解与支持。<br />
                 <p className="text-right">
-                  Mooplab开发和运营团队 敬上<br />
-                  2020年12月1日<br />
-                </p > 
-                </div>
+                  Mooplab开发和运营团队<br />
+                  2020年12月1日 敬上<br />
+                </p >
+              </div>
 
               {/* <h1 className="large p-t-60">{get(tenant, 'remark', '')}</h1>
               <h4 className="lead m-t-40 ">
