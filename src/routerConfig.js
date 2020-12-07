@@ -30,7 +30,8 @@ import Knowledge from '@/pages/Knowledge';
 import Virtual from '@/pages/Virtual';
 import Assessment from '@/pages/Assessment';
 import Declaration from '@/pages/Declaration';
-
+import Net from '@/pages/Net';
+import Tech from '@/pages/Tech';
 
 export const tenantRoutes = [
   {
@@ -86,6 +87,14 @@ const routerConfig = [
   {
     path: '/',
     component: Home,
+  },
+  {
+    path: '/net',
+    component: Net,
+  },
+  {
+    path: '/tech',
+    component: Tech,
   },
   {
     path: '/faculty',

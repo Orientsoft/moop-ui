@@ -296,7 +296,7 @@ export default ({ history }) => {
                               </div>
                             </td>
                             <td>{score}</td>
-                            <td>222{showReport && <Link to={`/studentreport?id=${id}&classroom=${course.id}&tab=${activeTab}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
+                            <td>{showReport && <Link to={`/studentreport?id=${id}&classroom=${course.id}&tab=${activeTab}`} className="btn badge badge-primary">查看报告 <span className="link-add">➪</span></Link>}</td>
                           </tr>
                         );
                       })}

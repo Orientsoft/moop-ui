@@ -61,6 +61,12 @@ export default ({ onLogout, history }) => {
 								<li className={getClassName('/declaration')}>
 									<Link className="nav-link" to="/declaration" onClick={onActive('/declaration')}>项目申报</Link>
 								</li>
+								<li className={getClassName('/net')}>
+									<Link className="nav-link" to="/net" onClick={onActive('/net')}>网络要求</Link>
+								</li>
+								<li className={getClassName('/tech')}>
+									<Link className="nav-link" to="/tech" onClick={onActive('/tech')}>技术架构</Link>
+								</li>
 							</ul>
        
                 {user ? (
