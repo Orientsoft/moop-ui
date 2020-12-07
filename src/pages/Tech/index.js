@@ -213,11 +213,8 @@ export default () => {
             <ul id="schemaPics">
               <li>
                 <img
-                  src="/file?id=7003"
-                  data-original="/file?id=7003"
-                  data-photo="/file?id=7003"
+                  src="/images/tech.png"
                   alt="架构图.png"
-                  onerror="this.src='/images/default.jpg'"
                   className="tech10"
                 />
               </li>
