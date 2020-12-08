@@ -1,11 +1,34 @@
-import React, { Fragment } from "react";
-import './index.css';
+import React, { Fragment } from 'react';
+import { jumpClassroom } from '@/utils/helper';
 
-export default () => {
+
+export default ({ history }) => {
+  const onPush = () => {
+    jumpClassroom(history)
+  }
+
   return (
     <Fragment>
-      <div className="net8">
-        <p className="part-title net9">
+      <div >
+        <div id="demo" className="carousel slide" data-ride="carousel">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src="images/v2_qgqxp1.png" />
+              <div className="carousel-caption describe-caption">
+                <div className="banner-text"><span>快递自提网点布局虚拟仿真实验</span></div>
+                <p>以学生为中心的实验教学理念,激发学生的学习兴趣和潜能,增强学生创新创造能力。</p>
+                <button onClick={onPush} type="button" className="btn btn-primary">在线实验</button>&nbsp;&nbsp;
+						<button onClick={onPush} type="button" className="btn btn-light" data-toggle="modal" data-target="#login">专家入口</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section bzx-f3 cont">
+          <div className="container-bwz">
+            <div className="row">
+              <div className="col-md-12 col-sm-12">
+              <div className="tech1">
+                <p className="se-text">
           网络条件要求
         </p>
         <div className="part-content">
@@ -103,7 +126,12 @@ export default () => {
           <p className="fangsong">（勾选“是”，请填写）</p>
           <span className="content-title">国家信息安全等级保护：</span>
           <div className="content-text">一 级</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
       </div>
     </Fragment>
   );
