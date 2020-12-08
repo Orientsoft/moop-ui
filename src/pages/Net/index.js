@@ -44,7 +44,7 @@ export default ({ history }) => {
           </span>
           <div className="content-text">50</div>
         </div>
-        <p className="part-title">
+                  <p className="se-text">
           用户操作系统要求（如Window、Unix、IOS、Android等）
         </p>
         <div className="part-content">
@@ -79,7 +79,7 @@ export default ({ history }) => {
           <span className="content-title">支持移动端：</span>
           <div className="content-text">否</div>
         </div>
-        <p className="part-title">
+        <p className="se-text">
           用户非操作系统软件配置要求（如浏览器、特定软件等）
         </p>
         <div className="part-content">
@@ -98,7 +98,7 @@ export default ({ history }) => {
             </p>
           </div>
         </div>
-        <p className="part-title">
+        <p className="se-text">
           用户硬件配置要求（如主频、内存、显存、存储容量等）
         </p>
         <div className="part-content">
@@ -108,7 +108,7 @@ export default ({ history }) => {
           <span className="content-title">其他计算终端硬件配置要求：</span>
           <div className="content-text">无特殊要求</div>
         </div>
-        <p className="part-title">用户特殊外置硬件要求（如可穿戴设备等）</p>
+        <p className="se-text">用户特殊外置硬件要求（如可穿戴设备等）</p>
         <div className="part-content">
           <span className="content-title">计算机特殊外置硬件要求：</span>
           <div className="content-text">无特殊要求</div>
@@ -116,7 +116,7 @@ export default ({ history }) => {
           <span className="content-title">其他计算终端特殊外置硬件要求：</span>
           <div className="content-text">无特殊要求</div>
         </div>
-        <p className="part-title">网络安全</p>
+        <p className="se-text">网络安全</p>
         <div className="part-content">
           <span className="content-title">
             项目系统是否完成国家信息安全等级保护：
