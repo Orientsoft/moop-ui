@@ -2212,3 +2212,34 @@ a.reportbtn {
   margin: 10px 0;
   /* width: 80%; */
 }
+
+.content-title {
+  margin: 20px 0;
+  color: #000;
+  padding-left: 1em;
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.content-title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 3px;
+  height: 1em;
+  background-color: #4976e8;
+}
+
+.content-text p {
+  line-height: 30px;
+  color: #666;
+}
+
+.cont .container-bwz {
+  background: #fff!important;
+  border-radius: 20px;
+  padding-bottom: 40px !important;
+}
