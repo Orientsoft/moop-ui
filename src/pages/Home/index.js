@@ -45,7 +45,7 @@ export default ({ history }) => {
 							<div className="se-text">项目简介</div>
 							<div className="row se-bsp">
 								<div className="col-lg-4 col-sm-4 col-md-6">
-									<div><b>学校名称</b> : <span>北京物资大学</span></div>
+									<div><b>学校名称</b> : <span>北京物资学院</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
 									<div><b>所属分类</b> : <span>物流管理</span></div>
