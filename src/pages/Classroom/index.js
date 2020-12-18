@@ -10,7 +10,7 @@ import consts from '@/utils/consts';
 import { getCurrentUser, getCourseCover, openURL } from '@/utils/helper';
 import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
-import TeacherList from '@/components/TeacherList';
+// import TeacherList from '@/components/TeacherList';
 
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
@@ -280,16 +280,22 @@ export default ({ history }) => {
                     <tbody>
                       <tr>
                         <th width="140">姓名</th>
-                        <th>进度</th>
-                        <th width="140">评分</th>
-                        <th width="200">操作</th>
+                        <th>班级</th>
+                        <th>学号</th>
+                        <th>时间</th>
+                        <th width="200">进度</th>
+                        <th width="80">评分</th>
+                        <th width="80">操作</th>
                       </tr>
-                      {students.map(({ participant, progress, report: showReport, score = 'N/A' }) => {
-                        const { id, realname } = participant;
+                      {students.map(({ participant, progress, report: showReport, score = '' }) => {
+                        const { id, realname, remark, time } = participant;
                         const percent = parseInt(progress * 100, 10);
                         return (
                           <tr key={id}>
                             <td>{realname}</td>
+                            <td>{remark}</td>
+                            <td>{participant.name}</td>
+                            <td>{moment(time).format('YYYY-MM-DD HH:mm:ss')}</td>
                             <td>
                               <div className="progress m-t-5">
                                 <div className="progress-bar" role="progressbar" style={{ width: `${percent}%` }} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">{percent}%</div>
