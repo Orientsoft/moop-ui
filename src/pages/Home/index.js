@@ -15,14 +15,24 @@ export default () => {
             <div className="col  m-t-60  p-b-60 text-center">
               <div className="tips">
                 <b>尊敬的平台用户，您好！</b><br /><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很抱歉的通知您：鉴于百智享品牌和Mooplab平台方合作中出现各种问题不能及时达成一致，Mooplab平台与代理方“百智享K@S Lab”将中止合作。非常感谢各位平台用户对Mooplab的厚爱，我们希望将对各位用户的使用影响降到最低。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 很抱歉的通知您：Mooplab平台经过与北京百智享科技有限公司的友好协商，决定关闭百智享K@S Lab租户网站。关闭后，K@S Lab将不能通过域名 https://jupyter.e-courses.cn 正常访问。<br />
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位平台用户对Mooplab的厚爱，我们希望将对各位用户的使用影响降到最低。我们建议各位用户将数据迁移到Mooplab主站，并通过主站地址 <a href="https://www.mooplab.com/" target="_blank" >https://www.mooplab.com</a>继续为大家服务。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在平台上开设课程的各位老师，请通过 <a href="mailto:mooplab@datadynamic.io" target="_blank">mooplab@datadynamic.io</a> 或 <a href="https://www.mooplab.com/" target="_blank" >Mooplab</a> 微信公众号与我们联系。我们非常愿意协助您进行课程和数据的迁移。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他用户，请提供您的账号，我们将发放 <b className="text-success">“时长优惠”</b> 以便补偿给您带来的影响。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百智享K@S Lab作为Mooplab的租户网站 https://jupyter.e-courses.cn 将在 <span className="text-danger ">2021年1月20日</span> 正式关闭。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位的理解与支持。<br />
+
+
+
+                {/* 
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位平台用户对Mooplab的厚爱，我们希望将对各位用户的使用影响降到最低。我们建议各位用户将数据和用户迁移到Mooplab主站，并通过主站地址 <a href="https://www.mooplab.com/" target="_blank" >https://www.mooplab.com</a>继续为大家服务。<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要平台<a href="https://www.mooplab.com/" target="_blank">www.mooplab.com</a>仍将继续为大家服务，在平台上开设课程的各位老师，请及时联系<a href="mailto:mooplab@datadynamic.io" target="_blank">mooplab@datadynamic.io</a> 我们非常愿意协助您进行课程和数据的迁移。<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其它的普通用户，请提供您的账号，我们将发放<b className="text-success">“时长优惠”</b>以便补偿给您带来的影响。<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百智享K@S Lab作为Mooplab的租户网站 https://jupyter.e-courses.cn 将在 <span className="text-danger ">2020年12月7日</span> 正式关闭。<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位的理解与支持。<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常感谢各位的理解与支持。<br /> */}
                 <p className="text-right">
                   Mooplab开发和运营团队<br />
-                  2020年12月1日 敬上<br />
+                  2020年12月31日 敬上<br />
                 </p >
               </div>
 
@@ -32,7 +42,8 @@ export default () => {
                 {get(tenant, 'description', '')}
                 <br />
               </h4> */}
-              <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多课题</Link>
+              {/* <Link to="/courses" className="btn btn-lg startbtn m-t-40">更多课题</Link> */}
+              <a href="https://www.mooplab.com/" className="btn btn-lg startbtn m-t-40" target="_blank">立即前往</a>
             </div>
           </div>
         </div>
