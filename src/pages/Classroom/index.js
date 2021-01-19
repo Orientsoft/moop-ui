@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
-import { Dialog } from '@alifd/next';
+import { Dialog, Form, Input, Button } from '@alifd/next';
 import ReactMarkdown from 'react-markdown/with-html';
 import moment from 'moment';
 import Tab from '@/components/Tab';
@@ -11,10 +11,11 @@ import { getCurrentUser, getCourseCover, openURL } from '@/utils/helper';
 import { isTeacher } from '@/utils';
 import ProjectList from '@/components/ProjectList';
 // import TeacherList from '@/components/TeacherList';
-
+const FormItem = Form.Item;
 export default ({ history }) => {
   const [course, setCourse] = useState(null);
   const [students, setStudents] = useState([]);
+  const cacheStudents = useRef([]);
   const [report, setReport] = useState({});
   const [activeTab, setActiveTab] = useState(0);
   const [actionButtons, setActionButtons] = useState([]);
@@ -44,7 +45,11 @@ export default ({ history }) => {
       .then(({ data }) => {
         setCourse(data);
         if (user && isTeacher(user)) {
-          progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+          progressAPI.getStudents({ params: { classroom: data.id } })
+            .then((res) => {
+              cacheStudents.current = res.data;
+              setStudents(res.data);
+            });
         }
       });
   };
@@ -66,7 +71,21 @@ export default ({ history }) => {
       .then(({ data }) => setCourse(data));
     reportAPI.select({}, { reportId: url.id }).then(({ data }) => setReport(data));
   };
+  const onSeach = (value) => {
+    const tmp = cacheStudents.current.filter((v) => {
+      const ok1 = value.s1 && v.participant.remark && v.participant.remark.indexOf(value.s1) !== -1;
+      const ok2 = value.s2 && v.participant.name && v.participant.name.indexOf(value.s2) !== -1;
 
+      if (ok1 || ok2) {
+        return true;
+      }
+      return false;
+    });
+    setStudents(tmp);
+  };
+  const onReset = () => {
+    setStudents(cacheStudents.current);
+  };
   useEffect(() => {
     const url = queryString.parse(history.location.search);
     const fixedNaver = (e) => {
@@ -98,7 +117,10 @@ export default ({ history }) => {
       .then(({ data }) => {
         setCourse(data);
         if (user && isTeacher(user)) {
-          progressAPI.getStudents({ params: { classroom: data.id } }).then(res => setStudents(res.data));
+          progressAPI.getStudents({ params: { classroom: data.id } }).then((res) => {
+            cacheStudents.current = res.data;
+            setStudents(res.data);
+          });
         }
       });
     document.addEventListener('scroll', fixedNaver);
@@ -276,6 +298,19 @@ export default ({ history }) => {
                   <a className="btn btn-primary btn-lg startbtn m-t-20 m-l-15" onClick={onPreview}>生成预览</a>
                   <a className="btn btn-primary btn-lg brownbtn m-t-20 m-l-15" onClick={onDownload}>生成PDF</a>
                   <h3 className="m-b-20 m-t-40 p-t-10">学生完成进度表</h3>
+                  <Form inline>
+                    <FormItem label="班级:">
+                      <Input name="s1" placeholder="班级" />
+                    </FormItem>
+                    <FormItem label="学号:">
+                      <Input name="s2" placeholder="学号" />
+                    </FormItem>
+
+                    <FormItem label=" ">
+                      <Form.Submit type="primary" onClick={onSeach}>搜索</Form.Submit>
+                      <Button onClick={onReset} style={{ marginLeft: '16px' }}>还原</Button>
+                    </FormItem>
+                  </Form>
                   <table className="table table-bordered">
                     <tbody>
                       <tr>
