@@ -52,8 +52,8 @@ export default ({ onLogout, history }) => {
 								<li className={getClassName('/knowledge')}>
 									<Link className="nav-link" to="/knowledge" onClick={onActive('/knowledge')}>实验介绍</Link>
 								</li>
-							  <li className={getClassName('/virtual')}>
-								  <a className="nav-link" href="https://bwu.mooplab.com/classroom?id=5fa3ba79b8000861a6fd18da" onClick={onActive('/ https://bwu.mooplab.com/classroom?id=5fa3ba79b8000861a6fd18da')}>实验界面</a>
+							    <li className={getClassName('/classroom')}>
+								  <Link className="nav-link" to="/classroom?id=5fa3ba79b8000861a6fd18da" onClick={onActive('/classroom')}>实验界面</Link>
 								</li>  
 								{/* <li className={getClassName('/assessment')}>
 									<Link className="nav-link" to="/assessment" onClick={onActive('/assessment')}>考核评价</Link>
