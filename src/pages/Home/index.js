@@ -165,13 +165,13 @@ export default ({ history }) => {
 									<span className="btnr btn" id="btnr"></span>
 									<div className="conbox" id="BoxUl">
 										<ul className="row">
-											<li className="cur bwz-6">
-												<img src="images/faculty-1.png" alt="" />
-												<p>周丽<span>教授</span></p>
+										    <li className="cur bwz-6">
+												<img src="images/person3.jpg" alt="" id="li" />
+												<p>李珍萍<span>教授</span></p>
 											</li>
-											<li className="cur bwz-6">
+										    <li className="cur bwz-6">
 												<img src="images/faculty-2.png" alt="" />
-												<p>张海军<span>副教授</span></p>
+												<p>张海军<span>教授</span></p>
 											</li>
 											<li className="cur bwz-6">
 												<img src="images/faculty-3.png" alt="" />
@@ -186,12 +186,16 @@ export default ({ history }) => {
 												<p>郭风<span>副教授</span></p>
 											</li>
 											<li className="cur bwz-6">
+												<img src="images/faculty-7.png" alt="" />
+												<p>韩丽华<span>讲师</span></p>
+											</li>
+											<li className="cur bwz-6">
 												<img src="images/faculty-6.png" alt="" />
 												<p>岳溥庥<span>讲师</span></p>
 											</li>
 											<li className="cur bwz-6">
-												<img src="images/faculty-7.png" alt="" />
-												<p>韩丽华<span>讲师</span></p>
+												<img src="images/shen.png" alt="" id="shen" />
+												<p>申贵成<span></span></p>
 											</li>
 										</ul>
 									</div>

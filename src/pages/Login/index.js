@@ -94,7 +94,9 @@ export default ({ history }) => {
                   <div className="form-group m-t-30 m-b-0">
                     <div className="col-12">没有帐号？<Link to="/register">注册</Link>
                       <p className="text-secondary pt-2 fs14">
-                        学生：test01/bwu12345&nbsp;&nbsp;&nbsp;&nbsp;专家：teacher/bwu12345
+                      专家账号1：&nbsp;zhuanjia01/bwu12345<br />
+                      专家账号2：zhuanjia02/bwu12345<br />
+                      专家账号3：zhuanjia03/bwu12345
                       </p>
                     </div>
                   </div>
