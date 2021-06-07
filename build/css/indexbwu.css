@@ -255,6 +255,13 @@ ul {
 	padding: 0.3125rem;
 	margin: 0px auto;
 }
+#shen{
+	height: 250px;
+}
+#li{
+	height: 250px;
+	width: 180px;
+}
 
 .bwz-6 {
 	position: relative;
