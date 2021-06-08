@@ -83,7 +83,7 @@ export default ({  history }) => {
                         <div className="faculty-body text-center faculty-img">
                             <img className="img" src="images/shen.png" id="shen"/>
                             <p><i className="icon-user"></i><span style={{fontWeight: "bold"}}>申贵成</span> &nbsp;&nbsp;</p>
-                            <p>所在单位：北京物资学院</p>
+                            {/* <p>所在单位：北京物资学院</p> */}
                             <p>承担任务：教学方法设计</p>
                         </div>
                     </div>

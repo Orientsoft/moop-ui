@@ -48,16 +48,16 @@ export default ({ history }) => {
 									<div><b>学校名称</b> : <span>北京物资学院</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
-									<div><b>所属分类</b> : <span>物流管理</span></div>
+									<div><b>所属分类</b> : <span>信息管理与信息系统</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
-									<div><b>实验学时</b> : <span>3</span></div>
+									<div><b>实验学时</b> : <span>6</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
 									<div><b>实验项目负责人</b> : <span>张海军</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
-									<div><b>实验操作步骤</b> : <span>14</span></div>
+									<div><b>实验操作步骤</b> : <span>11</span></div>
 								</div>
 							</div>
 							<div className="se-jj">
