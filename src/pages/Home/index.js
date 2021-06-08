@@ -54,16 +54,16 @@ export default ({ history }) => {
 									<div><b>实验学时</b> : <span>3</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
-									<div><b>实验项目负责人</b> : <span>周丽</span></div>
+									<div><b>实验项目负责人</b> : <span>张海军</span></div>
 								</div>
 								<div className="col-lg-4 col-sm-4 col-md-6">
 									<div><b>实验操作步骤</b> : <span>14</span></div>
 								</div>
 							</div>
 							<div className="se-jj">
-								电子商务与快递业的协同发展、迅猛增长，给人们的日常生活带来了便利。特别是在今年疫情防控期间，快递业有力保障了人们的居家隔离生活。然而快递派送乱象频发、效率低、成本高。因地制宜的布局快递自提网点，方便用户自提快件，有助于解决这一问题。
+							电子商务与快递业的协同发展、迅猛增长，给人们的日常生活带来了便利。特别是在疫情防控期间，快递业有力保障了人们的居家隔离生活。然而，快递派送最后一公里的问题也更加突出。末端派送乱象频发，快递三轮车乱闯红灯，违规占道停车、摆摊设点屡禁不止。末端派送效率低、成本高。因地制宜的布局快递自提网点，方便用户自提快件，由箱式货车批量的将快件送到自提网点，将大大提高派送效率、减少末端派送人员的数量，有助于解决这一问题。本实验针对北京城市副中心区域内快递自提网点布局优化这一实际问题，进行虚拟仿真，帮助学生更好的理解这一问题，更好的掌握解决问题的技术和方法。本实验以北京城市副中心各小区的住户数来估计各小区的快递量，从百度地图获取副中心区域内的便利店为备选自提网点，建立整数规划模型，用于自提网点的布局优化。通过本实验锻炼学生搜集、利用相关数据，综合利用多种方法和技术来解决实际问题的能力。
 						</div>
-							<button type="submit" className="btn btn-primary mt-10">查看更多</button>
+							{/* <button type="submit" className="btn btn-primary mt-10">查看更多</button> */}
 						</div>
 						<div className="col-lg-5 col-md-5 col-12">
 							<video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video>
@@ -166,7 +166,7 @@ export default ({ history }) => {
 									<div className="conbox" id="BoxUl">
 										<ul className="row">
 										    <li className="cur bwz-6">
-												<img src="images/person3.jpg" alt="" id="li" />
+												<img src="images/lizhen.jpg" alt="" id="shen" />
 												<p>李珍萍<span>教授</span></p>
 											</li>
 										    <li className="cur bwz-6">
