@@ -184,7 +184,7 @@ export default ({ history }) => {
               <div className="row  m-t-60 ">
                 <div className="col-md-4">
                   <div className="bindex-pro bd999 bdgreen">
-                    <a href="#" className=" nocolor bggreen">1 实验说明</a> <br /><br />
+                    <a href="#" className=" nocolor bggreen">1 申请获取百度地图AK</a> <br /><br />
                     <span className="font32 color999 colorgreen">↓</span><br /><br />
                     <a href="#" className=" nocolor bggreen">2 获取经纬度 </a> <br /><br />
                     <span className="font32 color999 colorgreen">↓</span><br /><br />
@@ -210,7 +210,7 @@ export default ({ history }) => {
                         <span className="font32 color999 colorgreen pt100">⇨</span>
                         <div className="col-md-6 fr">
                           <div className="bindex-pro bd999 bdgreen">
-                            <a href="#" className=" nocolor bggreen">9 整数规划</a> <br />
+                            <a href="#" className=" nocolor bggreen">9 建立并求解自提网点布局整数规划模型</a> <br />
                             <span className="font18 color999 colorgreen">↓</span><br />
                             <a href="#" className=" nocolor bggreen">10 模型结果可视化 </a> <br />
                             <span className="font18 color999 colorgreen">↓</span><br />
