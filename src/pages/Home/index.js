@@ -28,7 +28,7 @@ export default ({ history }) => {
 					<div className="carousel-item active">
 						<img src="images/v2_qgqxp1.png" />
 						<div className="carousel-caption describe-caption">
-							<div className="banner-text"><span>快递自提网点布局虚拟仿真实验</span></div>
+							<div className="banner-text"><span>快递自提网点布局优化虚拟仿真实验</span></div>
 							<p>以学生为中心的实验教学理念,激发学生的学习兴趣和潜能,增强学生创新创造能力。</p>
 							{/* <Link to="/classroom?id=5f72eb6ab8000861a6fd16a0" className="btn btn-lg startbtn m-r-15">在线实验</Link>
             <Link to="/classroom?id=5f72eb6ab8000861a6fd16a0" className="btn btn-lg startbtn whitebtn">专家入口</Link> */}
@@ -66,12 +66,14 @@ export default ({ history }) => {
 							{/* <button type="submit" className="btn btn-primary mt-10">查看更多</button> */}
 						</div>
 						<div className="col-lg-5 col-md-5 col-12">
-							<video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video>
+							<img src="images/bwu.jpg" style={{ marginTop: '100px' }}/>
+							{/* <video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video> */}
 						</div>
 					</div>
 					<div className="row mt-30 translateY-lc">
 						<div className="col-lg-5 col-md-5 col-12">
-							<video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video>
+						    <img src="images/bwu.jpg" />
+							{/* <video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video> */}
 						</div>
 						<div className="col-lg-7 col-md-7 col-12 mt-20">
 							<div className="se-text">教学引导视频</div>

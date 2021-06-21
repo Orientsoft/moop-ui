@@ -179,7 +179,7 @@ export default ({ history }) => {
       <Tab navStyle={{ padding: '0 10%' }} activeKey={activeTab} onChange={key => setActiveTab(key)} contentStyle={{ padding: '30px 0' }}>
         <Tab.Item title={user && course && user.role !== consts.user.STUDENT && user.id === course.owner.id ? '详情' : ''}>
           <div className="container p-t-60 text-center ">
-            <h2 className="large m-t-60 p-t-120">快递自提网点布局虚拟仿真实验</h2>
+            <h2 className="large m-t-60 p-t-120">快递自提网点布局优化虚拟仿真实验</h2>
             <div className="row-warp" >
               <div className="row  m-t-60 ">
                 <div className="col-md-4">
