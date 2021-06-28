@@ -66,14 +66,14 @@ export default ({ history }) => {
 							{/* <button type="submit" className="btn btn-primary mt-10">查看更多</button> */}
 						</div>
 						<div className="col-lg-5 col-md-5 col-12">
-							<img src="images/bwu.jpg" style={{ marginTop: '100px' }}/>
-							{/* <video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video> */}
+							{/* <img src="images/bwu.jpg" style={{ marginTop: '100px' }}/> */}
+							<video src="desc.mp4" width="100%" controls="controls" autoplay="autoplay"></video>
 						</div>
 					</div>
 					<div className="row mt-30 translateY-lc">
 						<div className="col-lg-5 col-md-5 col-12">
-						    <img src="images/bwu.jpg" />
-							{/* <video poster="http://cirrxfxm.zufe.edu.cn/jsp/index/picture/project.png" src="http://cirrxfxm.zufe.edu.cn/assets/layouts/layout/video/1.mp4" width="100%" controls="controls"></video> */}
+						    {/* <img src="images/bwu.jpg" /> */}
+							<video src="intro.mp4" width="100%" controls="controls" autoplay="autoplay"></video>
 						</div>
 						<div className="col-lg-7 col-md-7 col-12 mt-20">
 							<div className="se-text">教学引导视频</div>
